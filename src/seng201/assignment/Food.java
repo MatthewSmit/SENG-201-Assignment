@@ -4,13 +4,13 @@ package seng201.assignment;
  * Created by Matthew on 12/04/2017.
  */
 public enum Food {
-    Carrot(2, 1, 1, 1),
-    Tuna(6, 1, 1, 1),
-    Lettuce(2, 1, 1, 1),
-    Steak(10, 1, 1, 1),
-    Seeds(4, 1, 1, 1),
-    Bloodworm(8, 1, 1, 1),
-    Peas(2, 1, 1, 1);
+    CARROT(2, 1, 1, 1),
+    TUNA(6, 1, 1, 1),
+    LETTUCE(2, 1, 1, 1),
+    STEAK(10, 1, 1, 1),
+    SEEDS(4, 1, 1, 1),
+    BLOODWORM(8, 1, 1, 1),
+    PEAS(2, 1, 1, 1);
 
     private final int price;
     private final int nutrition;

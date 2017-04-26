@@ -3,6 +3,7 @@ package seng201.assignment.console;
 import seng201.assignment.*;
 
 import java.io.*;
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
 /**
@@ -180,7 +181,7 @@ public class ConsoleRunner {
             System.out.println(String.format("Tiredness: %d", pet.getTiredness()));
             System.out.println(String.format("Playfulness: %d", pet.getPlayfulness()));
             System.out.println(String.format("Toilet: %d", pet.getToiletNeed()));
-            System.out.println(String.format("Weight: %d", pet.getWeight()));
+            System.out.println(String.format("Weight: %f", pet.getWeight()));
             System.out.println(String.format("Has pet died: %s", pet.getDeathState() == Pet.DeathState.ALIVE ? "no" : "yes"));
         }
     }
@@ -216,12 +217,13 @@ public class ConsoleRunner {
                 }
 
                 try {
-                    pets[j] = (Pet)petType.newInstance();
+                    Constructor constructor = petType.getConstructor(String.class);
+                    constructor.setAccessible(true);
+                    pets[j] = (Pet)constructor.newInstance(petName);
                 } catch (Exception e) {
                     e.printStackTrace();
                     System.exit(2);
                 }
-                pets[j].setName(petName);
             }
         }
 

@@ -1,5 +1,7 @@
 package seng201.assignment;
 
+import java.util.Random;
+
 /**
  * Created by Matthew on 12/04/2017.
  */
@@ -10,17 +12,39 @@ public abstract class Pet {
         PERMENANTLY_DEAD
     }
 
+    protected static Random rn = new Random();
+
     private int hunger;
     private int tiredness;
-    private int playfulness;
-    private int roughness;
     private int toiletNeed;
     private int health;
     private DeathState deathState = DeathState.ALIVE;
     private String name;
-    private int weight;
-
+    
+    private int hungerRate;
+    private int tiredRate;
+    private int playfulness;
+    private int roughness;
+    private float weight; //float as actual kg representation - e.g. dog - 13.5kg weight
+    
+    //hunger = 0->10;
+    //0 playfulness = low playfulness, 0 roughness = low roughness
+    protected Pet(String name) {
+    	this.name = name;
+    	hunger = 0;
+    	tiredness = 0;
+    	toiletNeed = 0;
+    	health = 10;
+    	playfulness = getSpeciesPlayfulness();
+    	roughness = getSpeciesRoughness();
+    	hungerRate = getSpeciesHungerRate();
+    	tiredRate = getSpeciesTiredRate();
+    	weight = getSpeciesInitialWeight();
+    }
+    
+    
     public void feed(Food food) {
+    //	System.out.println(this.name + " eats " + food.name);
     }
 
     public void play(Toy toy) {
@@ -64,9 +88,9 @@ public abstract class Pet {
     public int getHealth() {
         return health;
     }
-
-    public int getWeight() {
-        return weight;
+    
+    public float getWeight() {
+    	return weight;
     }
 
     public DeathState getDeathState() {
@@ -77,7 +101,53 @@ public abstract class Pet {
         return name;
     }
 
-    public void setName(String name) { this.name = name; }
-
     public abstract String getSpecies();
+    
+    protected abstract Toy[] getFavouriteToy();
+    
+    /*protected abstract int getSpeciesPlayfulness();
+    
+    protected abstract int getSpeciesRoughness();
+    
+    protected abstract int getSpeciesHungerRate();
+    
+    protected abstract int getSpeciesTiredRate();*/
+    
+    //protected abstract float getSpeciesInitialWeight();
+    protected abstract float[] getSpeciesWeightRange();
+    
+    protected abstract int[] getSpeciesPlayfulnessRange();
+    
+    protected abstract int[] getSpeciesRoughnessRange();
+    
+    protected abstract int[] getSpeciesHungerRateRange();
+    
+    protected abstract int[] getSpeciesTiredRateRange();
+    
+    //random.nextInt(max - min + 1) + min
+    private int getSpeciesPlayfulness(){
+    	int[] playfulnessRange = getSpeciesPlayfulnessRange();
+    	return rn.nextInt(playfulnessRange[1] - playfulnessRange[0] + 1) + playfulnessRange[0];
+    }
+    
+    private int getSpeciesRoughness(){
+    	int[] roughnessRange = getSpeciesRoughnessRange();
+    	return rn.nextInt(roughnessRange[1] - roughnessRange[0] + 1) + roughnessRange[0];
+    }
+    
+    private int getSpeciesHungerRate(){
+    	int[] hungerRateRange = getSpeciesHungerRateRange();
+    	return rn.nextInt(hungerRateRange[1] - hungerRateRange[0] + 1) + hungerRateRange[0];
+    }
+    
+    private int getSpeciesTiredRate(){
+    	int[] tiredRateRange = getSpeciesTiredRateRange();
+    	return rn.nextInt(tiredRateRange[1] - tiredRateRange[0] + 1) + tiredRateRange[0];
+    }
+    
+	private float getSpeciesInitialWeight(){
+		float[] weightRange = getSpeciesWeightRange();
+		float initialWeight = rn.nextFloat() * (weightRange[1] - weightRange[0]) + weightRange[0];
+		return initialWeight;
+	}
 }
