@@ -5,18 +5,18 @@ package seng201.assignment;
  */
 public class Cat extends Pet {
 	
-	private float[] weightRange = new float[] {2.5f, 11};
-	private int[]  playfulnessRange = new int[] {3, 9};
-	private int[] roughnessRange = new int[] {3, 7};
-	private int[] hungerRateRange = new int[] {2, 4};
-	private int[] tiredRateRange = new int[] {2, 4};
+	private static float[] weightRange = new float[] {2.5f, 11};
+	private static int[]  playfulnessRange = new int[] {3, 9};
+	private static int[] roughnessRange = new int[] {3, 7};
+	private static int[] hungerRateRange = new int[] {2, 4};
+	private static int[] tiredRateRange = new int[] {2, 4};
 
-	Cat(String name){
+	public Cat(String name){
 		super(name);
 	}
 	
 	@Override
-	protected String getSpecies() {
+	public String getSpecies() {
         return "Cat";
     }
 	
