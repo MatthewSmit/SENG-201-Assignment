@@ -6,14 +6,14 @@ package seng201.assignment;
 public enum Toy {
 	
 	//price, durability = 1->10 (1 lowest, 10 highest)
-	SMALLBALL(3, 3),
-	LARGEBALL(5, 5),
-	SQUEAKYTOY(8, 5),
-	GUINEAPIGWHEEL(7,4),
-	JUNGLEGYM(8,4),
-	CARDBOARDBOX(1,2);
+	SMALLBALL     (3, 8),
+	LARGEBALL     (5, 9),
+	SQUEAKYTOY    (8, 5),
+	GUINEAPIGWHEEL(7, 7),
+	JUNGLEGYM     (8, 5),
+	CARDBOARDBOX  (1, 2);
 	
-    private int price;
+    private final int price;
     private int durability;
 
     
@@ -23,7 +23,19 @@ public enum Toy {
     }
     
     public void degrade(Pet pet) {
-    	durability = durability-pet.getRoughness();
+    	
+    	if (this.durability <= 0){
+    		throw new UnsupportedOperationException("Can't play with a broken toy!");
+    	}
+    	
+    	else if (this.durability - pet.getRoughness() < 0){
+    		this.durability = 0; 		
+    	}
+    	
+    	else {
+    		this.durability = durability-pet.getRoughness();
+    	}
+    	
     	System.out.println(name().toLowerCase() + " has degraded to " + getDurability() + " durability.");
     }
 
