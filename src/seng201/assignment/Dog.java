@@ -24,7 +24,7 @@ public class Dog extends Pet {
 	}
 	
 	protected Food[] getFavouriteFood(){
-		return new Food[] {Food.TUNA, Food.STEAK};
+		return new Food[] {Food.STEAK, Food.TUNA};
 	}
 	
 	protected float[] getSpeciesWeightRange(){
