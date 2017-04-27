@@ -31,17 +31,17 @@ public class Player {
         this.pets = pets;
     }
 
-    public void purchase(Toy toy) {
+    public void purchase(ToyType toy) {
         if (money < toy.getPrice())
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException("Can't afford the toy.");
 
         money -= toy.getPrice();
-        toys.add(toy);
+        toys.add(new Toy(toy));
     }
 
     public void purchase(Food food) {
         if (money < food.getPrice())
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException("Can't afford the food.");
 
         money -= food.getPrice();
         this.food.add(food);

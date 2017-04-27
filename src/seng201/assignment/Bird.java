@@ -20,8 +20,8 @@ public class Bird extends Pet {
     }
 
 	@Override
-	protected Toy[] getFavouriteToy(){
-		return new Toy[] {Toy.JUNGLEGYM, Toy.GUINEAPIGWHEEL};
+	protected ToyType[] getFavouriteToy(){
+		return new ToyType[] {ToyType.JUNGLEGYM, ToyType.GUINEAPIGWHEEL};
 	}
 
 	@Override

@@ -20,8 +20,8 @@ public class Goldfish extends Pet {
     }
 
 	@Override
-	protected Toy[] getFavouriteToy(){
-		return new Toy[] {Toy.SMALLBALL};
+	protected ToyType[] getFavouriteToy(){
+		return new ToyType[] {ToyType.SMALLBALL};
 	}
 
 	@Override

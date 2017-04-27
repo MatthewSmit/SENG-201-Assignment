@@ -193,10 +193,10 @@ public abstract class Pet {
      * @param toy the toy used to play with the pet
      */
     public void play(Toy toy) {
-        Toy[] favourites = getFavouriteToy();
+        ToyType[] favourites = getFavouriteToy();
 
-        boolean mostFavourite = favourites[0] == toy;
-        boolean favourite = Lists.contains(favourites, toy);
+        boolean mostFavourite = favourites[0] == toy.getType();
+        boolean favourite = Lists.contains(favourites, toy.getType());
 
         toy.degrade(this);
 
@@ -357,7 +357,7 @@ public abstract class Pet {
      */
     public abstract String getSpecies();
     
-    protected abstract Toy[] getFavouriteToy();
+    protected abstract ToyType[] getFavouriteToy();
 
     protected abstract Food[] getFavouriteFood();
 

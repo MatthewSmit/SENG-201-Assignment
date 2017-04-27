@@ -20,8 +20,8 @@ public class Rabbit extends Pet {
     }
 
 	@Override
-	protected Toy[] getFavouriteToy(){
-		return new Toy[] {Toy.CARDBOARDBOX, Toy.GUINEAPIGWHEEL,Toy.SMALLBALL};
+	protected ToyType[] getFavouriteToy(){
+		return new ToyType[] {ToyType.CARDBOARDBOX, ToyType.GUINEAPIGWHEEL,ToyType.SMALLBALL};
 	}
 
 	@Override

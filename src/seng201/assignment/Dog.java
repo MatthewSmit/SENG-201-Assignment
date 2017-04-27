@@ -20,13 +20,13 @@ public class Dog extends Pet {
     }
 
     @Override
-	protected Toy[] getFavouriteToy(){
-		return new Toy[] {Toy.LARGEBALL, Toy.SQUEAKYTOY, Toy.SMALLBALL};
+	protected ToyType[] getFavouriteToy(){
+		return new ToyType[] {ToyType.LARGEBALL, ToyType.SQUEAKYTOY, ToyType.SMALLBALL};
 	}
 
 	@Override
 	protected Food[] getFavouriteFood(){
-		return new Food[] {Food.TUNA, Food.STEAK};
+		return new Food[] {Food.STEAK, Food.TUNA};
 	}
 	
 	protected float[] getSpeciesWeightRange(){
