@@ -28,6 +28,26 @@ public class ConsoleRunner {
             System.out.println(String.format("Player %s's turn, round %d/%d", game.getCurrentPlayer().getName(), game.getCurrentRound() + 1, game.getMaxRound()));
             System.out.println(String.format("Controlling pet %s, actions remaining: %d", game.getCurrentPet().getName(), game.getActionsLeft()));
 
+            switch (game.getCurrentPet().getEventState()) {
+                case NoEvent:
+                    break;
+                case Misbehaving:
+                    System.out.println(String.format("Pet %s has started misbehaving!", game.getCurrentPet().getName()));
+                    break;
+                case Sick:
+                    System.out.println(String.format("Pet %s has gotten sick!", game.getCurrentPet().getName()));
+                    break;
+                case Dead:
+                    System.out.println(String.format("Pet %s has died!", game.getCurrentPet().getName()));
+                    if (game.getCurrentPet().getDeathState() == Pet.DeathState.PERMANENTLY_DEAD) {
+                        System.out.println("Your pet is now permenantly dead!");
+                    }
+                    else {
+                        System.out.println("You have revived your pet, you can only do this once!");
+                    }
+                    break;
+            }
+
             System.out.println("(0): View pet status");
             System.out.println("(1): Visit store");
             System.out.println(String.format("(2): Feed %s", game.getCurrentPet().getName()));
@@ -172,15 +192,16 @@ public class ConsoleRunner {
     }
 
     private static void displayPetStatus(Pet pet) {
-        if (pet.getDeathState() == Pet.DeathState.PERMENANTLY_DEAD) {
+        if (pet.getDeathState() == Pet.DeathState.PERMANENTLY_DEAD) {
             System.out.println(String.format("%s (%s) [DEAD]", pet.getName(), pet.getSpecies()));
         }
         else {
             System.out.println(String.format("%s (%s)", pet.getName(), pet.getSpecies()));
             System.out.println(String.format("Hunger: %d", pet.getHunger()));
             System.out.println(String.format("Tiredness: %d", pet.getTiredness()));
-            System.out.println(String.format("Playfulness: %d", pet.getPlayfulness()));
             System.out.println(String.format("Toilet: %d", pet.getToiletNeed()));
+            System.out.println(String.format("Happiness: %d", pet.getHappiness()));
+            System.out.println(String.format("Health: %d", pet.getHealth()));
             System.out.println(String.format("Weight: %f", pet.getWeight()));
             System.out.println(String.format("Has pet died: %s", pet.getDeathState() == Pet.DeathState.ALIVE ? "no" : "yes"));
         }

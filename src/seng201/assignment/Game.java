@@ -13,6 +13,12 @@ public class Game {
             Rabbit.class
     };
 
+    private static final Event[] events = new Event[] {
+            new MisbehaveEvent(),
+            new SicknessEvent(),
+            new DeadEvent()
+    };
+
     private final int maxRounds;
 
     private Player[] players;
@@ -27,6 +33,18 @@ public class Game {
     }
 
     public void endTurn() {
+        for (Player player : players) {
+            for (Pet pet : player.getPets()) {
+                pet.dayPassed();
+            }
+        }
+
+        for (Event event : events) {
+            for (Player player : players) {
+                event.processPlayer(player);
+            }
+        }
+
         actionsLeft = 2;
         petTurn++;
         if (petTurn == getCurrentPlayer().getPets().length) {

@@ -18,11 +18,13 @@ public class Bird extends Pet {
 	public String getSpecies() {
         return "Bird";
     }
-	
+
+	@Override
 	protected Toy[] getFavouriteToy(){
 		return new Toy[] {Toy.JUNGLEGYM, Toy.GUINEAPIGWHEEL};
 	}
-	
+
+	@Override
 	protected Food[] getFavouriteFood(){
 		return new Food[] {Food.SEEDS, Food.BLOODWORM, Food.PEAS};
 	}

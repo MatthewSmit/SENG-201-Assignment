@@ -15,7 +15,6 @@ public enum Toy {
 	
     private int price;
     private int durability;
-
     
     Toy(int price, int durability){
     	this.price = price;
@@ -23,7 +22,7 @@ public enum Toy {
     }
     
     public void degrade(Pet pet) {
-    	durability = durability-pet.getRoughness();
+    	durability -= pet.getRoughness();
     	System.out.println(name().toLowerCase() + " has degraded to " + getDurability() + " durability.");
     }
 

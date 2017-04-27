@@ -18,11 +18,13 @@ public class GuineaPig extends Pet {
 	public String getSpecies() {
         return "Guinea Pig";
     }
-    
+
+	@Override
 	protected Toy[] getFavouriteToy(){
 		return new Toy[] {Toy.SMALLBALL, Toy.GUINEAPIGWHEEL};
 	}
-	
+
+	@Override
 	protected Food[] getFavouriteFood(){
 		return new Food[] {Food.PEAS, Food.LETTUCE, Food.CARROT, Food.SEEDS};
 	}

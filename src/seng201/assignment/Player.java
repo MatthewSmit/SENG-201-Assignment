@@ -3,13 +3,25 @@ package seng201.assignment;
 import java.util.ArrayList;
 
 /**
- * Created by Matthew on 12/04/2017.
+ * A player, owns pets, toys and food, and has money.
  */
 public class Player {
+    /**
+     * Money a player starts with.
+     */
     private static final int INITIAL_MONEY = 100;
 
+    /**
+     * An array of the pet the player owns.
+     */
     private Pet[] pets;
+    /**
+     * A list of the toys the player owns.
+     */
     private ArrayList<Toy> toys = new ArrayList<>();
+    /**
+     *
+     */
     private ArrayList<Food> food = new ArrayList<>();
     private int money = INITIAL_MONEY;
     private String name;

@@ -18,11 +18,13 @@ public class Rabbit extends Pet {
 	public String getSpecies() {
         return "Rabbit";
     }
-    
+
+	@Override
 	protected Toy[] getFavouriteToy(){
 		return new Toy[] {Toy.CARDBOARDBOX, Toy.GUINEAPIGWHEEL,Toy.SMALLBALL};
 	}
-	
+
+	@Override
 	protected Food[] getFavouriteFood(){
 		return new Food[] {Food.CARROT, Food.LETTUCE, Food.PEAS};
 	}
