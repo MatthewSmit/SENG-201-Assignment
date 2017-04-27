@@ -21,7 +21,7 @@ public class Player {
 
     public void purchase(Toy toy) {
         if (money < toy.getPrice())
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException("Can't afford the toy.");
 
         money -= toy.getPrice();
         toys.add(toy);
@@ -29,7 +29,7 @@ public class Player {
 
     public void purchase(Food food) {
         if (money < food.getPrice())
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException("Can't afford the food.");
 
         money -= food.getPrice();
         this.food.add(food);
