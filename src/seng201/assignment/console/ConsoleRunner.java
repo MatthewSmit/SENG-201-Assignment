@@ -25,8 +25,9 @@ public class ConsoleRunner {
         Game game = setupGame();
 
         while (game.isRunning()) {
-            System.out.println(String.format("Player %s's turn, round %d/%d", game.getCurrentPlayer().getName(), game.getCurrentRound() + 1, game.getMaxRound()));
-            System.out.println(String.format("Controlling pet %s, actions remaining: %d", game.getCurrentPet().getName(), game.getActionsLeft()));
+        	System.out.println();
+        	System.out.println(String.format("Player %s's turn, day %d/%d", game.getCurrentPlayer().getName(), game.getCurrentRound() + 1, game.getMaxRound()));
+            System.out.println(String.format("Controlling pet %s, actions remaining: %d", game.getCurrentPet().getName(), game.getCurrentPet().getActionsLeft()));
 
             switch (game.getCurrentPet().getEventState()) {
                 case NoEvent:
@@ -76,23 +77,35 @@ public class ConsoleRunner {
                     processToilet(game);
                     break;
                 case 6:
-                    game.endTurn();
+                	if (game.getCurrentPetIndex() + 1 == game.getCurrentPlayer().getPets().length) {
+                		game.endTurn();
+                		game.setCurrentPetIndex(0);
+                	}
+                	else {
+                		game.setCurrentPetIndex(game.getCurrentPetIndex() + 1);
+                		System.out.println(String.format("Now controlling pet %s.", game.getCurrentPet().getName()));
+                	}
                     break;
                 default:
                     System.out.println("Invalid option");
                     System.exit(3);
                     break;
             }
+
         }
     }
 
     private static void displayStore(Player player) {
-        System.out.println(String.format("Welcome to the store, you have $%d", player.getMoney()));
+        
+    	System.out.println();
+    	System.out.println(String.format("Welcome to the store, you have $%d", player.getMoney()));
 
         int value = readInt("Do you want to buy (0) food or (1) toys?", 0, 1);
-
+        System.out.println();
+        
         if (value == 0) {
             while (true) {
+            	//1System.out.println();
                 System.out.println("(0) Exit store");
                 Food[] food = Food.values();
                 for (int i = 0; i < food.length; i++) {
@@ -100,6 +113,7 @@ public class ConsoleRunner {
                 }
 
                 value = readInt("Choose index of item: ", 0, food.length);
+                //System.out.println();
                 if (value == 0)
                     return;
 
@@ -108,33 +122,42 @@ public class ConsoleRunner {
                     System.out.println("You don't have enough money!");
                 } else {
                     player.purchase(wantedFood);
+                    System.out.println();
+                    System.out.println(String.format("You have $%d remaining", player.getMoney()));
                 }
             }
         }
         else {
             while (true) {
+            	//System.out.println();
                 System.out.println("(0) Exit store");
-                ToyType[] toys = ToyType.values();
+                Toy[] toys = Toy.values();
                 for (int i = 0; i < toys.length; i++) {
                     System.out.println(String.format("(%d) %s - $%d", i + 1, toys[i].name(), toys[i].getPrice()));
                 }
 
                 value = readInt("Choose index of item: ", 0, toys.length);
+                //System.out.println();
                 if (value == 0)
                     return;
 
-                ToyType toy = toys[value - 1];
-                if (player.getMoney() < toy.getPrice()) {
+                Toy toy = toys[value - 1];
+                if (player.getMoney() < toy.getPrice()) 	{
                     System.out.println("You don't have enough money!");
                 } else {
                     player.purchase(toy);
+                    System.out.println();
+                    System.out.println(String.format("You have $%d remaining", player.getMoney()));
                 }
+                //System.out.println(String.format("You have $%d remaining.", player.getMoney()));
             }
         }
     }
 
     private static void processSleep(Game game) {
-        if (game.getActionsLeft() == 0) {
+    	System.out.println();
+    	System.out.println(String.format("%s goes to sleep.", game.getCurrentPet().getName()));
+        if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
         }
         else {
@@ -143,7 +166,9 @@ public class ConsoleRunner {
     }
 
     private static void processToilet(Game game) {
-        if (game.getActionsLeft() == 0) {
+    	System.out.println();
+    	System.out.println(String.format("%s goes to the toilet.", game.getCurrentPet().getName()));
+        if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
         }
         else {
@@ -152,8 +177,11 @@ public class ConsoleRunner {
     }
 
     private static void processFeed(Game game) {
+    	
+    	System.out.println();
         ArrayList<Food> food = game.getCurrentPlayer().getFood();
-        if (game.getActionsLeft() == 0) {
+        //System.out.println();
+        if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
         }
         else if (food.size() == 0) {
@@ -167,26 +195,32 @@ public class ConsoleRunner {
 
             int value = readInt("Choose a food index: ", 0, food.size() - 1);
             game.feed(food.get(value));
+            System.out.println(String.format("%s eats %s.", game.getCurrentPet().getName(), food.get(value).name()));
             food.remove(value);
         }
     }
 
     private static void processPlay(Game game) {
-        ArrayList<Toy> toys = game.getCurrentPlayer().getToys();
-        if (game.getActionsLeft() == 0) {
+    	
+    	System.out.println();
+    	ArrayList<Toy> toys = game.getCurrentPlayer().getToys();
+        //System.out.println();
+        if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
         }
         else if (toys.size() == 0) {
             System.out.println("You have no toys, buy some first!");
         }
         else {
-            System.out.println("What toy do you want to play with your pet?");
+        	System.out.println(String.format("What toy do you want to play with %s?", game.getCurrentPet().getName()));
+            //System.out.println("What toy do you want to play with your pet?");
             for (int i = 0; i < toys.size(); i++) {
-                System.out.println(String.format("(%d): %s", i, toys.get(i).getType().name()));
+                System.out.println(String.format("(%d): %s", i, toys.get(i).name()));
             }
 
             int value = readInt("Choose a toy index: ", 0, toys.size() - 1);
             game.play(toys.get(value));
+            System.out.println(String.format("%s plays with %s.", game.getCurrentPet().getName(), toys.get(value).name()));
             toys.remove(value);
         }
     }
@@ -196,14 +230,16 @@ public class ConsoleRunner {
             System.out.println(String.format("%s (%s) [DEAD]", pet.getName(), pet.getSpecies()));
         }
         else {
+        	System.out.println();
             System.out.println(String.format("%s (%s)", pet.getName(), pet.getSpecies()));
             System.out.println(String.format("Hunger: %d", pet.getHunger()));
             System.out.println(String.format("Tiredness: %d", pet.getTiredness()));
             System.out.println(String.format("Toilet: %d", pet.getToiletNeed()));
             System.out.println(String.format("Happiness: %d", pet.getHappiness()));
             System.out.println(String.format("Health: %d", pet.getHealth()));
-            System.out.println(String.format("Weight: %f", pet.getWeight()));
+            System.out.println(String.format("Weight: %.2f", pet.getWeight()));
             System.out.println(String.format("Has pet died: %s", pet.getDeathState() == Pet.DeathState.ALIVE ? "no" : "yes"));
+            //System.out.println();
         }
     }
 
