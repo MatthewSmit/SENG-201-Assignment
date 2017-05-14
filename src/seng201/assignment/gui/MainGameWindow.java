@@ -3,14 +3,11 @@ package seng201.assignment.gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
-import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
-import javax.swing.JList;
-import javax.swing.JCheckBox;
 
-public class GameWindow {
+public class MainGameWindow {
 
 	private JFrame frame;
 
@@ -21,7 +18,7 @@ public class GameWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameWindow window = new GameWindow();
+					MainGameWindow window = new MainGameWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +30,7 @@ public class GameWindow {
 	/**
 	 * Create the application.
 	 */
-	public GameWindow() {
+	public MainGameWindow() {
 		initialize();
 	}
 
@@ -42,8 +39,16 @@ public class GameWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 768, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+
+		tabbedPane.addTab("Pet", new MainGamePanel());
+		tabbedPane.addTab("Store", new JPanel());
+		tabbedPane.addTab("Help", new JPanel());
+		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
 	}
+
 }

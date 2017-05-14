@@ -3,14 +3,12 @@ package seng201.assignment.gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JButton;
 import java.awt.BorderLayout;
-import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
-import javax.swing.JList;
-import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class GameWindow {
+public class GameWindowTest {
 
 	private JFrame frame;
 
@@ -21,7 +19,7 @@ public class GameWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameWindow window = new GameWindow();
+					GameWindowTest window = new GameWindowTest();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +31,7 @@ public class GameWindow {
 	/**
 	 * Create the application.
 	 */
-	public GameWindow() {
+	public GameWindowTest() {
 		initialize();
 	}
 
@@ -44,6 +42,6 @@ public class GameWindow {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 	}
+
 }
