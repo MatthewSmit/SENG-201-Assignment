@@ -6,18 +6,21 @@ package seng201.assignment;
 public enum ToyType {
 	
 	//price, durability = 1->10 (1 lowest, 10 highest)
-	SMALLBALL     (3, 8),
-	LARGEBALL     (5, 9),
-	SQUEAKYTOY    (8, 5),
-	GUINEAPIGWHEEL(7, 7),
-	JUNGLEGYM     (8, 5),
-	CARDBOARDBOX  (1, 2);
+	SMALLBALL     ("small ball", 3, 8),
+	LARGEBALL     ("large ball", 5, 9),
+	SQUEAKYTOY    ("squeaky toy", 8, 5),
+	GUINEAPIGWHEEL("guinea pig wheel", 7, 7),
+	JUNGLEGYM     ("jungle gym", 8, 5),
+	CARDBOARDBOX  ("cardboard box", 1, 2);
 	
+	
+	private final String toyName;
     private final int price;
     private final int durability;
 
-	ToyType(int price, int durability){
-    	this.price = price;
+	ToyType(String name, int price, int durability){
+    	this.toyName = name;
+		this.price = price;
     	this.durability = durability;
     }
 
@@ -27,5 +30,9 @@ public enum ToyType {
 
     public int getDurability(){
         return durability;
+    }
+    
+    public String toString(){
+    	return this.toyName;
     }
 }
