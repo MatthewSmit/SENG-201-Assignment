@@ -45,6 +45,6 @@ public enum Food {
     
     @Override
     public String toString(){
-    	return this.foodName;
+    	return foodName;
     }
 }
