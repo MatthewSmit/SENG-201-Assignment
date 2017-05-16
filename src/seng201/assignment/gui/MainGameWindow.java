@@ -39,14 +39,15 @@ public class MainGameWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 768, 600);
+		frame.setResizable(false);
+		frame.setBounds(100, 100, 760, 505);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 
 		tabbedPane.addTab("Pet", new MainGamePanel());
-		tabbedPane.addTab("Store", new JPanel());
+		tabbedPane.addTab("Store", new StorePanel());
 		tabbedPane.addTab("Help", new JPanel());
 		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
 	}
