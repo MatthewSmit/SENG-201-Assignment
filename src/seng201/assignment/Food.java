@@ -4,22 +4,24 @@ package seng201.assignment;
  * Created by Matthew on 12/04/2017.
  */
 public enum Food {
-    CARROT   (2, 3, 3, 3),
-    TUNA     (6, 5, 4, 5),
-    LETTUCE  (2, 2, 3, 2),
-    STEAK    (8, 7, 6, 6),
-    SEEDS    (4, 3, 3, 4),
-    BLOODWORM(5, 2, 2, 3),
-    PEAS     (2, 3, 2, 2),
-    MEDICINE (10, 3, 2, 2);
+    CARROT   ("carrot", 2, 3, 3, 3),
+    TUNA     ("tuna", 6, 5, 4, 5),
+    LETTUCE  ("lettuce", 2, 2, 3, 2),
+    STEAK    ("steak", 8, 7, 6, 6),
+    SEEDS    ("seeds", 4, 3, 3, 4),
+    BLOODWORM("bloodworm", 5, 2, 2, 3),
+    PEAS     ("peas", 2, 3, 2, 2),
+    MEDICINE ("medicine", 10, 3, 2, 2);
 
+	private final String foodName;
     private final int price;
     private final int nutrition;
     private final int mealSize;
     private final int tastiness;
     
-    Food(int price, int nutrition, int mealSize, int tastiness) {
-        this.price = price;
+    Food(String name, int price, int nutrition, int mealSize, int tastiness) {
+        this.foodName = name;
+    	this.price = price;
         this.nutrition = nutrition;
         this.mealSize = mealSize;
         this.tastiness = tastiness;
@@ -39,5 +41,10 @@ public enum Food {
 
     public int getTastiness() {
         return tastiness;
+    }
+    
+    @Override
+    public String toString(){
+    	return this.foodName;
     }
 }
