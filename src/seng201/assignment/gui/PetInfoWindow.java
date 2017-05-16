@@ -49,6 +49,7 @@ public class PetInfoWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 446, 314);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
