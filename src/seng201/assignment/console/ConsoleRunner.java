@@ -48,6 +48,8 @@ public class ConsoleRunner {
                     }
                     break;
             }
+            
+       
 
             System.out.println("(0): View pet status");
             System.out.println("(1): Visit store");
@@ -93,6 +95,8 @@ public class ConsoleRunner {
             }
 
         }
+        
+        System.out.println("Game has ended.");
     }
 
     private static void displayStore(Player player) {
@@ -105,7 +109,6 @@ public class ConsoleRunner {
         
         if (value == 0) {
             while (true) {
-            	//1System.out.println();
                 System.out.println("(0) Exit store");
                 Food[] food = Food.values();
                 for (int i = 0; i < food.length; i++) {
@@ -113,7 +116,6 @@ public class ConsoleRunner {
                 }
 
                 value = readInt("Choose index of item: ", 0, food.length);
-                //System.out.println();
                 if (value == 0)
                     return;
 
@@ -129,7 +131,6 @@ public class ConsoleRunner {
         }
         else {
             while (true) {
-            	//System.out.println();
                 System.out.println("(0) Exit store");
                 ToyType[] toys = ToyType.values();
                 for (int i = 0; i < toys.length; i++) {
@@ -137,7 +138,6 @@ public class ConsoleRunner {
                 }
 
                 value = readInt("Choose index of item: ", 0, toys.length);
-                //System.out.println();
                 if (value == 0)
                     return;
 
@@ -149,7 +149,6 @@ public class ConsoleRunner {
                     System.out.println();
                     System.out.println(String.format("You have $%d remaining", player.getMoney()));
                 }
-                //System.out.println(String.format("You have $%d remaining.", player.getMoney()));
             }
         }
     }
@@ -180,7 +179,6 @@ public class ConsoleRunner {
     	
     	System.out.println();
         ArrayList<Food> food = game.getCurrentPlayer().getFood();
-        //System.out.println();
         if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
         }
