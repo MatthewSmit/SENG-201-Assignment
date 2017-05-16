@@ -11,8 +11,9 @@ public enum Food {
     SEEDS    ("seeds", 4, 3, 3, 4),
     BLOODWORM("bloodworm", 5, 2, 2, 3),
     PEAS     ("peas", 2, 3, 2, 2),
-    MEDICINE ("medicine", 10, 3, 2, 2);
-
+    MEDICINE ("medicine", 10, 0, 0, 0),
+	REVIVALMEDICINE ("revival medicine", 25, 0, 0, 0);
+	
 	private final String foodName;
     private final int price;
     private final int nutrition;
