@@ -10,7 +10,8 @@ public enum Food {
     STEAK    (8, 7, 6, 6),
     SEEDS    (4, 3, 3, 4),
     BLOODWORM(5, 2, 2, 3),
-    PEAS     (2, 3, 2, 2);
+    PEAS     (2, 3, 2, 2),
+    MEDICINE (10, 3, 2, 2);
 
     private final int price;
     private final int nutrition;

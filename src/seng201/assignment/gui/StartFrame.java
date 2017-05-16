@@ -39,7 +39,6 @@ public class StartFrame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		//contentPane.setLayout(new MigLayout("", "[][]", "[][][][]"));
 		
 		JLabel lblNumberOfPlayers = new JLabel("Number of Players");
 		contentPane.add(lblNumberOfPlayers, "cell 0 0");

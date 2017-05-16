@@ -126,6 +126,11 @@ public abstract class Pet {
     private boolean misbehaving;
 
     /**
+     * Number of actions left in this round
+     */
+    private int actionsLeft = 2;
+
+    /**
      * Create a new pet
      * @param name the name of the new pet
      */
@@ -147,6 +152,7 @@ public abstract class Pet {
      * Processes stat changes when the day changes
      */
     void dayPassed() {
+    	actionsLeft = 2;
         hunger += hungerRate;
         tiredness += tiredRate;
 
@@ -167,6 +173,9 @@ public abstract class Pet {
      * @param food the food used to feed the pet
      */
     public void feed(Food food) {
+    	assert(actionsLeft > 0);
+        actionsLeft--;
+
         Food[] favourites = getFavouriteFood();
 
         boolean mostFavourite = favourites[0] == food;
@@ -193,6 +202,9 @@ public abstract class Pet {
      * @param toy the toy used to play with the pet
      */
     public void play(Toy toy) {
+    	assert(actionsLeft > 0);
+        actionsLeft--;
+        
         ToyType[] favourites = getFavouriteToy();
 
         boolean mostFavourite = favourites[0] == toy.getType();
@@ -219,6 +231,9 @@ public abstract class Pet {
      * Gets the pet to go to sleep, restoring its tiredness
      */
     public void sleep() {
+    	assert(actionsLeft > 0);
+        actionsLeft--;
+        
         tiredness -= REST_AMOUNT;
         if (tiredness < 0)
             tiredness = 0;
@@ -228,6 +243,9 @@ public abstract class Pet {
      * Gets the pet to go to the toilet, restoring its toilet need.
      */
     public void toilet() {
+    	assert(actionsLeft > 0);
+        actionsLeft--;
+        
         toiletNeed -= TOILET_RATE;
         if (toiletNeed < 0)
             toiletNeed = 0;
@@ -350,6 +368,13 @@ public abstract class Pet {
      */
     public String getName() {
         return name;
+    }
+    
+    /**
+     * Gets the actions remaining
+     */
+    public int getActionsLeft() {
+    	return actionsLeft;
     }
 
     /**

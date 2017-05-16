@@ -1,4 +1,4 @@
-package seng201.assignment.test;
+package seng201.assignment;
 
 import static org.junit.Assert.*;
 

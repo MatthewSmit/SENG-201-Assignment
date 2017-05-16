@@ -23,9 +23,8 @@ public class Game {
 
     private Player[] players;
     private int playerTurn;
-    private int petTurn;
     private int round;
-    private int actionsLeft = 2;
+    private int currentPet;
 
     public Game(int rounds, Player[] players) {
         maxRounds = rounds;
@@ -45,36 +44,27 @@ public class Game {
             }
         }
 
-        actionsLeft = 2;
-        petTurn++;
-        if (petTurn == getCurrentPlayer().getPets().length) {
-            petTurn = 0;
-            playerTurn++;
-            if (playerTurn == players.length) {
-                playerTurn = 0;
-                round++;
-            }
+        playerTurn++;
+        if (playerTurn == players.length) {
+            playerTurn = 0;
+            round++;
         }
     }
 
     public void feed(Food food) {
         getCurrentPet().feed(food);
-        actionsLeft--;
     }
 
     public void play(Toy toy) {
         getCurrentPet().play(toy);
-        actionsLeft--;
     }
 
     public void sleep() {
         getCurrentPet().sleep();
-        actionsLeft--;
     }
 
     public void toilet() {
         getCurrentPet().toilet();
-        actionsLeft--;
     }
 
     public boolean isRunning() {
@@ -98,10 +88,14 @@ public class Game {
     }
 
     public Pet getCurrentPet() {
-        return players[playerTurn].getPets()[petTurn];
+        return players[playerTurn].getPets()[currentPet];
     }
 
-    public int getActionsLeft() {
-        return actionsLeft;
+    public int getCurrentPetIndex() {
+        return currentPet;
+    }
+
+    public void setCurrentPetIndex(int currentPet) {
+        this.currentPet = currentPet;
     }
 }

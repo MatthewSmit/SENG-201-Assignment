@@ -18,8 +18,6 @@ public class Goldfish extends Pet {
 	public String getSpecies() {
         return "Goldfish";
     }
-
-	@Override
 	protected ToyType[] getFavouriteToy(){
 		return new ToyType[] {ToyType.SMALLBALL};
 	}
