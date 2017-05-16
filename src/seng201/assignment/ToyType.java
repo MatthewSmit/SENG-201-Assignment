@@ -33,6 +33,6 @@ public enum ToyType {
     }
     
     public String toString(){
-    	return this.toyName;
+    	return toyName;
     }
 }
