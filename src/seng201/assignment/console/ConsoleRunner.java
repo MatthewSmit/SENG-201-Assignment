@@ -43,7 +43,7 @@ public class ConsoleRunner {
                     if (game.getCurrentPet().getDeathState() == Pet.DeathState.PERMANENTLY_DEAD) {
                         System.out.println("Your pet is now permenantly dead!");
                     }
-                    else {
+                    else {//reviving?
                         System.out.println("You have revived your pet, you can only do this once!");
                     }
                     break;
@@ -109,7 +109,7 @@ public class ConsoleRunner {
                 System.out.println("(0) Exit store");
                 Food[] food = Food.values();
                 for (int i = 0; i < food.length; i++) {
-                    System.out.println(String.format("(%d) %s - $%d", i + 1, food[i].name(), food[i].getPrice()));
+                    System.out.println(String.format("(%d) %s - $%d", i + 1, food[i].toString(), food[i].getPrice()));
                 }
 
                 value = readInt("Choose index of item: ", 0, food.length);
@@ -133,7 +133,7 @@ public class ConsoleRunner {
                 System.out.println("(0) Exit store");
                 ToyType[] toys = ToyType.values();
                 for (int i = 0; i < toys.length; i++) {
-                    System.out.println(String.format("(%d) %s - $%d", i + 1, toys[i].name(), toys[i].getPrice()));
+                    System.out.println(String.format("(%d) %s - $%d", i + 1, toys[i].toString(), toys[i].getPrice()));
                 }
 
                 value = readInt("Choose index of item: ", 0, toys.length);
@@ -190,12 +190,12 @@ public class ConsoleRunner {
         else {
             System.out.println("What food do you want to feed your pet?");
             for (int i = 0; i < food.size(); i++) {
-                System.out.println(String.format("(%d): %s", i, food.get(i).name()));
+                System.out.println(String.format("(%d): %s", i, food.get(i).toString()));
             }
 
             int value = readInt("Choose a food index: ", 0, food.size() - 1);
             game.feed(food.get(value));
-            System.out.println(String.format("%s eats %s.", game.getCurrentPet().getName(), food.get(value).name()));
+            System.out.println(String.format("%s eats %s.", game.getCurrentPet().getName(), food.get(value).toString()));
             food.remove(value);
         }
     }
@@ -215,12 +215,12 @@ public class ConsoleRunner {
         	System.out.println(String.format("What toy do you want to play with %s?", game.getCurrentPet().getName()));
             //System.out.println("What toy do you want to play with your pet?");
             for (int i = 0; i < toys.size(); i++) {
-                System.out.println(String.format("(%d): %s", i, toys.get(i).getType().name()));
+                System.out.println(String.format("(%d): %s", i, toys.get(i).getType().toString()));
             }
 
             int value = readInt("Choose a toy index: ", 0, toys.size() - 1);
             game.play(toys.get(value));
-            System.out.println(String.format("%s plays with %s.", game.getCurrentPet().getName(), toys.get(value).getType().name()));
+            System.out.println(String.format("%s plays with %s.", game.getCurrentPet().getName(), toys.get(value).getType().toString()));
             toys.remove(value);
         }
     }
