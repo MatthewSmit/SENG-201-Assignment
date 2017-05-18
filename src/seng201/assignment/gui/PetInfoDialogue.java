@@ -1,79 +1,58 @@
 package seng201.assignment.gui;
 
-import java.awt.EventQueue;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import seng201.assignment.PetType;
+
 import javax.swing.JTextPane;
 
-public class PetInfoWindow {
-
-	private JFrame frame;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PetInfoWindow window = new PetInfoWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public PetInfoWindow() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 446, 314);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+public class PetInfoDialogue extends JDialog {
+	private static final long serialVersionUID = -6846642495293896897L;
+	
+	public PetInfoDialogue(Frame frame, PetType type) {
+		super(frame, true);
+		
+		setBounds(100, 100, 446, 314);
+		
 		BufferedImage bufferedImage = null;
 		try {
-			bufferedImage = ImageIO.read(new File("data/dog.png"));
+			bufferedImage = ImageIO.read(getClass().getResourceAsStream(type.getImageFile()));
 		} catch (IOException e) {
-			System.out.println(System.getProperty("user.dir"));
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(-1);
 		}
 
 		JPanel image = new ImageLabel(new ImageIcon(bufferedImage));
 		
+		final JDialog dialogue = this;
+		
 		JButton okButton = new JButton("OK");
+		okButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dialogue.dispose();
+			}
+		});
 		
 		JTextPane infoText = new JTextPane();
 		infoText.setEditable(false);
 		infoText.setEditable(false);
 		infoText.getCaret().deinstall(infoText);
-		infoText.setText("BLAH BLAH BLAH");
+		infoText.setText(type.getName());
 		
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(this.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createSequentialGroup()
 				.addContainerGap()
@@ -94,6 +73,6 @@ public class PetInfoWindow {
 			.addComponent(okButton)
 			.addContainerGap()
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		this.getContentPane().setLayout(groupLayout);
 	}
 }

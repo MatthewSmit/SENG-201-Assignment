@@ -1,6 +1,7 @@
 package seng201.assignment.gui;
 
 import java.awt.EventQueue;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
@@ -12,11 +13,20 @@ import javax.swing.LayoutStyle;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
+import seng201.assignment.Pet;
+import seng201.assignment.PetType;
+import seng201.assignment.Player;
+
 import java.awt.Color;
 
-public class PlayerChoosingWindow {
+public class PlayerChoosingWindow extends JFrame {
+	private static final long serialVersionUID = -6759372237732322113L;
+	
+	private ArrayList<Pet> currentPets;
+	private Player[] players;
+	private int numberDays;
 
-	private JFrame frame;
 	private JTextField playerNameText;
 
 	/**
@@ -27,7 +37,7 @@ public class PlayerChoosingWindow {
 			public void run() {
 				try {
 					PlayerChoosingWindow window = new PlayerChoosingWindow();
-					window.frame.setVisible(true);
+					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,6 +49,13 @@ public class PlayerChoosingWindow {
 	 * Create the application.
 	 */
 	public PlayerChoosingWindow() {
+		this.players = new Player[3];
+		this.numberDays = 1;
+		initialize();
+	}
+	public PlayerChoosingWindow(int players, int days) {
+		this.players = new Player[players];
+		this.numberDays = days;
 		initialize();
 	}
 
@@ -46,12 +63,17 @@ public class PlayerChoosingWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 768, 700);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initialize(0);
+	}
+	
+	private void initialize(int playerIndex) {
+		setResizable(false);
+		setBounds(100, 100, 768, 700);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel playerNumberLabel = new JLabel("Player 0");
+		currentPets = new ArrayList<>();
+		
+		JLabel playerNumberLabel = new JLabel(String.format("Player %d", playerIndex + 1));
 		
 		JLabel playerNameLabel = new JLabel("Player Name:");
 		
@@ -64,12 +86,12 @@ public class PlayerChoosingWindow {
 		
 		JButton nextButton = new JButton("Next");
 		
-		JPanel avaliablePets = new AvaliablePetsPanel();
+		JPanel avaliablePets = new AvaliablePetsPanel(this);
 		avaliablePets.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		JPanel yourPets = new CurrentPetsPanel();
 		yourPets.setBorder(new LineBorder(new Color(0, 0, 0)));
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -114,6 +136,31 @@ public class PlayerChoosingWindow {
 				.addComponent(nextButton)
 				.addContainerGap()
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
+	}
+
+	public boolean isUniqueName(String newName) {
+		for (Player player : players) {
+			if (player != null) {
+				if (newName.equals(player.getName()))
+					return false;
+				
+				for (Pet pet : player.getPets()) {
+					if (pet.getName().equals(newName))
+						return false;
+				}
+			}
+		}
+		
+		for (Pet pet : currentPets) {
+			if (pet.getName().equals(newName))
+				return false;
+		}
+		
+		return true;
+	}
+	
+	public void addNewPet(PetType type, String name) {
+		throw new Error();
 	}
 }

@@ -16,9 +16,10 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 
-import java.awt.Window.Type;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GameStartWindow {
+public class GameStartWindow extends JFrame {
 	private class IntegerFilter extends DocumentFilter {
 		private static final String REMOVE_REGEX = "\\D"; 
 		
@@ -35,7 +36,8 @@ public class GameStartWindow {
 		}
 	}
 
-	private JFrame frmStartGame;
+	private static final long serialVersionUID = -7841059888084740875L;
+
 	private JTextField numberDaysText;
 
 	/**
@@ -46,7 +48,7 @@ public class GameStartWindow {
 			public void run() {
 				try {
 					GameStartWindow window = new GameStartWindow();
-					window.frmStartGame.setVisible(true);
+					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -58,28 +60,21 @@ public class GameStartWindow {
 	 * Create the application.
 	 */
 	public GameStartWindow() {
-		initialize();
-	}
+		super();
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frmStartGame = new JFrame();
-		frmStartGame.setType(Type.POPUP);
-		frmStartGame.setResizable(false);
-		frmStartGame.setTitle("Game Setup");
-		frmStartGame.setBounds(100, 100, 320, 240);
-		frmStartGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setTitle("Game Setup");
+		setBounds(100, 100, 320, 240);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel numberPlayersLabel = new JLabel("Number of Players");
 		
-		JRadioButton players1Radio = new JRadioButton("1 Player");
+		final JRadioButton players1Radio = new JRadioButton("1 Player");
 		players1Radio.setSelected(true);
 		
-		JRadioButton players2Radio = new JRadioButton("2 Players");
+		final JRadioButton players2Radio = new JRadioButton("2 Players");
 		
-		JRadioButton players3Radio = new JRadioButton("3 Players");
+		final JRadioButton players3Radio = new JRadioButton("3 Players");
 		
 		ButtonGroup playerGroup = new ButtonGroup();
 		playerGroup.add(players1Radio);
@@ -89,11 +84,31 @@ public class GameStartWindow {
 		JLabel numberDaysLabel = new JLabel("Number of Days");
 		
 		numberDaysText = new JTextField();
-		numberDaysText.setColumns(1);
+		numberDaysText.setText("10");
 		((PlainDocument)numberDaysText.getDocument()).setDocumentFilter(new IntegerFilter());
 		
 		JButton nextButton = new JButton("Next");
-		GroupLayout groupLayout = new GroupLayout(frmStartGame.getContentPane());
+		nextButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int players = getNumberPlayers();
+				int days = Integer.parseInt(numberDaysText.getText());
+
+				dispose();
+				PlayerChoosingWindow newWindow = new PlayerChoosingWindow(players, days);
+				newWindow.setVisible(true);
+			}
+			
+			private int getNumberPlayers() {
+				if (players3Radio.isSelected())
+					return 3;
+				if (players2Radio.isSelected())
+					return 2;
+				return 1;
+			}
+		});
+		
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.CENTER)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -126,6 +141,6 @@ public class GameStartWindow {
 					.addComponent(nextButton)
 					.addContainerGap()
 		);
-		frmStartGame.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
 	}
 }

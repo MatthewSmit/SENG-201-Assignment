@@ -21,7 +21,7 @@ public class OwnedPetPanel extends JPanel {
 	public OwnedPetPanel() {
 		BufferedImage bufferedImage = null;
 		try {
-			bufferedImage = ImageIO.read(new File("data/dog.png"));
+			bufferedImage = ImageIO.read(getClass().getResourceAsStream("dog.png"));
 		} catch (IOException e) {
 			System.out.println(System.getProperty("user.dir"));
 			// TODO Auto-generated catch block
