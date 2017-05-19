@@ -4,13 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.LineBorder;
-
 import seng201.assignment.PetType;
 
-import java.awt.Color;
-import java.awt.Frame;
-
+@SuppressWarnings("serial")
 public class AvaliablePetsPanel extends JPanel {
 
 	/**

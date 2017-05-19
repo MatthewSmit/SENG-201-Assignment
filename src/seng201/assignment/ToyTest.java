@@ -4,12 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import seng201.assignment.*;
-
 public class ToyTest {
-
-	
-	private Cat testCat = new Cat("testCat");
+	private Pet testCat = PetType.Cat.create("testCat");
 	
 	@Test
 	public void testDegrade() {

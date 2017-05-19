@@ -3,7 +3,7 @@ package seng201.assignment;
 /**
  * Created by Programmdude on 27/04/2017.
  */
-public class Toy {
+public class Toy extends Item {
     private ToyType type;
     private int durability;
 
@@ -38,6 +38,16 @@ public class Toy {
 
     public int getDurability(){
         return durability;
+    }
+    
+    @Override
+    public int getPrice() {
+        return type.getPrice();
+    }
+    
+    @Override
+    public String toString() {
+        return type.toString();
     }
 
     public ToyType getType() { return type; }

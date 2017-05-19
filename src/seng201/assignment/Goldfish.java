@@ -10,14 +10,10 @@ public class Goldfish extends Pet {
 	private static int[] hungerRateRange = new int[] {1, 2};
 	private static int[] tiredRateRange = new int[] {1, 2};
 
-	public Goldfish(String name){
-		super(name);
-	}
-	
-    @Override
-	public String getSpecies() {
-        return "Goldfish";
+	public Goldfish(String name, PetType type) {
+        super(name, type);
     }
+
 	protected ToyType[] getFavouriteToy(){
 		return new ToyType[] {ToyType.SMALLBALL};
 	}

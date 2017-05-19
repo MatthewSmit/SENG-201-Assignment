@@ -10,13 +10,8 @@ public class GuineaPig extends Pet {
 	private static int[] hungerRateRange = new int[] {1, 3};
 	private static int[] tiredRateRange = new int[] {1, 2};
 
-	public GuineaPig(String name){
-		super(name);
-	}
-	
-    @Override
-	public String getSpecies() {
-        return "Guinea Pig";
+	public GuineaPig(String name, PetType type) {
+        super(name, type);
     }
 
 	@Override

@@ -1,6 +1,5 @@
 package seng201.assignment.gui;
 
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -20,9 +19,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import seng201.assignment.PetType;
 
+@SuppressWarnings("serial")
 public class NamePetDialogue extends JDialog {
-	private static final long serialVersionUID = -2210379279547037189L;
-	
 	private JTextField nameText;
 	
 	public NamePetDialogue(final PlayerChoosingWindow frame, final PetType type) {
@@ -53,7 +51,7 @@ public class NamePetDialogue extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				String name = nameText.getText();
 				
-				if (frame.isUniqueName(name)) {
+				if (name.length() > 0 && frame.isUniqueName(name)) {
 					frame.addNewPet(type, name);
 					dialogue.dispose();
 				}

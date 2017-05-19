@@ -6,13 +6,11 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import seng201.assignment.*;
-
 public class PlayerTest {
 
-	private Cat testCat = new Cat("testCat");
-	private Dog testDog = new Dog("testDog");
-	private Bird testBird = new Bird("testBird");
+	private Pet testCat = PetType.Cat.create("testCat");
+	private Pet testDog = PetType.Dog.create("testDog");
+	private Pet testBird = PetType.Bird.create("testBird");
 	private Pet[] petList = new Pet[] {testCat, testDog, testBird};
 	
 	private Player testPlayer = new Player("test", petList);

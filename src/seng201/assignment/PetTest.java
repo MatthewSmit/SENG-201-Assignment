@@ -1,8 +1,6 @@
 package seng201.assignment;
 
 import org.junit.Test;
-import seng201.assignment.*;
-
 import static org.junit.Assert.*;
 
 /**
@@ -11,7 +9,7 @@ import static org.junit.Assert.*;
 public class PetTest {
     @Test
     public void feedGood() throws Exception {
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
 
         pet.dayPassed();
 
@@ -30,7 +28,7 @@ public class PetTest {
 
     @Test
     public void feedNormal() throws Exception {
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
 
         // Pet needs to get hungry first
         pet.dayPassed();
@@ -50,7 +48,7 @@ public class PetTest {
 
     @Test
     public void play() throws Exception {
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
 
         int happiness = pet.getHappiness();
 
@@ -63,7 +61,7 @@ public class PetTest {
 
     @Test
     public void sleep() throws Exception {
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
 
         // Pet needs to get tired first
         pet.dayPassed();
@@ -75,7 +73,7 @@ public class PetTest {
 
     @Test
     public void toilet() throws Exception {
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
 
         // Pet needs to get poopy first
         pet.feed(Food.STEAK);
@@ -87,7 +85,7 @@ public class PetTest {
 
     @Test
     public void misbehave() throws Exception {
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
         assertFalse(pet.isMisbehaving());
         pet.startMisbehaving();
         assertTrue(pet.isMisbehaving());
@@ -95,7 +93,7 @@ public class PetTest {
 
     @Test
     public void sickness() throws Exception {
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
         assertFalse(pet.isSick());
         pet.startBeingSick();
         assertTrue(pet.isSick());
@@ -109,35 +107,35 @@ public class PetTest {
     @Test
     public void getPlayfulness() throws Exception {
         // Pet has valid playfulness
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
         assertTrue(pet.getPlayfulness() > 0);
     }
 
     @Test
     public void getRoughness() throws Exception {
         // Pet has valid roughness
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
         assertTrue(pet.getRoughness() > 0);
     }
 
     @Test
     public void getHealth() throws Exception {
         // Pet has valid health
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
         assertTrue(pet.getHealth() > 0);
     }
 
     @Test
     public void getWeight() throws Exception {
         // Pet has valid weight
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
         assertTrue(pet.getWeight() > 0);
     }
 
     @Test
     public void getDeathState() throws Exception {
         // Pet starts alive
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
         assertEquals(Pet.DeathState.ALIVE, pet.getDeathState());
 
         // Pet can be revived once
@@ -152,7 +150,7 @@ public class PetTest {
     @Test
     public void getName() throws Exception {
         // Make sure pet has the right name
-        Pet pet = new Dog("dogName");
+        Pet pet = PetType.Dog.create("dogName");
         assertEquals("dogName", pet.getName());
     }
 
@@ -177,12 +175,12 @@ public class PetTest {
     }*/
     private static Pet[] createPets() {
         return new Pet[]{
-                new Bird("bird"),
-                new Cat("cat"),
-                new Dog("dog"),
-                new Goldfish("goldfish"),
-                new GuineaPig("guinea pig"),
-                new Rabbit("rabbit")
+                PetType.Bird.create("bird"),
+                PetType.Cat.create("cat"),
+                PetType.Dog.create("dog"),
+                PetType.Goldfish.create("goldfish"),
+                PetType.GuineaPig.create("guinea pig"),
+                PetType.Rabbit.create("rabbit")
         };
     }
 }

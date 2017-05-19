@@ -1,7 +1,8 @@
 package seng201.assignment.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -13,27 +14,29 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class OwnedPetPanel extends JPanel {
+import seng201.assignment.Pet;
 
+@SuppressWarnings("serial")
+public class OwnedPetPanel extends JPanel {
+    private ImageLabel image;
+    private JLabel nameLabel;
+    private Pet pet;
+    
 	/**
 	 * Create the panel.
 	 */
-	public OwnedPetPanel() {
-		BufferedImage bufferedImage = null;
-		try {
-			bufferedImage = ImageIO.read(getClass().getResourceAsStream("dog.png"));
-		} catch (IOException e) {
-			System.out.println(System.getProperty("user.dir"));
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.exit(-1);
-		}
-
-		JPanel image = new ImageLabel(new ImageIcon(bufferedImage));
+	public OwnedPetPanel(final PlayerChoosingWindow frame) {
+		image = new ImageLabel();
 		
 		JButton removeButton = new JButton("-");
+		removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.removePet(pet);
+            }
+        });
 		
-		JLabel nameLabel = new JLabel("SNUFFLES");
+		nameLabel = new JLabel();
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -56,4 +59,23 @@ public class OwnedPetPanel extends JPanel {
 
 	}
 
+    public void setPet(Pet pet) {
+        this.pet = pet;
+
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(getClass().getResourceAsStream(pet.getType().getImageFile()));
+        } catch (IOException e) {
+            System.out.println(System.getProperty("user.dir"));
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            System.exit(-1);
+        }
+
+        image.setImage(new ImageIcon(bufferedImage));
+        
+        nameLabel.setText(pet.getName());
+        
+        setVisible(true);
+    }
 }

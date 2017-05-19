@@ -1,7 +1,7 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 12/04/2017.
+ * Pet Dog.
  */
 public class Dog extends Pet {
 	private static float[] weightRange = new float[] {20, 40};
@@ -10,13 +10,8 @@ public class Dog extends Pet {
 	private static int[] hungerRateRange = new int[] {3, 4};
 	private static int[] tiredRateRange = new int[] {2, 4};
 
-	public Dog(String name) {
-		super(name);
-	}
-
-	@Override
-	public String getSpecies() {
-        return "Dog";
+	public Dog(String name, PetType type) {
+        super(name, type);
     }
 
     @Override

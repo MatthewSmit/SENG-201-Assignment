@@ -16,13 +16,9 @@ public class Player {
      */
     private Pet[] pets;
     /**
-     * A list of the toys the player owns.
+     * A list of the items the player owns.
      */
-    private ArrayList<Toy> toys = new ArrayList<>();
-    /**
-     *
-     */
-    private ArrayList<Food> food = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
     private int money = INITIAL_MONEY;
     private String name;
 
@@ -31,20 +27,16 @@ public class Player {
         this.pets = pets;
     }
 
-    public void purchase(ToyType toy) {
-        if (money < toy.getPrice())
+    public void purchase(Item item) {
+        if (money < item.getPrice())
             throw new UnsupportedOperationException("Can't afford the toy.");
 
-        money -= toy.getPrice();
-        toys.add(new Toy(toy));
+        money -= item.getPrice();
+        items.add(item);
     }
 
-    public void purchase(Food food) {
-        if (money < food.getPrice())
-            throw new UnsupportedOperationException("Can't afford the food.");
-
-        money -= food.getPrice();
-        this.food.add(food);
+    public void purchase(ToyType toy) {
+        purchase(new Toy(toy));
     }
 
     public String getName() {
@@ -55,11 +47,25 @@ public class Player {
         return pets;
     }
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
     public ArrayList<Food> getFood() {
+        ArrayList<Food> food = new ArrayList<>();
+        for (Item item : items) {
+            if (item instanceof Food)
+                food.add((Food)item);
+        }
         return food;
     }
 
     public ArrayList<Toy> getToys() {
+        ArrayList<Toy> toys = new ArrayList<>();
+        for (Item item : items) {
+            if (item instanceof Toy)
+                toys.add((Toy)item);
+        }
         return toys;
     }
 

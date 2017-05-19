@@ -8,7 +8,8 @@ import javax.swing.JList;
 import java.awt.BorderLayout;
 import java.awt.Component;
 
-class ShopListViewRenderer extends JPanel implements ListCellRenderer<ShopListView> {
+@SuppressWarnings("serial")
+class ShopListViewRenderer<T> extends JPanel implements ListCellRenderer<ShopListView<T>> {
 	private JLabel lhsLabel;
 	private JLabel rhsLabel;
 	
@@ -23,13 +24,13 @@ class ShopListViewRenderer extends JPanel implements ListCellRenderer<ShopListVi
 	}
 
 	public Component getListCellRendererComponent(
-			JList<? extends ShopListView> list,           // the list
-			ShopListView value,            // value to display
+			JList<? extends ShopListView<T>> list,           // the list
+			ShopListView<T> value,            // value to display
 			int index,               // cell index
 			boolean isSelected,      // is the cell selected
 			boolean cellHasFocus)    // does the cell have focus
 	{
-		lhsLabel.setText(value.getLhs());
+		lhsLabel.setText(value.getLhs().toString());
 		rhsLabel.setText(value.getRhs());
 		
         if (isSelected) {
@@ -47,16 +48,16 @@ class ShopListViewRenderer extends JPanel implements ListCellRenderer<ShopListVi
 	}
 }
 
-public class ShopListView {
-	private String lhs;
+public class ShopListView<T> {
+	private T lhs;
 	private String rhs;
 	
-	public ShopListView(String lhs, String rhs) {
+	public ShopListView(T lhs, String rhs) {
 		this.lhs = lhs;
 		this.rhs = rhs;
 	}
 	
-	public String getLhs() {
+	public T getLhs() {
 		return lhs;
 	}
 	

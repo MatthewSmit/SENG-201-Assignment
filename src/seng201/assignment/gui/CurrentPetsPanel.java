@@ -1,22 +1,28 @@
 package seng201.assignment.gui;
 
 import javax.swing.JPanel;
+
+import java.util.ArrayList;
+
 import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JLabel;
 
+import seng201.assignment.Pet;
+
+@SuppressWarnings("serial")
 public class CurrentPetsPanel extends JPanel {
-
+    private OwnedPetPanel pet1;
+    private OwnedPetPanel pet2;
+    private OwnedPetPanel pet3;
+    
 	/**
 	 * Create the panel.
 	 */
-	public CurrentPetsPanel() {
+	public CurrentPetsPanel(final PlayerChoosingWindow frame) {
 
-		JPanel pet1 = new OwnedPetPanel();
-		JPanel pet2 = new OwnedPetPanel();
-		JPanel pet3 = new OwnedPetPanel();
+		pet1 = new OwnedPetPanel(frame);
+		pet2 = new OwnedPetPanel(frame);
+		pet3 = new OwnedPetPanel(frame);
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -39,7 +45,34 @@ public class CurrentPetsPanel extends JPanel {
 				.addContainerGap()
 		);
 		setLayout(groupLayout);
-		
 
+        pet1.setVisible(false);
+        pet2.setVisible(false);
+        pet3.setVisible(false);
 	}
+
+	public void setPets(ArrayList<Pet> pets) {
+        assert(pets.size() <= 3);
+        
+        if (pets.size() > 0) {
+            pet1.setPet(pets.get(0));
+        }
+        else {
+            pet1.setVisible(false);
+        }
+
+        if (pets.size() > 1) {
+            pet2.setPet(pets.get(1));
+        }
+        else {
+            pet2.setVisible(false);
+        }
+
+        if (pets.size() > 2) {
+            pet3.setPet(pets.get(2));
+        }
+        else {
+            pet3.setVisible(false);
+        }
+    }
 }

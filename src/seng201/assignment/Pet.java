@@ -110,6 +110,8 @@ public abstract class Pet {
      * Weight of the pet, represented in kg.
      */
     private float weight;
+    
+    private PetType type;
 
     /**
      * The event that happened this turn, gets reset at the start of a new turn.
@@ -134,8 +136,10 @@ public abstract class Pet {
      * Create a new pet
      * @param name the name of the new pet
      */
-    protected Pet(String name) {
+    protected Pet(String name, PetType type) {
     	this.name = name;
+    	this.type = type;
+    	
     	hunger = 0;
     	tiredness = 0;
     	toiletNeed = 0;
@@ -376,11 +380,17 @@ public abstract class Pet {
     public int getActionsLeft() {
     	return actionsLeft;
     }
+    
+    public PetType getType() {
+        return type;
+    }
 
     /**
      * Gets the species of the pet.
      */
-    public abstract String getSpecies();
+    public String getSpecies() {
+        return type.getName();
+    }
     
     protected abstract ToyType[] getFavouriteToy();
 

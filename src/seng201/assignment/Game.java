@@ -4,30 +4,21 @@ package seng201.assignment;
  * Created by Matthew on 12/04/2017.
  */
 public class Game {
-    private static final Class[] petTypes = new Class[] {
-            Bird.class,
-            Cat.class,
-            Dog.class,
-            Goldfish.class,
-            GuineaPig.class,
-            Rabbit.class
-    };
-
     private static final Event[] events = new Event[] {
             new MisbehaveEvent(),
             new SicknessEvent(),
             new DeadEvent()
     };
 
-    private final int maxRounds;
+    private final int maxDays;
 
     private Player[] players;
     private int playerTurn;
-    private int round;
+    private int day;
     private int currentPet;
 
-    public Game(int rounds, Player[] players) {
-        maxRounds = rounds;
+    public Game(int numberDays, Player[] players) {
+        maxDays = numberDays;
         this.players = players;
     }
 
@@ -47,7 +38,7 @@ public class Game {
         playerTurn++;
         if (playerTurn == players.length) {
             playerTurn = 0;
-            round++;
+            day++;
         }
     }
 
@@ -68,23 +59,19 @@ public class Game {
     }
 
     public boolean isRunning() {
-        return round < maxRounds;
+        return day < maxDays;
     }
 
     public Player getCurrentPlayer() {
         return players[playerTurn];
     }
 
-    public static Class[] getPetTypes() {
-        return petTypes;
+    public int getCurrentDay() {
+        return day;
     }
 
-    public int getCurrentRound() {
-        return round;
-    }
-
-    public int getMaxRound() {
-        return maxRounds;
+    public int getMaxDays() {
+        return maxDays;
     }
 
     public Pet getCurrentPet() {

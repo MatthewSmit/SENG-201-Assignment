@@ -1,33 +1,35 @@
 package seng201.assignment.gui;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import seng201.assignment.Game;
 import seng201.assignment.Pet;
 import seng201.assignment.PetType;
 import seng201.assignment.Player;
 
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class PlayerChoosingWindow extends JFrame {
-	private static final long serialVersionUID = -6759372237732322113L;
-	
 	private ArrayList<Pet> currentPets;
 	private Player[] players;
 	private int numberDays;
 
-	private JTextField playerNameText;
+	private CurrentPetsPanel yourPets;
 
 	/**
 	 * Launch the application.
@@ -36,7 +38,7 @@ public class PlayerChoosingWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PlayerChoosingWindow window = new PlayerChoosingWindow();
+					PlayerChoosingWindow window = new PlayerChoosingWindow(3, 3);
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,11 +50,6 @@ public class PlayerChoosingWindow extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public PlayerChoosingWindow() {
-		this.players = new Player[3];
-		this.numberDays = 1;
-		initialize();
-	}
 	public PlayerChoosingWindow(int players, int days) {
 		this.players = new Player[players];
 		this.numberDays = days;
@@ -66,7 +63,11 @@ public class PlayerChoosingWindow extends JFrame {
 		initialize(0);
 	}
 	
-	private void initialize(int playerIndex) {
+	private void initialize(final int playerIndex) {
+        final JFrame frame = this;
+        
+        getContentPane().removeAll();
+        
 		setResizable(false);
 		setBounds(100, 100, 768, 700);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,20 +78,44 @@ public class PlayerChoosingWindow extends JFrame {
 		
 		JLabel playerNameLabel = new JLabel("Player Name:");
 		
-		playerNameText = new JTextField();
-		playerNameText.setColumns(10);
+		final JTextField nameText = new JTextField();
+		nameText.setColumns(10);
 		
 		JLabel avaliablePetsLabel = new JLabel("Avaliable Pets");
 		
 		JLabel yourPetsLabel = new JLabel("Your Pets");
 		
 		JButton nextButton = new JButton("Next");
+		nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = nameText.getText();
+                
+                if (name.length() > 0 && isUniqueName(name)) {
+                    players[playerIndex] = new Player(name, currentPets.toArray(new Pet[currentPets.size()]));
+                    if (playerIndex + 1 == players.length) {
+                        Game game = new Game(numberDays, players);
+
+                        dispose();
+                        MainGameWindow newWindow = new MainGameWindow(game);
+                        newWindow.setVisible(true);
+                    }
+                    else {
+                        initialize(playerIndex + 1);
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(frame, "Player name must be unique.");
+                }
+            }
+        });
 		
 		JPanel avaliablePets = new AvaliablePetsPanel(this);
 		avaliablePets.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JPanel yourPets = new CurrentPetsPanel();
+		yourPets = new CurrentPetsPanel(this);
 		yourPets.setBorder(new LineBorder(new Color(0, 0, 0)));
+		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -101,7 +126,7 @@ public class PlayerChoosingWindow extends JFrame {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(playerNameLabel)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(playerNameText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+							.addComponent(nameText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -123,7 +148,7 @@ public class PlayerChoosingWindow extends JFrame {
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 					.addComponent(playerNameLabel)
-					.addComponent(playerNameText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addComponent(nameText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 					.addComponent(yourPetsLabel)
@@ -131,7 +156,7 @@ public class PlayerChoosingWindow extends JFrame {
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(avaliablePets)
-						.addComponent(yourPets))
+						.addComponent(yourPets, 1, 10, 600))
 				.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 				.addComponent(nextButton)
 				.addContainerGap()
@@ -161,6 +186,17 @@ public class PlayerChoosingWindow extends JFrame {
 	}
 	
 	public void addNewPet(PetType type, String name) {
-		throw new Error();
+	    assert(currentPets.size() < 3);
+	    currentPets.add(type.create(name));
+	    yourPets.setPets(currentPets);
 	}
+
+    public ArrayList<Pet> getCurrentPets() {
+        return currentPets;
+    }
+
+    public void removePet(Pet pet) {
+        currentPets.remove(pet);
+        yourPets.setPets(currentPets);
+    }
 }

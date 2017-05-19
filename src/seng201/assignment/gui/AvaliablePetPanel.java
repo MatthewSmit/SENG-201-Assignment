@@ -2,31 +2,23 @@ package seng201.assignment.gui;
 
 import javax.swing.JPanel;
 
-import org.omg.CORBA.Environment;
-
 import seng201.assignment.PetType;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.GridBagLayout;
-import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+@SuppressWarnings("serial")
 public class AvaliablePetPanel extends JPanel {
-	private static final long serialVersionUID = 6651258605313089001L;
-
 	/**
 	 * Create the panel.
 	 */
@@ -43,10 +35,15 @@ public class AvaliablePetPanel extends JPanel {
 		addPetButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				NamePetDialogue dialogue = new NamePetDialogue(frame, type);
-				dialogue.pack();
-				dialogue.setLocationRelativeTo(frame);
-				dialogue.setVisible(true);
+			    if (frame.getCurrentPets().size() == 3) {
+                    JOptionPane.showMessageDialog(frame, "Can only create up to 3 pets.");
+			    }
+			    else {
+	                NamePetDialogue dialogue = new NamePetDialogue(frame, type);
+	                dialogue.pack();
+	                dialogue.setLocationRelativeTo(frame);
+	                dialogue.setVisible(true);
+			    }
 			}
 		});
 		

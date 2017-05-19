@@ -3,7 +3,6 @@ package seng201.assignment.console;
 import seng201.assignment.*;
 
 import java.io.*;
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
 /**
@@ -14,19 +13,11 @@ public class ConsoleRunner {
     private static BufferedReader br = new BufferedReader(reader);
 
     public static void main(String[] args) {
-        /*try {
-            reader = new InputStreamReader(new FileInputStream("input.txt"));
-            br = new BufferedReader(reader);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }*/
-
         Game game = setupGame();
 
         while (game.isRunning()) {
         	System.out.println();
-        	System.out.println(String.format("Player %s's turn, day %d/%d", game.getCurrentPlayer().getName(), game.getCurrentRound() + 1, game.getMaxRound()));
+        	System.out.println(String.format("Player %s's turn, day %d/%d", game.getCurrentPlayer().getName(), game.getCurrentDay() + 1, game.getMaxDays()));
             System.out.println(String.format("Controlling pet %s, actions remaining: %d", game.getCurrentPet().getName(), game.getCurrentPet().getActionsLeft()));
 
             switch (game.getCurrentPet().getEventState()) {
@@ -261,7 +252,7 @@ public class ConsoleRunner {
             players[i] = new Player(name, pets);
 
             for (int j = 0; j < numberPets; j++) {
-                Class petType = choosePet();
+                PetType petType = choosePet();
                 String petName;
                 while (true) {
                     petName = readLine(String.format("Player %d's pet %d's name: ", i + 1, j + 1));
@@ -270,15 +261,8 @@ public class ConsoleRunner {
                     }
                     else break;
                 }
-
-                try {
-                    Constructor constructor = petType.getConstructor(String.class);
-                    constructor.setAccessible(true);
-                    pets[j] = (Pet)constructor.newInstance(petName);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    System.exit(2);
-                }
+                
+                pets[j] = petType.create(petName);
             }
         }
 
@@ -320,9 +304,10 @@ public class ConsoleRunner {
         return true;
     }
 
-    private static Class choosePet() {
+    private static PetType choosePet() {
+        PetType[] petTypes = PetType.values();
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < Game.getPetTypes().length; i++) {
+        for (int i = 0; i < petTypes.length; i++) {
             if (i > 0) {
                 builder.append(", ");
             }
@@ -330,23 +315,23 @@ public class ConsoleRunner {
             builder.append('(');
             builder.append(i);
             builder.append(") ");
-            builder.append(Game.getPetTypes()[i].getSimpleName());
+            builder.append(petTypes[i].getName());
         }
 
         System.out.print("Choose a pet, options are " + builder.toString() + ": ");
 
         while (true) {
             String value = readLine();
-            for (int i = 0; i < Game.getPetTypes().length; i++) {
-                if (Game.getPetTypes()[i].getSimpleName().equalsIgnoreCase(value)) {
-                    return Game.getPetTypes()[i];
+            for (int i = 0; i < petTypes.length; i++) {
+                if (petTypes[i].getName().equalsIgnoreCase(value)) {
+                    return petTypes[i];
                 }
             }
 
             try {
                 int intValue = Integer.parseInt(value);
-                if (intValue >= 0 && intValue < Game.getPetTypes().length) {
-                    return Game.getPetTypes()[intValue];
+                if (intValue >= 0 && intValue < petTypes.length) {
+                    return petTypes[intValue];
                 }
             }
             catch (Throwable ignored) {

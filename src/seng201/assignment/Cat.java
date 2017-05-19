@@ -11,13 +11,8 @@ public class Cat extends Pet {
 	private static int[] hungerRateRange = new int[] {2, 4};
 	private static int[] tiredRateRange = new int[] {2, 4};
 
-	public Cat(String name){
-		super(name);
-	}
-	
-	@Override
-	public String getSpecies() {
-        return "Cat";
+	public Cat(String name, PetType type) {
+        super(name, type);
     }
 
 	@Override
