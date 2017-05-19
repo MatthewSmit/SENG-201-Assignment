@@ -110,7 +110,12 @@ public abstract class Pet {
      * Weight of the pet, represented in kg.
      */
     private float weight;
-
+ 
+    /**
+     * Gender of the pet. 
+     */    
+    private String gender;
+    
     /**
      * The event that happened this turn, gets reset at the start of a new turn.
      */
@@ -146,6 +151,7 @@ public abstract class Pet {
     	hungerRate = getSpeciesHungerRate();
     	tiredRate = getSpeciesTiredRate();
     	weight = getSpeciesInitialWeight();
+    	gender = getInitialGender();
     }
 
     /**
@@ -370,6 +376,12 @@ public abstract class Pet {
         return name;
     }
     
+    
+    public String getGender() {
+    	return gender;
+    }
+    
+    
     /**
      * Gets the actions remaining
      */
@@ -382,19 +394,19 @@ public abstract class Pet {
      */
     public abstract String getSpecies();
     
-    protected abstract ToyType[] getFavouriteToy();
+    public abstract ToyType[] getFavouriteToy();
 
-    protected abstract Food[] getFavouriteFood();
+    public abstract Food[] getFavouriteFood();
 
-    protected abstract float[] getSpeciesWeightRange();
+    public abstract float[] getSpeciesWeightRange();
     
-    protected abstract int[] getSpeciesPlayfulnessRange();
+    public abstract int[] getSpeciesPlayfulnessRange();
     
-    protected abstract int[] getSpeciesRoughnessRange();
+    public abstract int[] getSpeciesRoughnessRange();
     
-    protected abstract int[] getSpeciesHungerRateRange();
+    public abstract int[] getSpeciesHungerRateRange();
     
-    protected abstract int[] getSpeciesTiredRateRange();
+    public abstract int[] getSpeciesTiredRateRange();
     
     //random.nextInt(max - min + 1) + min
     private int getSpeciesPlayfulness(){
@@ -421,5 +433,13 @@ public abstract class Pet {
 		float[] weightRange = getSpeciesWeightRange();
 		float initialWeight = rn.nextFloat() * (weightRange[1] - weightRange[0]) + weightRange[0];
 		return initialWeight;
+	}
+	
+	public String getInitialGender(){
+		String gender = "female"; //female by default
+		if (Math.random() >= 0.5){
+			gender = "male"; //male
+		}
+		return gender;
 	}
 }
