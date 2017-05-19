@@ -210,7 +210,10 @@ public class ConsoleRunner {
             int value = readInt("Choose a toy index: ", 0, toys.size() - 1);
             game.play(toys.get(value));
             System.out.println(String.format("%s plays with %s.", game.getCurrentPet().getName(), toys.get(value).getType().toString()));
-            toys.remove(value);
+            if (toys.get(value).getDurability() <= 0){
+            	toys.remove(value);
+            }
+            
         }
     }
 
@@ -221,6 +224,7 @@ public class ConsoleRunner {
         else {
         	System.out.println();
             System.out.println(String.format("%s (%s)", pet.getName(), pet.getSpecies()));
+            System.out.println(String.format("Gender: %s", pet.getGender()));
             System.out.println(String.format("Hunger: %d", pet.getHunger()));
             System.out.println(String.format("Tiredness: %d", pet.getTiredness()));
             System.out.println(String.format("Toilet: %d", pet.getToiletNeed()));
@@ -373,7 +377,7 @@ public class ConsoleRunner {
         while (true) {
             String value = readLine();
             if (value == null || value.trim().equals("")) {
-                System.out.print("Please enter a value");
+                System.out.print("");
                 System.out.print(s);
             }
             else {

@@ -15,29 +15,29 @@ public class GuineaPig extends Pet {
     }
 
 	@Override
-	protected ToyType[] getFavouriteToy(){
+    public ToyType[] getFavouriteToy(){
 		return new ToyType[] {ToyType.SMALLBALL, ToyType.GUINEAPIGWHEEL};
 	}
 
 	@Override
-	protected Food[] getFavouriteFood(){
+    public Food[] getFavouriteFood(){
 		return new Food[] {Food.PEAS, Food.LETTUCE, Food.CARROT, Food.SEEDS};
 	}
 	
-	protected float[] getSpeciesWeightRange(){
+	public float[] getSpeciesWeightRange(){
 		return weightRange;
 	}
 	
-	protected int[] getSpeciesPlayfulnessRange(){
+	public int[] getSpeciesPlayfulnessRange(){
 		return playfulnessRange;
 	}
-	protected int[] getSpeciesRoughnessRange(){
+	public int[] getSpeciesRoughnessRange(){
 		return roughnessRange;
 	}
-	protected int[] getSpeciesHungerRateRange(){
+	public int[] getSpeciesHungerRateRange(){
 		return hungerRateRange;
 	}
-	protected int[] getSpeciesTiredRateRange(){
+	public int[] getSpeciesTiredRateRange(){
 		return tiredRateRange;
 	}
 	

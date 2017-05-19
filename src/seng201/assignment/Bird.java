@@ -15,29 +15,29 @@ public class Bird extends Pet {
 	}
 
 	@Override
-	protected ToyType[] getFavouriteToy(){
+    public ToyType[] getFavouriteToy(){
 		return new ToyType[] {ToyType.JUNGLEGYM, ToyType.GUINEAPIGWHEEL};
 	}
 
 	@Override
-	protected Food[] getFavouriteFood(){
+    public Food[] getFavouriteFood(){
 		return new Food[] {Food.SEEDS, Food.BLOODWORM, Food.PEAS};
 	}
 	
-	protected float[] getSpeciesWeightRange(){
+	public float[] getSpeciesWeightRange(){
 		return weightRange;
 	}
 	
-	protected int[] getSpeciesPlayfulnessRange(){
+	public int[] getSpeciesPlayfulnessRange(){
 		return playfulnessRange;
 	}
-	protected int[] getSpeciesRoughnessRange(){
+	public int[] getSpeciesRoughnessRange(){
 		return roughnessRange;
 	}
-	protected int[] getSpeciesHungerRateRange(){
+	public int[] getSpeciesHungerRateRange(){
 		return hungerRateRange;
 	}
-	protected int[] getSpeciesTiredRateRange(){
+	public int[] getSpeciesTiredRateRange(){
 		return tiredRateRange;
 	}
 }

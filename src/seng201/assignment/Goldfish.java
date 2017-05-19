@@ -14,29 +14,30 @@ public class Goldfish extends Pet {
         super(name, type);
     }
 
-	protected ToyType[] getFavouriteToy(){
+	@Override
+	public ToyType[] getFavouriteToy(){
 		return new ToyType[] {ToyType.SMALLBALL};
 	}
 
 	@Override
-	protected Food[] getFavouriteFood(){
+    public Food[] getFavouriteFood(){
 		return new Food[] {Food.BLOODWORM, Food.LETTUCE, Food.PEAS};
 	}
 	
-	protected float[] getSpeciesWeightRange(){
+	public float[] getSpeciesWeightRange(){
 		return weightRange;
 	}
 	
-	protected int[] getSpeciesPlayfulnessRange(){
+	public int[] getSpeciesPlayfulnessRange(){
 		return playfulnessRange;
 	}
-	protected int[] getSpeciesRoughnessRange(){
+	public int[] getSpeciesRoughnessRange(){
 		return roughnessRange;
 	}
-	protected int[] getSpeciesHungerRateRange(){
+	public int[] getSpeciesHungerRateRange(){
 		return hungerRateRange;
 	}
-	protected int[] getSpeciesTiredRateRange(){
+	public int[] getSpeciesTiredRateRange(){
 		return tiredRateRange;
 	}
 	
