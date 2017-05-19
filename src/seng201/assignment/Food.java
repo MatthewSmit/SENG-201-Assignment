@@ -41,6 +41,10 @@ public class Food extends Item {
     }
 
     @Override
+    public Item clone() {
+        return this;
+    }
+    @Override
     public int getPrice() {
         return price;
     }

@@ -12,8 +12,6 @@ import java.awt.BorderLayout;
 
 @SuppressWarnings("serial")
 public class MainGameWindow extends JFrame {
-    private Game game;
-    
 	/**
 	 * Launch the application.
 	 */
@@ -24,6 +22,11 @@ public class MainGameWindow extends JFrame {
         pets[2] = PetType.Rabbit.create("TestRabbit");
 	    Player[] players = new Player[1];
 	    players[0] = new Player("TestPlayer", pets);
+        players[0].purchase(Food.CARROT);
+        players[0].purchase(Food.BLOODWORM);
+        players[0].purchase(Food.BLOODWORM);
+        players[0].purchase(Toy.CARDBOARDBOX);
+        players[0].purchase(Food.LETTUCE);
 	    final Game game = new Game(10, players);
 	    
 		EventQueue.invokeLater(new Runnable() {
@@ -42,8 +45,6 @@ public class MainGameWindow extends JFrame {
 	 * Create the application.
 	 */
 	public MainGameWindow(Game game) {
-	    this.game = game;
-
 		setResizable(false);
 		setBounds(100, 100, 760, 505);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,7 +53,7 @@ public class MainGameWindow extends JFrame {
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 
 		tabbedPane.addTab("Pet", new MainGamePanel(game));
-		tabbedPane.addTab("Store", new StorePanel(game));
+		tabbedPane.addTab("Store", new StorePanel(this, game));
 		tabbedPane.addTab("Help", new JPanel());
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
 	}

@@ -15,8 +15,8 @@ public class Dog extends Pet {
     }
 
     @Override
-    public ToyType[] getFavouriteToy(){
-		return new ToyType[] {ToyType.LARGEBALL, ToyType.SQUEAKYTOY, ToyType.SMALLBALL};
+    public Toy[] getFavouriteToy(){
+		return new Toy[] {Toy.LARGEBALL, Toy.SQUEAKYTOY, Toy.SMALLBALL};
 	}
 
 	@Override

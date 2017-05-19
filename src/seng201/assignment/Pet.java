@@ -215,10 +215,10 @@ public abstract class Pet {
     	assert(actionsLeft > 0);
         actionsLeft--;
         
-        ToyType[] favourites = getFavouriteToy();
+        Toy[] favourites = getFavouriteToy();
 
-        boolean mostFavourite = favourites[0] == toy.getType();
-        boolean favourite = Lists.contains(favourites, toy.getType());
+        boolean mostFavourite = favourites[0] == toy;
+        boolean favourite = Lists.contains(favourites, toy);
 
         toy.degrade(this);
 
@@ -404,7 +404,7 @@ public abstract class Pet {
         return type.getName();
     }
     
-    public abstract ToyType[] getFavouriteToy();
+    public abstract Toy[] getFavouriteToy();
 
     public abstract Food[] getFavouriteFood();
 

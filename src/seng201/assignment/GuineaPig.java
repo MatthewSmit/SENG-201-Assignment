@@ -15,8 +15,8 @@ public class GuineaPig extends Pet {
     }
 
 	@Override
-    public ToyType[] getFavouriteToy(){
-		return new ToyType[] {ToyType.SMALLBALL, ToyType.GUINEAPIGWHEEL};
+    public Toy[] getFavouriteToy(){
+		return new Toy[] {Toy.SMALLBALL, Toy.GUINEAPIGWHEEL};
 	}
 
 	@Override

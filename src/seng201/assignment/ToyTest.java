@@ -10,7 +10,7 @@ public class ToyTest {
 	@Test
 	public void testDegrade() {
 
-		Toy smallBall = new Toy(ToyType.SMALLBALL);
+		Toy smallBall = Toy.SMALLBALL.clone();
 		
 		smallBall.degrade(testCat);
 		assertTrue(smallBall.getDurability() >= 3);
@@ -26,7 +26,7 @@ public class ToyTest {
 	@Test
 	public void testIsBroken() {
 		
-		Toy largeBall = new Toy(ToyType.LARGEBALL);
+		Toy largeBall = Toy.LARGEBALL.clone();
 				
 		largeBall.degrade(testCat);
 		try {
@@ -43,24 +43,24 @@ public class ToyTest {
 	@Test
 	public void testGetPrice() {
 		
-		assertEquals(ToyType.SMALLBALL.getPrice(),3);
-		assertEquals(ToyType.LARGEBALL.getPrice(),5);
-		assertEquals(ToyType.SQUEAKYTOY.getPrice(),8);
-		assertEquals(ToyType.GUINEAPIGWHEEL.getPrice(),7);
-		assertEquals(ToyType.JUNGLEGYM.getPrice(),8);
-		assertEquals(ToyType.CARDBOARDBOX.getPrice(),1);
+		assertEquals(Toy.SMALLBALL.getPrice(),3);
+		assertEquals(Toy.LARGEBALL.getPrice(),5);
+		assertEquals(Toy.SQUEAKYTOY.getPrice(),8);
+		assertEquals(Toy.GUINEAPIGWHEEL.getPrice(),7);
+		assertEquals(Toy.JUNGLEGYM.getPrice(),8);
+		assertEquals(Toy.CARDBOARDBOX.getPrice(),1);
 		
 	}
 
 	@Test
 	public void testGetDurability() {
 		
-		assertEquals(ToyType.SMALLBALL.getDurability(),8);
-		assertEquals(ToyType.LARGEBALL.getDurability(),9);
-		assertEquals(ToyType.SQUEAKYTOY.getDurability(),5);
-		assertEquals(ToyType.GUINEAPIGWHEEL.getDurability(),7);
-		assertEquals(ToyType.JUNGLEGYM.getDurability(),5);
-		assertEquals(ToyType.CARDBOARDBOX.getDurability(),2);
+		assertEquals(Toy.SMALLBALL.getDurability(),8);
+		assertEquals(Toy.LARGEBALL.getDurability(),9);
+		assertEquals(Toy.SQUEAKYTOY.getDurability(),5);
+		assertEquals(Toy.GUINEAPIGWHEEL.getDurability(),7);
+		assertEquals(Toy.JUNGLEGYM.getDurability(),5);
+		assertEquals(Toy.CARDBOARDBOX.getDurability(),2);
 
 	}
 

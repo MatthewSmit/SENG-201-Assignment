@@ -5,9 +5,13 @@ import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.border.CompoundBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -19,15 +23,17 @@ import seng201.assignment.Game;
 import seng201.assignment.Item;
 import seng201.assignment.Player;
 import seng201.assignment.Toy;
-import seng201.assignment.ToyType;
 
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
 @SuppressWarnings("serial")
 public class StorePanel extends JPanel {
+    private static final double SELL_MODIFIER = 0.8;
+    
     private Game game;
     
     private JLabel remainingLabel;
@@ -39,11 +45,13 @@ public class StorePanel extends JPanel {
     private JSpinner buySpinner;
 
     private JSpinner sellSpinner;
+
+    private JList<String> inventoryList;
     
 	/**
 	 * Create the panel.
 	 */
-	public StorePanel(Game game) {
+	public StorePanel(final JFrame frame, final Game game) {
 	    this.game = game;
 	    
 		setLayout(null);
@@ -53,8 +61,8 @@ public class StorePanel extends JPanel {
 		    list.addElement(new ShopListView<Item>(food, String.format("$%d", food.getPrice())));
 		}
 		
-		for (ToyType toy : ToyType.values()) {
-            list.addElement(new ShopListView<Item>(new Toy(toy), String.format("$%d", toy.getPrice())));
+		for (Toy toy : Toy.values()) {
+            list.addElement(new ShopListView<Item>(toy, String.format("$%d", toy.getPrice())));
 		}
 		
 		storeList = new JList<>();
@@ -80,25 +88,48 @@ public class StorePanel extends JPanel {
 		scrollPane.setBounds(454, 167, 217, 259);
 		add(scrollPane);
 		
-		JList<String> inventoryList = new JList<>();
+		inventoryList = new JList<>();
 		scrollPane.setViewportView(inventoryList);
-		inventoryList.setModel(new AbstractListModel<String>() {
-			String[] values = new String[] {"Guinea Pig Wheel", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7", "Item8",
-											"Item9", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7", "Item8",
-											"Item1", "Item2", "Item3", "Item4", "Item5","Item1", "Item2", "Item3", "Item4", "Item5",
-											"Item1", "Item2", "Item3", "Item4", "Item5","Item1", "Item2", "Item3", "Item4", "Item5",
-											"Item1", "Item2", "Item3", "Item4", "Item5","Item1", "Item2", "Item3", "Item4", "Item5"};
-			public int getSize() {
-				return values.length;
-			}
-			public String getElementAt(int index) {
-				return values[index];
-			}
-		});
-		
-		
+        inventoryList.setModel(new AbstractListModel<String>() {
+            public int getSize() {
+                Player player = game.getCurrentPlayer();
+                return player.getItems().size();
+            }
+            public String getElementAt(int index) {
+                Player player = game.getCurrentPlayer();
+                return player.getItems().get(index).toString();
+            }
+        });
+        inventoryList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                redraw();
+            }
+        });
+
 		JButton buyButton = new JButton("Buy");
 		buyButton.setBounds(454, 66, 74, 23);
+		buyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Player player = game.getCurrentPlayer();
+                int buyPrice = calculateBuyPrice();
+                ShopListView<Item> view = storeList.getSelectedValue();
+                if (buyPrice > player.getMoney()) {
+                    JOptionPane.showMessageDialog(frame, "You don't have enough money.");
+                }
+                else if (view == null) {
+                    JOptionPane.showMessageDialog(frame, "You must select an item to buy.");
+                }
+                else {
+                    int amount = ((SpinnerNumberModel)buySpinner.getModel()).getNumber().intValue();
+                    for (int i = 0; i < amount; i++) {
+                        game.getCurrentPlayer().purchase(view.getLhs());
+                    }
+                    redraw();
+                }
+            }
+        });
 		add(buyButton);
 		
 		JButton sellButton = new JButton("Sell");
@@ -146,6 +177,8 @@ public class StorePanel extends JPanel {
 	private void redraw() {
 	    Player player = game.getCurrentPlayer();
 	    
+	    inventoryList.repaint();
+	    
 	    playerLabel.setText(String.format("%s - Day %d of %d", player.getName(), game.getCurrentDay() + 1, game.getMaxDays()));
 	    remainingLabel.setText(String.format("$%d remaining", player.getMoney()));
 	    
@@ -157,6 +190,9 @@ public class StorePanel extends JPanel {
 	    else {
             buyAmountLabel.setForeground(Color.BLACK);
 	    }
+	    
+	    int sellPrice = calculateSellPrice();
+	    sellAmountLabel.setText(String.format("$%d", sellPrice));
 	}
 	
 	private int calculateBuyPrice() {
@@ -166,5 +202,13 @@ public class StorePanel extends JPanel {
 	    
 	    Item item = view.getLhs();
 	    return item.getPrice() * ((SpinnerNumberModel)buySpinner.getModel()).getNumber().intValue();
+	}
+	
+	private int calculateSellPrice() {
+	    int inventoryIndex = inventoryList.getSelectedIndex();
+	    if (inventoryIndex < 0)
+	        return 0;
+	    
+	    return (int)Math.floor(game.getCurrentPlayer().getItems().get(inventoryIndex).getPrice() * SELL_MODIFIER);
 	}
 }

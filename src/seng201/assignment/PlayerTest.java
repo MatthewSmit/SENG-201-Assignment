@@ -26,13 +26,13 @@ public class PlayerTest {
 	public void testPurchaseToy() {
         assertTrue(testPlayer.getToys().size() == 0);
 
-		testPlayer.purchase(ToyType.SMALLBALL);
-        assertTrue(testPlayer.getToys().get(0).getType() == ToyType.SMALLBALL);
+		testPlayer.purchase(Toy.SMALLBALL);
+        assertTrue(testPlayer.getToys().get(0).toString().equals(Toy.SMALLBALL.toString()));
         assertTrue(testPlayer.getToys().size() == 1);
 
-		testPlayer.purchase(ToyType.LARGEBALL);
-        assertTrue(testPlayer.getToys().get(0).getType() == ToyType.SMALLBALL);
-        assertTrue(testPlayer.getToys().get(1).getType() == ToyType.LARGEBALL);
+		testPlayer.purchase(Toy.LARGEBALL);
+        assertTrue(testPlayer.getToys().get(0).toString().equals(Toy.SMALLBALL.toString()));
+        assertTrue(testPlayer.getToys().get(1).toString().equals(Toy.LARGEBALL.toString()));
         assertTrue(testPlayer.getToys().size() == 2);
 	}
 
@@ -69,7 +69,7 @@ public class PlayerTest {
 	@Test
 	public void testGetMoney() {
 		assertEquals(testPlayer.getMoney(), 100);
-		testPlayer.purchase(ToyType.SMALLBALL); //costs 3
+		testPlayer.purchase(Toy.SMALLBALL); //costs 3
 		assertEquals(testPlayer.getMoney(), 97);
 		testPlayer.purchase(Food.CARROT); //costs 2
 		assertEquals(testPlayer.getMoney(), 95);

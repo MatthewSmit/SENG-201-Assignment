@@ -52,7 +52,7 @@ public class PetTest {
 
         int happiness = pet.getHappiness();
 
-        Toy toy = new Toy(ToyType.LARGEBALL);
+        Toy toy = Toy.LARGEBALL.clone();
         int durability = toy.getDurability();
         pet.play(toy);
         assertTrue(pet.getHappiness() > happiness);

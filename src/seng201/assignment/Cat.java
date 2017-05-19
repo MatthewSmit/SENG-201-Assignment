@@ -16,8 +16,8 @@ public class Cat extends Pet {
     }
 
 	@Override
-    public ToyType[] getFavouriteToy(){
-		return new ToyType[] {ToyType.CARDBOARDBOX, ToyType.SMALLBALL};
+    public Toy[] getFavouriteToy(){
+		return new Toy[] {Toy.CARDBOARDBOX, Toy.SMALLBALL};
 	}
 
 	@Override

@@ -13,14 +13,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractListModel;
 import java.awt.Font;
-import java.awt.Image;
-
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import seng201.assignment.Game;
 import seng201.assignment.Pet;
 import seng201.assignment.PetType;
+import seng201.assignment.Player;
 
 //How to - get correct string from enum (food/toy) - e.g. get "small ball" from Toy.SMALLBALL instead of SMALLBALL
 //to be used in the console/gui. Have to check which enum is being referred to in toString() to get right name returned
@@ -41,16 +40,8 @@ public class MainGamePanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public MainGamePanel(Game game) {
+	public MainGamePanel(final Game game) {
 	    this.game = game;
-
-		BufferedImage bufferedImage = null;
-		try {
-			bufferedImage = ImageIO.read(getClass().getResourceAsStream(PetType.Dog.getImageFile()));
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(-1);
-		}
 		
 		playerLabel = new JLabel();
 		playerLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -125,16 +116,13 @@ public class MainGamePanel extends JPanel {
 		JList<String> inventoryList = new JList<>();
 		inventoryList.setBounds(495, 61, 128, 362);
 		inventoryList.setModel(new AbstractListModel<String>() {
-			String[] values = new String[] {"Guinea Pig Wheel", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7", "Item8",
-											"Item", "Item2", "Item3", "Item4", "Item5", "Item6", "Item7", "Item8",
-											"Item1", "Item2", "Item3", "Item4", "Item5","Item1", "Item2", "Item3", "Item4", "Item5",
-											"Item1", "Item2", "Item3", "Item4", "Item5","Item1", "Item2", "Item3", "Item4", "Item5",
-											"Item1", "Item2", "Item3", "Item4", "Item5","Item1", "Item2", "Item3", "Item4", "Item5"};
 			public int getSize() {
-				return values.length;
+			    Player player = game.getCurrentPlayer();
+			    return player.getItems().size();
 			}
 			public String getElementAt(int index) {
-				return values[index];
+                Player player = game.getCurrentPlayer();
+                return player.getItems().get(index).toString();
 			}
 		});
 		

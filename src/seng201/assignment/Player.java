@@ -32,11 +32,7 @@ public class Player {
             throw new UnsupportedOperationException("Can't afford the toy.");
 
         money -= item.getPrice();
-        items.add(item);
-    }
-
-    public void purchase(ToyType toy) {
-        purchase(new Toy(toy));
+        items.add(item.clone());
     }
 
     public String getName() {

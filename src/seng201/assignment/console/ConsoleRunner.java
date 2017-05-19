@@ -123,7 +123,7 @@ public class ConsoleRunner {
         else {
             while (true) {
                 System.out.println("(0) Exit store");
-                ToyType[] toys = ToyType.values();
+                Toy[] toys = Toy.values();
                 for (int i = 0; i < toys.length; i++) {
                     System.out.println(String.format("(%d) %s - $%d", i + 1, toys[i].toString(), toys[i].getPrice()));
                 }
@@ -132,7 +132,7 @@ public class ConsoleRunner {
                 if (value == 0)
                     return;
 
-                ToyType toy = toys[value - 1];
+                Toy toy = toys[value - 1];
                 if (player.getMoney() < toy.getPrice()) 	{
                     System.out.println("You don't have enough money!");
                 } else {
@@ -204,12 +204,12 @@ public class ConsoleRunner {
         	System.out.println(String.format("What toy do you want to play with %s?", game.getCurrentPet().getName()));
             //System.out.println("What toy do you want to play with your pet?");
             for (int i = 0; i < toys.size(); i++) {
-                System.out.println(String.format("(%d): %s", i, toys.get(i).getType().toString()));
+                System.out.println(String.format("(%d): %s", i, toys.get(i).toString()));
             }
 
             int value = readInt("Choose a toy index: ", 0, toys.size() - 1);
             game.play(toys.get(value));
-            System.out.println(String.format("%s plays with %s.", game.getCurrentPet().getName(), toys.get(value).getType().toString()));
+            System.out.println(String.format("%s plays with %s.", game.getCurrentPet().getName(), toys.get(value).toString()));
             if (toys.get(value).getDurability() <= 0){
             	toys.remove(value);
             }
