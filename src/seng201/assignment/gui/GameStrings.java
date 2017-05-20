@@ -81,8 +81,9 @@ public class GameStrings {
 		ArrayList<Integer> numberOfList = new ArrayList<Integer>();
 		int j = 0;
 		for (int i = 0; i < items.size(); i++){
-			if (namesList.contains(items.get(i).toString())){
-				numberOfList.set(i, numberOfList.get(i)+1);
+			if (namesList.contains(items.get(i).toString())) {
+			    int k = namesList.indexOf(items.get(i).toString());
+				numberOfList.set(k, numberOfList.get(k) + 1);
 			}
 			else {
 				namesList.add(j,items.get(i).toString());

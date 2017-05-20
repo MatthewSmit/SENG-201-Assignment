@@ -11,8 +11,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-import javax.swing.border.CompoundBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
@@ -29,9 +29,36 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class StorePanel extends JPanel {
+    private class InventoryListModel extends AbstractListModel<ShopListView<String>> {
+        private Game game;
+        private ArrayList<ArrayList<String>> currentList;
+        
+        public InventoryListModel(Game game) {
+            this.game = game;
+
+            Player player = game.getCurrentPlayer();
+            currentList = GameStrings.generateInventoryListofLists(player.getItems());
+        }
+
+        public int getSize() {
+            return currentList.size();
+        }
+        
+        public ShopListView<String> getElementAt(int index) {
+            return new ShopListView<String>(currentList.get(index).get(0), currentList.get(index).get(1));
+        }
+        
+        public void redraw() {
+            Player player = game.getCurrentPlayer();
+            currentList = GameStrings.generateInventoryListofLists(player.getItems());
+            this.fireContentsChanged(this, 0, Integer.MAX_VALUE);
+        }
+    }
+    
     private static final double SELL_MODIFIER = 0.8;
     
     private Game game;
@@ -46,7 +73,7 @@ public class StorePanel extends JPanel {
 
     private JSpinner sellSpinner;
 
-    private JList<String> inventoryList;
+    private JList<ShopListView<String>> inventoryList;
     
 	/**
 	 * Create the panel.
@@ -67,7 +94,7 @@ public class StorePanel extends JPanel {
 		
 		storeList = new JList<>();
 		storeList.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		storeList.setBorder(new CompoundBorder());
+		storeList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		storeList.setBounds(10, 49, 397, 377);
 		storeList.setModel(list);
 		storeList.setCellRenderer(new ShopListViewRenderer<Item>());
@@ -90,16 +117,8 @@ public class StorePanel extends JPanel {
 		
 		inventoryList = new JList<>();
 		scrollPane.setViewportView(inventoryList);
-        inventoryList.setModel(new AbstractListModel<String>() {
-            public int getSize() {
-                Player player = game.getCurrentPlayer();
-                return player.getItems().size();
-            }
-            public String getElementAt(int index) {
-                Player player = game.getCurrentPlayer();
-                return player.getItems().get(index).toString();
-            }
-        });
+        inventoryList.setModel(new InventoryListModel(game));
+        inventoryList.setCellRenderer(new ShopListViewRenderer<String>());
         inventoryList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -177,7 +196,7 @@ public class StorePanel extends JPanel {
 	private void redraw() {
 	    Player player = game.getCurrentPlayer();
 	    
-	    inventoryList.repaint();
+	    ((InventoryListModel)inventoryList.getModel()).redraw();
 	    
 	    playerLabel.setText(String.format("%s - Day %d of %d", player.getName(), game.getCurrentDay() + 1, game.getMaxDays()));
 	    remainingLabel.setText(String.format("$%d remaining", player.getMoney()));
