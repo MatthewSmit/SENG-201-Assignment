@@ -3,8 +3,9 @@ package seng201.assignment.gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import seng201.assignment.*;
 
@@ -51,10 +52,18 @@ public class MainGameWindow extends JFrame {
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+		
+		final HelpPanel help = new HelpPanel();
 
 		tabbedPane.addTab("Pet", new MainGamePanel(game));
 		tabbedPane.addTab("Store", new StorePanel(this, game));
-		tabbedPane.addTab("Help", new JPanel());
+		tabbedPane.addTab("Help", help);
+		tabbedPane.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                help.onTabChanged();
+            }
+        });
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
 	}
 

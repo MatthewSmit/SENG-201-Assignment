@@ -49,6 +49,9 @@ public class StorePanel extends JPanel {
         }
         
         public ShopListView<String> getElementAt(int index) {
+            if (index < 0 || index >= getSize())
+                return null;
+            
             return new ShopListView<String>(currentList.get(index).get(0), currentList.get(index).get(1));
         }
         
@@ -153,6 +156,44 @@ public class StorePanel extends JPanel {
 		
 		JButton sellButton = new JButton("Sell");
 		sellButton.setBounds(454, 119, 74, 23);
+		sellButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ShopListView<String> selectedItem = inventoryList.getSelectedValue();
+                if (selectedItem == null)
+                    JOptionPane.showMessageDialog(frame, "You must select an item to sell.");
+                else {
+                    String itemName = selectedItem.getLhs();
+                    
+                    Player player = game.getCurrentPlayer();
+                    int amount = ((SpinnerNumberModel)sellSpinner.getModel()).getNumber().intValue();
+
+                    for (int i = 0, j = 0; i < player.getItems().size(); i++) {
+                        Item item = player.getItems().get(i);
+                        if (item.toString().equals(itemName)) {
+                            double tempAmount = item.getPrice() * SELL_MODIFIER;
+                            
+                            if (item instanceof Toy) {
+                                Toy toy = (Toy)item;
+                                double damaged = (double)toy.getDurability() / (double)toy.getMaxDurability();
+                                tempAmount *= damaged;
+                            }
+                            
+                            int sellAmount = (int)Math.floor(tempAmount);
+                            player.addMoney(sellAmount);
+                            player.getItems().remove(i);
+                            i--;
+                            
+                            j++;
+                            if (j >= amount)
+                                break;
+                        }
+                    }
+                    
+                    redraw();
+                }
+            }
+        });
 		add(sellButton);
 		
 		buySpinner = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
@@ -197,6 +238,9 @@ public class StorePanel extends JPanel {
 	    Player player = game.getCurrentPlayer();
 	    
 	    ((InventoryListModel)inventoryList.getModel()).redraw();
+	    if (inventoryList.getSelectedIndex() >= inventoryList.getModel().getSize())
+	        inventoryList.setSelectedIndex(inventoryList.getModel().getSize() - 1);
+	    else inventoryList.setSelectedIndex(inventoryList.getSelectedIndex());
 	    
 	    playerLabel.setText(String.format("%s - Day %d of %d", player.getName(), game.getCurrentDay() + 1, game.getMaxDays()));
 	    remainingLabel.setText(String.format("$%d remaining", player.getMoney()));
@@ -219,15 +263,42 @@ public class StorePanel extends JPanel {
 	    if (view == null)
 	        return 0;
 	    
+	    int amount = ((SpinnerNumberModel)buySpinner.getModel()).getNumber().intValue();
+	    
 	    Item item = view.getLhs();
-	    return item.getPrice() * ((SpinnerNumberModel)buySpinner.getModel()).getNumber().intValue();
+	    return item.getPrice() * amount;
 	}
 	
 	private int calculateSellPrice() {
-	    int inventoryIndex = inventoryList.getSelectedIndex();
-	    if (inventoryIndex < 0)
+	    ShopListView<String> selectedItem = inventoryList.getSelectedValue();
+	    if (selectedItem == null)
 	        return 0;
 	    
-	    return (int)Math.floor(game.getCurrentPlayer().getItems().get(inventoryIndex).getPrice() * SELL_MODIFIER);
+	    String itemName = selectedItem.getLhs();
+        
+	    Player player = game.getCurrentPlayer();
+        int amount = ((SpinnerNumberModel)sellSpinner.getModel()).getNumber().intValue();
+        
+        int total = 0;
+        int i = 0;
+        for (Item item : player.getItems()) {
+            if (item.toString().equals(itemName)) {
+                double tempAmount = item.getPrice() * SELL_MODIFIER;
+                
+                if (item instanceof Toy) {
+                    Toy toy = (Toy)item;
+                    double damaged = (double)toy.getDurability() / (double)toy.getMaxDurability();
+                    tempAmount *= damaged;
+                }
+                
+                total += (int)Math.floor(tempAmount);
+                
+                i++;
+                if (i >= amount)
+                    break;
+            }
+        }
+        
+        return total;
 	}
 }
