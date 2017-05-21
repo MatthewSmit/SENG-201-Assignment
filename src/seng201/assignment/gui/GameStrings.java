@@ -5,19 +5,22 @@ import seng201.assignment.*;
 
 public class GameStrings {
 
-	//HAVE TO FINISH THIS OFF
-	public static String getSpeciesStatistics(Pet pet){
+	
+	public static String getSpeciesStats(PetType type){
+		Pet pet = type.create("pet");
 		String speciesInfo = "";
-		speciesInfo +="Species name: " + pet.getSpecies() + "\r\n";
-		speciesInfo +="Favourite toy: " + stringOfToys(pet.getFavouriteToy()) + "\r\n";
-		speciesInfo +="Favourite food: " + stringOfFoods(pet.getFavouriteFood()) + "\r\n";
-		speciesInfo +="Weight range: " + pet.getSpeciesWeightRange() + "\r\n";
-		speciesInfo +="Playfulness range: " + pet.getSpeciesPlayfulnessRange() + "\r\n";
-		speciesInfo +="Roughness range: " + pet.getSpeciesRoughnessRange() + "\r\n";
-		speciesInfo +="Hunger rate range: " + pet.getSpeciesHungerRateRange() + "\r\n";
-		speciesInfo +="Tiredness rate range: " + pet.getSpeciesTiredRateRange(); //ad new line if extra added after
-		
+		speciesInfo +="Favourite toy(s): " + stringOfToys(pet.getFavouriteToy()) + "\r\n";
+		speciesInfo +="Favourite foods: " + stringOfFoods(pet.getFavouriteFood()) + "\r\n";
+		speciesInfo +="Weight range: " + stringOfRange(pet.getSpeciesWeightRange()) + "\r\n";
+		speciesInfo +="Playfulness range: " + stringOfRange(pet.getSpeciesPlayfulnessRange()) + "\r\n";
+		speciesInfo +="Roughness range: " + stringOfRange(pet.getSpeciesRoughnessRange()) + "\r\n";
+		speciesInfo +="Hunger rate range: " + stringOfRange(pet.getSpeciesHungerRateRange()) + "\r\n";
+		speciesInfo +="Tiredness rate range: " + stringOfRange(pet.getSpeciesTiredRateRange()); //ad new line if extra added after
 		return speciesInfo;
+	}
+	
+	public static String getTypeSpecies(PetType type){
+		return type.getName();
 	}
 	
 	public static String getPetName(Pet pet){
@@ -60,21 +63,19 @@ public class GameStrings {
 	}
 	
 	
-	//ArrayList<Toy> toys = game.getCurrentPlayer().getToys();
-	//ArrayList<Food> food = game.getCurrentPlayer().getFood();
+	public static String stringOfRange(float[] floats){
+		return String.format("%.2fkg - %.2fkg", floats[0], floats[1]);
+	}
 	
-	//list of lists for both foods and toys  - [["bloodworm", 1, -1],["tuna", 4, -1]]
-	//[[SQUEAKY TOY, 2, 5], [SMALL BALL, 3, 4]]
-	//if durability hits 0 on toy (or food consumed)
-	//then get rid of item
+	public static String stringOfRange(int[] ints){
+		return String.format("%d%% - %d%%", ints[0] * 10, ints[1] * 10);
+	}
+	
+	public static String getCurrentPlayerAndDay(Game game){
+		return String.format("%s - Day %d of %d", game.getCurrentPlayer().getName(), game.getCurrentDay() + 1, game.getMaxDays());
+	}
 	
 	
-	//ArrayList of items - contain both toys and foods
-	//created listed out in order of bought
-	//can create a list of names of items + number of each item ([[bloodworm, 5], [squeaky toy, 3]])
-	//and modify durabilty of specific toys dependent on whether or not they've been used
-	
-	//[BLOODWORM, SQUEAKY TOY, STEAK, SQUEAKY TOY]
 	
 	public static ArrayList<ArrayList<String>> generateInventoryListofLists(ArrayList<Item> items){
 		ArrayList<String> namesList = new ArrayList<String>();
@@ -135,8 +136,8 @@ public class GameStrings {
 	}
 	
 	public static void main(String args[]){
-		Dog Snuffles = new Dog("Snuffles", PetType.Dog);
-		System.out.println(getSpeciesStatistics(Snuffles));
+		//Dog Snuffles = new Dog("Snuffles", PetType.Dog);
+		System.out.println(getSpeciesStats(PetType.Dog));
 	}
 	
 	//get species info (weight range, etc.)
