@@ -46,14 +46,9 @@ public class Toy extends Item {
         else {
             this.durability = durability-pet.getRoughness();
         }
-
-        System.out.println(toString() + " has degraded to " + getDurability() + " durability.");
     }
 
     public boolean isBroken() {
-        if (durability <= 0) {
-            System.out.println(toString()  + " is broken!");
-        }
         return durability <= 0;
     }
 

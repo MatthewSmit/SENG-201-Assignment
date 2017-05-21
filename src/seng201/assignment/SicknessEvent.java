@@ -6,7 +6,7 @@ package seng201.assignment;
 public class SicknessEvent extends Event {
     @Override
     protected boolean processPet(Pet pet) {
-        if (pet.isSick())
+        if (pet.isSick() || pet.isDead())
             return false;
 
         // Pet has a higher chance the more it needs to eat, sleep and toilet

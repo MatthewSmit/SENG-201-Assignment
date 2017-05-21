@@ -6,7 +6,7 @@ package seng201.assignment;
 public class MisbehaveEvent extends Event {
     @Override
     protected boolean processPet(Pet pet) {
-        if (pet.isMisbehaving())
+        if (pet.isMisbehaving() || pet.isDead())
             return false;
 
         float chance = lerp(0, 0.25f, (10 - pet.getHappiness()) / 10.0f);

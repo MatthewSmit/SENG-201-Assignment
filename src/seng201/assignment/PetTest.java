@@ -141,6 +141,9 @@ public class PetTest {
         // Pet can be revived once
         pet.die();
         assertEquals(Pet.DeathState.DEAD_ONCE, pet.getDeathState());
+        
+        pet.revive();
+        assertEquals(Pet.DeathState.ALIVE_WAS_DEAD, pet.getDeathState());
 
         // Afterwards its permenantly dead
         pet.die();

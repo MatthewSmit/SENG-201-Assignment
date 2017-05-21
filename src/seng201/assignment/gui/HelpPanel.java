@@ -18,6 +18,7 @@ public class HelpPanel extends JPanel {
         
         JTextPane textPane = new JTextPane();
         textPane.setEditable(false);
+        textPane.setHighlighter(null);
         textPane.setContentType("text/html");
         textPane.setText(
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">\n" +

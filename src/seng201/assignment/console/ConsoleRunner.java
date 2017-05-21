@@ -218,7 +218,7 @@ public class ConsoleRunner {
     }
 
     private static void displayPetStatus(Pet pet) {
-        if (pet.getDeathState() == Pet.DeathState.PERMANENTLY_DEAD) {
+        if (pet.isDead()) {
             System.out.println(String.format("%s (%s) [DEAD]", pet.getName(), pet.getSpecies()));
         }
         else {

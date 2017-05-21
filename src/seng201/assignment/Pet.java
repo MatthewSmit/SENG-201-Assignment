@@ -8,6 +8,7 @@ import java.util.Random;
 public abstract class Pet {
     public enum DeathState {
         ALIVE,
+        ALIVE_WAS_DEAD,
         DEAD_ONCE,
         PERMANENTLY_DEAD
     }
@@ -183,6 +184,7 @@ public abstract class Pet {
      * @param food the food used to feed the pet
      */
     public void feed(Food food) {
+        assert(!isDead());
     	assert(actionsLeft > 0);
         actionsLeft--;
 
@@ -212,6 +214,7 @@ public abstract class Pet {
      * @param toy the toy used to play with the pet
      */
     public void play(Toy toy) {
+        assert(!isDead());
     	assert(actionsLeft > 0);
         actionsLeft--;
         
@@ -241,6 +244,7 @@ public abstract class Pet {
      * Gets the pet to go to sleep, restoring its tiredness
      */
     public void sleep() {
+        assert(!isDead());
     	assert(actionsLeft > 0);
         actionsLeft--;
         
@@ -253,6 +257,7 @@ public abstract class Pet {
      * Gets the pet to go to the toilet, restoring its toilet need.
      */
     public void toilet() {
+        assert(!isDead());
     	assert(actionsLeft > 0);
         actionsLeft--;
         
@@ -282,11 +287,17 @@ public abstract class Pet {
      * Kills the pet, either setting it to once-dead, or permanently-dead.
      */
     public void die() {
+        assert(deathState == DeathState.ALIVE || deathState == DeathState.ALIVE_WAS_DEAD);
+        
         eventState = EventState.Dead;
         if (deathState == DeathState.ALIVE)
             deathState = DeathState.DEAD_ONCE;
-        else if (deathState == DeathState.DEAD_ONCE)
-            deathState = DeathState.PERMANENTLY_DEAD;
+        else deathState = DeathState.PERMANENTLY_DEAD;
+    }
+
+    public void revive() {
+        assert(deathState == DeathState.DEAD_ONCE);
+        deathState = DeathState.ALIVE_WAS_DEAD;
     }
 
     /**
@@ -452,4 +463,8 @@ public abstract class Pet {
 		}
 		return gender;
 	}
+
+    public boolean isDead() {
+        return deathState == DeathState.DEAD_ONCE || deathState == DeathState.PERMANENTLY_DEAD; 
+    }
 }

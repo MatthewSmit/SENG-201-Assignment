@@ -13,15 +13,19 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.AbstractListModel;
+
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import seng201.assignment.Food;
 import seng201.assignment.Game;
 import seng201.assignment.Item;
 import seng201.assignment.Pet;
@@ -88,7 +92,7 @@ public class MainGamePanel extends JPanel {
 		
 		playerLabel = new JLabel();
 		playerLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		playerLabel.setBounds(10, 15, 200, 23);
+		playerLabel.setBounds(10, 15, 250, 23);
         add(playerLabel);
 		
 		petNameLabel = new JLabel();
@@ -119,14 +123,17 @@ public class MainGamePanel extends JPanel {
         add(pet3Image);
 		
 		statsText = new JTextPane();
-		statsText.setBounds(10, 286, 213, 148);
+		statsText.setBounds(10, 286, 213, 130);
 		statsText.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		statsText.setEditable(false);
+		statsText.setBorder(new LineBorder(Color.BLACK));
+		statsText.setHighlighter(null);
         add(statsText);
         
         messageLogText = new JTextPane();
         messageLogText.setBounds(268, 164, 217, 259);
         messageLogText.setEditable(false);
+        messageLogText.setHighlighter(null);
         
         JScrollPane scrollMessagePane = new JScrollPane(messageLogText);
         scrollMessagePane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -140,7 +147,7 @@ public class MainGamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.toilet();
-                addMessage("TOILET MESSAGE");
+                addMessage(String.format("%s goes to the toilet.", game.getCurrentPet().getName()));
                 redraw();
             }
         });
@@ -153,7 +160,7 @@ public class MainGamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.sleep();
-                addMessage("SLEEP MESSAGE");
+                addMessage(String.format("%s goes to sleep.", game.getCurrentPet().getName()));
                 redraw();
             }
         });
@@ -166,8 +173,22 @@ public class MainGamePanel extends JPanel {
         useButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //game.sleep();
-                //addMessage("SLEEP MESSAGE");
+                Item item = getSelectedItem();
+                if (item instanceof Toy) {
+                    Toy toy = (Toy)item;
+                    game.play(toy);
+                    addMessage(String.format("%s plays with %s.", game.getCurrentPet().getName(), toy.toString()));
+                    
+                    if (toy.isBroken()) {
+                        addMessage(String.format("%s was too rough! %s breaks.", game.getCurrentPet().getName(), toy.toString()));
+                        game.getCurrentPlayer().getItems().remove(item);
+                    }
+                }
+                else if (item instanceof Food) {
+                    game.feed((Food)item);
+                    addMessage(String.format("%s eats %s.", game.getCurrentPet().getName(), item.toString()));
+                    game.getCurrentPlayer().getItems().remove(item);
+                }
                 redraw();
             }
         });
@@ -175,6 +196,33 @@ public class MainGamePanel extends JPanel {
 		
 		JButton nextButton = new JButton("------->");
 		nextButton.setBounds(583, 26, 93, 23);
+		nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.endTurn();
+                
+                for (Pet pet : game.getCurrentPlayer().getPets()) {
+                    switch (pet.getEventState()) {
+                        case NoEvent:
+                            break;
+                        case Misbehaving:
+                            addMessage(String.format("%s has started misbehaving!", pet.getName()));
+                            break;
+                        case Sick:
+                            addMessage(String.format("%s has gotten sick!", pet.getName()));
+                            break;
+                        case Dead:
+                            addMessage(String.format("%s has died!", pet.getName()));
+                            if (pet.getDeathState() == Pet.DeathState.PERMANENTLY_DEAD) {
+                                addMessage(String.format("%s is now permenantly dead!", pet.getName()));
+                            }
+                            break;
+                    }
+                }
+                
+                redraw();
+            }
+        });
         add(nextButton);
 		
 		inventoryList = new JList<>();
@@ -252,15 +300,15 @@ public class MainGamePanel extends JPanel {
         }
         else if (item instanceof Toy) {
             useButton.setText("Play");
-            useButton.setEnabled(pet.getActionsLeft() > 0);
+            useButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
         }
         else {
             useButton.setText("Feed");
-            useButton.setEnabled(pet.getActionsLeft() > 0);
+            useButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
         }
 
-        toiletButton.setEnabled(pet.getActionsLeft() > 0);
-        sleepButton.setEnabled(pet.getActionsLeft() > 0);
+        toiletButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
+        sleepButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
         
         statsText.setText(GameStrings.getPetInfo(game.getCurrentPet()));
 	}
