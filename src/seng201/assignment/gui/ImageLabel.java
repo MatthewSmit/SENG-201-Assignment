@@ -29,5 +29,11 @@ public class ImageLabel extends JPanel {
 
     public void setImage(ImageIcon imageIcon) {
         this.image = imageIcon.getImage();
+        this.repaint();
+    }
+    
+    public void setImage(Image image) {
+        this.image = image;
+        this.repaint();
     }
 }
