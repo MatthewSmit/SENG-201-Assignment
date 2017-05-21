@@ -98,7 +98,7 @@ public class StorePanel extends JPanel {
 		storeList = new JList<>();
 		storeList.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		storeList.setBorder(new LineBorder(new Color(0, 0, 0)));
-		storeList.setBounds(10, 49, 397, 377);
+		storeList.setBounds(10, 49, 397, 456);
 		storeList.setModel(list);
 		storeList.setCellRenderer(new ShopListViewRenderer<Item>());
 		storeList.addListSelectionListener(new ListSelectionListener() {
@@ -115,7 +115,7 @@ public class StorePanel extends JPanel {
 		add(remainingLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(454, 167, 217, 259);
+		scrollPane.setBounds(454, 167, 217, 338);
 		add(scrollPane);
 		
 		inventoryList = new JList<>();
