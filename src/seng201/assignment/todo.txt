@@ -1,14 +1,11 @@
 assignment todo - 
-add image smoothing in maingamepanel to all images used (available pet panel, 
-
-current pets panel, pet info panel.
+add image smoothing in maingamepanel to all images used (available pet panel, current pets panel, pet info panel)
 
 fix rotating pet icons in mgp (maingamepanel)
 
 set health to 0 when pet dies
 
 get medicine+revival medicine working
-
 
 potentially add scroll bar to pet info stuff in mgp, so that the interface isn't so stretched
 
