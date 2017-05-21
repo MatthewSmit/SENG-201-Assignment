@@ -147,7 +147,7 @@ public class MainGamePanel extends JPanel {
         
         
 		statsText = new JTextPane();
-		statsText.setBounds(10, 286, 213, 130);
+		statsText.setBounds(10, 286, 213, 218);
 		statsText.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		statsText.setEditable(false);
 		statsText.setBorder(new LineBorder(Color.BLACK));
@@ -161,11 +161,11 @@ public class MainGamePanel extends JPanel {
         
         JScrollPane scrollMessagePane = new JScrollPane(messageLogText);
         scrollMessagePane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollMessagePane.setBounds(256, 180, 229, 267);
+        scrollMessagePane.setBounds(256, 180, 229, 294);
         add(scrollMessagePane);
 		
 		toiletButton = new JButton("Toilet");
-		toiletButton.setBounds(10, 428, 65, 19);
+		toiletButton.setBounds(256, 485, 65, 19);
 		toiletButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		toiletButton.addActionListener(new ActionListener() {
             @Override
@@ -178,7 +178,7 @@ public class MainGamePanel extends JPanel {
         add(toiletButton);
 		
 		sleepButton = new JButton("Sleep");
-		sleepButton.setBounds(83, 428, 65, 19);
+		sleepButton.setBounds(331, 485, 77, 19);
 		sleepButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
         sleepButton.addActionListener(new ActionListener() {
             @Override
@@ -191,7 +191,7 @@ public class MainGamePanel extends JPanel {
         add(sleepButton);
 		
 		useButton = new JButton();
-		useButton.setBounds(158, 428, 65, 19);
+		useButton.setBounds(418, 485, 65, 19);
 		useButton.setEnabled(false);
 		useButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
         useButton.addActionListener(new ActionListener() {
@@ -251,7 +251,7 @@ public class MainGamePanel extends JPanel {
         
 		
 		inventoryList = new JList<>();
-		inventoryList.setBounds(495, 61, 128, 362);
+		inventoryList.setBounds(495, 73, 128, 432);
 		inventoryList.setModel(new InventoryListModel(game));
         inventoryList.setCellRenderer(new ShopListViewRenderer<String>());
         inventoryList.addListSelectionListener(new ListSelectionListener() {
@@ -262,7 +262,7 @@ public class MainGamePanel extends JPanel {
         });
 		
 		JScrollPane scrollInventoryPane = new JScrollPane(inventoryList);
-		scrollInventoryPane.setBounds(516, 61, 160, 386);
+		scrollInventoryPane.setBounds(516, 73, 160, 430);
         add(scrollInventoryPane);
 		
 		setLayout(null);
