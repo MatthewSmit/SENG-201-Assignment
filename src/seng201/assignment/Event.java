@@ -12,7 +12,7 @@ public abstract class Event {
      * Loops through each players pets, testing if the event gets applied to them.
      * @param player The player whos pets get tested for the event.
      */
-    public void processPlayer(Player player) {
+    public void processPlayer(final Player player) {
         for (Pet pet : player.getPets()) {
             if (pet.getEventState() == Pet.EventState.NoEvent) {
                 if (processPet(pet)) {
@@ -29,11 +29,13 @@ public abstract class Event {
      */
     protected abstract boolean processPet(Pet pet);
 
-    protected static float lerp(float low, float high, float amount) {
-        if (amount < 0)
+    protected static float lerp(final float low, final float high, final float amount) {
+        if (amount < 0) {
             return low;
-        if (amount > 1)
+        }
+        if (amount > 1) {
             return high;
+        }
         return low + (high - low) * amount;
     }
 }

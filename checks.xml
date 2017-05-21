@@ -14,6 +14,7 @@
   <module name="TreeWalker">
     <module name="JavadocMethod">
       <property name="scope" value="protected"/>
+      <property name="allowMissingReturnTag" value="true"/>
     </module>
     <module name="JavadocType">
       <property name="scope" value="protected"/>
@@ -31,26 +32,39 @@
       <property name="format" value="^([a-zA-Z_][a-zA-Z0-9_]*)(\.[a-zA-Z_][a-zA-Z0-9_]*)*$"/>
     </module>
     <module name="ParameterName"/>
-    <module name="StaticVariableName"/>
+    <module name="StaticVariableName">
+      <property name="applyToPublic" value="false"/>
+      <property name="applyToProtected" value="false"/>
+      <property name="applyToPackage" value="false"/>
+    </module>
     <module name="TypeName"/>
-    <module name="AvoidStarImport"/>
+    <module name="AvoidStarImport">
+      <property name="allowStaticMemberImports" value="true"/>
+    </module>
     <module name="IllegalImport"/>
     <module name="RedundantImport"/>
     <module name="UnusedImports">
       <property name="processJavadoc" value="false"/>
     </module>
-    <module name="LineLength"/>
+    <module name="LineLength">
+      <property name="max" value="160"/>
+      <property name="tabWidth" value="4"/>
+    </module>
     <module name="MethodLength"/>
     <module name="ParameterNumber"/>
     <module name="EmptyForIteratorPad"/>
     <module name="GenericWhitespace"/>
     <module name="MethodParamPad"/>
-    <module name="NoWhitespaceAfter"/>
+    <module name="NoWhitespaceAfter">
+      <property name="tokens" value="ARRAY_INIT,INC,DEC,UNARY_MINUS,UNARY_PLUS,BNOT,LNOT,DOT,TYPECAST,ARRAY_DECLARATOR,INDEX_OP"/>
+    </module>
     <module name="NoWhitespaceBefore"/>
     <module name="OperatorWrap"/>
     <module name="ParenPad"/>
     <module name="TypecastParenPad"/>
-    <module name="WhitespaceAfter"/>
+    <module name="WhitespaceAfter">
+      <property name="tokens" value="COMMA,SEMI,LITERAL_IF,LITERAL_ELSE,LITERAL_WHILE,LITERAL_DO,LITERAL_FOR,DO_WHILE"/>
+    </module>
     <module name="WhitespaceAround"/>
     <module name="ModifierOrder"/>
     <module name="RedundantModifier"/>
@@ -62,10 +76,12 @@
     <module name="AvoidInlineConditionals"/>
     <module name="EmptyStatement"/>
     <module name="EqualsHashCode"/>
-    <module name="HiddenField"/>
+    <module name="HiddenField">
+      <property name="ignoreConstructorParameter" value="true"/>
+      <property name="ignoreSetter" value="true"/>
+    </module>
     <module name="IllegalInstantiation"/>
     <module name="InnerAssignment"/>
-    <module name="MagicNumber"/>
     <module name="MissingSwitchDefault"/>
     <module name="SimplifyBooleanExpression"/>
     <module name="SimplifyBooleanReturn"/>
@@ -80,14 +96,14 @@
     <module name="UpperEll"/>
     <module name="MissingDeprecated"/>
     <module name="MissingOverride"/>
+    <module name="StaticVariableName">
+      <property name="applyToPrivate" value="false"/>
+      <property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
+    </module>
   </module>
   <module name="JavadocPackage"/>
   <module name="NewlineAtEndOfFile"/>
   <module name="Translation"/>
   <module name="FileLength"/>
   <module name="FileTabCharacter"/>
-  <module name="RegexpSingleline">
-    <property name="format" value="\s+$"/>
-    <property name="message" value="Line has trailing spaces."/>
-  </module>
 </module>

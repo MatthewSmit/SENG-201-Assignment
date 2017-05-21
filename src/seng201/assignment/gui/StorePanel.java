@@ -234,7 +234,7 @@ public class StorePanel extends JPanel {
 		redraw();
 	}
 	
-	private void redraw() {
+	public void redraw() {
 	    Player player = game.getCurrentPlayer();
 	    
 	    ((InventoryListModel)inventoryList.getModel()).redraw();

@@ -13,7 +13,7 @@ public class Food extends Item {
     public static final Food PEAS            = new Food("peas", 2, 3, 2, 2);
     public static final Food MEDICINE        = new Food("medicine", 10, 0, 0, 0);
     public static final Food REVIVALMEDICINE = new Food("revival medicine", 25, 0, 0, 0);
-    
+
     private static final Food[] values = new Food[]{
             CARROT,
             TUNA,
@@ -25,16 +25,16 @@ public class Food extends Item {
             MEDICINE,
             REVIVALMEDICINE
     };
-	
-	private final String foodName;
+
+    private final String foodName;
     private final int price;
     private final int nutrition;
     private final int mealSize;
     private final int tastiness;
-    
-    private Food(String name, int price, int nutrition, int mealSize, int tastiness) {
+
+    private Food(final String name, final int price, final int nutrition, final int mealSize, final int tastiness) {
         this.foodName = name;
-    	this.price = price;
+        this.price = price;
         this.nutrition = nutrition;
         this.mealSize = mealSize;
         this.tastiness = tastiness;
@@ -60,12 +60,12 @@ public class Food extends Item {
     public int getTastiness() {
         return tastiness;
     }
-    
+
     @Override
-    public String toString(){
-    	return foodName;
+    public String toString() {
+        return foodName;
     }
-    
+
     public static Food[] values() {
         return values;
     }

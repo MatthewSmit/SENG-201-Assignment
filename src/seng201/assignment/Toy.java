@@ -1,18 +1,35 @@
 package seng201.assignment;
 
 /**
- * Created by Programmdude on 27/04/2017.
+ * Created by Matthew on 2017-04-27.
  */
-public class Toy extends Item {
-    //price, durability = 1->10 (1 lowest, 10 highest)
-    public static final Toy SMALLBALL     = new Toy("small ball", 3, 8);
-    public static final Toy LARGEBALL     = new Toy("large ball", 5, 9);
-    public static final Toy SQUEAKYTOY    = new Toy("squeaky toy", 8, 5);
-    public static final Toy GUINEAPIGWHEEL= new Toy("guinea pig wheel", 7, 7);
-    public static final Toy JUNGLEGYM     = new Toy("jungle gym", 8, 5);
-    public static final Toy CARDBOARDBOX  = new Toy("cardboard box", 1, 2);
-    
-    private static final Toy[] values = new Toy[]{
+public final class Toy extends Item {
+    /**
+     * A small ball.
+     */
+    public static final Toy SMALLBALL      = new Toy("small ball", 3, 8);
+    /**
+     * A large ball.
+     */
+    public static final Toy LARGEBALL      = new Toy("large ball", 5, 9);
+    /**
+     * A squeaky toy.
+     */
+    public static final Toy SQUEAKYTOY     = new Toy("squeaky toy", 8, 5);
+    /**
+     * A spinning guinea pig wheel.
+     */
+    public static final Toy GUINEAPIGWHEEL = new Toy("guinea pig wheel", 7, 7);
+    /**
+     * A jungle gym.
+     */
+    public static final Toy JUNGLEGYM      = new Toy("jungle gym", 8, 5);
+    /**
+     * A cardboard box.
+     */
+    public static final Toy CARDBOARDBOX   = new Toy("cardboard box", 1, 2);
+
+    private static final Toy[] VALUES = new Toy[] {
             SMALLBALL,
             LARGEBALL,
             SQUEAKYTOY,
@@ -20,62 +37,76 @@ public class Toy extends Item {
             JUNGLEGYM,
             CARDBOARDBOX
     };
-    
-    private final String toyName;
+
+    private final String name;
     private final int price;
     private final int maxDurability;
 
     private int durability;
 
-    private Toy(String name, int price, int maxDurability) {
-        this.toyName = name;
+    private Toy(final String name, final int price, final int maxDurability) {
+        this.name = name;
         this.price = price;
         this.maxDurability = maxDurability;
         durability = maxDurability;
     }
 
-    public void degrade(Pet pet) {
+    /**
+     * Damages the toy, random damage value between [0, pet.roughness).
+     * @param pet The pet the damages the toy
+     */
+    public void degrade(final Pet pet) {
         if (this.durability <= 0) {
             throw new UnsupportedOperationException("Can't play with a broken toy!");
-        }
-
-        else if (this.durability - pet.getRoughness() < 0) {
-            this.durability = 0;
-        }
-
-        else {
-            this.durability = durability-pet.getRoughness();
+        } else {
+            int damageAmount = pet.getRandom().nextInt(pet.getRoughness() + 1);
+            durability -= damageAmount;
+            if (durability < 0) {
+                durability = 0;
+            }
         }
     }
 
+    /**
+     * If the toy has broken.
+     */
     public boolean isBroken() {
         return durability <= 0;
     }
 
     @Override
     public Toy clone() {
-        return new Toy(toyName, price, maxDurability);
+        return new Toy(name, price, maxDurability);
     }
 
     @Override
-    public int getPrice(){
+    public int getPrice() {
         return price;
     }
 
-    public int getDurability(){
+    /**
+     * Remaining durability of the toy.
+     */
+    public int getDurability() {
         return durability;
     }
 
-    public int getMaxDurability(){
+    /**
+     * Maximum durability of the toy.
+     */
+    public int getMaxDurability() {
         return maxDurability;
     }
-    
+
     @Override
-    public String toString(){
-        return toyName;
+    public String toString() {
+        return name;
     }
-    
+
+    /**
+     * An array of all the possible toy types.
+     */
     public static Toy[] values() {
-        return values;
+        return VALUES;
     }
 }

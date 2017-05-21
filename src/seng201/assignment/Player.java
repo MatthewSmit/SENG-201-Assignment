@@ -22,54 +22,88 @@ public class Player {
     private int money = INITIAL_MONEY;
     private String name;
 
-    public Player(String name, Pet[] pets) {
+    /**
+     * Creates a new player.
+     * @param name The name of the player
+     * @param pets An array of the pets the player has
+     */
+    public Player(final String name, final Pet[] pets) {
         this.name = name;
         this.pets = pets;
     }
 
-    public void purchase(Item item) {
-        if (money < item.getPrice())
+    /**
+     * Purchases an item, throws an exception if the player doesn't have enough money.
+     * @param item The desired item
+     */
+    public void purchase(final Item item) {
+        if (money < item.getPrice()) {
             throw new UnsupportedOperationException("Can't afford the toy.");
+        }
 
         money -= item.getPrice();
         items.add(item.clone());
     }
 
+    /**
+     * Gets the name of the player.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the pets a player has.
+     */
     public Pet[] getPets() {
         return pets;
     }
 
+    /**
+     * Gets the items a player has.
+     */
     public ArrayList<Item> getItems() {
         return items;
     }
 
+    /**
+     * Gets the food a player has.
+     */
     public ArrayList<Food> getFood() {
         ArrayList<Food> food = new ArrayList<>();
         for (Item item : items) {
-            if (item instanceof Food)
+            if (item instanceof Food) {
                 food.add((Food)item);
+            }
         }
         return food;
     }
 
+    /**
+     * Gets the toys a player has.
+     */
     public ArrayList<Toy> getToys() {
         ArrayList<Toy> toys = new ArrayList<>();
         for (Item item : items) {
-            if (item instanceof Toy)
+            if (item instanceof Toy) {
                 toys.add((Toy)item);
+            }
         }
         return toys;
     }
 
+    /**
+     * Gets the money a player has.
+     */
     public int getMoney() {
         return money;
     }
 
-    public void addMoney(int money) {
-        this.money += money;
+    /**
+     * Adds the money to a player's balance.
+     * @param increasedMoney The money to add
+     */
+    public void addMoney(final int increasedMoney) {
+        this.money += increasedMoney;
     }
 }

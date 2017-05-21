@@ -10,6 +10,7 @@ import javax.swing.event.ChangeListener;
 import seng201.assignment.*;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 
 @SuppressWarnings("serial")
 public class MainGameWindow extends JFrame {
@@ -53,14 +54,18 @@ public class MainGameWindow extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		
-		final HelpPanel help = new HelpPanel();
+		final MainGamePanel main = new MainGamePanel(game);
+		final StorePanel store = new StorePanel(this, game);
+        final HelpPanel help = new HelpPanel();
 
-		tabbedPane.addTab("Pet", new MainGamePanel(game));
-		tabbedPane.addTab("Store", new StorePanel(this, game));
+		tabbedPane.addTab("Pet", main);
+		tabbedPane.addTab("Store", store);
 		tabbedPane.addTab("Help", help);
 		tabbedPane.addChangeListener(new ChangeListener() {
             @Override
-            public void stateChanged(ChangeEvent e) {
+            public void stateChanged(final ChangeEvent e) {
+                main.redraw();
+                store.redraw();
                 help.onTabChanged();
             }
         });

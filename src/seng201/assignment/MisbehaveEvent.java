@@ -3,11 +3,12 @@ package seng201.assignment;
 /**
  * The misbehaving event, sets the pet to misbehave. A greater chance the more unhappy the pet is.
  */
-public class MisbehaveEvent extends Event {
+public final class MisbehaveEvent extends Event {
     @Override
-    protected boolean processPet(Pet pet) {
-        if (pet.isMisbehaving() || pet.isDead())
+    protected boolean processPet(final Pet pet) {
+        if (pet.isMisbehaving() || pet.isDead()) {
             return false;
+        }
 
         float chance = lerp(0, 0.25f, (10 - pet.getHappiness()) / 10.0f);
         if (random.nextFloat() <= chance) {

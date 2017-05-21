@@ -270,7 +270,7 @@ public class MainGamePanel extends JPanel {
 		redraw();
 	}
 	
-	private void redraw() {
+	public void redraw() {
 	    Player player = game.getCurrentPlayer();
 	    Pet pet = game.getCurrentPet();
 	    

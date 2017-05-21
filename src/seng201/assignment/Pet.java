@@ -3,20 +3,50 @@ package seng201.assignment;
 import java.util.Random;
 
 /**
- * The pet base class, handles most stat information and logic changes.
+ * The pet base class, handles most statistics information and logic changes.
  */
 public abstract class Pet {
+    /**
+     * The death state.
+     */
     public enum DeathState {
+        /**
+         * Pet is alive.
+         */
         ALIVE,
+        /**
+         * Pet is alive and has died once.
+         */
         ALIVE_WAS_DEAD,
+        /**
+         * Pet is dead and can be revived.
+         */
         DEAD_ONCE,
+        /**
+         * Pet is permanently dead.
+         */
         PERMANENTLY_DEAD
     }
 
+    /**
+     * The current event type that happened.
+     */
     public enum EventState {
+        /**
+         * No Event.
+         */
         NoEvent,
+        /**
+         * Pet is misbehaving.
+         */
         Misbehaving,
+        /**
+         * Pet is sick.
+         */
         Sick,
+        /**
+         * Pet is dead.
+         */
         Dead
     }
 
@@ -111,14 +141,14 @@ public abstract class Pet {
      * Weight of the pet, represented in kg.
      */
     private float weight;
-    
+
 
     private PetType type;
     /**
      * Gender of the pet. 
      */    
     private String gender;
-    
+
     /**
      * The event that happened this turn, gets reset at the start of a new turn.
      */
@@ -134,45 +164,48 @@ public abstract class Pet {
     private boolean misbehaving;
 
     /**
-     * Number of actions left in this round
+     * Number of actions left in this round.
      */
     private int actionsLeft = 2;
 
     /**
-     * Create a new pet
-     * @param name the name of the new pet
+     * Create a new pet.
+     * @param petName the name of the new pet
+     * @param petType the type of the new pet
      */
-    protected Pet(String name, PetType type) {
-    	this.name = name;
-    	this.type = type;
-    	
-    	hunger = 0;
-    	tiredness = 0;
-    	toiletNeed = 0;
-    	health = 10;
+    protected Pet(final String petName, final PetType petType) {
+        name = petName;
+        type = petType;
+
+        hunger = 0;
+        tiredness = 0;
+        toiletNeed = 0;
+        health = 10;
         happiness = 10;
-    	playfulness = getSpeciesPlayfulness();
-    	roughness = getSpeciesRoughness();
-    	hungerRate = getSpeciesHungerRate();
-    	tiredRate = getSpeciesTiredRate();
-    	weight = getSpeciesInitialWeight();
-    	gender = getInitialGender();
+        playfulness = getSpeciesPlayfulness();
+        roughness = getSpeciesRoughness();
+        hungerRate = getSpeciesHungerRate();
+        tiredRate = getSpeciesTiredRate();
+        weight = getSpeciesInitialWeight();
+        gender = getInitialGender();
     }
 
     /**
-     * Processes stat changes when the day changes
+     * Processes stat changes when the day changes.
      */
-    void dayPassed() {
-    	actionsLeft = 2;
+    final void dayPassed() {
+        actionsLeft = 2;
         hunger += hungerRate;
         tiredness += tiredRate;
 
         happiness -= HAPPY_DECREASE_RATE;
-        if (happiness < 0)
+        if (happiness < 0) {
             happiness = 0;
+        }
 
-        if (sick)
+        if (sick) {
             health--;
+        }
 
         eventState = EventState.NoEvent;
 
@@ -183,9 +216,9 @@ public abstract class Pet {
      * Feeds the pet some food. Decreases hunger, increases toilet need, and happiness if its a favoured toy.
      * @param food the food used to feed the pet
      */
-    public void feed(Food food) {
-        assert(!isDead());
-    	assert(actionsLeft > 0);
+    public void feed(final Food food) {
+        assert !isDead();
+        assert actionsLeft > 0;
         actionsLeft--;
 
         Food[] favourites = getFavouriteFood();
@@ -194,16 +227,16 @@ public abstract class Pet {
         boolean favourite = Lists.contains(favourites, food);
 
         hunger -= food.getNutrition();
-        if (hunger < 0)
+        if (hunger < 0) {
             hunger = 0;
+        }
 
         toiletNeed += food.getMealSize();
 
         if (favourite) {
             if (mostFavourite) {
                 happiness += BEST_FOOD_HAPPINESS;
-            }
-            else {
+            } else {
                 happiness += GOOD_FOOD_HAPPINESS;
             }
         }
@@ -213,11 +246,11 @@ public abstract class Pet {
      * Plays with the pet, using a toy. Increases the pets happiness.
      * @param toy the toy used to play with the pet
      */
-    public void play(Toy toy) {
-        assert(!isDead());
-    	assert(actionsLeft > 0);
+    public void play(final Toy toy) {
+        assert !isDead();
+        assert actionsLeft > 0;
         actionsLeft--;
-        
+
         Toy[] favourites = getFavouriteToy();
 
         boolean mostFavourite = favourites[0] == toy;
@@ -228,55 +261,61 @@ public abstract class Pet {
         if (favourite) {
             if (mostFavourite) {
                 happiness += BEST_TOY_HAPPINESS;
-            }
-            else {
+            } else {
                 happiness += GOOD_TOY_HAPPINESS;
             }
-        }
-        else {
+        } else {
             happiness += BAD_TOY_HAPPINESS;
+        }
+
+        if (happiness > 10) {
+            happiness = 10;
         }
 
         //TODO: Make them get more tired/hungry depending on how vigorous the play is
     }
 
     /**
-     * Gets the pet to go to sleep, restoring its tiredness
+     * Gets the pet to go to sleep, restoring its tiredness.
      */
     public void sleep() {
-        assert(!isDead());
-    	assert(actionsLeft > 0);
+        assert !isDead();
+        assert actionsLeft > 0;
         actionsLeft--;
-        
+
         tiredness -= REST_AMOUNT;
-        if (tiredness < 0)
+        if (tiredness < 0) {
             tiredness = 0;
+        }
     }
 
     /**
      * Gets the pet to go to the toilet, restoring its toilet need.
      */
     public void toilet() {
-        assert(!isDead());
-    	assert(actionsLeft > 0);
+        assert !isDead();
+        assert actionsLeft > 0;
         actionsLeft--;
-        
+
         toiletNeed -= TOILET_RATE;
-        if (toiletNeed < 0)
+        if (toiletNeed < 0) {
             toiletNeed = 0;
+        }
     }
 
-    void startMisbehaving() {
-        if (eventState != EventState.NoEvent)
+    final void startMisbehaving() {
+        if (eventState != EventState.NoEvent) {
             throw new IllegalStateException();
+        }
 
         eventState = EventState.Misbehaving;
         misbehaving = true;
     }
 
-    void startBeingSick() {
-        if (eventState != EventState.NoEvent)
+    final void startBeingSick() {
+        if (eventState != EventState.NoEvent) {
             throw new IllegalStateException();
+        }
 
         eventState = EventState.Sick;
         sick = true;
@@ -287,16 +326,21 @@ public abstract class Pet {
      * Kills the pet, either setting it to once-dead, or permanently-dead.
      */
     public void die() {
-        assert(deathState == DeathState.ALIVE || deathState == DeathState.ALIVE_WAS_DEAD);
-        
+        assert deathState == DeathState.ALIVE || deathState == DeathState.ALIVE_WAS_DEAD;
+
         eventState = EventState.Dead;
-        if (deathState == DeathState.ALIVE)
+        if (deathState == DeathState.ALIVE) {
             deathState = DeathState.DEAD_ONCE;
-        else deathState = DeathState.PERMANENTLY_DEAD;
+        } else {
+            deathState = DeathState.PERMANENTLY_DEAD;
+        }
     }
 
+    /**
+     * Revives a pet, can only be done once.
+     */
     public void revive() {
-        assert(deathState == DeathState.DEAD_ONCE);
+        assert deathState == DeathState.DEAD_ONCE;
         deathState = DeathState.ALIVE_WAS_DEAD;
     }
 
@@ -353,7 +397,7 @@ public abstract class Pet {
      * Gets how heavy the pet is in kg.
      */
     public float getWeight() {
-    	return weight + toiletNeed * FOOD_WEIGHT_MULTIPLIER;
+        return weight + toiletNeed * FOOD_WEIGHT_MULTIPLIER;
     }
 
     /**
@@ -390,20 +434,26 @@ public abstract class Pet {
     public String getName() {
         return name;
     }
-    
-    
-    public String getGender() {
-    	return gender;
-    }
-    
-    
+
+
     /**
-     * Gets the actions remaining
+     * Gets the gender of the pet.
+     */
+    public String getGender() {
+        return gender;
+    }
+
+
+    /**
+     * Gets the actions remaining.
      */
     public int getActionsLeft() {
-    	return actionsLeft;
+        return actionsLeft;
     }
-    
+
+    /**
+     * Gets the type of pet.
+     */
     public PetType getType() {
         return type;
     }
@@ -414,57 +464,85 @@ public abstract class Pet {
     public String getSpecies() {
         return type.getName();
     }
-    
+
+    /**
+     * Gets the favourite toys.
+     */
     public abstract Toy[] getFavouriteToy();
 
+    /**
+     * Gets the favourite food.
+     */
     public abstract Food[] getFavouriteFood();
 
+    /**
+     * Gets the weight range of the species.
+     */
     public abstract float[] getSpeciesWeightRange();
-    
-    public abstract int[] getSpeciesPlayfulnessRange();
-    
-    public abstract int[] getSpeciesRoughnessRange();
-    
-    public abstract int[] getSpeciesHungerRateRange();
-    
-    public abstract int[] getSpeciesTiredRateRange();
-    
-    //random.nextInt(max - min + 1) + min
-    private int getSpeciesPlayfulness(){
-    	int[] playfulnessRange = getSpeciesPlayfulnessRange();
-    	return rn.nextInt(playfulnessRange[1] - playfulnessRange[0] + 1) + playfulnessRange[0];
-    }
-    
-    private int getSpeciesRoughness(){
-    	int[] roughnessRange = getSpeciesRoughnessRange();
-    	return rn.nextInt(roughnessRange[1] - roughnessRange[0] + 1) + roughnessRange[0];
-    }
-    
-    private int getSpeciesHungerRate(){
-    	int[] hungerRateRange = getSpeciesHungerRateRange();
-    	return rn.nextInt(hungerRateRange[1] - hungerRateRange[0] + 1) + hungerRateRange[0];
-    }
-    
-    private int getSpeciesTiredRate(){
-    	int[] tiredRateRange = getSpeciesTiredRateRange();
-    	return rn.nextInt(tiredRateRange[1] - tiredRateRange[0] + 1) + tiredRateRange[0];
-    }
-    
-	private float getSpeciesInitialWeight(){
-		float[] weightRange = getSpeciesWeightRange();
-		float initialWeight = rn.nextFloat() * (weightRange[1] - weightRange[0]) + weightRange[0];
-		return initialWeight;
-	}
-	
-	public String getInitialGender(){
-		String gender = "female"; //female by default
-		if (Math.random() >= 0.5){
-			gender = "male"; //male
-		}
-		return gender;
-	}
 
+    /***
+     * Gets the playfulness range of the species.
+     */
+    public abstract int[] getSpeciesPlayfulnessRange();
+
+    /**
+     * Gets the roughness range of the species.
+     */
+    public abstract int[] getSpeciesRoughnessRange();
+
+    /**
+     * Gets the hunger rate range of the species.
+     */
+    public abstract int[] getSpeciesHungerRateRange();
+
+    /**
+     * Gets the tired rate range of the species.
+     * @return
+     */
+    public abstract int[] getSpeciesTiredRateRange();
+
+    //random.nextInt(max - min + 1) + min
+    private int getSpeciesPlayfulness() {
+        int[] playfulnessRange = getSpeciesPlayfulnessRange();
+        return rn.nextInt(playfulnessRange[1] - playfulnessRange[0] + 1) + playfulnessRange[0];
+    }
+
+    private int getSpeciesRoughness() {
+        int[] roughnessRange = getSpeciesRoughnessRange();
+        return rn.nextInt(roughnessRange[1] - roughnessRange[0] + 1) + roughnessRange[0];
+    }
+
+    private int getSpeciesHungerRate() {
+        int[] hungerRateRange = getSpeciesHungerRateRange();
+        return rn.nextInt(hungerRateRange[1] - hungerRateRange[0] + 1) + hungerRateRange[0];
+    }
+
+    private int getSpeciesTiredRate() {
+        int[] tiredRateRange = getSpeciesTiredRateRange();
+        return rn.nextInt(tiredRateRange[1] - tiredRateRange[0] + 1) + tiredRateRange[0];
+    }
+
+    private float getSpeciesInitialWeight() {
+        float[] weightRange = getSpeciesWeightRange();
+        float initialWeight = rn.nextFloat() * (weightRange[1] - weightRange[0]) + weightRange[0];
+        return initialWeight;
+    }
+
+    private static String getInitialGender() {
+        if (Math.random() >= 0.5) {
+            return "male";
+        }
+        return "female";
+    }
+
+    /**
+     * Returns if the pet is currently dead.
+     */
     public boolean isDead() {
         return deathState == DeathState.DEAD_ONCE || deathState == DeathState.PERMANENTLY_DEAD; 
+    }
+
+    final Random getRandom() {
+        return rn;
     }
 }

@@ -2,44 +2,71 @@ package seng201.assignment;
 
 import java.lang.reflect.Constructor;
 
+/**
+ * The type of pet, used to get the image file for the pet type.
+ */
 public enum PetType {
-	Dog("Dog", "dog.png", Dog.class),
-	Cat("Cat", "cat.png", Cat.class),
-	Bird("Bird", "bird.png", Bird.class),
-	Goldfish("Goldfish", "goldfish.png", Goldfish.class),
-	Rabbit("Rabbit", "rabbit.png", Rabbit.class),
-	GuineaPig("Guinea Pig", "guineapig.png", GuineaPig.class);
+    /**
+     * A dog.
+     */
+    Dog("Dog", "dog.png", Dog.class),
+    /**
+     * A cat.
+     */
+    Cat("Cat", "cat.png", Cat.class),
+    /**
+     * A Bird.
+     */
+    Bird("Bird", "bird.png", Bird.class),
+    /**
+     * A Goldfish.
+     */
+    Goldfish("Goldfish", "goldfish.png", Goldfish.class),
+    /**
+     * A Rabbit.
+     */
+    Rabbit("Rabbit", "rabbit.png", Rabbit.class),
+    /**
+     * A Guinea Pig.
+     */
+    GuineaPig("Guinea Pig", "guineapig.png", GuineaPig.class);
 
-	private final String name;
-	private final String imageFile;
-	private final Class<? extends Pet> petClass;
-	
-	PetType(String name, String imageFile, Class<? extends Pet> petClass) {
-		this.name = name;
+    private final String name;
+    private final String imageFile;
+    private final Class<? extends Pet> petClass;
+
+    PetType(final String name, final String imageFile, final Class<? extends Pet> petClass) {
+        this.name = name;
         this.imageFile = imageFile;
         this.petClass = petClass;
-	}
-	
-	public String getImageFile() {
-		return imageFile;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public Class<? extends Pet> getPetClass() {
-	    return petClass;
-	}
-	
-	public Pet create(String name) {
+    }
+
+    /**
+     * Gets the path to the image file.
+     */
+    public String getImageFile() {
+        return imageFile;
+    }
+
+    /**
+     * Gets the name of the pet species.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Create a pet of the desired type.
+     * @param petName The name of the new pet
+     */
+    public Pet create(final String petName) {
         try {
-            Constructor<? extends Pet> constructor = petClass.getConstructor(String.class, PetType.class);
+            Constructor<? extends Pet> constructor = petClass.getDeclaredConstructor(String.class, PetType.class);
             constructor.setAccessible(true);
-            return (Pet)constructor.newInstance(name, this);
+            return (Pet)constructor.newInstance(petName, this);
         } catch (Exception e) {
             e.printStackTrace();
             throw new Error();
         }
-	}
+    }
 }

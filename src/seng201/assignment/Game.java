@@ -6,7 +6,7 @@ package seng201.assignment;
 public class Game {
     private static final int ALLOWANCE = 20;
     
-    private static final Event[] events = new Event[] {
+    private static final Event[] EVENTS = new Event[] {
             new MisbehaveEvent(),
             new SicknessEvent(),
             new DeadEvent()
@@ -19,7 +19,7 @@ public class Game {
     private int day;
     private int currentPet;
 
-    public Game(int numberDays, Player[] players) {
+    public Game(final int numberDays, final Player[] players) {
         maxDays = numberDays;
         this.players = players;
     }
@@ -32,7 +32,7 @@ public class Game {
             }
         }
 
-        for (Event event : events) {
+        for (Event event : EVENTS) {
             for (Player player : players) {
                 event.processPlayer(player);
             }

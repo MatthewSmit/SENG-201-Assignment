@@ -4,9 +4,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by programmdude on 27/04/17.
+ * Created by Matthew on 2017-04-27.
  */
-public class PetTest {
+class PetTest {
     @Test
     public void feedGood() throws Exception {
         Pet pet = PetType.Dog.create("dogName");
@@ -141,7 +141,7 @@ public class PetTest {
         // Pet can be revived once
         pet.die();
         assertEquals(Pet.DeathState.DEAD_ONCE, pet.getDeathState());
-        
+
         pet.revive();
         assertEquals(Pet.DeathState.ALIVE_WAS_DEAD, pet.getDeathState());
 
