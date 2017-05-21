@@ -17,14 +17,18 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import seng201.assignment.PetType;
 
 import javax.swing.JTextPane;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class PetInfoDialogue extends JDialog {
 	private static final long serialVersionUID = -6846642495293896897L;
 	
 	public PetInfoDialogue(Frame frame, PetType type) {
 		super(frame, true);
+		setResizable(false);
 		
-		setBounds(100, 100, 446, 314);
+		setBounds(100, 100, 440, 250);
 		
 		BufferedImage bufferedImage = null;
 		try {
@@ -47,31 +51,44 @@ public class PetInfoDialogue extends JDialog {
 		});
 		
 		JTextPane infoText = new JTextPane();
+		infoText.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		infoText.setEditable(false);
-		infoText.setEditable(false);
-		infoText.getCaret().deinstall(infoText);
-		infoText.setText(type.getName());
+		infoText.setText(GameStrings.getSpeciesStats(type));
+		
+		JLabel lblSpecies = new JLabel();
+		lblSpecies.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblSpecies.setText(GameStrings.getTypeSpecies(type));
 		
 		GroupLayout groupLayout = new GroupLayout(this.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createSequentialGroup()
-				.addContainerGap()
-				.addGroup(groupLayout.createParallelGroup()
-						.addComponent(image, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-						.addComponent(infoText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addPreferredGap(ComponentPlacement.RELATED, 0, Short.MAX_VALUE)
-				.addComponent(okButton)
-				.addContainerGap()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblSpecies)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(image, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(infoText, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
+					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(357, Short.MAX_VALUE)
+					.addComponent(okButton)
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createSequentialGroup()
-			.addContainerGap()
-			.addComponent(image, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-			.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
-			.addComponent(infoText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-			.addPreferredGap(ComponentPlacement.RELATED, 0, Short.MAX_VALUE)
-			.addComponent(okButton)
-			.addContainerGap()
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblSpecies)
+					.addPreferredGap(ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(infoText, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+							.addGap(12)
+							.addComponent(okButton))
+						.addComponent(image, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		this.getContentPane().setLayout(groupLayout);
 	}
