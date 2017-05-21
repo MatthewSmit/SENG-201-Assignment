@@ -118,27 +118,38 @@ public class GameStrings {
 	//	inventoryList
 	//}
 	
+	public static String toPercent(int integer){
+		integer*=10;
+		if (integer > 100){
+			integer = 100;
+		}
+		return String.format("%d%%", integer);
+	}
+	
+	
 	public static String getPetInfo(Pet pet){ //include status effect
 		String petInfo = "";
-		petInfo +="Name: " + getPetName(pet) + "\r\n";
 		petInfo +="Species: " + pet.getSpecies() + "\r\n";
 		petInfo +="Gender: " +pet.getGender() + "\r\n";
 		petInfo +="Weight: " + String.format("%.2f", pet.getWeight()) + "\r\n";
 		petInfo +="Favourite toy: " + stringOfToys(pet.getFavouriteToy()) + "\r\n"; //get favourite toy is list of toys
 		petInfo +="Favourite food: " + stringOfFoods(pet.getFavouriteFood()) + "\r\n"; //get favourite food
-		petInfo +="Hunger: " + pet.getHunger() + "\r\n";
-		petInfo +="Tiredness: " + pet.getTiredness() + "\r\n";
-		petInfo +="Playfulness: " + pet.getPlayfulness() + "\r\n";
-		petInfo +="Roughness: " + pet.getRoughness();
+		petInfo +="Hunger: " + toPercent(pet.getHunger()) + "\r\n";
+		petInfo +="Toilet need: " + toPercent(pet.getToiletNeed()) + "\r\n";
+		petInfo +="Tiredness: " + toPercent(pet.getTiredness()) + "\r\n";
+		petInfo +="Healthiness: " + toPercent(pet.getHealth()) + "\r\n";
+		petInfo +="Happiness: " + toPercent(pet.getHappiness()) + "\r\n";
+		petInfo +="Playfulness: " + toPercent(pet.getPlayfulness()) + "\r\n";
+		petInfo +="Roughness: " + toPercent(pet.getRoughness());
 		petInfo += getPetSickString(pet);
 		petInfo += getPetMisbehavingString(pet);
 		return petInfo;
 	}
 	
-	public static void main(String args[]){
-		//Dog Snuffles = new Dog("Snuffles", PetType.Dog);
-		System.out.println(getSpeciesStats(PetType.Dog));
-	}
+	/*public static void main(String args[]){
+		Dog Snuffles = new Dog("Snuffles", PetType.Dog);
+		System.out.println(getPetInfo(Snuffles));
+	}*/
 	
 	//get species info (weight range, etc.)
 	//get specific pet stats
