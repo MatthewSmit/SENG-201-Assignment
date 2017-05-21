@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractListModel;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -71,9 +72,11 @@ public class MainGamePanel extends JPanel {
     private JLabel petNameLabel;
     private ImageLabel petImage;
     private JLabel pet2NameLabel;
-    private ImageLabel pet2Image;
+    private Image pet2Img;
+    private JButton pet2Button;
     private JLabel pet3NameLabel;
-    private ImageLabel pet3Image;
+    private Image pet3Img;
+    private JButton pet3Button;
     private JTextPane statsText;
     private JTextPane messageLogText;
     private JButton toiletButton;
@@ -104,20 +107,41 @@ public class MainGamePanel extends JPanel {
         pet2NameLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
         pet2NameLabel.setBounds(256, 48, 100, 14);
         add(pet2NameLabel);
+       
         
-        pet2Image = new ImageLabel();
-        pet2Image.setBounds(256, 77, 93, 92);
-        add(pet2Image);
+        pet2Button = new JButton();
+        pet2Button.setBounds(256, 77, 93, 92);
+        pet2Button.setEnabled(true);
+        add(pet2Button);
+        pet2Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.setCurrentPetIndex(game.getCurrentPetIndex() == 0 ? 1 : 0);
+                redraw();
+            }
+        });
+        
         
         pet3NameLabel = new JLabel();
         pet3NameLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
         pet3NameLabel.setBounds(390, 48, 100, 14);
         add(pet3NameLabel);
         
-        pet3Image = new ImageLabel();
-        pet3Image.setBounds(392, 77, 93, 92);
-        add(pet3Image);
-		
+        
+        pet3Button = new JButton();
+        pet3Button.setBounds(392, 77, 93, 92);
+        pet3Button.setEnabled(true);
+        add(pet3Button);
+        pet3Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.setCurrentPetIndex(game.getCurrentPetIndex() == 2 ? 1 : 2);
+                redraw();
+            }
+        });
+        
+        
+        
 		statsText = new JTextPane();
 		statsText.setBounds(10, 286, 213, 148);
 		statsText.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -166,8 +190,6 @@ public class MainGamePanel extends JPanel {
         useButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //game.sleep();
-                //addMessage("SLEEP MESSAGE");
                 redraw();
             }
         });
@@ -176,6 +198,7 @@ public class MainGamePanel extends JPanel {
 		JButton nextButton = new JButton("------->");
 		nextButton.setBounds(583, 26, 93, 23);
         add(nextButton);
+        
 		
 		inventoryList = new JList<>();
 		inventoryList.setBounds(495, 61, 128, 362);
@@ -216,33 +239,37 @@ public class MainGamePanel extends JPanel {
 	    else actionsLeftString = String.format("%d actions left", pet.getActionsLeft());
 	    
 	    petNameLabel.setText(String.format("%s - %s", pet.getName(), actionsLeftString));
-	    petImage.setImage(loadImage(pet.getType()));
+	    petImage.setImage(loadImage(pet.getType()).getImage().getScaledInstance(213, 204, java.awt.Image.SCALE_SMOOTH));
 	    
 	    ((InventoryListModel)inventoryList.getModel()).redraw();
 	    
 	    Pet[] pets = player.getPets();
 	    if (pets.length > 1) {
+	    	
 	        Pet currentPet = pets[game.getCurrentPetIndex() == 0 ? 1 : 0];
             pet2NameLabel.setVisible(true);
             pet2NameLabel.setText(String.format("%s - %d", currentPet.getName(), currentPet.getActionsLeft()));
-            pet2Image.setVisible(true);
-            pet2Image.setImage(loadImage(currentPet.getType()));
+            pet2Img = loadImage(currentPet.getType()).getImage().getScaledInstance(93,92, java.awt.Image.SCALE_SMOOTH);
+            pet2Button.setIcon(new ImageIcon(pet2Img));
+            
+	    
 	    }
 	    else {
             pet2NameLabel.setVisible(false);
-            pet2Image.setVisible(false);
+            pet2Button.setVisible(false);
 	    }
 
         if (pets.length > 2) {
             Pet currentPet = pets[game.getCurrentPetIndex() == 2 ? 1 : 2];
             pet3NameLabel.setVisible(true);
             pet3NameLabel.setText(String.format("%s - %d", currentPet.getName(), currentPet.getActionsLeft()));
-            pet3Image.setVisible(true);
-            pet3Image.setImage(loadImage(currentPet.getType()));
+            pet3Img = loadImage(currentPet.getType()).getImage().getScaledInstance(93,92, java.awt.Image.SCALE_SMOOTH);
+            pet3Button.setIcon(new ImageIcon(pet3Img));
+            
         }
         else {
             pet3NameLabel.setVisible(false);
-            pet3Image.setVisible(false);
+            pet3Button.setVisible(false);
         }
         
         Item item = getSelectedItem();
