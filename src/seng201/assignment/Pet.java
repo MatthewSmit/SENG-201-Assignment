@@ -334,8 +334,26 @@ public abstract class Pet {
     public void cure() {
         assert sick;
         sick = false;
+        happiness += 2;
+    }
+    
+    
+    /**
+     * Pet is punished for misbehaving.
+     */
+    public void fixMisbehaving(){
+    	if (!misbehaving){
+    		throw new IllegalStateException();
+    	} else {
+    		eventState = EventState.NoEvent;
+    		misbehaving = false;
+    		happiness -= 2;
+    	}
     }
 
+    /**
+     * Pet starts to misbehave.
+     */
     final void startMisbehaving() {
         if (eventState != EventState.NoEvent) {
             throw new IllegalStateException();
@@ -344,7 +362,10 @@ public abstract class Pet {
         eventState = EventState.Misbehaving;
         misbehaving = true;
     }
-
+    
+    /**
+     * Pet becomes sick.
+     */
     final void startBeingSick() {
         if (eventState != EventState.NoEvent) {
             throw new IllegalStateException();
