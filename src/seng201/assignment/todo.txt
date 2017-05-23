@@ -1,10 +1,13 @@
 assignment todo - 
 
+generate daily score and overall score for a player.
+
 happiness decreases by 50% each day (after 2 days down to lowest possible happiness), should probably change that to something more reasonable. 
 Should experiment around with other values to make them more balanced.
 
 score
 
+fix scrollbar stuck to bottom in petinfo
 show stats for toys/food
 
 punishing misbehaving pets

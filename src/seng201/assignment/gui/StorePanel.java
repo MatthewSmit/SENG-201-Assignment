@@ -94,33 +94,33 @@ final class StorePanel extends JPanel {
 
         for (Toy toy : Toy.values()) {
             list.addElement(new ShopListView<Item>(toy, String.format("$%d", toy.getPrice())));
-        }
-
-        storeList = new JList<>();
-        storeList.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        storeList.setBorder(new LineBorder(new Color(0, 0, 0)));
-        storeList.setBounds(10, 49, 397, 456);
-        storeList.setModel(list);
-        storeList.setCellRenderer(new ShopListViewRenderer<Item>());
-        storeList.addListSelectionListener(new ListSelectionListener() {
+		}
+		
+		storeList = new JList<>();
+		storeList.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		storeList.setBorder(new LineBorder(new Color(0, 0, 0)));
+		storeList.setBounds(10, 49, 397, 375);
+		storeList.setModel(list);
+		storeList.setCellRenderer(new ShopListViewRenderer<Item>());
+		storeList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 redraw();
             }
         });
-        add(storeList);
-
-        remainingLabel = new JLabel();
-        remainingLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-        remainingLabel.setBounds(500, 15, 200, 23);
-        add(remainingLabel);
-
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(454, 167, 217, 338);
-        add(scrollPane);
-
-        inventoryList = new JList<>();
-        scrollPane.setViewportView(inventoryList);
+		add(storeList);
+		
+		remainingLabel = new JLabel();
+		remainingLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		remainingLabel.setBounds(500, 15, 200, 23);
+		add(remainingLabel);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(454, 167, 217, 256);
+		add(scrollPane);
+		
+		inventoryList = new JList<>();
+		scrollPane.setViewportView(inventoryList);
         inventoryList.setModel(new InventoryListModel(game));
         inventoryList.setCellRenderer(new ShopListViewRenderer<String>());
         inventoryList.addListSelectionListener(new ListSelectionListener() {

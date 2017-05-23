@@ -1,6 +1,7 @@
 package seng201.assignment.gui;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractListModel;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -87,7 +89,11 @@ final class MainGamePanel extends JPanel {
     private JLabel pet3NameLabel;
     private Image pet3Img;
     private JButton pet3Button;
+    
     private JTextPane statsText;
+    private JScrollPane scrollStatsPane;
+    
+    private JScrollPane scrollMessagePane;
     private JTextPane messageLogText;
     private JButton toiletButton;
     private JButton sleepButton;
@@ -152,25 +158,28 @@ final class MainGamePanel extends JPanel {
         });
 
         statsText = new JTextPane();
-        statsText.setBounds(10, 286, 213, 218);
+        statsText.setBounds(10, 286, 213, 200);
         statsText.setFont(new Font("Tahoma", Font.PLAIN, 11));
         statsText.setEditable(false);
-        statsText.setBorder(new LineBorder(Color.BLACK));
         statsText.setHighlighter(null);
-        add(statsText);
+        
+        scrollStatsPane = new JScrollPane(statsText);
+        scrollStatsPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollStatsPane.setBounds(10, 286, 213, 140);
+        add(scrollStatsPane);
 
         messageLogText = new JTextPane();
         messageLogText.setBounds(268, 164, 217, 259);
         messageLogText.setEditable(false);
         messageLogText.setHighlighter(null);
 
-        JScrollPane scrollMessagePane = new JScrollPane(messageLogText);
+        scrollMessagePane = new JScrollPane(messageLogText);
         scrollMessagePane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollMessagePane.setBounds(256, 180, 229, 294);
+        scrollMessagePane.setBounds(256, 180, 229, 215);
         add(scrollMessagePane);
 
         toiletButton = new JButton("Toilet");
-        toiletButton.setBounds(256, 485, 65, 19);
+        toiletButton.setBounds(256, 406, 65, 19);
         toiletButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
         toiletButton.addActionListener(new ActionListener() {
             @Override
@@ -183,7 +192,7 @@ final class MainGamePanel extends JPanel {
         add(toiletButton);
 
         sleepButton = new JButton("Sleep");
-        sleepButton.setBounds(331, 485, 77, 19);
+        sleepButton.setBounds(331, 406, 77, 19);
         sleepButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
         sleepButton.addActionListener(new ActionListener() {
             @Override
@@ -196,7 +205,7 @@ final class MainGamePanel extends JPanel {
         add(sleepButton);
 
         useButton = new JButton();
-        useButton.setBounds(418, 485, 65, 19);
+        useButton.setBounds(418, 406, 65, 19);
         useButton.setEnabled(false);
         useButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
         useButton.addActionListener(new ActionListener() {
@@ -287,7 +296,7 @@ final class MainGamePanel extends JPanel {
         add(nextButton);
 
         inventoryList = new JList<>();
-        inventoryList.setBounds(495, 73, 128, 432);
+        inventoryList.setBounds(495, 73, 128, 351);
         inventoryList.setModel(new InventoryListModel(game));
         inventoryList.setCellRenderer(new ShopListViewRenderer<String>());
         inventoryList.addListSelectionListener(new ListSelectionListener() {
@@ -298,7 +307,7 @@ final class MainGamePanel extends JPanel {
         });
 
         JScrollPane scrollInventoryPane = new JScrollPane(inventoryList);
-        scrollInventoryPane.setBounds(516, 73, 160, 430);
+        scrollInventoryPane.setBounds(516, 73, 160, 351);
         add(scrollInventoryPane);
 
         setLayout(null);
@@ -376,6 +385,7 @@ final class MainGamePanel extends JPanel {
         sleepButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
 
         statsText.setText(GameStrings.getPetInfo(game.getCurrentPet()));
+        scrollStatsPane.getVerticalScrollBar().setValue(0);
     }
 
     private Item getSelectedItem() {

@@ -538,37 +538,54 @@ public abstract class Pet {
 
     /**
      * Gets the tired rate range of the species.
-     * @return
      */
     public abstract int[] getSpeciesTiredRateRange();
 
-    //random.nextInt(max - min + 1) + min
+    /**
+     * Gets how playful a pet of a certain species is.
+     */
     private int getSpeciesPlayfulness() {
         int[] playfulnessRange = getSpeciesPlayfulnessRange();
         return rn.nextInt(playfulnessRange[1] - playfulnessRange[0] + 1) + playfulnessRange[0];
     }
-
+    
+    /**
+     * Gets how rough a pet of a certain species is.
+     */
     private int getSpeciesRoughness() {
         int[] roughnessRange = getSpeciesRoughnessRange();
         return rn.nextInt(roughnessRange[1] - roughnessRange[0] + 1) + roughnessRange[0];
     }
 
+    /**
+     * Gets the rate that hunger increases for a pet of a certain species.
+     */
     private int getSpeciesHungerRate() {
         int[] hungerRateRange = getSpeciesHungerRateRange();
         return rn.nextInt(hungerRateRange[1] - hungerRateRange[0] + 1) + hungerRateRange[0];
     }
 
+    
+    /**
+     * Gets the rate tiredness increases for a pet of a certain species.
+     */
     private int getSpeciesTiredRate() {
         int[] tiredRateRange = getSpeciesTiredRateRange();
         return rn.nextInt(tiredRateRange[1] - tiredRateRange[0] + 1) + tiredRateRange[0];
     }
 
+    /**
+     * Gets the initial weight of a pet of a certain species.
+     */
     private float getSpeciesInitialWeight() {
         float[] weightRange = getSpeciesWeightRange();
         float initialWeight = rn.nextFloat() * (weightRange[1] - weightRange[0]) + weightRange[0];
         return initialWeight;
     }
 
+    /**
+     * Gets the gender of a pet.
+     */
     private static String getInitialGender() {
         if (Math.random() >= 0.5) {
             return "male";
@@ -577,7 +594,7 @@ public abstract class Pet {
     }
 
     /**
-     * Returns if the pet is currently dead.
+     * Returns true if the pet is currently dead, false if not.
      */
     public boolean isDead() {
         return deathState == DeathState.DEAD_ONCE || deathState == DeathState.PERMANENTLY_DEAD; 
