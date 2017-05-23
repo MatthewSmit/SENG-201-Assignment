@@ -74,11 +74,17 @@ public final class Toy extends Item {
         return durability <= 0;
     }
 
+    /**
+     * Create another instance of a toy.
+     */
     @Override
     public Toy clone() {
         return new Toy(name, price, maxDurability);
     }
 
+    /**
+     * Get the price of the toy.
+     */
     @Override
     public int getPrice() {
         return price;
