@@ -3,18 +3,45 @@ package seng201.assignment;
 /**
  * Created by Matthew on 12/04/2017.
  */
-public class Food extends Item {
+public final class Food extends Item {
+    /**
+     * A carrot.
+     */
     public static final Food CARROT          = new Food("carrot", 2, 3, 3, 3);
+    /**
+     * Tuna.
+     */
     public static final Food TUNA            = new Food("tuna", 6, 5, 4, 5);
+    /**
+     * A lettuce.
+     */
     public static final Food LETTUCE         = new Food("lettuce", 2, 2, 3, 2);
+    /**
+     * A steak.
+     */
     public static final Food STEAK           = new Food("steak", 8, 7, 6, 6);
+    /**
+     * Seeds.
+     */
     public static final Food SEEDS           = new Food("seeds", 4, 3, 3, 4);
+    /**
+     * A bloodworm.
+     */
     public static final Food BLOODWORM       = new Food("bloodworm", 5, 2, 2, 3);
+    /**
+     * Peas.
+     */
     public static final Food PEAS            = new Food("peas", 2, 3, 2, 2);
+    /**
+     * Medicine for healing sick pets.
+     */
     public static final Food MEDICINE        = new Food("medicine", 10, 0, 0, 0);
+    /**
+     * Revival medicine, for reviving dead pets.
+     */
     public static final Food REVIVALMEDICINE = new Food("revival medicine", 25, 0, 0, 0);
 
-    private static final Food[] values = new Food[]{
+    private static final Food[] VALUES = new Food[]{
             CARROT,
             TUNA,
             LETTUCE,
@@ -44,19 +71,29 @@ public class Food extends Item {
     public Item clone() {
         return this;
     }
+    
     @Override
     public int getPrice() {
         return price;
     }
 
+    /**
+     * Gets how nutritious the food is.
+     */
     public int getNutrition() {
         return nutrition;
     }
 
+    /**
+     * Gets how large the food is.
+     */
     public int getMealSize() {
         return mealSize;
     }
 
+    /**
+     * Gets how tasty the food is.
+     */
     public int getTastiness() {
         return tastiness;
     }
@@ -66,7 +103,10 @@ public class Food extends Item {
         return foodName;
     }
 
+    /**
+     * Gets an array containing all the possible Food values.
+     */
     public static Food[] values() {
-        return values;
+        return VALUES;
     }
 }

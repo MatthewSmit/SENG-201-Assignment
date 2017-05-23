@@ -17,7 +17,7 @@ public final class DeadEvent extends Event {
                 + lerp(0, 0.2f, (pet.getToiletNeed() - 10) / 10.0f)
                 + lerp(0, 0.4f, (10 - pet.getHealth()) / 10.0f);
 
-        if (random.nextFloat() <= chance) {
+        if (getRandom() <= chance) {
             pet.die();
 
             return true;

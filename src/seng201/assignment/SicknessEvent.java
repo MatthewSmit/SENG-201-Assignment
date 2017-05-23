@@ -16,7 +16,7 @@ public final class SicknessEvent extends Event {
                 + lerp(0, 0.2f, (pet.getTiredness() - 5) / 10.0f)
                 + lerp(0, 0.2f, (pet.getToiletNeed() - 5) / 10.0f);
 
-        if (random.nextFloat() <= chance) {
+        if (getRandom() <= chance) {
             pet.startBeingSick();
 
             return true;
