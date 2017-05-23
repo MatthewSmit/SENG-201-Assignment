@@ -7,10 +7,6 @@ Should experiment around with other values to make them more balanced.
 
 fix rotating pet icons in mgp (maingamepanel)
 
-set health to 0 when pet dies
-
-get medicine+revival medicine working
-
 fix scrollbar stuck to bottom in petinfo
 
 rearrange ordering of stuff in pet info (+ make look nicer - e.g. first capital letter)
