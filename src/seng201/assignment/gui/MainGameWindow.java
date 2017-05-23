@@ -47,7 +47,7 @@ public class MainGameWindow extends JFrame {
      */
     public MainGameWindow(final Game game) {
         setResizable(false);
-        setBounds(100, 100, 760, 545);
+        setBounds(100, 100, 760, 468);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);

@@ -13,4 +13,10 @@ public abstract class Item implements Cloneable {
      * Returns how much the item costs.
      */
     public abstract int getPrice();
+    
+    
+    /**
+     * Returns the name of the item.
+     */
+    public abstract String toString();
 }
