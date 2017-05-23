@@ -140,8 +140,8 @@ final class GameStrings {
 		petInfo +="Happiness: " + toPercent(pet.getHappiness()) + "\r\n";
 		petInfo +="Playfulness: " + toPercent(pet.getPlayfulness()) + "\r\n";
 		petInfo +="Roughness: " + toPercent(pet.getRoughness())  + "\r\n";
-		petInfo +="Favourite toy: " + stringOfToys(pet.getFavouriteToy()) + "\r\n"; //get favourite toy is list of toys
-		petInfo +="Favourite food: " + stringOfFoods(pet.getFavouriteFood()); //get favourite food
+		petInfo +="Favourite toy: " + stringOfToys(pet.getType().getFavouriteToys()) + "\r\n"; //get favourite toy is list of toys
+		petInfo +="Favourite food: " + stringOfFoods(pet.getType().getFavouriteFood()); //get favourite food
         if (pet.isDead()) {
             petInfo += getPetDeadString(pet);
         } else {
