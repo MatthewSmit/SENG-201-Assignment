@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-class ToyTest {
+public final class ToyTest {
     private Pet testCat = PetType.Cat.create("testCat");
 
     @Test

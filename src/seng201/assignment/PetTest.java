@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 /**
  * Created by Matthew on 2017-04-27.
  */
-class PetTest {
+public final class PetTest {
     @Test
     public void feedGood() throws Exception {
         Pet pet = PetType.Dog.create("dogName");

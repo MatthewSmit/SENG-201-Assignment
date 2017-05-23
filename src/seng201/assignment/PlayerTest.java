@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-class PlayerTest {
+public final class PlayerTest {
     private Pet testCat = PetType.Cat.create("testCat");
     private Pet testDog = PetType.Dog.create("testDog");
     private Pet testBird = PetType.Bird.create("testBird");

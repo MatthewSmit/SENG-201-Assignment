@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-class FoodTest {
+public final class FoodTest {
     @Test
     public void testGetPrice() {
         assertEquals(Food.CARROT.getPrice(), 2);
