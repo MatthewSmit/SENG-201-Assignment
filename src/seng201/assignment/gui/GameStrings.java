@@ -106,17 +106,7 @@ public class GameStrings {
 		
 	}
 	
-	
-	/*public static String[][] generateInventoryList(Food[] foods){
-		ArrayList<ArrayList<String>> foodsArrayList = new ArrayList<ArrayList<String>>();
-		
-		for (int i = 1; i < foods.length ; i++){
-			if foods[i].toString() == 
-		}
-	}*/
-	//public static String[][] generateInventoryList(String[] foods, ToyType[] toys){ //list of lists for both foods and toys [["bloodworm", 1],["tuna", "4"]]
-	//	inventoryList
-	//}
+
 	
 	public static String toPercent(int integer){
 		integer*=10;
@@ -146,15 +136,5 @@ public class GameStrings {
 		return petInfo;
 	}
 	
-	/*public static void main(String args[]){
-		Dog Snuffles = new Dog("Snuffles", PetType.Dog);
-		System.out.println(getPetInfo(Snuffles));
-	}*/
-	
-	//get species info (weight range, etc.)
-	//get specific pet stats
-	//get pet name
-	//get list of items and prices
-	//
 
 }
