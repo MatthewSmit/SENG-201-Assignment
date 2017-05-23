@@ -9,9 +9,6 @@ set health to 0 when pet dies
 
 get medicine+revival medicine working
 
-game keeps going after max number of days! (tested with 2 players/5 days/3 pets per player). 
-Doesn't finish - after day X of X should give a small window telling user(s) that game has finished and exit out of program.
-
 potentially add scroll bar to pet info stuff in mgp, so that the interface can be changed so it isn't so stretched
 
 rearrange ordering of stuff in pet info (+ make look nicer - e.g. first capital letter)
