@@ -1,6 +1,4 @@
 assignment todo - 
-add image smoothing in maingamepanel to all images used (available pet panel, current pets panel, pet info panel)
-
 fix rotating pet icons in mgp (maingamepanel)
 
 set health to 0 when pet dies
