@@ -7,6 +7,8 @@ import seng201.assignment.PetType;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -22,10 +24,12 @@ public class AvaliablePetPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+
 	public AvaliablePetPanel(final PlayerChoosingWindow frame, final PetType type) {
-		BufferedImage bufferedImage = null;
+		Image bufferedImage = null;
 		try {
 			bufferedImage = ImageIO.read(getClass().getResourceAsStream(type.getImageFile()));
+			bufferedImage = bufferedImage.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(-1);

@@ -242,7 +242,7 @@ public class StorePanel extends JPanel {
 	        inventoryList.setSelectedIndex(inventoryList.getModel().getSize() - 1);
 	    else inventoryList.setSelectedIndex(inventoryList.getSelectedIndex());
 	    
-	    playerLabel.setText(String.format("%s - Day %d of %d", player.getName(), game.getCurrentDay() + 1, game.getMaxDays()));
+	    playerLabel.setText(GameStrings.getCurrentPlayerAndDay(game));
 	    remainingLabel.setText(String.format("$%d remaining", player.getMoney()));
 	    
 	    int buyPrice = calculateBuyPrice();

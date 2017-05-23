@@ -1,5 +1,6 @@
 package seng201.assignment.gui;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -28,9 +29,10 @@ public class NamePetDialogue extends JDialog {
 
 		setBounds(100, 100, 360, 200);
 		
-		BufferedImage bufferedImage = null;
+		Image bufferedImage = null;
 		try {
 			bufferedImage = ImageIO.read(getClass().getResourceAsStream(type.getImageFile()));
+			bufferedImage = bufferedImage.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(-1);
