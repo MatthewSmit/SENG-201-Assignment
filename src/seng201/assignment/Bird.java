@@ -15,16 +15,6 @@ final class Bird extends Pet {
     }
 
     @Override
-    public Toy[] getFavouriteToy() {
-        return new Toy[] {Toy.JUNGLEGYM, Toy.GUINEAPIGWHEEL};
-    }
-
-    @Override
-    public Food[] getFavouriteFood() {
-        return new Food[] {Food.SEEDS, Food.BLOODWORM, Food.PEAS};
-    }
-
-    @Override
     public float[] getSpeciesWeightRange() {
         return weightRange;
     }

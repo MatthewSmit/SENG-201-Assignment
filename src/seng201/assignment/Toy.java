@@ -59,12 +59,22 @@ public final class Toy extends Item {
         if (this.durability <= 0) {
             throw new UnsupportedOperationException("Can't play with a broken toy!");
         } else {
-            int damageAmount = pet.getRandom().nextInt(pet.getRoughness() + 1);
+            int damageAmount = pet.getRandom().nextInt(pet.getRoughness()) + 1;
             durability -= damageAmount;
             if (durability < 0) {
                 durability = 0;
             }
         }
+    }
+    
+    @Override
+    public boolean equals(final Object other) {
+        return other instanceof Toy && ((Toy)other).name == name;
+    }
+    
+    @Override
+    public int hashCode() {
+        return name.hashCode();
     }
 
     /**

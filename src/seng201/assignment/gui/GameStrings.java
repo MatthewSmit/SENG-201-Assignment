@@ -8,17 +8,16 @@ final class GameStrings {
     private GameStrings() {
     }
 
-
     public static String getSpeciesStats(PetType type){
         Pet pet = type.create("pet");
         String speciesInfo = "";
-        speciesInfo +="Favourite toy(s): " + stringOfToys(pet.getFavouriteToy()) + "\r\n";
-        speciesInfo +="Favourite foods: " + stringOfFoods(pet.getFavouriteFood()) + "\r\n";
-        speciesInfo +="Weight range: " + stringOfRange(pet.getSpeciesWeightRange()) + "\r\n";
-        speciesInfo +="Playfulness range: " + stringOfRange(pet.getSpeciesPlayfulnessRange()) + "\r\n";
-        speciesInfo +="Roughness range: " + stringOfRange(pet.getSpeciesRoughnessRange()) + "\r\n";
-        speciesInfo +="Hunger rate range: " + stringOfRange(pet.getSpeciesHungerRateRange()) + "\r\n";
-        speciesInfo +="Tiredness rate range: " + stringOfRange(pet.getSpeciesTiredRateRange()); //ad new line if extra added after
+        speciesInfo += "Favourite toy(s): " + stringOfToys(type.getFavouriteToys()) + "\r\n";
+        speciesInfo += "Favourite foods: " + stringOfFoods(type.getFavouriteFood()) + "\r\n";
+        speciesInfo += "Weight range: " + stringOfRange(pet.getSpeciesWeightRange()) + "\r\n";
+        speciesInfo += "Playfulness range: " + stringOfRange(pet.getSpeciesPlayfulnessRange()) + "\r\n";
+        speciesInfo += "Roughness range: " + stringOfRange(pet.getSpeciesRoughnessRange()) + "\r\n";
+        speciesInfo += "Hunger rate range: " + stringOfRange(pet.getSpeciesHungerRateRange()) + "\r\n";
+        speciesInfo += "Tiredness rate range: " + stringOfRange(pet.getSpeciesTiredRateRange()); //ad new line if extra added after
         return speciesInfo;
     }
 
@@ -134,8 +133,8 @@ final class GameStrings {
         petInfo += "Species: " + pet.getSpecies() + "\r\n";
         petInfo += "Gender: " + pet.getGender() + "\r\n";
         petInfo += "Weight: " + String.format("%.2f", pet.getWeight()) + "\r\n";
-        petInfo += "Favourite toy: " + stringOfToys(pet.getFavouriteToy()) + "\r\n"; //get favourite toy is list of toys
-        petInfo += "Favourite food: " + stringOfFoods(pet.getFavouriteFood()) + "\r\n"; //get favourite food
+        petInfo += "Favourite toy: " + stringOfToys(pet.getType().getFavouriteToys()) + "\r\n"; //get favourite toy is list of toys
+        petInfo += "Favourite food: " + stringOfFoods(pet.getType().getFavouriteFood()) + "\r\n"; //get favourite food
         petInfo += "Hunger: " + toPercent(pet.getHunger()) + "\r\n";
         petInfo += "Toilet need: " + toPercent(pet.getToiletNeed()) + "\r\n";
         petInfo += "Tiredness: " + toPercent(pet.getTiredness()) + "\r\n";

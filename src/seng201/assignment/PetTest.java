@@ -1,12 +1,19 @@
 package seng201.assignment;
 
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 import static org.junit.Assert.*;
+
+import org.junit.Rule;
 
 /**
  * Created by Matthew on 2017-04-27.
  */
 public final class PetTest {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    
     @Test
     public void feedGood() throws Exception {
         Pet pet = PetType.Dog.create("dogName");
@@ -167,6 +174,66 @@ public final class PetTest {
             assertNotNull(species);
             assertNotEquals(0, species.length());
         }
+    }
+    
+    @Test
+    public void testTypesHaveImages() {
+        for (PetType type : PetType.values()) {
+            assertNotNull(type.getImageFile());
+        }
+    }
+    
+    @Test
+    public void testCannotReviveAlivePets() {
+        Pet pet = PetType.Dog.create("dogName");
+        thrown.expect(AssertionError.class);
+        pet.revive();
+    }
+    
+    @Test
+    public void testCannotKillDeadPets() {
+        Pet pet = PetType.Dog.create("dogName");
+        pet.die();
+        thrown.expect(AssertionError.class);
+        pet.die();
+    }
+    
+    @Test
+    public void testCannotHaveMultipleEvents() {
+        Pet pet = PetType.Dog.create("dogName");
+        pet.startBeingSick();
+        thrown.expect(IllegalStateException.class);
+        pet.startMisbehaving();
+    }
+    
+    @Test
+    public void testHappinessInRange() {
+        Pet pet = PetType.Dog.create("dogName");
+        assertTrue(pet.getHappiness() >= 0 && pet.getHappiness() <= 10);
+        pet.dayPassed();
+        pet.dayPassed();
+        pet.dayPassed();
+        pet.dayPassed();
+        pet.dayPassed();
+        assertTrue(pet.getHappiness() >= 0 && pet.getHappiness() <= 10);
+        pet.play(Toy.SQUEAKYTOY.clone());
+        pet.play(Toy.SQUEAKYTOY.clone());
+        pet.dayPassed();
+        pet.play(Toy.SQUEAKYTOY.clone());
+        pet.play(Toy.SQUEAKYTOY.clone());
+        pet.dayPassed();
+        pet.play(Toy.SQUEAKYTOY.clone());
+        pet.play(Toy.SQUEAKYTOY.clone());
+        assertTrue(pet.getHappiness() >= 0 && pet.getHappiness() <= 10);
+    }
+    
+    @Test
+    public void testCuringPets() {
+        Pet pet = PetType.Dog.create("dogName");
+        pet.startBeingSick();
+        assertTrue(pet.isSick());
+        pet.cure();
+        assertFalse(pet.isSick());
     }
 
     /*@Test

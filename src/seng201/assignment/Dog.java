@@ -15,16 +15,6 @@ final class Dog extends Pet {
     }
 
     @Override
-    public Toy[] getFavouriteToy() {
-        return new Toy[] {Toy.LARGEBALL, Toy.SQUEAKYTOY, Toy.SMALLBALL};
-    }
-
-    @Override
-    public Food[] getFavouriteFood() {
-        return new Food[] {Food.STEAK, Food.TUNA};
-    }
-
-    @Override
     public float[] getSpeciesWeightRange() {
         return weightRange;
     }

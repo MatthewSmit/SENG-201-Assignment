@@ -51,4 +51,8 @@ public abstract class Event {
     protected static float getRandom() {
         return random.nextFloat();
     }
+
+    static void setRandomSeed(final long seed) {
+        random.setSeed(seed);
+    }
 }

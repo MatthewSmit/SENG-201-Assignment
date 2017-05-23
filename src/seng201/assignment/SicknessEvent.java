@@ -12,9 +12,9 @@ public final class SicknessEvent extends Event {
 
         // Pet has a higher chance the more it needs to eat, sleep and toilet
         // Ranges from 0% at 5 hunger, 5 tiredness, 5 toilet to 60% at 15 hunger, 15 tiredness, 15 toilet
-        float chance = lerp(0, 0.2f, (pet.getHunger() - 5) / 10.0f)
-                + lerp(0, 0.2f, (pet.getTiredness() - 5) / 10.0f)
-                + lerp(0, 0.2f, (pet.getToiletNeed() - 5) / 10.0f);
+        float chance = lerp(0, 0.2f, (pet.getHunger() - 10) / 10.0f)
+                + lerp(0, 0.2f, (pet.getTiredness() - 10) / 10.0f)
+                + lerp(0, 0.2f, (pet.getToiletNeed() - 10) / 10.0f);
 
         if (getRandom() <= chance) {
             pet.startBeingSick();

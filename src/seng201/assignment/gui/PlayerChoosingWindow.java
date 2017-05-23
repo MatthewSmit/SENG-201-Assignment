@@ -80,6 +80,7 @@ final class PlayerChoosingWindow extends JFrame {
 
         final JTextField nameText = new JTextField();
         nameText.setColumns(10);
+        nameText.setDocument(new JTextFieldLimit(10));
 
         JLabel avaliablePetsLabel = new JLabel("Avaliable Pets");
 

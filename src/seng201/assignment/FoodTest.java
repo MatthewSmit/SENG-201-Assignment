@@ -25,7 +25,6 @@ public final class FoodTest {
         assertEquals(Food.SEEDS.getNutrition(), 3);
         assertEquals(Food.BLOODWORM.getNutrition(), 2);
         assertEquals(Food.PEAS.getNutrition(), 3);
-
     }
 
     @Test
@@ -49,5 +48,11 @@ public final class FoodTest {
         assertEquals(Food.BLOODWORM.getTastiness(), 3);
         assertEquals(Food.PEAS.getTastiness(), 2);
     }
-
+    
+    @Test
+    public void testToString() {
+        for (Food food : Food.values()) {
+            assertNotNull(food.toString());
+        }
+    }
 }

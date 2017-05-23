@@ -9,7 +9,7 @@ final class Lists {
 
     static <T> boolean contains(final T[] iterable, final T item) {
         for (T listItem : iterable) {
-            if (listItem == item) {
+            if (listItem.equals(item)) {
                 return true;
             }
         }

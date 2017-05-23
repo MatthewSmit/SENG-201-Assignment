@@ -10,7 +10,7 @@ public final class MisbehaveEvent extends Event {
             return false;
         }
 
-        float chance = lerp(0, 0.25f, (10 - pet.getHappiness()) / 10.0f);
+        float chance = lerp(0, 0.25f, (5 - pet.getHappiness()) / 5.0f);
         if (getRandom() <= chance) {
             pet.startMisbehaving();
 

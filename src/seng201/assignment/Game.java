@@ -33,6 +33,8 @@ public class Game {
      * Ends a turn, it will switch to the next player, and when that finishes, switch to a new day.
      */
     public void endTurn() {
+        assert isRunning();
+        
         currentPet = 0;
         playerTurn++;
         if (playerTurn == players.length) {

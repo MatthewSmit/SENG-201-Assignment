@@ -15,16 +15,6 @@ final class GuineaPig extends Pet {
     }
 
     @Override
-    public Toy[] getFavouriteToy() {
-        return new Toy[] {Toy.SMALLBALL, Toy.GUINEAPIGWHEEL};
-    }
-
-    @Override
-    public Food[] getFavouriteFood() {
-        return new Food[] {Food.PEAS, Food.LETTUCE, Food.CARROT, Food.SEEDS};
-    }
-
-    @Override
     public float[] getSpeciesWeightRange() {
         return weightRange;
     }

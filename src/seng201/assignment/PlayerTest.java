@@ -4,16 +4,20 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public final class PlayerTest {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    
     private Pet testCat = PetType.Cat.create("testCat");
     private Pet testDog = PetType.Dog.create("testDog");
     private Pet testBird = PetType.Bird.create("testBird");
     private Pet[] petList = new Pet[] {testCat, testDog, testBird};
 
     private Player testPlayer = new Player("test", petList);
-
 
     @Test
     public void testPlayer() {
@@ -37,7 +41,6 @@ public final class PlayerTest {
 
     @Test
     public void testPurchaseFood() {
-
         ArrayList<Food> foods = new ArrayList<>();
         assertEquals(testPlayer.getFood(), new ArrayList<>());
 
@@ -48,18 +51,23 @@ public final class PlayerTest {
         foods.add(Food.LETTUCE);
         testPlayer.purchase(Food.LETTUCE);
         assertEquals(testPlayer.getFood(), foods);
-
+    }
+    
+    @Test
+    public void testPurchaseFailsWhenBroke() {
+        thrown.expect(UnsupportedOperationException.class);
+        testPlayer.addMoney(-testPlayer.getMoney());
+        testPlayer.purchase(Food.BLOODWORM);
     }
 
     @Test
     public void testGetName() {
         assertTrue(testPlayer.getName() == "test");
-
     }
 
     @Test
     public void testGetPets() {
-        assertTrue(testPlayer.getPets() == petList);
+        assertArrayEquals(petList, testPlayer.getPets());
     }
 
     //no testGetFood and testGetToys as effectively tested in
@@ -68,11 +76,9 @@ public final class PlayerTest {
     @Test
     public void testGetMoney() {
         assertEquals(testPlayer.getMoney(), 100);
-        testPlayer.purchase(Toy.SMALLBALL); //costs 3
-        assertEquals(testPlayer.getMoney(), 97);
-        testPlayer.purchase(Food.CARROT); //costs 2
-        assertEquals(testPlayer.getMoney(), 95);
+        testPlayer.purchase(Toy.SMALLBALL);
+        assertEquals(testPlayer.getMoney(), 100 - Toy.SMALLBALL.getPrice());
+        testPlayer.purchase(Food.CARROT);
+        assertEquals(testPlayer.getMoney(), 100 - Toy.SMALLBALL.getPrice() - Food.CARROT.getPrice());
     }
-
-
 }

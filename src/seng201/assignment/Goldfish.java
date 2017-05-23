@@ -13,17 +13,7 @@ final class Goldfish extends Pet {
     Goldfish(final String name, final PetType type) {
         super(name, type);
     }
-
-    @Override
-    public Toy[] getFavouriteToy() {
-        return new Toy[] {Toy.SMALLBALL};
-    }
-
-    @Override
-    public Food[] getFavouriteFood() {
-        return new Food[] {Food.BLOODWORM, Food.LETTUCE, Food.PEAS};
-    }
-
+    
     @Override
     public float[] getSpeciesWeightRange() {
         return weightRange;

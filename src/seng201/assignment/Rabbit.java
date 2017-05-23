@@ -15,16 +15,6 @@ final class Rabbit extends Pet {
     }
 
     @Override
-    public Toy[] getFavouriteToy() {
-        return new Toy[] {Toy.CARDBOARDBOX, Toy.GUINEAPIGWHEEL, Toy.SMALLBALL};
-    }
-
-    @Override
-    public Food[] getFavouriteFood() {
-        return new Food[] {Food.CARROT, Food.LETTUCE, Food.PEAS};
-    }
-
-    @Override
     public float[] getSpeciesWeightRange() {
         return weightRange;
     }

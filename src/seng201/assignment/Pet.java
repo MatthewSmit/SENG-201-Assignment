@@ -65,7 +65,7 @@ public abstract class Pet {
     /**
      * How much the happiness decreases daily.
      */
-    private static final int HAPPY_DECREASE_RATE = 5;
+    private static final int HAPPY_DECREASE_RATE = 3;
     /**
      * How much a pet enjoys playing with its favourite toy.
      */
@@ -246,7 +246,7 @@ public abstract class Pet {
         assert actionsLeft > 0;
         actionsLeft--;
 
-        Food[] favourites = getFavouriteFood();
+        Food[] favourites = type.getFavouriteFood();
 
         boolean mostFavourite = favourites[0] == food;
         boolean favourite = Lists.contains(favourites, food);
@@ -276,9 +276,9 @@ public abstract class Pet {
         assert actionsLeft > 0;
         actionsLeft--;
 
-        Toy[] favourites = getFavouriteToy();
+        Toy[] favourites = type.getFavouriteToys();
 
-        boolean mostFavourite = favourites[0] == toy;
+        boolean mostFavourite = favourites[0].equals(toy);
         boolean favourite = Lists.contains(favourites, toy);
 
         toy.degrade(this);
@@ -505,16 +505,6 @@ public abstract class Pet {
     public String getSpecies() {
         return type.getName();
     }
-
-    /**
-     * Gets the favourite toys.
-     */
-    public abstract Toy[] getFavouriteToy();
-
-    /**
-     * Gets the favourite food.
-     */
-    public abstract Food[] getFavouriteFood();
 
     /**
      * Gets the weight range of the species.
