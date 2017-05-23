@@ -279,7 +279,7 @@ public class MainGamePanel extends JPanel {
             inventoryList.setSelectedIndex(inventoryList.getModel().getSize() - 1);
         else inventoryList.setSelectedIndex(inventoryList.getSelectedIndex());
         
-	    playerLabel.setText(String.format("%s - Day %d of %d", player.getName(), game.getCurrentDay() + 1, game.getMaxDays()));
+	    playerLabel.setText(GameStrings.getCurrentPlayerAndDay(game));
 	    
 	    String actionsLeftString;
 	    if (pet.getActionsLeft() == 0)
