@@ -69,23 +69,29 @@ final class PlayerChoosingWindow extends JFrame {
         getContentPane().removeAll();
 
         setResizable(false);
-        setBounds(100, 100, 768, 700);
+        setBounds(100, 100, 700, 665);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         currentPets = new ArrayList<>();
 
         JLabel playerNumberLabel = new JLabel(String.format("Player %d", playerIndex + 1));
+        playerNumberLabel.setBounds(10, 11, 64, 14);
 
         JLabel playerNameLabel = new JLabel("Player Name:");
+        playerNameLabel.setBounds(10, 34, 86, 14);
 
         final JTextField nameText = new JTextField();
+        nameText.setBounds(102, 31, 86, 20);
         nameText.setColumns(10);
 
         JLabel avaliablePetsLabel = new JLabel("Avaliable Pets");
+        avaliablePetsLabel.setBounds(10, 57, 86, 14);
 
         JLabel yourPetsLabel = new JLabel("Your Pets");
+        yourPetsLabel.setBounds(373, 57, 76, 14);
 
         JButton nextButton = new JButton("Next");
+        nextButton.setBounds(617, 605, 64, 23);
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
@@ -109,57 +115,21 @@ final class PlayerChoosingWindow extends JFrame {
         });
 
         JPanel avaliablePets = new AvaliablePetsPanel(this);
+        avaliablePets.setBounds(10, 77, 308, 517);
         avaliablePets.setBorder(new LineBorder(new Color(0, 0, 0)));
 
         yourPets = new CurrentPetsPanel(this);
+        yourPets.setBounds(373, 77, 308, 517);
         yourPets.setBorder(new LineBorder(new Color(0, 0, 0)));
-
-        GroupLayout groupLayout = new GroupLayout(getContentPane());
-        groupLayout.setHorizontalGroup(
-                groupLayout.createParallelGroup(Alignment.LEADING)
-                .addGroup(groupLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                                .addComponent(playerNumberLabel)
-                                .addGroup(groupLayout.createSequentialGroup()
-                                        .addComponent(playerNameLabel)
-                                        .addPreferredGap(ComponentPlacement.RELATED)
-                                        .addComponent(nameText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-                .addGroup(groupLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                                .addComponent(avaliablePetsLabel)
-                                .addComponent(avaliablePets))
-                        .addPreferredGap(ComponentPlacement.RELATED, 0, Short.MAX_VALUE)
-                        .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                                .addComponent(yourPetsLabel)
-                                .addComponent(yourPets, GroupLayout.PREFERRED_SIZE, 320, GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                .addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-                        .addComponent(nextButton)
-                        .addContainerGap())
-                );
-        groupLayout.setVerticalGroup(
-                groupLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(playerNumberLabel)
-                .addPreferredGap(ComponentPlacement.RELATED)
-                .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(playerNameLabel)
-                        .addComponent(nameText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(ComponentPlacement.RELATED)
-                .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(yourPetsLabel)
-                        .addComponent(avaliablePetsLabel))
-                .addPreferredGap(ComponentPlacement.RELATED)
-                .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                        .addComponent(avaliablePets)
-                        .addComponent(yourPets, 1, 10, 600))
-                .addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nextButton)
-                .addContainerGap()
-                );
-        getContentPane().setLayout(groupLayout);
+        getContentPane().setLayout(null);
+        getContentPane().add(playerNumberLabel);
+        getContentPane().add(playerNameLabel);
+        getContentPane().add(nameText);
+        getContentPane().add(avaliablePetsLabel);
+        getContentPane().add(avaliablePets);
+        getContentPane().add(yourPetsLabel);
+        getContentPane().add(yourPets);
+        getContentPane().add(nextButton);
     }
 
     public boolean isUniqueName(String newName) {
