@@ -1,4 +1,8 @@
 assignment todo - 
+
+happiness decreases by 50% each day (after 2 days down to lowest possible happiness), should probably change that to something more reasonable. 
+Should experiment around with other values to make them more balanced.
+
 fix rotating pet icons in mgp (maingamepanel)
 
 set health to 0 when pet dies
