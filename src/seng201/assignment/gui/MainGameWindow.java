@@ -46,7 +46,7 @@ public class MainGameWindow extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public MainGameWindow(Game game) {
+	public MainGameWindow(final Game game) {
 		setResizable(false);
 		setBounds(100, 100, 760, 545);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,7 +54,7 @@ public class MainGameWindow extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		
-		final MainGamePanel main = new MainGamePanel(game);
+		final MainGamePanel main = new MainGamePanel(this, game);
 		final StorePanel store = new StorePanel(this, game);
         final HelpPanel help = new HelpPanel();
 

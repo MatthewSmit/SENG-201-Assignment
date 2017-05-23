@@ -92,7 +92,7 @@ public class GameStrings {
 				numberOfList.set(k, numberOfList.get(k) + 1);
 			}
 			else {
-				namesList.add(j,items.get(i).toString());
+				namesList.add(j, items.get(i).toString());
 				numberOfList.add(j, 1);
 				j += 1;
 			}

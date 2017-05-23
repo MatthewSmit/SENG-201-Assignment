@@ -181,7 +181,7 @@ public abstract class Pet {
         tiredness = 0;
         toiletNeed = 0;
         health = 10;
-        happiness = 10;
+        happiness = 5;
         playfulness = getSpeciesPlayfulness();
         roughness = getSpeciesRoughness();
         hungerRate = getSpeciesHungerRate();

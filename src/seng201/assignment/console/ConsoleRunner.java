@@ -33,8 +33,8 @@ public class ConsoleRunner {
                     System.out.println(String.format("Pet %s has died!", game.getCurrentPet().getName()));
                     if (game.getCurrentPet().getDeathState() == Pet.DeathState.PERMANENTLY_DEAD) {
                         System.out.println("Your pet is now permenantly dead!");
-                    }
-                    else {//reviving?
+                    } else {
+                        //reviving?
                         System.out.println("You have revived your pet, you can only do this once!");
                     }
                     break;
@@ -189,18 +189,16 @@ public class ConsoleRunner {
         }
     }
 
-    private static void processPlay(Game game) {
+    private static void processPlay(final Game game) {
     	
     	System.out.println();
     	ArrayList<Toy> toys = game.getCurrentPlayer().getToys();
         //System.out.println();
         if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
-        }
-        else if (toys.size() == 0) {
+        } else if (toys.size() == 0) {
             System.out.println("You have no toys, buy some first!");
-        }
-        else {
+        } else {
         	System.out.println(String.format("What toy do you want to play with %s?", game.getCurrentPet().getName()));
             //System.out.println("What toy do you want to play with your pet?");
             for (int i = 0; i < toys.size(); i++) {
@@ -210,18 +208,17 @@ public class ConsoleRunner {
             int value = readInt("Choose a toy index: ", 0, toys.size() - 1);
             game.play(toys.get(value));
             System.out.println(String.format("%s plays with %s.", game.getCurrentPet().getName(), toys.get(value).toString()));
-            if (toys.get(value).getDurability() <= 0){
+            if (toys.get(value).getDurability() <= 0) {
             	toys.remove(value);
             }
             
         }
     }
 
-    private static void displayPetStatus(Pet pet) {
+    private static void displayPetStatus(final Pet pet) {
         if (pet.isDead()) {
             System.out.println(String.format("%s (%s) [DEAD]", pet.getName(), pet.getSpecies()));
-        }
-        else {
+        } else {
         	System.out.println();
             System.out.println(String.format("%s (%s)", pet.getName(), pet.getSpecies()));
             System.out.println(String.format("Gender: %s", pet.getGender()));
@@ -247,8 +244,9 @@ public class ConsoleRunner {
                 name = readLine(String.format("Player %d's name: ", i + 1));
                 if (!ensureUniqueNames(players, null, name)) {
                     System.out.println("Name is already in use, try again");
+                } else {
+                    break;
                 }
-                else break;
             }
             int numberPets = readInt("Number of pets: ", 1, 3);
 
@@ -262,8 +260,9 @@ public class ConsoleRunner {
                     petName = readLine(String.format("Player %d's pet %d's name: ", i + 1, j + 1));
                     if (!ensureUniqueNames(players, pets, petName)) {
                         System.out.println("Name is already in use, try again");
+                    } else {
+                        break;
                     }
-                    else break;
                 }
                 
                 pets[j] = petType.create(petName);
@@ -274,15 +273,17 @@ public class ConsoleRunner {
     }
 
     private static boolean ensureUniqueNames(Player[] players, Pet[] pets, String name) {
-        if (players == null)
+        if (players == null) {
             return true;
+        }
 
         // Check if players or their pets have the same name
         for (Player player : players) {
             if (player != null) {
                 String playerName = player.getName();
-                if (playerName != null && playerName.equalsIgnoreCase(name))
+                if (playerName != null && playerName.equalsIgnoreCase(name)) {
                     return false;
+                }
 
                 for (Pet pet : player.getPets()) {
                     if (pet != null) {
@@ -371,7 +372,7 @@ public class ConsoleRunner {
         }
     }
 
-    private static String readLine(String s) {
+    private static String readLine(final String s) {
         System.out.print(s);
 
         while (true) {
@@ -379,20 +380,16 @@ public class ConsoleRunner {
             if (value == null || value.trim().equals("")) {
                 System.out.print("");
                 System.out.print(s);
-            }
-            else {
+            } else {
                 return value;
             }
         }
     }
 
     private static String readLine() {
-        try
-        {
+        try {
             return br.readLine();
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("Unhandled exception: " + e.getLocalizedMessage());
             System.exit(1);
             return null;
