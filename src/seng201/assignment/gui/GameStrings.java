@@ -72,7 +72,12 @@ public class GameStrings {
 	}
 	
 	public static String getCurrentPlayerAndDay(Game game){
-		return String.format("%s - Day %d of %d", game.getCurrentPlayer().getName(), game.getCurrentDay() + 1, game.getMaxDays());
+		if (game.getCurrentDay() + 1 > game.getMaxDays()){
+			return "GAMEEND"; //number of days passed is more than max days
+		}
+		else {
+			return String.format("%s - Day %d of %d", game.getCurrentPlayer().getName(), game.getCurrentDay() + 1, game.getMaxDays());
+		}
 	}
 	
 	
