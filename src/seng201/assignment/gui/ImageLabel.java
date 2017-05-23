@@ -6,20 +6,20 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class ImageLabel extends JPanel {
+final class ImageLabel extends JPanel {
     private static final long serialVersionUID = -2448285466458004426L;
 
     private Image image;
 
-    public ImageLabel() {
+    ImageLabel() {
     }
 
-    public ImageLabel(ImageIcon imageIcon) {
+    ImageLabel(final ImageIcon imageIcon) {
         image = imageIcon.getImage();
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(final Graphics g) {
         super.paintComponent(g);
         if (image != null) {
             int size = Math.min(getWidth(), getHeight());
@@ -27,12 +27,12 @@ public class ImageLabel extends JPanel {
         }
     }
 
-    public void setImage(ImageIcon imageIcon) {
+    public void setImage(final ImageIcon imageIcon) {
         this.image = imageIcon.getImage();
         this.repaint();
     }
 
-    public void setImage(Image image) {
+    public void setImage(final Image image) {
         this.image = image;
         this.repaint();
     }

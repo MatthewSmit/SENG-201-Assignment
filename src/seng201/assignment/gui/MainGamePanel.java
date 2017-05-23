@@ -17,6 +17,7 @@ import javax.swing.AbstractListModel;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,7 +32,7 @@ import seng201.assignment.Food;
 import seng201.assignment.Game;
 import seng201.assignment.Item;
 import seng201.assignment.Pet;
-import seng201.assignment.PetType;
+import seng201.assignment.Pet.DeathState;
 import seng201.assignment.Player;
 import seng201.assignment.Toy;
 
@@ -40,12 +41,12 @@ import seng201.assignment.Toy;
 
 //shifted from group to absolute layout as any time anything got moved other things would be moved as well.
 @SuppressWarnings("serial")
-public class MainGamePanel extends JPanel {
+final class MainGamePanel extends JPanel {
     private class InventoryListModel extends AbstractListModel<ShopListView<String>> {
         private Game game;
         private ArrayList<ArrayList<String>> currentList;
 
-        public InventoryListModel(Game game) {
+        InventoryListModel(final Game game) {
             this.game = game;
 
             Player player = game.getCurrentPlayer();
@@ -56,9 +57,10 @@ public class MainGamePanel extends JPanel {
             return currentList.size();
         }
 
-        public ShopListView<String> getElementAt(int index) {
-            if (index < 0 || index >= getSize())
+        public ShopListView<String> getElementAt(final int index) {
+            if (index < 0 || index >= getSize()) {
                 return null;
+            }
 
             return new ShopListView<String>(currentList.get(index).get(0), currentList.get(index).get(1));
         }
@@ -72,6 +74,9 @@ public class MainGamePanel extends JPanel {
 
     private Game game;
 
+    private int[] petIndex = new int[] {
+            0, 1, 2
+    };
     private JList<ShopListView<String>> inventoryList;
     private JLabel playerLabel;
     private JLabel petNameLabel;
@@ -91,7 +96,7 @@ public class MainGamePanel extends JPanel {
     /**
      * Create the panel.
      */
-    public MainGamePanel(final MainGameWindow window, final Game game) {
+    MainGamePanel(final MainGameWindow window, final Game game) {
         this.game = game;
 
         playerLabel = new JLabel();
@@ -119,8 +124,10 @@ public class MainGamePanel extends JPanel {
         add(pet2Button);
         pet2Button.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                game.setCurrentPetIndex(game.getCurrentPetIndex() == 0 ? 1 : 0);
+            public void actionPerformed(final ActionEvent e) {
+                petIndex[0] = petIndex[1];
+                petIndex[1] = game.getCurrentPetIndex();
+                game.setCurrentPetIndex(petIndex[0]);
                 redraw();
             }
         });
@@ -130,20 +137,19 @@ public class MainGamePanel extends JPanel {
         pet3NameLabel.setBounds(390, 48, 100, 14);
         add(pet3NameLabel);
 
-
         pet3Button = new JButton();
         pet3Button.setBounds(392, 77, 93, 92);
         pet3Button.setEnabled(true);
         add(pet3Button);
         pet3Button.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                game.setCurrentPetIndex(game.getCurrentPetIndex() == 2 ? 1 : 2);
+            public void actionPerformed(final ActionEvent e) {
+                petIndex[0] = petIndex[2];
+                petIndex[2] = game.getCurrentPetIndex();
+                game.setCurrentPetIndex(petIndex[0]);
                 redraw();
             }
         });
-
-
 
         statsText = new JTextPane();
         statsText.setBounds(10, 286, 213, 218);
@@ -168,7 +174,7 @@ public class MainGamePanel extends JPanel {
         toiletButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
         toiletButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 game.toilet();
                 addMessage(String.format("%s goes to the toilet.", game.getCurrentPet().getName()));
                 redraw();
@@ -181,7 +187,7 @@ public class MainGamePanel extends JPanel {
         sleepButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
         sleepButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 game.sleep();
                 addMessage(String.format("%s goes to sleep.", game.getCurrentPet().getName()));
                 redraw();
@@ -195,7 +201,7 @@ public class MainGamePanel extends JPanel {
         useButton.setFont(new Font("Tahoma", Font.PLAIN, 9));
         useButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 Item item = getSelectedItem();
                 if (item instanceof Toy) {
                     Toy toy = (Toy)item;
@@ -206,11 +212,31 @@ public class MainGamePanel extends JPanel {
                         addMessage(String.format("%s was too rough! %s breaks.", game.getCurrentPet().getName(), toy.toString()));
                         game.getCurrentPlayer().getItems().remove(item);
                     }
-                }
-                else if (item instanceof Food) {
-                    game.feed((Food)item);
-                    addMessage(String.format("%s eats %s.", game.getCurrentPet().getName(), item.toString()));
+                } else if (item instanceof Food) {
+                    if (item == Food.MEDICINE) {
+                        if (!game.getCurrentPet().isSick()) {
+                            JOptionPane.showMessageDialog(window, "Cannot cure a healthy pet!");
+                        } else {
+                            game.cure();
+                            addMessage(String.format("%s is cured.", game.getCurrentPet().getName()));
+                        }
+                    } else if (item == Food.REVIVALMEDICINE) {
+                        if (!game.getCurrentPet().isDead()) {
+                            JOptionPane.showMessageDialog(window, "Cannot revive a living pet!");
+                        } else if (game.getCurrentPet().getDeathState() == DeathState.PERMANENTLY_DEAD) {
+                            JOptionPane.showMessageDialog(window, "Can only revive a pet once!");
+                        } else {
+                            game.revive();
+                            addMessage(String.format("%s is revived.", game.getCurrentPet().getName()));
+                        }
+                    } else {
+                        game.feed((Food)item);
+                        addMessage(String.format("%s eats %s.", game.getCurrentPet().getName(), item.toString()));
+                    }
+                    
                     game.getCurrentPlayer().getItems().remove(item);
+                } else {
+                    assert false;
                 }
                 redraw();
             }
@@ -221,7 +247,7 @@ public class MainGamePanel extends JPanel {
         nextButton.setBounds(583, 26, 93, 23);
         nextButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 game.endTurn();
 
                 for (Pet pet : game.getCurrentPlayer().getPets()) {
@@ -240,6 +266,9 @@ public class MainGamePanel extends JPanel {
                                 addMessage(String.format("%s is now permenantly dead!", pet.getName()));
                             }
                             break;
+                        default:
+                            assert false;
+                            break;
                     }
                 }
                 
@@ -248,11 +277,14 @@ public class MainGamePanel extends JPanel {
                     window.dispose();
                 }
 
+                petIndex[0] = 0;
+                petIndex[1] = 1;
+                petIndex[2] = 2;
+
                 redraw();
             }
         });
         add(nextButton);
-
 
         inventoryList = new JList<>();
         inventoryList.setBounds(495, 73, 128, 432);
@@ -260,7 +292,7 @@ public class MainGamePanel extends JPanel {
         inventoryList.setCellRenderer(new ShopListViewRenderer<String>());
         inventoryList.addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void valueChanged(ListSelectionEvent e) {
+            public void valueChanged(final ListSelectionEvent e) {
                 redraw();
             }
         });
@@ -279,49 +311,51 @@ public class MainGamePanel extends JPanel {
         Pet pet = game.getCurrentPet();
 
         ((InventoryListModel)inventoryList.getModel()).redraw();
-        if (inventoryList.getSelectedIndex() >= inventoryList.getModel().getSize())
+        if (inventoryList.getSelectedIndex() >= inventoryList.getModel().getSize()) {
             inventoryList.setSelectedIndex(inventoryList.getModel().getSize() - 1);
-        else inventoryList.setSelectedIndex(inventoryList.getSelectedIndex());
+        } else {
+            inventoryList.setSelectedIndex(inventoryList.getSelectedIndex());
+        }
 
         playerLabel.setText(GameStrings.getCurrentPlayerAndDay(game));
 
         String actionsLeftString;
-        if (pet.getActionsLeft() == 0)
+        if (pet.getActionsLeft() == 0) {
             actionsLeftString = "No actions left";
-        else if (pet.getActionsLeft() == 1)
+        } else if (pet.getActionsLeft() == 1) {
             actionsLeftString = "1 action left";
-        else actionsLeftString = String.format("%d actions left", pet.getActionsLeft());
+        } else {
+            actionsLeftString = String.format("%d actions left", pet.getActionsLeft());
+        }
 
         petNameLabel.setText(String.format("%s - %s", pet.getName(), actionsLeftString));
-        petImage.setImage(loadImage(pet.getType()).getImage().getScaledInstance(213, 204, java.awt.Image.SCALE_SMOOTH));
+        petImage.setImage(loadImage(pet, 213, 204));
 
         ((InventoryListModel)inventoryList.getModel()).redraw();
 
         Pet[] pets = player.getPets();
         if (pets.length > 1) {
 
-            Pet currentPet = pets[game.getCurrentPetIndex() == 0 ? 1 : 0];
+            Pet currentPet = pets[petIndex[1]];
             pet2NameLabel.setVisible(true);
             pet2NameLabel.setText(String.format("%s - %d", currentPet.getName(), currentPet.getActionsLeft()));
-            pet2Img = loadImage(currentPet.getType()).getImage().getScaledInstance(93, 92, java.awt.Image.SCALE_SMOOTH);
+            pet2Img = loadImage(currentPet, 93, 92);
             pet2Button.setIcon(new ImageIcon(pet2Img));
 
 
-        }
-        else {
+        } else {
             pet2NameLabel.setVisible(false);
             pet2Button.setVisible(false);
         }
 
         if (pets.length > 2) {
-            Pet currentPet = pets[game.getCurrentPetIndex() == 2 ? 1 : 2];
+            Pet currentPet = pets[petIndex[2]];
             pet3NameLabel.setVisible(true);
             pet3NameLabel.setText(String.format("%s - %d", currentPet.getName(), currentPet.getActionsLeft()));
-            pet3Img = loadImage(currentPet.getType()).getImage().getScaledInstance(93, 92, java.awt.Image.SCALE_SMOOTH);
+            pet3Img = loadImage(currentPet, 93, 92);
             pet3Button.setIcon(new ImageIcon(pet3Img));
 
-        }
-        else {
+        } else {
             pet3NameLabel.setVisible(false);
             pet3Button.setVisible(false);
         }
@@ -330,12 +364,10 @@ public class MainGamePanel extends JPanel {
         if (item == null) {
             useButton.setText("Use");
             useButton.setEnabled(false);
-        }
-        else if (item instanceof Toy) {
+        } else if (item instanceof Toy) {
             useButton.setText("Play");
             useButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
-        }
-        else {
+        } else {
             useButton.setText("Feed");
             useButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
         }
@@ -348,32 +380,58 @@ public class MainGamePanel extends JPanel {
 
     private Item getSelectedItem() {
         ShopListView<String> value = inventoryList.getSelectedValue();
-        if (value == null)
+        if (value == null) {
             return null;
+        }
 
         String itemName = value.getLhs();
         for (Item item : game.getCurrentPlayer().getItems()) {
-            if (item.toString().equals(itemName))
+            if (item.toString().equals(itemName)) {
                 return item;
+            }
         }
 
         return null;
     }
 
-    private void addMessage(String message) {
-        if (messageLogText.getText().length() == 0)
+    private void addMessage(final String message) {
+        if (messageLogText.getText().length() == 0) {
             messageLogText.setText(message);
-        else messageLogText.setText(messageLogText.getText() + "\n" + message);
+        } else {
+            messageLogText.setText(messageLogText.getText() + "\n" + message);
+        }
     }
 
-    private ImageIcon loadImage(PetType type) {
-        BufferedImage bufferedImage = null;
+    private Image loadImage(final Pet pet, final int width, final int height) {
+        String imageFile = pet.getType().getImageFile();
+        
+        Image image;
         try {
-            bufferedImage = ImageIO.read(getClass().getResourceAsStream(type.getImageFile()));
-            return new ImageIcon(bufferedImage);
+            image = ImageIO.read(getClass().getResourceAsStream(imageFile));
         } catch (IOException e) {
             e.printStackTrace();
             throw new Error();
         }
+
+        image = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        
+        if (pet.isDead()) {
+            Image deadImage;
+            try {
+                deadImage = ImageIO.read(getClass().getResourceAsStream("dead.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new Error();
+            }
+
+            deadImage = deadImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            Image combined = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+            Graphics graphics = combined.getGraphics();
+            graphics.drawImage(image, 0, 0, null);
+            graphics.drawImage(deadImage, 0, 0, null);
+            image = combined;
+        }
+        
+        return image;
     }
 }

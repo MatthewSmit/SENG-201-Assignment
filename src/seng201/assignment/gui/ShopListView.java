@@ -10,24 +10,24 @@ import java.awt.Component;
 
 @SuppressWarnings("serial")
 class ShopListViewRenderer<T> extends JPanel implements ListCellRenderer<ShopListView<T>> {
-	private JLabel lhsLabel;
-	private JLabel rhsLabel;
-	
-	public ShopListViewRenderer() {
-		setLayout(new BorderLayout(0, 0));
+    private JLabel lhsLabel;
+    private JLabel rhsLabel;
 
-		lhsLabel = new JLabel();
-		rhsLabel = new JLabel();
-		
-		add(lhsLabel);
-		add(rhsLabel, BorderLayout.EAST);
-	}
+    ShopListViewRenderer() {
+        setLayout(new BorderLayout(0, 0));
 
-	public Component getListCellRendererComponent(JList<? extends ShopListView<T>> list, ShopListView<T> value,
-	                                              int index, boolean isSelected, boolean cellHasFocus) {
-		lhsLabel.setText(value.getLhs().toString());
-		rhsLabel.setText(value.getRhs());
-		
+        lhsLabel = new JLabel();
+        rhsLabel = new JLabel();
+
+        add(lhsLabel);
+        add(rhsLabel, BorderLayout.EAST);
+    }
+
+    public Component getListCellRendererComponent(JList<? extends ShopListView<T>> list, ShopListView<T> value,
+            int index, boolean isSelected, boolean cellHasFocus) {
+        lhsLabel.setText(value.getLhs().toString());
+        rhsLabel.setText(value.getRhs());
+
         if (isSelected) {
             setBackground(list.getSelectionBackground());
             setForeground(list.getSelectionForeground());
@@ -38,25 +38,25 @@ class ShopListViewRenderer<T> extends JPanel implements ListCellRenderer<ShopLis
         setEnabled(list.isEnabled());
         setFont(list.getFont());
         setOpaque(true);
-		
-		return this;
-	}
+
+        return this;
+    }
 }
 
-public class ShopListView<T> {
-	private T lhs;
-	private String rhs;
-	
-	public ShopListView(T lhs, String rhs) {
-		this.lhs = lhs;
-		this.rhs = rhs;
-	}
-	
-	public T getLhs() {
-		return lhs;
-	}
-	
-	public String getRhs() {
-		return rhs;
-	}
+class ShopListView<T> {
+    private T lhs;
+    private String rhs;
+
+    ShopListView(final T lhs, final String rhs) {
+        this.lhs = lhs;
+        this.rhs = rhs;
+    }
+
+    public T getLhs() {
+        return lhs;
+    }
+
+    public String getRhs() {
+        return rhs;
+    }
 }

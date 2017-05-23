@@ -33,6 +33,7 @@ public class Game {
      * Ends a turn, it will switch to the next player, and when that finishes, switch to a new day.
      */
     public void endTurn() {
+        currentPet = 0;
         playerTurn++;
         if (playerTurn == players.length) {
             // Process new day
@@ -132,5 +133,19 @@ public class Game {
      */
     public void setCurrentPetIndex(final int newCurrentPet) {
         currentPet = newCurrentPet;
+    }
+
+    /**
+     * Cures the current pet.
+     */
+    public void cure() {
+        getCurrentPet().cure();
+    }
+    
+    /**
+     * Revives the current pet.
+     */
+    public void revive() {
+        getCurrentPet().revive();
     }
 }

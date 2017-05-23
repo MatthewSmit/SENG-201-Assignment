@@ -8,17 +8,21 @@ import java.util.ArrayList;
 /**
  * Created by Matthew on 20/04/17.
  */
-public class ConsoleRunner {
+public final class ConsoleRunner {
     private static InputStreamReader reader = new InputStreamReader(System.in);
     private static BufferedReader br = new BufferedReader(reader);
 
-    public static void main(String[] args) {
+    private ConsoleRunner() {
+    }
+    
+    public static void main(final String[] args) {
         Game game = setupGame();
 
         while (game.isRunning()) {
-        	System.out.println();
-        	System.out.println(String.format("Player %s's turn, day %d/%d", game.getCurrentPlayer().getName(), game.getCurrentDay() + 1, game.getMaxDays()));
-            System.out.println(String.format("Controlling pet %s, actions remaining: %d", game.getCurrentPet().getName(), game.getCurrentPet().getActionsLeft()));
+            System.out.println();
+            System.out.println(String.format("Player %s's turn, day %d/%d", game.getCurrentPlayer().getName(), game.getCurrentDay() + 1, game.getMaxDays()));
+            System.out.println(String.format("Controlling pet %s, actions remaining: %d",
+                                             game.getCurrentPet().getName(), game.getCurrentPet().getActionsLeft()));
 
             switch (game.getCurrentPet().getEventState()) {
                 case NoEvent:
@@ -38,9 +42,12 @@ public class ConsoleRunner {
                         System.out.println("You have revived your pet, you can only do this once!");
                     }
                     break;
+                default:
+                    assert false;
+                    break;
             }
-            
-       
+
+
 
             System.out.println("(0): View pet status");
             System.out.println("(1): Visit store");
@@ -70,14 +77,13 @@ public class ConsoleRunner {
                     processToilet(game);
                     break;
                 case 6:
-                	if (game.getCurrentPetIndex() + 1 == game.getCurrentPlayer().getPets().length) {
-                		game.endTurn();
-                		game.setCurrentPetIndex(0);
-                	}
-                	else {
-                		game.setCurrentPetIndex(game.getCurrentPetIndex() + 1);
-                		System.out.println(String.format("Now controlling pet %s.", game.getCurrentPet().getName()));
-                	}
+                    if (game.getCurrentPetIndex() + 1 == game.getCurrentPlayer().getPets().length) {
+                        game.endTurn();
+                        game.setCurrentPetIndex(0);
+                    } else {
+                        game.setCurrentPetIndex(game.getCurrentPetIndex() + 1);
+                        System.out.println(String.format("Now controlling pet %s.", game.getCurrentPet().getName()));
+                    }
                     break;
                 default:
                     System.out.println("Invalid option");
@@ -86,18 +92,18 @@ public class ConsoleRunner {
             }
 
         }
-        
+
         System.out.println("Game has ended.");
     }
 
     private static void displayStore(Player player) {
-        
-    	System.out.println();
-    	System.out.println(String.format("Welcome to the store, you have $%d", player.getMoney()));
+
+        System.out.println();
+        System.out.println(String.format("Welcome to the store, you have $%d", player.getMoney()));
 
         int value = readInt("Do you want to buy (0) food or (1) toys?", 0, 1);
         System.out.println();
-        
+
         if (value == 0) {
             while (true) {
                 System.out.println("(0) Exit store");
@@ -107,8 +113,9 @@ public class ConsoleRunner {
                 }
 
                 value = readInt("Choose index of item: ", 0, food.length);
-                if (value == 0)
+                if (value == 0) {
                     return;
+                }
 
                 Food wantedFood = food[value - 1];
                 if (player.getMoney() < wantedFood.getPrice()) {
@@ -119,8 +126,7 @@ public class ConsoleRunner {
                     System.out.println(String.format("You have $%d remaining", player.getMoney()));
                 }
             }
-        }
-        else {
+        } else {
             while (true) {
                 System.out.println("(0) Exit store");
                 Toy[] toys = Toy.values();
@@ -129,11 +135,12 @@ public class ConsoleRunner {
                 }
 
                 value = readInt("Choose index of item: ", 0, toys.length);
-                if (value == 0)
+                if (value == 0) {
                     return;
+                }
 
                 Toy toy = toys[value - 1];
-                if (player.getMoney() < toy.getPrice()) 	{
+                if (player.getMoney() < toy.getPrice()) {
                     System.out.println("You don't have enough money!");
                 } else {
                     player.purchase(toy);
@@ -144,39 +151,35 @@ public class ConsoleRunner {
         }
     }
 
-    private static void processSleep(Game game) {
-    	System.out.println();
-    	System.out.println(String.format("%s goes to sleep.", game.getCurrentPet().getName()));
+    private static void processSleep(final Game game) {
+        System.out.println();
+        System.out.println(String.format("%s goes to sleep.", game.getCurrentPet().getName()));
         if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
-        }
-        else {
+        } else {
             game.sleep();
         }
     }
 
-    private static void processToilet(Game game) {
-    	System.out.println();
-    	System.out.println(String.format("%s goes to the toilet.", game.getCurrentPet().getName()));
+    private static void processToilet(final Game game) {
+        System.out.println();
+        System.out.println(String.format("%s goes to the toilet.", game.getCurrentPet().getName()));
         if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
-        }
-        else {
+        } else {
             game.toilet();
         }
     }
 
     private static void processFeed(Game game) {
-    	
-    	System.out.println();
+
+        System.out.println();
         ArrayList<Food> food = game.getCurrentPlayer().getFood();
         if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
-        }
-        else if (food.size() == 0) {
+        } else if (food.size() == 0) {
             System.out.println("You have no food, buy some first!");
-        }
-        else {
+        } else {
             System.out.println("What food do you want to feed your pet?");
             for (int i = 0; i < food.size(); i++) {
                 System.out.println(String.format("(%d): %s", i, food.get(i).toString()));
@@ -190,16 +193,16 @@ public class ConsoleRunner {
     }
 
     private static void processPlay(final Game game) {
-    	
-    	System.out.println();
-    	ArrayList<Toy> toys = game.getCurrentPlayer().getToys();
+
+        System.out.println();
+        ArrayList<Toy> toys = game.getCurrentPlayer().getToys();
         //System.out.println();
         if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
         } else if (toys.size() == 0) {
             System.out.println("You have no toys, buy some first!");
         } else {
-        	System.out.println(String.format("What toy do you want to play with %s?", game.getCurrentPet().getName()));
+            System.out.println(String.format("What toy do you want to play with %s?", game.getCurrentPet().getName()));
             //System.out.println("What toy do you want to play with your pet?");
             for (int i = 0; i < toys.size(); i++) {
                 System.out.println(String.format("(%d): %s", i, toys.get(i).toString()));
@@ -209,9 +212,9 @@ public class ConsoleRunner {
             game.play(toys.get(value));
             System.out.println(String.format("%s plays with %s.", game.getCurrentPet().getName(), toys.get(value).toString()));
             if (toys.get(value).getDurability() <= 0) {
-            	toys.remove(value);
+                toys.remove(value);
             }
-            
+
         }
     }
 
@@ -219,7 +222,7 @@ public class ConsoleRunner {
         if (pet.isDead()) {
             System.out.println(String.format("%s (%s) [DEAD]", pet.getName(), pet.getSpecies()));
         } else {
-        	System.out.println();
+            System.out.println();
             System.out.println(String.format("%s (%s)", pet.getName(), pet.getSpecies()));
             System.out.println(String.format("Gender: %s", pet.getGender()));
             System.out.println(String.format("Hunger: %d", pet.getHunger()));
@@ -264,7 +267,7 @@ public class ConsoleRunner {
                         break;
                     }
                 }
-                
+
                 pets[j] = petType.create(petName);
             }
         }
@@ -272,7 +275,7 @@ public class ConsoleRunner {
         return new Game(days, players);
     }
 
-    private static boolean ensureUniqueNames(Player[] players, Pet[] pets, String name) {
+    private static boolean ensureUniqueNames(final Player[] players, final Pet[] pets, final String name) {
         if (players == null) {
             return true;
         }
@@ -288,8 +291,9 @@ public class ConsoleRunner {
                 for (Pet pet : player.getPets()) {
                     if (pet != null) {
                         String petName = pet.getName();
-                        if (petName != null && petName.equalsIgnoreCase(name))
+                        if (petName != null && petName.equalsIgnoreCase(name)) {
                             return false;
+                        }
                     }
                 }
             }
@@ -300,8 +304,9 @@ public class ConsoleRunner {
             for (Pet pet : pets) {
                 if (pet != null) {
                     String petName = pet.getName();
-                    if (petName != null && petName.equalsIgnoreCase(name))
+                    if (petName != null && petName.equalsIgnoreCase(name)) {
                         return false;
+                    }
                 }
             }
         }
@@ -338,8 +343,7 @@ public class ConsoleRunner {
                 if (intValue >= 0 && intValue < petTypes.length) {
                     return petTypes[intValue];
                 }
-            }
-            catch (Throwable ignored) {
+            } catch (Throwable ignored) {
             }
 
             System.out.println("Not a valid pet, try again");
@@ -347,7 +351,7 @@ public class ConsoleRunner {
         }
     }
 
-    private static int readInt(String s, int lowest, int highest) {
+    private static int readInt(final String s, final int lowest, final int highest) {
         System.out.print(s);
 
         while (true) {
@@ -358,14 +362,13 @@ public class ConsoleRunner {
                 if (intValue < lowest) {
                     System.out.println(String.format("Number must be between %d and %d", lowest, highest));
                     System.out.print(s);
-                }
-                else if (intValue > highest) {
+                } else if (intValue > highest) {
                     System.out.println(String.format("Number must be between %d and %d", lowest, highest));
                     System.out.print(s);
+                } else {
+                    return intValue;
                 }
-                else return intValue;
-            }
-            catch (Throwable e) {
+            } catch (Throwable e) {
                 System.out.println("Not a valid number, try again");
                 System.out.print(s);
             }

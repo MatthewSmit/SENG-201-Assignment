@@ -86,6 +86,31 @@ public abstract class Pet {
      * How much the toilet rate increases daily.
      */
     private static final int TOILET_RATE = 4;
+    
+    /**
+     * How much hunger the pet starts with.
+     */
+    private static final int INITIAL_HUNGER = 0;
+    
+    /**
+     * How much tiredness the pet starts with.
+     */
+    private static final int INITIAL_TIREDNESS = 0;
+    
+    /**
+     * How much toilet-need the pet starts with.
+     */
+    private static final int INITIAL_TOILET_NEED = 0;
+    
+    /**
+     * How much happiness the pet starts with.
+     */
+    private static final int INITIAL_HAPPINESS = 5;
+    
+    /**
+     * How much health the pet starts with.
+     */
+    private static final int INITIAL_HEALTH = 10;
 
     /**
      * Field to randomise pet statistics.
@@ -177,11 +202,11 @@ public abstract class Pet {
         name = petName;
         type = petType;
 
-        hunger = 0;
-        tiredness = 0;
-        toiletNeed = 0;
-        health = 10;
-        happiness = 5;
+        hunger = INITIAL_HUNGER;
+        tiredness = INITIAL_TIREDNESS;
+        toiletNeed = INITIAL_TOILET_NEED;
+        health = INITIAL_HEALTH;
+        happiness = INITIAL_HAPPINESS;
         playfulness = getSpeciesPlayfulness();
         roughness = getSpeciesRoughness();
         hungerRate = getSpeciesHungerRate();
@@ -302,6 +327,14 @@ public abstract class Pet {
             toiletNeed = 0;
         }
     }
+    
+    /**
+     * Cures the sickness the pet has.
+     */
+    public void cure() {
+        assert sick;
+        sick = false;
+    }
 
     final void startMisbehaving() {
         if (eventState != EventState.NoEvent) {
@@ -342,6 +375,14 @@ public abstract class Pet {
     public void revive() {
         assert deathState == DeathState.DEAD_ONCE;
         deathState = DeathState.ALIVE_WAS_DEAD;
+
+        hunger = INITIAL_HUNGER;
+        tiredness = INITIAL_TIREDNESS;
+        toiletNeed = INITIAL_TOILET_NEED;
+        health = INITIAL_HEALTH;
+        happiness = INITIAL_HAPPINESS;
+        sick = false;
+        misbehaving = false;
     }
 
     /**
