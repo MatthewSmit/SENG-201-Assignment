@@ -1,5 +1,6 @@
 package seng201.assignment.gui;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -62,9 +63,10 @@ public class OwnedPetPanel extends JPanel {
     public void setPet(Pet pet) {
         this.pet = pet;
 
-        BufferedImage bufferedImage = null;
+        Image bufferedImage = null;
         try {
             bufferedImage = ImageIO.read(getClass().getResourceAsStream(pet.getType().getImageFile()));
+            bufferedImage = bufferedImage.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
         } catch (IOException e) {
             System.out.println(System.getProperty("user.dir"));
             // TODO Auto-generated catch block
