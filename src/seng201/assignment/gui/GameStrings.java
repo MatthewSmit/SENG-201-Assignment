@@ -3,6 +3,8 @@ package seng201.assignment.gui;
 import java.util.ArrayList;
 
 import seng201.assignment.*;
+import seng201.assignment.Lists;
+
 
 final class GameStrings {
     private GameStrings() {
@@ -12,7 +14,7 @@ final class GameStrings {
         Pet pet = type.create("pet");
         String speciesInfo = "";
         speciesInfo += "Favourite toy(s): " + stringOfToys(type.getFavouriteToys()) + "\r\n";
-        speciesInfo += "Favourite foods: " + stringOfFoods(type.getFavouriteFood()) + "\r\n";
+        speciesInfo += "Favourite foods: " + stringOfFoods(type.getFavouriteFoods()) + "\r\n";
         speciesInfo += "Weight range: " + stringOfRange(pet.getSpeciesWeightRange()) + "\r\n";
         speciesInfo += "Playfulness range: " + stringOfRange(pet.getSpeciesPlayfulnessRange()) + "\r\n";
         speciesInfo += "Roughness range: " + stringOfRange(pet.getSpeciesRoughnessRange()) + "\r\n";
@@ -89,6 +91,92 @@ final class GameStrings {
         }
     }
 
+    /*public static String getMostLikedByAnimals(Food food){
+    	String mostLikedBy = "Most liked by: - ";
+    	for (PetType type : PetType.values()) {
+    		if (type.getFavouriteFood()[0] == food){
+        		mostLikedBy="Most liked by: " + type.getName() + "\r\n";
+        		break;
+        	}
+    	}
+    	return mostLikedBy;
+    	
+    }*/
+    
+    public static String getMostLikedByAnimals(Food food){
+    	
+    	ArrayList<String> mostLikedByList = new ArrayList<String>();
+    	String mostLikedBy = "Most liked by: - ";
+    	for (PetType type : PetType.values()) {
+    		if (type.getFavouriteFoods()[0] == food){
+    			mostLikedByList.add(type.getName());
+        	}
+    	}
+    	if (mostLikedByList.size() > 0){
+    		mostLikedBy = "Most liked by: " + mostLikedByList.get(0);
+    		for (int i = 1; i < mostLikedByList.size(); i++){
+    			mostLikedBy+=", " + mostLikedByList.get(i);
+    		}
+    	}
+    	return mostLikedBy;
+    	
+    }
+    
+    public static String getMostLikedByAnimals (Toy toy){
+    	ArrayList<String> mostLikedByList = new ArrayList<String>();
+    	String mostLikedBy = "Most liked by: - ";
+    	for (PetType type : PetType.values()) {
+    		if (type.getFavouriteToys()[0] == toy){
+    			mostLikedByList.add(type.getName());
+        	}
+    	} 
+    	
+    	if (mostLikedByList.size() > 0){
+    		mostLikedBy = "Most liked by: " + mostLikedByList.get(0);
+    		for (int i = 1; i < mostLikedByList.size(); i++){
+    			mostLikedBy+=", " + mostLikedByList.get(i);
+    		}
+    	}
+    	return mostLikedBy;
+    }
+    
+    public static String getLikedByAnimals(Food food){
+    	
+    	ArrayList<String> alsoLikedByList = new ArrayList<String>();
+    	String alsoLikedBy = "Also liked by: - ";
+    	for (PetType type : PetType.values()) {
+    		if (food != type.getFavouriteFoods()[0] && Lists.contains(type.getFavouriteFoods(), food)){
+        		alsoLikedByList.add(type.getName());
+        	}
+    	}
+    	if (alsoLikedByList.size() > 0){
+    		alsoLikedBy = "Also liked by: " + alsoLikedByList.get(0);
+    		for (int i = 1; i < alsoLikedByList.size(); i++){
+    			alsoLikedBy+=", " + alsoLikedByList.get(i);
+    		}
+    	}
+    	return alsoLikedBy;
+    	
+    }
+    
+    public static String getLikedByAnimals(Toy toy){
+    	
+    	ArrayList<String> alsoLikedByList = new ArrayList<String>();
+    	String alsoLikedBy = "Also liked by: - ";
+    	for (PetType type : PetType.values()) {
+    		if (toy != type.getFavouriteToys()[0] && Lists.contains(type.getFavouriteToys(), toy)){
+        		alsoLikedByList.add(type.getName());
+        	}
+    	}
+    	if (alsoLikedByList.size() > 0){
+    		alsoLikedBy = "Also liked by: " + alsoLikedByList.get(0);
+    		for (int i = 1; i < alsoLikedByList.size(); i++){
+    			alsoLikedBy+=", " + alsoLikedByList.get(i);
+    		}
+    	}
+    	return alsoLikedBy;
+    	
+    }
 
 
     public static ArrayList<ArrayList<String>> generateInventoryListofLists(final ArrayList<Item> items) {
@@ -132,7 +220,7 @@ final class GameStrings {
 		String petInfo = "";
 		petInfo +="Species: " + pet.getSpecies() + "\r\n";
 		petInfo +="Gender: " +pet.getGender() + "\r\n";
-		petInfo +="Weight: " + String.format("%.2f", pet.getWeight()) + "\r\n";
+		petInfo +="Weight: " + String.format("%.2f", pet.getWeight()) + "kg\r\n";
 		petInfo +="Hunger: " + toPercent(pet.getHunger()) + "\r\n";
 		petInfo +="Toilet need: " + toPercent(pet.getToiletNeed()) + "\r\n";
 		petInfo +="Tiredness: " + toPercent(pet.getTiredness()) + "\r\n";
@@ -141,7 +229,7 @@ final class GameStrings {
 		petInfo +="Playfulness: " + toPercent(pet.getPlayfulness()) + "\r\n";
 		petInfo +="Roughness: " + toPercent(pet.getRoughness())  + "\r\n";
 		petInfo +="Favourite toy: " + stringOfToys(pet.getType().getFavouriteToys()) + "\r\n"; //get favourite toy is list of toys
-		petInfo +="Favourite food: " + stringOfFoods(pet.getType().getFavouriteFood()); //get favourite food
+		petInfo +="Favourite food: " + stringOfFoods(pet.getType().getFavouriteFoods()); //get favourite food
         if (pet.isDead()) {
             petInfo += getPetDeadString(pet);
         } else {
@@ -150,4 +238,50 @@ final class GameStrings {
         }
         return petInfo;
     }
+	
+	
+	public static String getItemInfo(Item item){
+		if (item instanceof Food){
+			return getItemInfo((Food) item);
+		}
+		else {
+			return getItemInfo((Toy) item);
+		}
+	}
+	
+	
+	public static String getItemInfo(Food food){
+		String itemInfo = "";
+		itemInfo += "Food: " + food.toString() + "\r\n";
+		if (food.toString() == "medicine"){
+			itemInfo+= "Used to cure a pet if they become sick." + "\r\n" + 
+						"Doesn't use up any actions.";
+			return itemInfo;
+		}
+		else if (food.toString() == "revival medicine"){
+			itemInfo+="Used to revive a pet if they die." + "\r\n" +
+					  "Can only be used to revive a pet once!";
+			return itemInfo;
+		}
+		itemInfo += "Nutrition: " + toPercent(food.getNutrition()) + "\r\n";
+		itemInfo += "Meal size: " + toPercent(food.getMealSize()) + "\r\n";
+		itemInfo += "Tastiness: " + toPercent(food.getTastiness())+ "\r\n";
+		itemInfo += getMostLikedByAnimals(food) + "\r\n";
+		itemInfo += getLikedByAnimals(food);
+		return itemInfo;
+	}
+	
+	
+	public static String getItemInfo(Toy toy){
+		String itemInfo = "";
+		itemInfo += "Food: " + toy.toString() + "\r\n";
+		itemInfo += "Durability: " + toPercent(toy.getMaxDurability()) + "\r\n";
+		itemInfo += getMostLikedByAnimals(toy) + "\r\n";
+		itemInfo += getLikedByAnimals(toy);
+		return itemInfo;
+	}
+	
+	/*public static String getItemInfo(Toy toy){
+		
+	}*/
 }
