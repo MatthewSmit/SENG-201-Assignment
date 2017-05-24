@@ -1,25 +1,13 @@
 assignment todo - 
 
-fix names now disappearing in playerchoosingwindow withing CurrentPetsPanel
-
-
 generate daily score and overall score for a player.
 
 happiness decreases by 50% each day (after 2 days down to lowest possible happiness), should probably change that to something more reasonable. 
 Should experiment around with other values to make them more balanced.
 
-score
-
 fix scrollbar stuck to bottom in petinfo
-show stats for toys/food
-
-punishing misbehaving pets
-
-curing sick pets makes them happier
 
 potentially add scroll bar to pet info stuff in mgp, so that the interface can be changed so it isn't so stretched
-
-rearrange ordering of stuff in pet info (+ make look nicer - e.g. first capital letter)
 
 write up report
 
