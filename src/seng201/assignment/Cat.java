@@ -1,7 +1,8 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 12/04/2017.
+ * Implements cat as a possible pet with distinct weight, playfulness,
+ * roughness, hunger rate and tiredness rate attributes.
  */
 final class Cat extends Pet {
     private static float[] weightRange = new float[] {2.5f, 11};
@@ -10,6 +11,12 @@ final class Cat extends Pet {
     private static int[] hungerRateRange = new int[] {2, 4};
     private static int[] tiredRateRange = new int[] {2, 4};
 
+    
+    /**
+     * Creates a pet cat.
+     * @param name - name of the pet cat.
+     * @param type - which type of pet it is.
+     */
     Cat(final String name, final PetType type) {
         super(name, type);
     }

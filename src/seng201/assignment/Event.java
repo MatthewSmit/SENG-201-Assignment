@@ -3,7 +3,9 @@ package seng201.assignment;
 import java.util.Random;
 
 /**
- * Base event class, used for events that affect pets. Each event can only affect one pet per day, and each pet can only be effected by one event per day.
+ * Base event class, used for events that affect pets. 
+ * Each event can only affect one pet per day, 
+ * and each pet can only be effected by one event per day.
  */
 public abstract class Event {
     private static Random random = new Random();
@@ -14,7 +16,7 @@ public abstract class Event {
      */
     public void processPlayer(final Player player) {
         for (Pet pet : player.getPets()) {
-            if (pet.getEventState() == Pet.EventState.NoEvent) {
+            if (pet.getEventState() == Pet.EventState.NO_EVENT) {
                 if (processPet(pet)) {
                     break;
                 }
@@ -31,9 +33,9 @@ public abstract class Event {
 
     /**
      * Linearly Interpolates a number between low and high based upon the amount.
-     * @param low The lowest value
-     * @param high The highest value
-     * @param amount the amount between [0, 1], where 0 will return low and 1 will return high
+     * @param low - The lowest value
+     * @param high - The highest value
+     * @param amount - the amount between [0, 1], where 0 will return low and 1 will return high
      */
     protected static float lerp(final float low, final float high, final float amount) {
         if (amount < 0) {
@@ -47,11 +49,16 @@ public abstract class Event {
     
     /**
      * Returns a random float between [0, 1).
+     * @return random number between [0, 1)
      */
     protected static float getRandom() {
         return random.nextFloat();
     }
 
+    /**
+     * 
+     * @param seed - sets random to a predetermined seed to ensure repeatable results
+     */
     static void setRandomSeed(final long seed) {
         random.setSeed(seed);
     }

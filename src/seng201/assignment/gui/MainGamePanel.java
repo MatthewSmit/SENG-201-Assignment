@@ -24,6 +24,7 @@ import javax.swing.event.ListSelectionListener;
 
 import seng201.assignment.Food;
 import seng201.assignment.Game;
+import seng201.assignment.GameStrings;
 import seng201.assignment.Item;
 import seng201.assignment.Pet;
 import seng201.assignment.Pet.DeathState;
@@ -248,15 +249,15 @@ final class MainGamePanel extends JPanel {
 
                 for (Pet pet : game.getCurrentPlayer().getPets()) {
                     switch (pet.getEventState()) {
-                        case NoEvent:
+                        case NO_EVENT:
                             break;
-                        case Misbehaving:
+                        case MISBEHAVING:
                             addMessage(String.format("%s has started misbehaving!", pet.getName()));
                             break;
-                        case Sick:
+                        case SICK:
                             addMessage(String.format("%s has gotten sick!", pet.getName()));
                             break;
-                        case Dead:
+                        case DEAD:
                             addMessage(String.format("%s has died!", pet.getName()));
                             if (pet.getDeathState() == Pet.DeathState.PERMANENTLY_DEAD) {
                                 addMessage(String.format("%s is now permenantly dead!", pet.getName()));

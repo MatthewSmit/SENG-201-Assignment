@@ -1,15 +1,22 @@
-package seng201.assignment.gui;
+package seng201.assignment;
 
 import java.util.ArrayList;
 
 import seng201.assignment.*;
-import seng201.assignment.Lists;
+
+/**
+ * Class used to contain methods to
+ * Generates the strings used throughout the GUI.
+ *
+ */
+public final class GameStrings {
 
 
-final class GameStrings {
-    private GameStrings() {
-    }
-
+    /**
+     * Generate a string containing the information about a given species.
+     * @param type - the type of a pet.
+     * @return speciesInfo - a string containing the information for a given species.
+     */
     public static String getSpeciesStats(PetType type){
         Pet pet = type.create("pet");
         String speciesInfo = "";
@@ -19,10 +26,15 @@ final class GameStrings {
         speciesInfo += "Playfulness range: " + stringOfRange(pet.getSpeciesPlayfulnessRange()) + "\r\n";
         speciesInfo += "Roughness range: " + stringOfRange(pet.getSpeciesRoughnessRange()) + "\r\n";
         speciesInfo += "Hunger rate range: " + stringOfRange(pet.getSpeciesHungerRateRange()) + "\r\n";
-        speciesInfo += "Tiredness rate range: " + stringOfRange(pet.getSpeciesTiredRateRange()); //ad new line if extra added after
+        speciesInfo += "Tiredness rate range: " + stringOfRange(pet.getSpeciesTiredRateRange());
         return speciesInfo;
     }
-
+    
+    /**
+     * 
+     * @param type
+     * @return
+     */
     public static String getTypeSpecies(final PetType type) {
         return type.getName();
     }

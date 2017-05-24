@@ -3,7 +3,10 @@ package seng201.assignment;
 import java.util.Random;
 
 /**
- * The pet base class, handles most statistics information and logic changes.
+ * Implements a pet to be further extended by species subclasses,
+ * contains the basic private attributes of a pet such as weight and gender,
+ * methods for initializing these attributes, and abstract method declarations
+ * used in the species subclasses.
  */
 public abstract class Pet {
     /**
@@ -35,19 +38,19 @@ public abstract class Pet {
         /**
          * No Event.
          */
-        NoEvent,
+        NO_EVENT,
         /**
          * Pet is misbehaving.
          */
-        Misbehaving,
+        MISBEHAVING,
         /**
          * Pet is sick.
          */
-        Sick,
+        SICK,
         /**
          * Pet is dead.
          */
-        Dead
+        DEAD
     }
 
     /**
@@ -177,7 +180,7 @@ public abstract class Pet {
     /**
      * The event that happened this turn, gets reset at the start of a new turn.
      */
-    private EventState eventState = EventState.NoEvent;
+    private EventState eventState = EventState.NO_EVENT;
 
     /**
      * If the pet is currently sick.
@@ -195,8 +198,8 @@ public abstract class Pet {
 
     /**
      * Create a new pet.
-     * @param petName the name of the new pet
-     * @param petType the type of the new pet
+     * @param petName - the name of the new pet
+     * @param petType - the type of the new pet
      */
     protected Pet(final String petName, final PetType petType) {
         name = petName;
@@ -216,7 +219,7 @@ public abstract class Pet {
     }
 
     /**
-     * Processes stat changes when the day changes.
+     * Processes changes of attributes when a day finishes.
      */
     final void dayPassed() {
         actionsLeft = 2;
@@ -232,14 +235,12 @@ public abstract class Pet {
             health--;
         }
 
-        eventState = EventState.NoEvent;
-
-        // TODO: Misbehaving action? Such as toilet, eating or playing without being told
+        eventState = EventState.NO_EVENT;
     }
 
     /**
-     * Feeds the pet some food. Decreases hunger, increases toilet need, and happiness if its a favoured toy.
-     * @param food the food used to feed the pet
+     * Feeds the pet some food. Decreases hunger, increases toilet need, and happiness if its a favoured food.
+     * @param food - the food used to feed the pet
      */
     public void feed(final Food food) {
         assert !isDead();
@@ -268,7 +269,8 @@ public abstract class Pet {
     }
 
     /**
-     * Plays with the pet, using a toy. Increases the pets happiness.
+     * Plays with the pet, using a toy. Increases the pets happiness, 
+     * more so if it is their favourite toy or one of their favourites.
      * @param toy the toy used to play with the pet
      */
     public void play(final Toy toy) {
@@ -297,11 +299,10 @@ public abstract class Pet {
             happiness = 10;
         }
 
-        //TODO: Make them get more tired/hungry depending on how vigorous the play is
     }
 
     /**
-     * Gets the pet to go to sleep, restoring its tiredness.
+     * Gets the pet to go to sleep for a turn, decreasing their tiredness.
      */
     public void sleep() {
         assert !isDead();
@@ -315,7 +316,7 @@ public abstract class Pet {
     }
 
     /**
-     * Gets the pet to go to the toilet, restoring its toilet need.
+     * Gets the pet to go to the toilet, decreasing their need to go to the toilet.
      */
     public void toilet() {
         assert !isDead();
@@ -329,7 +330,7 @@ public abstract class Pet {
     }
 
     /**
-     * Cures the sickness the pet has.
+     * Cures the sickness the pet has, increasing their happiness.
      */
     public void cure() {
         assert sick;
@@ -339,13 +340,13 @@ public abstract class Pet {
 
 
     /**
-     * Pet is punished for misbehaving.
+     * Pet is punished for misbehaving, decreasing their happiness.
      */
     public void fixMisbehaving() {
         if (!misbehaving) {
             throw new IllegalStateException();
         } else {
-            eventState = EventState.NoEvent;
+            eventState = EventState.NO_EVENT;
             misbehaving = false;
             happiness -= 2;
         }
@@ -355,34 +356,35 @@ public abstract class Pet {
      * Pet starts to misbehave.
      */
     final void startMisbehaving() {
-        if (eventState != EventState.NoEvent) {
+        if (eventState != EventState.NO_EVENT) {
             throw new IllegalStateException();
         }
 
-        eventState = EventState.Misbehaving;
+        eventState = EventState.MISBEHAVING;
         misbehaving = true;
     }
 
     /**
-     * Pet becomes sick.
+     * Pet becomes sick, decreasing their healthiness.
      */
     final void startBeingSick() {
-        if (eventState != EventState.NoEvent) {
+        if (eventState != EventState.NO_EVENT) {
             throw new IllegalStateException();
         }
 
-        eventState = EventState.Sick;
+        eventState = EventState.SICK;
         sick = true;
         health--;
     }
 
     /**
-     * Kills the pet, either setting it to once-dead, or permanently-dead.
+     * Kills the pet, either setting it to once-dead if it is the first time the pet has died
+     * or permanently-dead if it is the second.
      */
     public void die() {
         assert deathState == DeathState.ALIVE || deathState == DeathState.ALIVE_WAS_DEAD;
 
-        eventState = EventState.Dead;
+        eventState = EventState.DEAD;
         if (deathState == DeathState.ALIVE) {
             deathState = DeathState.DEAD_ONCE;
         } else {
@@ -407,14 +409,16 @@ public abstract class Pet {
     }
 
     /**
-     * Gets the pets hunger. [0-5] is fed, [6-15] is dangerous.
+     * Gets the pets hunger.
+     * @return hunger - how hungry the pet is (0 to 10). Varies over time.
      */
     public int getHunger() {
         return hunger;
     }
 
     /**
-     * Gets the pets tiredness. [0-5] is awake, [6-15] is dangerous.
+     * Gets the pets tiredness.
+     * @return tiredness - how tired the pet is (0 to 10). Varies over time.
      */
     public int getTiredness() {
         return tiredness;
@@ -422,41 +426,47 @@ public abstract class Pet {
 
     /**
      * Gets how playful the pet is.
+     * @return playfulness - how playful the pet is (0 to 10). Constant value.
      */
     public int getPlayfulness() {
         return playfulness;
     }
 
     /**
-     * Gets how rough while playing the pet is.
+     * Gets how rough the pet is with toys.
+     * @return roughness - how rough the pet is (0 to 10) with toys. Constant value.
      */
     public int getRoughness() {
         return roughness;
     }
 
     /**
-     * Gets how much the pet needs to go toilet. [0-5] is well toileted, [6-15] is dangerous.
+     * Gets how much the pet needs to go to the toilet.
+     * @return toiletNeed - how much the pet needs to go to the toilet (0 to 10). Varies over time.
      */
     public int getToiletNeed() {
         return toiletNeed;
     }
 
     /**
-     * Gets how healthy the pet is, with 0 being critical and 10 being healthy.
+     * Gets how healthy the pet is.
+     * @return health - how healthy the pet currently is (0 to 10). Varies over time.
      */
     public int getHealth() {
         return health;
     }
 
     /**
-     * Gets how happy the pet is. Has a chance of misbehaving above 5.
+     * Gets how happy the pet is. Chance of misbehaving if over 5.
+     * @return happiness - how happy the pet currently is (0 to 10). Varies over time.
      */
     public int getHappiness() {
         return happiness;
     }
 
     /**
-     * Gets how heavy the pet is in kg.
+     * Gets how much the pet weighs. Range of initial weights is constrained by species.
+     * @return weight - how heavy the pet currently is. Varies over time.
      */
     public float getWeight() {
         return weight + toiletNeed * FOOD_WEIGHT_MULTIPLIER;
@@ -464,6 +474,10 @@ public abstract class Pet {
 
     /**
      * Gets whether the pet has died once, or is dead permanently.
+     * @return DeathState.ALIVE - if pet has never died, 
+     * DeathState.DEAD_ONCE -  if pet has died for the first time, 
+     * DeathState.ALIVE_WAS_DEAD - if pet has died once and been revived,
+     * DeathState.PERMANENTLY_DEAD - if pet has died once and died again.
      */
     public DeathState getDeathState() {
         return deathState;
@@ -471,6 +485,10 @@ public abstract class Pet {
 
     /**
      * Gets if there is a new event this turn.
+     * @return EventState.NO_EVENT - if the pet has neither started to misbehave, become sick or die in a turn,
+     * EventState.MISBEHAVING - if the pet begins to misbehave in a turn,
+     * EventState.SICK - if the pet becomes sick in a turn,
+     * EventState.DEAD - if the pet dies in a turn.
      */
     public EventState getEventState() {
         return eventState;
@@ -478,6 +496,7 @@ public abstract class Pet {
 
     /**
      * Gets if the pet is currently sick.
+     * @return true - if pet is currently sick, false - if pet is not currently sick.
      */
     public boolean isSick() {
         return sick;
@@ -485,6 +504,7 @@ public abstract class Pet {
 
     /**
      * Gets if the pet is currently misbehaving.
+     * @return true - if pet is currently misbehaving, false - if pet is not currently misbehaving.
      */
     public boolean isMisbehaving() {
         return misbehaving;
@@ -492,6 +512,7 @@ public abstract class Pet {
 
     /**
      * Gets the name of the pet.
+     * @return name - name of the pet as a string.
      */
     public String getName() {
         return name;
@@ -500,6 +521,7 @@ public abstract class Pet {
 
     /**
      * Gets the gender of the pet.
+     * @return gender - "male" if pet is male, "female" if pet is female.
      */
     public String getGender() {
         return gender;
@@ -507,14 +529,16 @@ public abstract class Pet {
 
 
     /**
-     * Gets the actions remaining.
+     * Gets the actions remaining in a turn.
+     * @return actionsLeft - number of actions left in a turn.
      */
     public int getActionsLeft() {
         return actionsLeft;
     }
 
     /**
-     * Gets the type of pet.
+     * Gets the type of the pet.
+     * @return type - type of the pet.
      */
     public PetType getType() {
         return type;
@@ -522,6 +546,7 @@ public abstract class Pet {
 
     /**
      * Gets the species of the pet.
+     * @return species - species of the pet as a string.
      */
     public String getSpecies() {
         return type.getName();
@@ -529,31 +554,37 @@ public abstract class Pet {
 
     /**
      * Gets the weight range of the species.
+     * @return weightRange - range of weight of the species.
      */
     public abstract float[] getSpeciesWeightRange();
 
-    /***
-     * Gets the playfulness range of the species.
+    /**
+   	 * Gets the range of playfulness for a species.
+     * @return playfulnessRange - the playfulness range of the species.
      */
     public abstract int[] getSpeciesPlayfulnessRange();
 
     /**
-     * Gets the roughness range of the species.
+   	 * Gets the range of roughness for a species.
+     * @return roughnessRange - the roughness range of the species.
      */
     public abstract int[] getSpeciesRoughnessRange();
 
     /**
-     * Gets the hunger rate range of the species.
+   	 * Gets the range of rates at which hunger increases per day for a species.
+     * @return hungerRateRange - the range of rates at which hunger increases per day for a species.
      */
     public abstract int[] getSpeciesHungerRateRange();
 
     /**
-     * Gets the tired rate range of the species.
+   	 * Gets the range of rates at which tiredness increases per day for a species.
+     * @return tiredRateRange - the range of rates at which tiredness increases per day for a species.
      */
     public abstract int[] getSpeciesTiredRateRange();
 
     /**
      * Gets how playful a pet of a certain species is.
+     * @return playfulness - how playful a pet of a certain species is.
      */
     private int getSpeciesPlayfulness() {
         int[] playfulnessRange = getSpeciesPlayfulnessRange();
@@ -562,6 +593,7 @@ public abstract class Pet {
 
     /**
      * Gets how rough a pet of a certain species is.
+     * @return roughness - how playful a pet of a certain species is.
      */
     private int getSpeciesRoughness() {
         int[] roughnessRange = getSpeciesRoughnessRange();
@@ -569,7 +601,8 @@ public abstract class Pet {
     }
 
     /**
-     * Gets the rate that hunger increases for a pet of a certain species.
+     * Gets the rate at which hunger increases for a pet of a certain species.
+     * @return hungerRate - the rate at which hungriness increases for a pet of a certain species.
      */
     private int getSpeciesHungerRate() {
         int[] hungerRateRange = getSpeciesHungerRateRange();
@@ -578,7 +611,8 @@ public abstract class Pet {
 
 
     /**
-     * Gets the rate tiredness increases for a pet of a certain species.
+     * Gets the rate at which tiredness increases for a pet of a certain species.
+     * @return tiredRate - the rate at which tiredness increases for a pet of a certain species.
      */
     private int getSpeciesTiredRate() {
         int[] tiredRateRange = getSpeciesTiredRateRange();
@@ -587,6 +621,7 @@ public abstract class Pet {
 
     /**
      * Gets the initial weight of a pet of a certain species.
+     * @return initialWeight - the initial weight for a pet of a certain species.
      */
     private float getSpeciesInitialWeight() {
         float[] weightRange = getSpeciesWeightRange();
@@ -596,6 +631,7 @@ public abstract class Pet {
 
     /**
      * Gets the gender of a pet.
+     * @return "male" - if the pet is male, "female" - if the pet is female.
      */
     private static String getInitialGender() {
         if (Math.random() >= 0.5) {
@@ -606,11 +642,16 @@ public abstract class Pet {
 
     /**
      * Returns true if the pet is currently dead, false if not.
+     * @return true - if the pet is currently dead, false - if the pet is currently alive.
      */
     public boolean isDead() {
         return deathState == DeathState.DEAD_ONCE || deathState == DeathState.PERMANENTLY_DEAD; 
     }
 
+    /**
+     * gets the Random object rn.
+     * @return rn - a Random object.
+     */
     final Random getRandom() {
         return rn;
     }

@@ -1,7 +1,9 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 12/04/2017.
+ * Implements a playable game, containing players, pets, methods for the
+ * interaction between players and pets, and methods for dealing with the passage of time
+ * in the form of turns and days.
  */
 public class Game {
     private static final Event[] EVENTS = new Event[] {
@@ -28,7 +30,7 @@ public class Game {
     }
 
     /**
-     * Ends a turn, it will switch to the next player, and when that finishes, switch to a new day.
+     * Ends a turn. It will switch to the next player, and when that finishes, switch to a new day.
      */
     public void endTurn() {
         assert isRunning();
@@ -36,7 +38,6 @@ public class Game {
         currentPet = 0;
         playerTurn++;
         if (playerTurn == players.length) {
-            // Process new day
             playerTurn = 0;
             day++;
 
@@ -84,41 +85,47 @@ public class Game {
 
     /**
      * Returns if the game is still running.
+     * @return true - if game is still running, false - if game has finished.
      */
     public boolean isRunning() {
         return day < maxDays;
     }
 
     /**
-     * Returns the player whos turn it currently is.
+     * Gets the player whose turn it currently is.
+     * @return player - player whose turn it currently is
      */
     public Player getCurrentPlayer() {
         return players[playerTurn];
     }
 
     /**
-     * Returns the current day in the range [0, maxDays).
+     * Gets the current day in the range [0, maxDays)
+     * @return day - current day in the range [0, maxDays)
      */
     public int getCurrentDay() {
         return day;
     }
 
     /**
-     * Returns the maximum number of days.
+     * Gets the number of days the game will run for.
+     * @return maxDays - days which the game will run for.
      */
     public int getMaxDays() {
         return maxDays;
     }
 
     /**
-     * Returns the current pet.
+     * Gets the current pet being interacted with.
+     * @return pet - the current pet being interacted with.
      */
     public Pet getCurrentPet() {
         return players[playerTurn].getPets()[currentPet];
     }
 
     /**
-     * Returns the index in the players pet array for the current pet.
+     * Gets the index in the players pet array for the current pet. 
+     * @return currentPet - the index in the players pet array for the current pet.
      */
     public int getCurrentPetIndex() {
         return currentPet;

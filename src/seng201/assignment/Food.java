@@ -1,7 +1,8 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 12/04/2017.
+ * Implements the foods consumable by pets, along with the consumable
+ * medicines for healing sickness and one off revival.
  */
 public final class Food extends Item {
     /**
@@ -59,6 +60,14 @@ public final class Food extends Item {
     private final int mealSize;
     private final int tastiness;
 
+    /**
+     * Creates a food.
+     * @param name name of the food.
+     * @param price the price of the food.
+     * @param nutrition the nutrition value (1 to 10) of the food.
+     * @param mealSize the size (1 to 10) of the food.
+     * @param tastiness the tastiness (1 to 10) of the food.
+     */
     private Food(final String name, final int price, final int nutrition, final int mealSize, final int tastiness) {
         this.foodName = name;
         this.price = price;
@@ -67,11 +76,17 @@ public final class Food extends Item {
         this.tastiness = tastiness;
     }
 
+    /**
+     * Create another copy of a food item.
+     */
     @Override
     public Item clone() {
         return this;
     }
     
+    /**
+     * Gets the price of the food.
+     */
     @Override
     public int getPrice() {
         return price;
@@ -97,7 +112,10 @@ public final class Food extends Item {
     public int getTastiness() {
         return tastiness;
     }
-
+    
+    /**
+     * Gets the name of the food.
+     */
     @Override
     public String toString() {
         return foodName;

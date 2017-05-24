@@ -14,6 +14,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import seng201.assignment.GameStrings;
 import seng201.assignment.PetType;
 
 import javax.swing.JTextPane;
