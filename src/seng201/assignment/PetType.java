@@ -72,7 +72,7 @@ public enum PetType {
     /**
      * Gets the favourite food.
      */
-    public Food[] getFavouriteFood() {
+    public Food[] getFavouriteFoods() {
         return favouriteFood;
     }
 

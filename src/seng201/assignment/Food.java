@@ -7,39 +7,39 @@ public final class Food extends Item {
     /**
      * A carrot.
      */
-    public static final Food CARROT          = new Food("carrot", 2, 3, 3, 3);
+    public static final Food CARROT          = new Food("Carrot", 2, 3, 3, 3);
     /**
      * Tuna.
      */
-    public static final Food TUNA            = new Food("tuna", 6, 5, 4, 5);
+    public static final Food TUNA            = new Food("Tuna", 6, 5, 4, 5);
     /**
      * A lettuce.
      */
-    public static final Food LETTUCE         = new Food("lettuce", 2, 2, 3, 2);
+    public static final Food LETTUCE         = new Food("Lettuce", 2, 2, 3, 2);
     /**
      * A steak.
      */
-    public static final Food STEAK           = new Food("steak", 8, 7, 6, 6);
+    public static final Food STEAK           = new Food("Steak", 8, 7, 6, 6);
     /**
      * Seeds.
      */
-    public static final Food SEEDS           = new Food("seeds", 4, 3, 3, 4);
+    public static final Food SEEDS           = new Food("Seeds", 4, 3, 3, 4);
     /**
      * A bloodworm.
      */
-    public static final Food BLOODWORM       = new Food("bloodworm", 5, 2, 2, 3);
+    public static final Food BLOODWORM       = new Food("Bloodworm", 5, 2, 2, 3);
     /**
      * Peas.
      */
-    public static final Food PEAS            = new Food("peas", 2, 3, 2, 2);
+    public static final Food PEAS            = new Food("Peas", 2, 3, 2, 2);
     /**
      * Medicine for healing sick pets.
      */
-    public static final Food MEDICINE        = new Food("medicine", 10, 0, 0, 0);
+    public static final Food MEDICINE        = new Food("Medicine", 10, 0, 0, 0);
     /**
      * Revival medicine, for reviving dead pets.
      */
-    public static final Food REVIVALMEDICINE = new Food("revival medicine", 25, 0, 0, 0);
+    public static final Food REVIVALMEDICINE = new Food("Revival Medicine", 25, 0, 0, 0);
 
     private static final Food[] VALUES = new Food[]{
             CARROT,

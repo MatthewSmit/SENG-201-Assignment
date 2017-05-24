@@ -246,7 +246,7 @@ public abstract class Pet {
         assert actionsLeft > 0;
         actionsLeft--;
 
-        Food[] favourites = type.getFavouriteFood();
+        Food[] favourites = type.getFavouriteFoods();
 
         boolean mostFavourite = favourites[0] == food;
         boolean favourite = Lists.contains(favourites, food);
@@ -601,7 +601,7 @@ public abstract class Pet {
         if (Math.random() >= 0.5) {
             return "male";
         }
-        return "female";
+        return "Female";
     }
 
     /**

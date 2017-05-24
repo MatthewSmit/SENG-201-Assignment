@@ -7,27 +7,27 @@ public final class Toy extends Item {
     /**
      * A small ball.
      */
-    public static final Toy SMALLBALL      = new Toy("small ball", 3, 8);
+    public static final Toy SMALLBALL      = new Toy("Small Ball", 3, 8);
     /**
      * A large ball.
      */
-    public static final Toy LARGEBALL      = new Toy("large ball", 5, 9);
+    public static final Toy LARGEBALL      = new Toy("Large Ball", 5, 9);
     /**
      * A squeaky toy.
      */
-    public static final Toy SQUEAKYTOY     = new Toy("squeaky toy", 8, 5);
+    public static final Toy SQUEAKYTOY     = new Toy("Squeaky Toy", 8, 5);
     /**
      * A spinning guinea pig wheel.
      */
-    public static final Toy GUINEAPIGWHEEL = new Toy("guinea pig wheel", 7, 7);
+    public static final Toy GUINEAPIGWHEEL = new Toy("Guinea Pig Wheel", 7, 7);
     /**
      * A jungle gym.
      */
-    public static final Toy JUNGLEGYM      = new Toy("jungle gym", 8, 5);
+    public static final Toy JUNGLEGYM      = new Toy("Jungle Gym", 8, 5);
     /**
      * A cardboard box.
      */
-    public static final Toy CARDBOARDBOX   = new Toy("cardboard box", 1, 2);
+    public static final Toy CARDBOARDBOX   = new Toy("Cardboard Box", 1, 2);
 
     private static final Toy[] VALUES = new Toy[] {
             SMALLBALL,
