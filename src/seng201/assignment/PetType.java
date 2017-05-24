@@ -37,6 +37,14 @@ public enum PetType {
     private final Toy[] favouriteToys;
     private final Food[] favouriteFood;
 
+    /**
+     * creates a type of a pet.
+     * @param name - the type of the pet.
+     * @param imageFile - the name of the corresponding image file for the pet.
+     * @param petClass - the class that t
+     * @param favouriteToys
+     * @param favouriteFood
+     */
     PetType(final String name, final String imageFile, final Class<? extends Pet> petClass, final Toy[] favouriteToys, final Food[] favouriteFood) {
         this.name = name;
         this.imageFile = imageFile;

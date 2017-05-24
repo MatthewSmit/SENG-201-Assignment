@@ -32,15 +32,15 @@ public final class ConsoleRunner {
                                              game.getCurrentPet().getName(), game.getCurrentPet().getActionsLeft()));
 
             switch (game.getCurrentPet().getEventState()) {
-                case NoEvent:
+                case NO_EVENT:
                     break;
-                case Misbehaving:
+                case MISBEHAVING:
                     System.out.println(String.format("Pet %s has started misbehaving!", game.getCurrentPet().getName()));
                     break;
-                case Sick:
+                case SICK:
                     System.out.println(String.format("Pet %s has gotten sick!", game.getCurrentPet().getName()));
                     break;
-                case Dead:
+                case DEAD:
                     System.out.println(String.format("Pet %s has died!", game.getCurrentPet().getName()));
                     if (game.getCurrentPet().getDeathState() == Pet.DeathState.PERMANENTLY_DEAD) {
                         System.out.println("Your pet is now permenantly dead!");

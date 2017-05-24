@@ -1,7 +1,11 @@
 package seng201.assignment.gui;
 
+import javax.swing.*;
+
+import seng201.assignment.Pet;
+import seng201.assignment.Player;
+
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import seng201.assignment.Pet;
 import seng201.assignment.Player;

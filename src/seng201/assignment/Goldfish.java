@@ -1,7 +1,8 @@
 package seng201.assignment;
 
 /**
- * Pet goldfish.
+ * Implements goldfish as a possible pet with distinct weight, playfulness,
+ * roughness, hunger rate and tiredness rate attributes.
  */
 final class Goldfish extends Pet {
     private static float[] weightRange = new float[] {0.1f, 1.1f};
@@ -10,6 +11,11 @@ final class Goldfish extends Pet {
     private static int[] hungerRateRange = new int[] {1, 2};
     private static int[] tiredRateRange = new int[] {1, 2};
 
+    /**
+     * Creates a pet goldfish.
+     * @param name - name of the pet goldfish.
+     * @param type - which type of pet it is.
+     */
     Goldfish(final String name, final PetType type) {
         super(name, type);
     }
