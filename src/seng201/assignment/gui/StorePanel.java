@@ -103,7 +103,7 @@ final class StorePanel extends JPanel {
         storeList = new JList<>();
         storeList.setFont(new Font("Tahoma", Font.PLAIN, 13));
         storeList.setBorder(new LineBorder(new Color(0, 0, 0)));
-        storeList.setBounds(10, 49, 397, 281);
+        storeList.setBounds(10, 49, 397, 263);
         storeList.setModel(list);
         storeList.setCellRenderer(new ShopListViewRenderer<Item>());
         storeList.addListSelectionListener(new ListSelectionListener() {
@@ -191,8 +191,8 @@ final class StorePanel extends JPanel {
         
         statsText = new JTextPane();
         statsText.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        statsText.setEditable(false);
-        statsText.setBounds(12, 342, 395, 81);
+        statsText.setEditable(false);   
+        statsText.setBounds(12, 323, 395, 100);
         statsText.setHighlighter(null);
         add(statsText);
 
@@ -281,7 +281,7 @@ final class StorePanel extends JPanel {
         if (item == null) {
             statsText.setText("");
         } else {
-            statsText.setText(item.getLhs().toString());
+            statsText.setText(GameStrings.getItemInfo(item.getLhs()));
         }
     }
 
