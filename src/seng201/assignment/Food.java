@@ -1,7 +1,7 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 12/04/2017.
+ * The food class contains statistics for different types of food.
  */
 public final class Food extends Item {
     /**

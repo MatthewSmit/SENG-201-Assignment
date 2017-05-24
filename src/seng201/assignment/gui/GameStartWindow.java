@@ -44,14 +44,12 @@ public class GameStartWindow extends JFrame {
      * Launch the application.
      */
     public static void main(final String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    GameStartWindow window = new GameStartWindow();
-                    window.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                GameStartWindow window = new GameStartWindow();
+                window.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }

@@ -1,7 +1,7 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 2017-04-27.
+ * Toy Item.
  */
 public final class Toy extends Item {
     /**
@@ -69,7 +69,7 @@ public final class Toy extends Item {
     
     @Override
     public boolean equals(final Object other) {
-        return other instanceof Toy && ((Toy)other).name == name;
+        return other instanceof Toy && (this == other || ((Toy)other).name.equals(name));
     }
     
     @Override

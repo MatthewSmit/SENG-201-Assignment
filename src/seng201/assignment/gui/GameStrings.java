@@ -3,7 +3,6 @@ package seng201.assignment.gui;
 import java.util.ArrayList;
 
 import seng201.assignment.*;
-import seng201.assignment.Lists;
 
 
 final class GameStrings {
@@ -21,14 +20,6 @@ final class GameStrings {
         speciesInfo += "Hunger rate range: " + stringOfRange(pet.getSpeciesHungerRateRange()) + "\r\n";
         speciesInfo += "Tiredness rate range: " + stringOfRange(pet.getSpeciesTiredRateRange()); //ad new line if extra added after
         return speciesInfo;
-    }
-
-    public static String getTypeSpecies(final PetType type) {
-        return type.getName();
-    }
-
-    public static String getPetName(final Pet pet) {
-        return pet.getName();
     }
 
 
@@ -103,88 +94,88 @@ final class GameStrings {
         	}
     	}
     	return mostLikedBy;
-    	
+
     }*/
-    
+
     public static String getMostLikedByAnimals(Food food){
-    	
-    	ArrayList<String> mostLikedByList = new ArrayList<String>();
-    	String mostLikedBy = "Most liked by: - ";
-    	for (PetType type : PetType.values()) {
-    		if (type.getFavouriteFoods()[0] == food){
-    			mostLikedByList.add(type.getName());
-        	}
-    	}
-    	if (mostLikedByList.size() > 0){
-    		mostLikedBy = "Most liked by: " + mostLikedByList.get(0);
-    		for (int i = 1; i < mostLikedByList.size(); i++){
-    			mostLikedBy+=", " + mostLikedByList.get(i);
-    		}
-    	}
-    	return mostLikedBy;
-    	
+
+        ArrayList<String> mostLikedByList = new ArrayList<>();
+        String mostLikedBy = "Most liked by: - ";
+        for (PetType type : PetType.values()) {
+            if (type.getFavouriteFoods()[0] == food){
+                mostLikedByList.add(type.getName());
+            }
+        }
+        if (mostLikedByList.size() > 0){
+            mostLikedBy = "Most liked by: " + mostLikedByList.get(0);
+            for (int i = 1; i < mostLikedByList.size(); i++){
+                mostLikedBy += ", " + mostLikedByList.get(i);
+            }
+        }
+        return mostLikedBy;
+
     }
-    
+
     public static String getMostLikedByAnimals (Toy toy){
-    	ArrayList<String> mostLikedByList = new ArrayList<String>();
-    	String mostLikedBy = "Most liked by: - ";
-    	for (PetType type : PetType.values()) {
-    		if (type.getFavouriteToys()[0] == toy){
-    			mostLikedByList.add(type.getName());
-        	}
-    	} 
-    	
-    	if (mostLikedByList.size() > 0){
-    		mostLikedBy = "Most liked by: " + mostLikedByList.get(0);
-    		for (int i = 1; i < mostLikedByList.size(); i++){
-    			mostLikedBy+=", " + mostLikedByList.get(i);
-    		}
-    	}
-    	return mostLikedBy;
+        ArrayList<String> mostLikedByList = new ArrayList<>();
+        String mostLikedBy = "Most liked by: - ";
+        for (PetType type : PetType.values()) {
+            if (type.getFavouriteToys()[0] == toy){
+                mostLikedByList.add(type.getName());
+            }
+        } 
+
+        if (mostLikedByList.size() > 0){
+            mostLikedBy = "Most liked by: " + mostLikedByList.get(0);
+            for (int i = 1; i < mostLikedByList.size(); i++) {
+                mostLikedBy += ", " + mostLikedByList.get(i);
+            }
+        }
+        return mostLikedBy;
     }
-    
-    public static String getLikedByAnimals(Food food){
-    	
-    	ArrayList<String> alsoLikedByList = new ArrayList<String>();
-    	String alsoLikedBy = "Also liked by: - ";
-    	for (PetType type : PetType.values()) {
-    		if (food != type.getFavouriteFoods()[0] && Lists.contains(type.getFavouriteFoods(), food)){
-        		alsoLikedByList.add(type.getName());
-        	}
-    	}
-    	if (alsoLikedByList.size() > 0){
-    		alsoLikedBy = "Also liked by: " + alsoLikedByList.get(0);
-    		for (int i = 1; i < alsoLikedByList.size(); i++){
-    			alsoLikedBy+=", " + alsoLikedByList.get(i);
-    		}
-    	}
-    	return alsoLikedBy;
-    	
+
+    public static String getLikedByAnimals(Food food) {
+
+        ArrayList<String> alsoLikedByList = new ArrayList<>();
+        String alsoLikedBy = "Also liked by: - ";
+        for (PetType type : PetType.values()) {
+            if (food != type.getFavouriteFoods()[0] && Lists.contains(type.getFavouriteFoods(), food)) {
+                alsoLikedByList.add(type.getName());
+            }
+        }
+        if (alsoLikedByList.size() > 0) {
+            alsoLikedBy = "Also liked by: " + alsoLikedByList.get(0);
+            for (int i = 1; i < alsoLikedByList.size(); i++) {
+                alsoLikedBy += ", " + alsoLikedByList.get(i);
+            }
+        }
+        return alsoLikedBy;
+
     }
-    
+
     public static String getLikedByAnimals(Toy toy){
-    	
-    	ArrayList<String> alsoLikedByList = new ArrayList<String>();
-    	String alsoLikedBy = "Also liked by: - ";
-    	for (PetType type : PetType.values()) {
-    		if (toy != type.getFavouriteToys()[0] && Lists.contains(type.getFavouriteToys(), toy)){
-        		alsoLikedByList.add(type.getName());
-        	}
-    	}
-    	if (alsoLikedByList.size() > 0){
-    		alsoLikedBy = "Also liked by: " + alsoLikedByList.get(0);
-    		for (int i = 1; i < alsoLikedByList.size(); i++){
-    			alsoLikedBy+=", " + alsoLikedByList.get(i);
-    		}
-    	}
-    	return alsoLikedBy;
-    	
+
+        ArrayList<String> alsoLikedByList = new ArrayList<>();
+        String alsoLikedBy = "Also liked by: - ";
+        for (PetType type : PetType.values()) {
+            if (toy != type.getFavouriteToys()[0] && Lists.contains(type.getFavouriteToys(), toy)) {
+                alsoLikedByList.add(type.getName());
+            }
+        }
+        if (alsoLikedByList.size() > 0) {
+            alsoLikedBy = "Also liked by: " + alsoLikedByList.get(0);
+            for (int i = 1; i < alsoLikedByList.size(); i++) {
+                alsoLikedBy += ", " + alsoLikedByList.get(i);
+            }
+        }
+        return alsoLikedBy;
+
     }
 
 
     public static ArrayList<ArrayList<String>> generateInventoryListofLists(final ArrayList<Item> items) {
-        ArrayList<String> namesList = new ArrayList<String>();
-        ArrayList<Integer> numberOfList = new ArrayList<Integer>();
+        ArrayList<String> namesList = new ArrayList<>();
+        ArrayList<Integer> numberOfList = new ArrayList<>();
         int j = 0;
         for (int i = 0; i < items.size(); i++) {
             if (namesList.contains(items.get(i).toString())) {
@@ -197,9 +188,9 @@ final class GameStrings {
             }
         }
         //new array - for ith value in names list pair it up with ith value in number list
-        ArrayList<ArrayList<String>> finalList = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> finalList = new ArrayList<>();
         for (int i = 0; i < namesList.size(); i++) {
-            ArrayList<String> temporaryArray = new ArrayList<String>();
+            ArrayList<String> temporaryArray = new ArrayList<>();
             temporaryArray.add(namesList.get(i));
             temporaryArray.add(numberOfList.get(i).toString());
             finalList.add(temporaryArray);
@@ -219,20 +210,20 @@ final class GameStrings {
     }
 
 
-	public static String getPetInfo(Pet pet){ //include status effect
-		String petInfo = "";
-		petInfo +="Species: " + pet.getSpecies() + "\r\n";
-		petInfo +="Gender: " +pet.getGender() + "\r\n";
-		petInfo +="Weight: " + String.format("%.2f", pet.getWeight()) + "kg\r\n";
-		petInfo +="Hunger: " + toPercent(pet.getHunger()) + "\r\n";
-		petInfo +="Toilet need: " + toPercent(pet.getToiletNeed()) + "\r\n";
-		petInfo +="Tiredness: " + toPercent(pet.getTiredness()) + "\r\n";
-		petInfo +="Healthiness: " + toPercent(pet.getHealth()) + "\r\n";
-		petInfo +="Happiness: " + toPercent(pet.getHappiness()) + "\r\n";
-		petInfo +="Playfulness: " + toPercent(pet.getPlayfulness()) + "\r\n";
-		petInfo +="Roughness: " + toPercent(pet.getRoughness())  + "\r\n";
-		petInfo +="Favourite toy: " + stringOfToys(pet.getType().getFavouriteToys()) + "\r\n"; //get favourite toy is list of toys
-		petInfo +="Favourite food: " + stringOfFoods(pet.getType().getFavouriteFoods()); //get favourite food
+    public static String getPetInfo(Pet pet){ //include status effect
+        String petInfo = "";
+        petInfo += "Species: " + pet.getSpecies() + "\r\n";
+        petInfo += "Gender: " + pet.getGender() + "\r\n";
+        petInfo += "Weight: " + String.format("%.2f", pet.getWeight()) + "kg\r\n";
+        petInfo += "Hunger: " + toPercent(pet.getHunger()) + "\r\n";
+        petInfo += "Toilet need: " + toPercent(pet.getToiletNeed()) + "\r\n";
+        petInfo += "Tiredness: " + toPercent(pet.getTiredness()) + "\r\n";
+        petInfo += "Healthiness: " + toPercent(pet.getHealth()) + "\r\n";
+        petInfo += "Happiness: " + toPercent(pet.getHappiness()) + "\r\n";
+        petInfo += "Playfulness: " + toPercent(pet.getPlayfulness()) + "\r\n";
+        petInfo += "Roughness: " + toPercent(pet.getRoughness())  + "\r\n";
+        petInfo += "Favourite toy: " + stringOfToys(pet.getType().getFavouriteToys()) + "\r\n"; //get favourite toy is list of toys
+        petInfo += "Favourite food: " + stringOfFoods(pet.getType().getFavouriteFoods()); //get favourite food
         if (pet.isDead()) {
             petInfo += getPetDeadString(pet);
         } else {
@@ -241,50 +232,44 @@ final class GameStrings {
         }
         return petInfo;
     }
-	
-	
-	public static String getItemInfo(Item item){
-		if (item instanceof Food){
-			return getItemInfo((Food) item);
-		}
-		else {
-			return getItemInfo((Toy) item);
-		}
-	}
-	
-	
-	public static String getItemInfo(Food food){
-		String itemInfo = "";
-		itemInfo += "Food: " + food.toString() + "\r\n";
-		if (food.toString() == "medicine"){
-			itemInfo+= "Used to cure a pet if they become sick." + "\r\n" + 
-						"Doesn't use up any actions.";
-			return itemInfo;
-		}
-		else if (food.toString() == "revival medicine"){
-			itemInfo+="Used to revive a pet if they die." + "\r\n" +
-					  "Can only be used to revive a pet once!";
-			return itemInfo;
-		}
-		itemInfo += "Nutrition: " + toPercent(food.getNutrition()) + "\r\n";
-		itemInfo += "Meal size: " + toPercent(food.getMealSize()) + "\r\n";
-		itemInfo += "Tastiness: " + toPercent(food.getTastiness())+ "\r\n";
-		itemInfo += getMostLikedByAnimals(food) + "\r\n";
-		itemInfo += getLikedByAnimals(food);
-		return itemInfo;
-	}
-	
-	
-	public static String getItemInfo(Toy toy){
-		String itemInfo = "";
-		itemInfo += "Food: " + toy.toString() + "\r\n";
-		itemInfo += "Durability: " + toPercent(toy.getMaxDurability()) + "\r\n";
-		itemInfo += getMostLikedByAnimals(toy) + "\r\n";
-		itemInfo += getLikedByAnimals(toy);
-		return itemInfo;
-	}
-	
-	/*public static String getItemInfo(Toy toy){
-		
-	}*/
+
+
+    public static String getItemInfo(final Item item) {
+        if (item instanceof Food) {
+            return getItemInfo((Food)item);
+        } else {
+            return getItemInfo((Toy)item);
+        }
+    }
+
+
+    public static String getItemInfo(final Food food) {
+        String itemInfo = "";
+        itemInfo += "Food: " + food.toString() + "\r\n";
+        if (food == Food.MEDICINE) {
+            itemInfo += "Used to cure a pet if they become sick." + "\r\n"
+                    + "Doesn't use up any actions.";
+            return itemInfo;
+        } else if (food == Food.REVIVALMEDICINE) {
+            itemInfo += "Used to revive a pet if they die." + "\r\n"
+                    + "Can only be used to revive a pet once!";
+            return itemInfo;
+        }
+        itemInfo += "Nutrition: " + toPercent(food.getNutrition()) + "\r\n";
+        itemInfo += "Meal size: " + toPercent(food.getMealSize()) + "\r\n";
+        itemInfo += "Tastiness: " + toPercent(food.getTastiness()) + "\r\n";
+        itemInfo += getMostLikedByAnimals(food) + "\r\n";
+        itemInfo += getLikedByAnimals(food);
+        return itemInfo;
+    }
+
+
+    public static String getItemInfo(final Toy toy) {
+        String itemInfo = "";
+        itemInfo += "Food: " + toy.toString() + "\r\n";
+        itemInfo += "Durability: " + toPercent(toy.getMaxDurability()) + "\r\n";
+        itemInfo += getMostLikedByAnimals(toy) + "\r\n";
+        itemInfo += getLikedByAnimals(toy);
+        return itemInfo;
+    }
 }

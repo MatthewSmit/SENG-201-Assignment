@@ -21,7 +21,7 @@ public final class PlayerTest {
 
     @Test
     public void testPlayer() {
-        assertTrue(testPlayer.getName() == "test");
+        assertTrue(testPlayer.getName().equals("test"));
         assertTrue(testPlayer.getPets() == petList);
     }
 
@@ -62,7 +62,7 @@ public final class PlayerTest {
 
     @Test
     public void testGetName() {
-        assertTrue(testPlayer.getName() == "test");
+        assertTrue(testPlayer.getName().equals("test"));
     }
 
     @Test

@@ -61,7 +61,7 @@ public abstract class Pet {
     /**
      * How much a pet enjoys eating good food.
      */
-    private static final int GOOD_FOOD_HAPPINESS = 2;
+    private static final int GOOD_FOOD_HAPPINESS = 3;
     /**
      * How much the happiness decreases daily.
      */
@@ -81,11 +81,11 @@ public abstract class Pet {
     /**
      * How much rest a pet gets from sleeping.
      */
-    private static final int REST_AMOUNT = 4;
+    private static final int REST_AMOUNT = 8;
     /**
-     * How much the toilet rate increases daily.
+     * How much going toilet decreases toilet need.
      */
-    private static final int TOILET_RATE = 4;
+    private static final int TOILET_AMOUNT = 8;
 
     /**
      * How much hunger the pet starts with.
@@ -322,7 +322,7 @@ public abstract class Pet {
         assert actionsLeft > 0;
         actionsLeft--;
 
-        toiletNeed -= TOILET_RATE;
+        toiletNeed -= TOILET_AMOUNT;
         if (toiletNeed < 0) {
             toiletNeed = 0;
         }
@@ -590,8 +590,7 @@ public abstract class Pet {
      */
     private float getSpeciesInitialWeight() {
         float[] weightRange = getSpeciesWeightRange();
-        float initialWeight = rn.nextFloat() * (weightRange[1] - weightRange[0]) + weightRange[0];
-        return initialWeight;
+        return rn.nextFloat() * (weightRange[1] - weightRange[0]) + weightRange[0];
     }
 
     /**

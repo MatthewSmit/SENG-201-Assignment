@@ -44,12 +44,7 @@ final class PetInfoDialogue extends JDialog {
         final JDialog dialogue = this;
 
         JButton okButton = new JButton("OK");
-        okButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                dialogue.dispose();
-            }
-        });
+        okButton.addActionListener(e -> dialogue.dispose());
 
         JTextPane infoText = new JTextPane();
         infoText.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -59,7 +54,7 @@ final class PetInfoDialogue extends JDialog {
 
         JLabel lblSpecies = new JLabel();
         lblSpecies.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblSpecies.setText(GameStrings.getTypeSpecies(type));
+        lblSpecies.setText(type.getName());
 
         GroupLayout groupLayout = new GroupLayout(this.getContentPane());
         groupLayout.setHorizontalGroup(

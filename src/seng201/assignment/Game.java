@@ -1,7 +1,7 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 12/04/2017.
+ * Game to manage game flow.
  */
 public class Game {
     private static final Event[] EVENTS = new Event[] {
@@ -144,5 +144,12 @@ public class Game {
      */
     public void revive() {
         getCurrentPet().revive();
+    }
+
+    /**
+     * Returns an array of the players.
+     */
+    public Player[] getPlayers() {
+        return players;
     }
 }

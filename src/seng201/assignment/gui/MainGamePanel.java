@@ -53,7 +53,7 @@ final class MainGamePanel extends JPanel {
                 return null;
             }
 
-            return new ShopListView<String>(currentList.get(index).get(0), currentList.get(index).get(1));
+            return new ShopListView<>(currentList.get(index).get(0), currentList.get(index).get(1));
         }
 
         public void redraw() {
@@ -119,14 +119,11 @@ final class MainGamePanel extends JPanel {
         pet2Button.setBounds(256, 77, 93, 92);
         pet2Button.setEnabled(true);
         add(pet2Button);
-        pet2Button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                petIndex[0] = petIndex[1];
-                petIndex[1] = game.getCurrentPetIndex();
-                game.setCurrentPetIndex(petIndex[0]);
-                redraw();
-            }
+        pet2Button.addActionListener(e -> {
+            petIndex[0] = petIndex[1];
+            petIndex[1] = game.getCurrentPetIndex();
+            game.setCurrentPetIndex(petIndex[0]);
+            redraw();
         });
 
         pet3NameLabel = new JLabel();
@@ -138,14 +135,11 @@ final class MainGamePanel extends JPanel {
         pet3Button.setBounds(392, 77, 93, 92);
         pet3Button.setEnabled(true);
         add(pet3Button);
-        pet3Button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                petIndex[0] = petIndex[2];
-                petIndex[2] = game.getCurrentPetIndex();
-                game.setCurrentPetIndex(petIndex[0]);
-                redraw();
-            }
+        pet3Button.addActionListener(e -> {
+            petIndex[0] = petIndex[2];
+            petIndex[2] = game.getCurrentPetIndex();
+            game.setCurrentPetIndex(petIndex[0]);
+            redraw();
         });
 
         statsText = new JTextPane();
@@ -172,26 +166,20 @@ final class MainGamePanel extends JPanel {
         toiletButton = new JButton("Toilet");
         toiletButton.setBounds(256, 406, 93, 19);
         toiletButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        toiletButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                game.toilet();
-                addMessage(String.format("%s goes to the toilet.", game.getCurrentPet().getName()));
-                redraw();
-            }
+        toiletButton.addActionListener(e -> {
+            game.toilet();
+            addMessage(String.format("%s goes to the toilet.", game.getCurrentPet().getName()));
+            redraw();
         });
         add(toiletButton);
 
         sleepButton = new JButton("Sleep");
         sleepButton.setBounds(392, 406, 93, 19);
         sleepButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        sleepButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                game.sleep();
-                addMessage(String.format("%s goes to sleep.", game.getCurrentPet().getName()));
-                redraw();
-            }
+        sleepButton.addActionListener(e -> {
+            game.sleep();
+            addMessage(String.format("%s goes to sleep.", game.getCurrentPet().getName()));
+            redraw();
         });
         add(sleepButton);
 
@@ -199,99 +187,88 @@ final class MainGamePanel extends JPanel {
         useButton.setBounds(516, 406, 72, 19);
         useButton.setEnabled(false);
         useButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        useButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                Item item = getSelectedItem();
-                if (item instanceof Toy) {
-                    Toy toy = (Toy)item;
-                    game.play(toy);
-                    addMessage(String.format("%s plays with %s.", game.getCurrentPet().getName(), toy.toString()));
+        useButton.addActionListener(e -> {
+            Item item = getSelectedItem();
+            if (item instanceof Toy) {
+                Toy toy = (Toy)item;
+                game.play(toy);
+                addMessage(String.format("%s plays with %s.", game.getCurrentPet().getName(), toy.toString()));
 
-                    if (toy.isBroken()) {
-                        addMessage(String.format("%s was too rough! %s breaks.", game.getCurrentPet().getName(), toy.toString()));
-                        game.getCurrentPlayer().getItems().remove(item);
-                    }
-                } else if (item instanceof Food) {
-                    if (item == Food.MEDICINE) {
-                        game.cure();
-                        addMessage(String.format("%s is cured.", game.getCurrentPet().getName()));
-                        game.getCurrentPlayer().getItems().remove(item);
-                    } else if (item == Food.REVIVALMEDICINE) {
-                        if (game.getCurrentPet().getDeathState() == DeathState.PERMANENTLY_DEAD) {
-                            JOptionPane.showMessageDialog(window, "Can only revive a pet once!");
-                        } else if (game.getCurrentPet().isDead() && game.getCurrentPet().getDeathState() == DeathState.DEAD_ONCE) {
-                            game.revive();
-                            addMessage(String.format("%s is revived.", game.getCurrentPet().getName()));
-                            game.getCurrentPlayer().getItems().remove(item);
-                        }
-                    } else {
-                        game.feed((Food)item);
-                        addMessage(String.format("%s eats %s.", game.getCurrentPet().getName(), item.toString()));
-                        game.getCurrentPlayer().getItems().remove(item);
-                    }
-
-                } else {
-                    assert false;
+                if (toy.isBroken()) {
+                    addMessage(String.format("%s was too rough! %s breaks.", game.getCurrentPet().getName(), toy.toString()));
+                    game.getCurrentPlayer().getItems().remove(item);
                 }
-                redraw();
+            } else if (item instanceof Food) {
+                if (item == Food.MEDICINE) {
+                    game.cure();
+                    addMessage(String.format("%s is cured.", game.getCurrentPet().getName()));
+                    game.getCurrentPlayer().getItems().remove(item);
+                } else if (item == Food.REVIVALMEDICINE) {
+                    if (game.getCurrentPet().getDeathState() == DeathState.PERMANENTLY_DEAD) {
+                        JOptionPane.showMessageDialog(window, "Can only revive a pet once!");
+                    } else if (game.getCurrentPet().isDead() && game.getCurrentPet().getDeathState() == DeathState.DEAD_ONCE) {
+                        game.revive();
+                        addMessage(String.format("%s is revived.", game.getCurrentPet().getName()));
+                        game.getCurrentPlayer().getItems().remove(item);
+                    }
+                } else {
+                    game.feed((Food)item);
+                    addMessage(String.format("%s eats %s.", game.getCurrentPet().getName(), item.toString()));
+                    game.getCurrentPlayer().getItems().remove(item);
+                }
+
+            } else {
+                assert false;
             }
+            redraw();
         });
         add(useButton);
 
         JButton nextButton = new JButton("------->");
         nextButton.setBounds(583, 26, 93, 23);
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                game.endTurn();
+        nextButton.addActionListener(e -> {
+            game.endTurn();
 
-                for (Pet pet : game.getCurrentPlayer().getPets()) {
-                    switch (pet.getEventState()) {
-                        case NoEvent:
-                            break;
-                        case Misbehaving:
-                            addMessage(String.format("%s has started misbehaving!", pet.getName()));
-                            break;
-                        case Sick:
-                            addMessage(String.format("%s has gotten sick!", pet.getName()));
-                            break;
-                        case Dead:
-                            addMessage(String.format("%s has died!", pet.getName()));
-                            if (pet.getDeathState() == Pet.DeathState.PERMANENTLY_DEAD) {
-                                addMessage(String.format("%s is now permenantly dead!", pet.getName()));
-                            }
-                            break;
-                        default:
-                            assert false;
-                            break;
-                    }
+            for (Pet pet : game.getCurrentPlayer().getPets()) {
+                switch (pet.getEventState()) {
+                    case NoEvent:
+                        break;
+                    case Misbehaving:
+                        addMessage(String.format("%s has started misbehaving!", pet.getName()));
+                        break;
+                    case Sick:
+                        addMessage(String.format("%s has gotten sick!", pet.getName()));
+                        break;
+                    case Dead:
+                        addMessage(String.format("%s has died!", pet.getName()));
+                        if (pet.getDeathState() == DeathState.PERMANENTLY_DEAD) {
+                            addMessage(String.format("%s is now permenantly dead!", pet.getName()));
+                        }
+                        break;
+                    default:
+                        assert false;
+                        break;
                 }
-
-                if (!game.isRunning()) {
-                    JOptionPane.showMessageDialog(window, "Game has finished!");
-                    window.dispose();
-                }
-
-                petIndex[0] = 0;
-                petIndex[1] = 1;
-                petIndex[2] = 2;
-
-                redraw();
             }
+
+            if (!game.isRunning()) {
+                new EndGameWindow(game.getPlayers());
+                window.dispose();
+            }
+
+            petIndex[0] = 0;
+            petIndex[1] = 1;
+            petIndex[2] = 2;
+
+            redraw();
         });
         add(nextButton);
 
         inventoryList = new JList<>();
         inventoryList.setBounds(495, 73, 128, 322);
         inventoryList.setModel(new InventoryListModel(game));
-        inventoryList.setCellRenderer(new ShopListViewRenderer<String>());
-        inventoryList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(final ListSelectionEvent e) {
-                redraw();
-            }
-        });
+        inventoryList.setCellRenderer(new ShopListViewRenderer<>());
+        inventoryList.addListSelectionListener(e -> redraw());
 
         JScrollPane scrollInventoryPane = new JScrollPane(inventoryList);
         scrollInventoryPane.setBounds(516, 73, 160, 322);
@@ -303,17 +280,13 @@ final class MainGamePanel extends JPanel {
         punishButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
         punishButton.setBounds(604, 406, 72, 19);
         punishButton.setEnabled(false);
-        punishButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                game.getCurrentPet().fixMisbehaving();
-                addMessage(String.format("%s has been punished!", game.getCurrentPet().getName()));
-                addMessage(String.format("%s becomes unhappy.", game.getCurrentPet().getName()));
-                redraw();
-            }
+        punishButton.addActionListener(e -> {
+            game.getCurrentPet().fixMisbehaving();
+            addMessage(String.format("%s has been punished!", game.getCurrentPet().getName()));
+            addMessage(String.format("%s becomes unhappy.", game.getCurrentPet().getName()));
+            redraw();
         });
         add(punishButton);
-
 
         redraw();
     }
@@ -386,18 +359,12 @@ final class MainGamePanel extends JPanel {
         } else if (item instanceof Toy) {
             useButton.setText("Play");
             useButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
-        } else if (item.toString() == "revival medicine" && !pet.isDead()) {
+        } else if (item == Food.REVIVALMEDICINE) {
             useButton.setText("Feed");
-            useButton.setEnabled(false);
-        } else if (item.toString() == "revival medicine" && pet.isDead()) {
+            useButton.setEnabled(pet.isDead());
+        } else if (item == Food.MEDICINE) {
             useButton.setText("Feed");
-            useButton.setEnabled(true);
-        } else if (item.toString() == "medicine" && !pet.isSick()) {
-            useButton.setText("Feed");
-            useButton.setEnabled(false);
-        } else if (item.toString() == "medicine" && pet.isSick()) {
-            useButton.setText("Feed");
-            useButton.setEnabled(true);
+            useButton.setEnabled(pet.isSick());
         } else if (item instanceof Food) {
             useButton.setText("Feed");
             useButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());

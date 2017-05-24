@@ -1,7 +1,7 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 12/04/2017.
+ * Pet goldfish.
  */
 final class Goldfish extends Pet {
     private static float[] weightRange = new float[] {0.1f, 1.1f};

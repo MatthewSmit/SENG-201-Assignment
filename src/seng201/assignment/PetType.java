@@ -84,7 +84,7 @@ public enum PetType {
         try {
             Constructor<? extends Pet> constructor = petClass.getDeclaredConstructor(String.class, PetType.class);
             constructor.setAccessible(true);
-            return (Pet)constructor.newInstance(petName, this);
+            return constructor.newInstance(petName, this);
         } catch (Exception e) {
             e.printStackTrace();
             throw new Error();

@@ -34,29 +34,23 @@ class AvaliablePetPanel extends JPanel {
         }
 
         JButton addPetButton = new JButton("+");
-        addPetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                if (frame.getCurrentPets().size() == 3) {
-                    JOptionPane.showMessageDialog(frame, "Can only create up to 3 pets.");
-                } else {
-                    NamePetDialogue dialogue = new NamePetDialogue(frame, type);
-                    dialogue.pack();
-                    dialogue.setLocationRelativeTo(frame);
-                    dialogue.setVisible(true);
-                }
-            }
-        });
-
-        JButton viewPetButton = new JButton("?");
-        viewPetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                PetInfoDialogue dialogue = new PetInfoDialogue(frame, type);
+        addPetButton.addActionListener(e -> {
+            if (frame.getCurrentPets().size() == 3) {
+                JOptionPane.showMessageDialog(frame, "Can only create up to 3 pets.");
+            } else {
+                NamePetDialogue dialogue = new NamePetDialogue(frame, type);
                 dialogue.pack();
                 dialogue.setLocationRelativeTo(frame);
                 dialogue.setVisible(true);
             }
+        });
+
+        JButton viewPetButton = new JButton("?");
+        viewPetButton.addActionListener(e -> {
+            PetInfoDialogue dialogue = new PetInfoDialogue(frame, type);
+            dialogue.pack();
+            dialogue.setLocationRelativeTo(frame);
+            dialogue.setVisible(true);
         });
 
         JPanel image = new ImageLabel(new ImageIcon(bufferedImage));

@@ -35,14 +35,12 @@ final class PlayerChoosingWindow extends JFrame {
      * Launch the application.
      */
     public static void main(final String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    PlayerChoosingWindow window = new PlayerChoosingWindow(3, 3);
-                    window.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                PlayerChoosingWindow window = new PlayerChoosingWindow(3, 3);
+                window.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -85,12 +83,7 @@ final class PlayerChoosingWindow extends JFrame {
 
         JButton nextButton = new JButton("Next");
         nextButton.setBounds(605, 605, 76, 23);
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                handleNext();
-            }
-        });
+        nextButton.addActionListener(e -> handleNext());
 
         JPanel avaliablePets = new AvaliablePetsPanel(this);
         avaliablePets.setBounds(10, 77, 308, 517);

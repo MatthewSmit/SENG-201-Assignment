@@ -54,7 +54,7 @@ final class StorePanel extends JPanel {
                 return null;
             }
 
-            return new ShopListView<String>(currentList.get(index).get(0), currentList.get(index).get(1));
+            return new ShopListView<>(currentList.get(index).get(0), currentList.get(index).get(1));
         }
 
         public void redraw() {
@@ -93,11 +93,11 @@ final class StorePanel extends JPanel {
 
         DefaultListModel<ShopListView<Item>> list = new DefaultListModel<>();
         for (Food food : Food.values()) {
-            list.addElement(new ShopListView<Item>(food, String.format("$%d", food.getPrice())));
+            list.addElement(new ShopListView<>(food, String.format("$%d", food.getPrice())));
         }
 
         for (Toy toy : Toy.values()) {
-            list.addElement(new ShopListView<Item>(toy, String.format("$%d", toy.getPrice())));
+            list.addElement(new ShopListView<>(toy, String.format("$%d", toy.getPrice())));
         }
 
         storeList = new JList<>();
@@ -105,13 +105,8 @@ final class StorePanel extends JPanel {
         storeList.setBorder(new LineBorder(new Color(0, 0, 0)));
         storeList.setBounds(10, 49, 397, 263);
         storeList.setModel(list);
-        storeList.setCellRenderer(new ShopListViewRenderer<Item>());
-        storeList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(final ListSelectionEvent e) {
-                redraw();
-            }
-        });
+        storeList.setCellRenderer(new ShopListViewRenderer<>());
+        storeList.addListSelectionListener(e -> redraw());
         add(storeList);
 
         remainingLabel = new JLabel();
@@ -126,52 +121,27 @@ final class StorePanel extends JPanel {
         inventoryList = new JList<>();
         scrollPane.setViewportView(inventoryList);
         inventoryList.setModel(new InventoryListModel(game));
-        inventoryList.setCellRenderer(new ShopListViewRenderer<String>());
-        inventoryList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(final ListSelectionEvent e) {
-                redraw();
-            }
-        });
+        inventoryList.setCellRenderer(new ShopListViewRenderer<>());
+        inventoryList.addListSelectionListener(e -> redraw());
 
         JButton buyButton = new JButton("Buy");
         buyButton.setBounds(454, 66, 74, 23);
-        buyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                handleBuy();
-            }
-        });
+        buyButton.addActionListener(e -> handleBuy());
         add(buyButton);
 
         JButton sellButton = new JButton("Sell");
         sellButton.setBounds(454, 119, 74, 23);
-        sellButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                handleSell();
-            }
-        });
+        sellButton.addActionListener(e -> handleSell());
         add(sellButton);
 
         buySpinner = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
         buySpinner.setBounds(548, 66, 74, 23);
-        buySpinner.addChangeListener(new ChangeListener() { 
-            @Override
-            public void stateChanged(final ChangeEvent e) {
-                redraw();
-            }
-        });
+        buySpinner.addChangeListener(e -> redraw());
         add(buySpinner);
 
         sellSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
         sellSpinner.setBounds(548, 119, 74, 23);
-        sellSpinner.addChangeListener(new ChangeListener() { 
-            @Override
-            public void stateChanged(final ChangeEvent e) {
-                redraw();
-            }
-        });
+        sellSpinner.addChangeListener(e -> redraw());
         add(sellSpinner);
 
         buyAmountLabel = new JLabel("$30");

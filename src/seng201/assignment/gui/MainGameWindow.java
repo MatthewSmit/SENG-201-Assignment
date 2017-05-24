@@ -35,14 +35,12 @@ public class MainGameWindow extends JFrame {
         players[0].purchase(Food.LETTUCE);
         final Game game = new Game(10, players);
 
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    MainGameWindow window = new MainGameWindow(game);
-                    window.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                MainGameWindow window = new MainGameWindow(game);
+                window.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -65,13 +63,10 @@ public class MainGameWindow extends JFrame {
         tabbedPane.addTab("Pet", main);
         tabbedPane.addTab("Store", store);
         tabbedPane.addTab("Help", help);
-        tabbedPane.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(final ChangeEvent e) {
-                main.redraw();
-                store.redraw();
-                help.onTabChanged();
-            }
+        tabbedPane.addChangeListener(e -> {
+            main.redraw();
+            store.redraw();
+            help.onTabChanged();
         });
         getContentPane().add(tabbedPane, BorderLayout.CENTER);
     }

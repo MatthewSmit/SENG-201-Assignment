@@ -1,13 +1,16 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 2017-04-27.
+ * Helper class for list/array functions.
  */
-final class Lists {
+public final class Lists {
     private Lists() {
     }
 
-    static <T> boolean contains(final T[] iterable, final T item) {
+    /**
+     * Returns true if iterable contains item using .equals().
+     */
+    public static <T> boolean contains(final T[] iterable, final T item) {
         for (T listItem : iterable) {
             if (listItem.equals(item)) {
                 return true;

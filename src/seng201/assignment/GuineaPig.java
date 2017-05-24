@@ -1,7 +1,7 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 12/04/2017.
+ * Pet Guinea Pig.
  */
 final class GuineaPig extends Pet {
     private static float[] weightRange = new float[] {0.5f, 1.5f};

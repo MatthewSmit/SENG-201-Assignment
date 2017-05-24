@@ -1,7 +1,7 @@
 package seng201.assignment;
 
 /**
- * Created by Matthew on 12/04/2017.
+ * Pet cat.
  */
 final class Cat extends Pet {
     private static float[] weightRange = new float[] {2.5f, 11};
