@@ -4,6 +4,20 @@
     <list default="true" id="3cb30fa6-4fee-429d-ada7-989c2a6c2d79" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes.uml" afterPath="$PROJECT_DIR$/Classes.uml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Game.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Game.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Pet.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Pet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Player.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/console/ConsoleRunner.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/console/ConsoleRunner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/AvaliablePetPanel.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/AvaliablePetPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/AvaliablePetsPanel.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/AvaliablePetsPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/GameStrings.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/GameStrings.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/ImageLabel.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/ImageLabel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/MainGamePanel.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/MainGamePanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/MainGameWindow.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/MainGameWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/PetInfoDialogue.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/PetInfoDialogue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/PlayerChoosingWindow.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/PlayerChoosingWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/ShopListView.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/ShopListView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/todo.txt" afterPath="$PROJECT_DIR$/src/seng201/assignment/todo.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,94 +33,8 @@
       <file leaf-file-name="ConsoleRunner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/seng201/assignment/console/ConsoleRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3510">
-              <caret line="237" column="0" lean-forward="false" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1495330027021" expanded="true" signature="9858:11215" ph="{...}" />
-                <marker date="1495330027021" expanded="true" signature="11305:12383" ph="{...}" />
-                <marker date="1495330027021" expanded="true" signature="12424:13601" ph="{...}" />
-                <marker date="1495330027021" expanded="true" signature="13669:14481" ph="{...}" />
-                <marker date="1495330027021" expanded="true" signature="14528:14849" ph="{...}" />
-                <marker date="1495330027021" expanded="true" signature="14888:15147" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/Dog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToyTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/ToyTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
-              <folding>
-                <marker date="1495335629416" expanded="true" signature="1695:1696" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GuineaPig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/GuineaPig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PetTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/PetTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="56" column="17" lean-forward="false" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
-              <folding>
-                <marker date="1495335813004" expanded="true" signature="87:105" ph="/**...*/" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/PlayerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding>
-                <marker date="1495334945206" expanded="true" signature="2245:2246" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainGameWindow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/MainGameWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <marker date="1495336276815" expanded="true" signature="2058:2120" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImageLabel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/ImageLabel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="244" column="0" lean-forward="false" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -119,26 +47,20 @@
               <ID>JAVA</ID>
               <OriginalElement />
               <nodes>
-                <node x="1756.0" y="1485.0">seng201.assignment.Cat</node>
                 <node x="439.0" y="1485.0">seng201.assignment.Goldfish</node>
-                <node x="999.0" y="1861.0">seng201.assignment.Player</node>
+                <node x="1756.0" y="1485.0">seng201.assignment.Cat</node>
                 <node x="0.0" y="1861.0">seng201.assignment.Game</node>
+                <node x="999.0" y="1861.0">seng201.assignment.Player</node>
                 <node x="2195.0" y="1485.0">seng201.assignment.GuineaPig</node>
                 <node x="588.0" y="1861.0">seng201.assignment.Food</node>
-                <node x="1317.0" y="1485.0">seng201.assignment.Rabbit</node>
                 <node x="1462.0" y="1861.0">seng201.assignment.Toy</node>
+                <node x="1317.0" y="1485.0">seng201.assignment.Rabbit</node>
                 <node x="878.0" y="1485.0">seng201.assignment.Bird</node>
                 <node x="0.0" y="1485.0">seng201.assignment.Dog</node>
                 <node x="536.266407119021" y="-393.3003337041157">seng201.assignment.Pet</node>
               </nodes>
               <notes />
               <edges>
-                <edge source="seng201.assignment.Rabbit" target="seng201.assignment.Pet">
-                  <point x="0.0" y="-165.5" />
-                  <point x="1526.5" y="1465.0" />
-                  <point x="1428.4166666666665" y="1465.0" />
-                  <point x="121.41666666666674" y="717.5" />
-                </edge>
                 <edge source="seng201.assignment.Goldfish" target="seng201.assignment.Pet">
                   <point x="0.0" y="-165.5" />
                   <point x="648.5" y="1465.0" />
@@ -150,6 +72,12 @@
                   <point x="1965.5" y="1465.0" />
                   <point x="1671.25" y="1465.0" />
                   <point x="364.2500000000002" y="717.5" />
+                </edge>
+                <edge source="seng201.assignment.Rabbit" target="seng201.assignment.Pet">
+                  <point x="0.0" y="-165.5" />
+                  <point x="1526.5" y="1465.0" />
+                  <point x="1428.4166666666665" y="1465.0" />
+                  <point x="121.41666666666674" y="717.5" />
                 </edge>
                 <edge source="seng201.assignment.Dog" target="seng201.assignment.Pet">
                   <point x="0.0" y="-165.5" />
@@ -170,16 +98,108 @@
                   <point x="-121.41666666666652" y="717.5" />
                 </edge>
               </edges>
-              <settings layout="Hierarchic Group" zoom="0.37884534344711335" x="1307.511679644049" y="777.5" />
-              <SelectedNodes>
-                <node>seng201.assignment.Pet</node>
-              </SelectedNodes>
+              <settings layout="Hierarchic Group" zoom="0.37884534344711335" x="1308.0" y="778.0" />
+              <SelectedNodes />
               <Categories>
                 <Category>Fields</Category>
                 <Category>Methods</Category>
               </Categories>
               <SCOPE>All</SCOPE>
               <VISIBILITY>private</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/Dog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+              <folding>
+                <marker date="1495520399900" expanded="false" signature="557:563" ph=" }" />
+                <marker date="1495520399900" expanded="false" signature="624:635" ph=" { " />
+                <marker date="1495520399900" expanded="false" signature="659:665" ph=" }" />
+                <marker date="1495520399900" expanded="false" signature="724:735" ph=" { " />
+                <marker date="1495520399900" expanded="false" signature="757:763" ph=" }" />
+                <marker date="1495520399900" expanded="false" signature="823:834" ph=" { " />
+                <marker date="1495520399900" expanded="false" signature="857:863" ph=" }" />
+                <marker date="1495520399900" expanded="false" signature="922:933" ph=" { " />
+                <marker date="1495520399900" expanded="false" signature="955:961" ph=" }" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToyTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/ToyTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GuineaPig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/GuineaPig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+              <folding>
+                <marker date="1495520445344" expanded="false" signature="597:603" ph=" }" />
+                <marker date="1495520445344" expanded="false" signature="664:675" ph=" { " />
+                <marker date="1495520445344" expanded="false" signature="699:705" ph=" }" />
+                <marker date="1495520445344" expanded="false" signature="764:775" ph=" { " />
+                <marker date="1495520445344" expanded="false" signature="797:803" ph=" }" />
+                <marker date="1495520445344" expanded="false" signature="863:874" ph=" { " />
+                <marker date="1495520445344" expanded="false" signature="897:903" ph=" }" />
+                <marker date="1495520445344" expanded="false" signature="962:973" ph=" { " />
+                <marker date="1495520445344" expanded="false" signature="995:1001" ph=" }" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PetTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/PetTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="930">
+              <caret line="63" column="17" lean-forward="false" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+              <folding>
+                <marker date="1495518552769" expanded="true" signature="6629:6635" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/PlayerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainGameWindow.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/MainGameWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <folding>
+                <marker date="1495587619215" expanded="true" signature="2492:2493" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageLabel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/ImageLabel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -219,13 +239,13 @@
         <option value="$PROJECT_DIR$/src/seng201/assignment/Rabbit.java" />
         <option value="$PROJECT_DIR$/src/seng201/assignment/Player.java" />
         <option value="$PROJECT_DIR$/src/seng201/assignment/Goldfish.java" />
-        <option value="$PROJECT_DIR$/src/seng201/assignment/console/ConsoleRunner.java" />
         <option value="$PROJECT_DIR$/src/seng201/assignment/GuineaPig.java" />
         <option value="$PROJECT_DIR$/src/seng201/assignment/Dog.java" />
         <option value="$PROJECT_DIR$/src/seng201/assignment/ToyTest.java" />
         <option value="$PROJECT_DIR$/src/seng201/assignment/PetTest.java" />
         <option value="$PROJECT_DIR$/src/seng201/assignment/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/seng201/assignment/gui/ImageLabel.java" />
+        <option value="$PROJECT_DIR$/src/seng201/assignment/console/ConsoleRunner.java" />
       </list>
     </option>
   </component>
@@ -275,6 +295,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -331,13 +352,12 @@
       </pane>
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -601,6 +621,7 @@
       <workItem from="1495166067991" duration="509000" />
       <workItem from="1495408244582" duration="69000" />
       <workItem from="1495408374035" duration="1038000" />
+      <workItem from="1495589891817" duration="229000" />
     </task>
     <servers />
   </component>
@@ -622,10 +643,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15696000" />
+    <option name="totallyTimeSpent" value="15925000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -635,7 +657,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39962825" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -700,7 +722,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding />
+          <folding>
+            <marker date="1495520399900" expanded="false" signature="557:563" ph=" }" />
+            <marker date="1495520399900" expanded="false" signature="624:635" ph=" { " />
+            <marker date="1495520399900" expanded="false" signature="659:665" ph=" }" />
+            <marker date="1495520399900" expanded="false" signature="724:735" ph=" { " />
+            <marker date="1495520399900" expanded="false" signature="757:763" ph=" }" />
+            <marker date="1495520399900" expanded="false" signature="823:834" ph=" { " />
+            <marker date="1495520399900" expanded="false" signature="857:863" ph=" }" />
+            <marker date="1495520399900" expanded="false" signature="922:933" ph=" { " />
+            <marker date="1495520399900" expanded="false" signature="955:961" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -723,7 +755,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding />
+          <folding>
+            <marker date="1495520445344" expanded="false" signature="597:603" ph=" }" />
+            <marker date="1495520445344" expanded="false" signature="664:675" ph=" { " />
+            <marker date="1495520445344" expanded="false" signature="699:705" ph=" }" />
+            <marker date="1495520445344" expanded="false" signature="764:775" ph=" { " />
+            <marker date="1495520445344" expanded="false" signature="797:803" ph=" }" />
+            <marker date="1495520445344" expanded="false" signature="863:874" ph=" { " />
+            <marker date="1495520445344" expanded="false" signature="897:903" ph=" }" />
+            <marker date="1495520445344" expanded="false" signature="962:973" ph=" { " />
+            <marker date="1495520445344" expanded="false" signature="995:1001" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -738,15 +780,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1495330027021" expanded="true" signature="9858:11215" ph="{...}" />
-            <marker date="1495330027021" expanded="true" signature="11305:12383" ph="{...}" />
-            <marker date="1495330027021" expanded="true" signature="12424:13601" ph="{...}" />
-            <marker date="1495330027021" expanded="true" signature="13669:14481" ph="{...}" />
-            <marker date="1495330027021" expanded="true" signature="14528:14849" ph="{...}" />
-            <marker date="1495330027021" expanded="true" signature="14888:15147" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -858,33 +892,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/console/ConsoleRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3510">
-          <caret line="237" column="0" lean-forward="false" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1495330027021" expanded="true" signature="9858:11215" ph="{...}" />
-            <marker date="1495330027021" expanded="true" signature="11305:12383" ph="{...}" />
-            <marker date="1495330027021" expanded="true" signature="12424:13601" ph="{...}" />
-            <marker date="1495330027021" expanded="true" signature="13669:14481" ph="{...}" />
-            <marker date="1495330027021" expanded="true" signature="14528:14849" ph="{...}" />
-            <marker date="1495330027021" expanded="true" signature="14888:15147" ph="{...}" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="244" column="0" lean-forward="false" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/GuineaPig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="225">
+          <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding>
+            <marker date="1495520445344" expanded="false" signature="597:603" ph=" }" />
+            <marker date="1495520445344" expanded="false" signature="664:675" ph=" { " />
+            <marker date="1495520445344" expanded="false" signature="699:705" ph=" }" />
+            <marker date="1495520445344" expanded="false" signature="764:775" ph=" { " />
+            <marker date="1495520445344" expanded="false" signature="797:803" ph=" }" />
+            <marker date="1495520445344" expanded="false" signature="863:874" ph=" { " />
+            <marker date="1495520445344" expanded="false" signature="897:903" ph=" }" />
+            <marker date="1495520445344" expanded="false" signature="962:973" ph=" { " />
+            <marker date="1495520445344" expanded="false" signature="995:1001" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/Dog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="225">
+          <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding>
+            <marker date="1495520399900" expanded="false" signature="557:563" ph=" }" />
+            <marker date="1495520399900" expanded="false" signature="624:635" ph=" { " />
+            <marker date="1495520399900" expanded="false" signature="659:665" ph=" }" />
+            <marker date="1495520399900" expanded="false" signature="724:735" ph=" { " />
+            <marker date="1495520399900" expanded="false" signature="757:763" ph=" }" />
+            <marker date="1495520399900" expanded="false" signature="823:834" ph=" { " />
+            <marker date="1495520399900" expanded="false" signature="857:863" ph=" }" />
+            <marker date="1495520399900" expanded="false" signature="922:933" ph=" { " />
+            <marker date="1495520399900" expanded="false" signature="955:961" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -892,38 +938,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
-          <folding>
-            <marker date="1495335629416" expanded="true" signature="1695:1696" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/PetTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="56" column="17" lean-forward="false" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
+        <state relative-caret-position="930">
+          <caret line="63" column="17" lean-forward="false" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
           <folding>
-            <marker date="1495335813004" expanded="true" signature="87:105" ph="/**...*/" />
+            <marker date="1495518552769" expanded="true" signature="6629:6635" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/PlayerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <marker date="1495334945206" expanded="true" signature="2245:2246" ph="{...}" />
-          </folding>
+        <state relative-caret-position="585">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/MainGameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding>
-            <marker date="1495336276815" expanded="true" signature="2058:2120" ph="{...}" />
+            <marker date="1495587619215" expanded="true" signature="2492:2493" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -958,8 +1000,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/ImageLabel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+        <state relative-caret-position="585">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -970,26 +1012,20 @@
           <ID>JAVA</ID>
           <OriginalElement />
           <nodes>
-            <node x="1756.0" y="1485.0">seng201.assignment.Cat</node>
             <node x="439.0" y="1485.0">seng201.assignment.Goldfish</node>
-            <node x="999.0" y="1861.0">seng201.assignment.Player</node>
+            <node x="1756.0" y="1485.0">seng201.assignment.Cat</node>
             <node x="0.0" y="1861.0">seng201.assignment.Game</node>
+            <node x="999.0" y="1861.0">seng201.assignment.Player</node>
             <node x="2195.0" y="1485.0">seng201.assignment.GuineaPig</node>
             <node x="588.0" y="1861.0">seng201.assignment.Food</node>
-            <node x="1317.0" y="1485.0">seng201.assignment.Rabbit</node>
             <node x="1462.0" y="1861.0">seng201.assignment.Toy</node>
+            <node x="1317.0" y="1485.0">seng201.assignment.Rabbit</node>
             <node x="878.0" y="1485.0">seng201.assignment.Bird</node>
             <node x="0.0" y="1485.0">seng201.assignment.Dog</node>
             <node x="536.266407119021" y="-393.3003337041157">seng201.assignment.Pet</node>
           </nodes>
           <notes />
           <edges>
-            <edge source="seng201.assignment.Rabbit" target="seng201.assignment.Pet">
-              <point x="0.0" y="-165.5" />
-              <point x="1526.5" y="1465.0" />
-              <point x="1428.4166666666665" y="1465.0" />
-              <point x="121.41666666666674" y="717.5" />
-            </edge>
             <edge source="seng201.assignment.Goldfish" target="seng201.assignment.Pet">
               <point x="0.0" y="-165.5" />
               <point x="648.5" y="1465.0" />
@@ -1001,6 +1037,12 @@
               <point x="1965.5" y="1465.0" />
               <point x="1671.25" y="1465.0" />
               <point x="364.2500000000002" y="717.5" />
+            </edge>
+            <edge source="seng201.assignment.Rabbit" target="seng201.assignment.Pet">
+              <point x="0.0" y="-165.5" />
+              <point x="1526.5" y="1465.0" />
+              <point x="1428.4166666666665" y="1465.0" />
+              <point x="121.41666666666674" y="717.5" />
             </edge>
             <edge source="seng201.assignment.Dog" target="seng201.assignment.Pet">
               <point x="0.0" y="-165.5" />
@@ -1021,10 +1063,8 @@
               <point x="-121.41666666666652" y="717.5" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="0.37884534344711335" x="1307.511679644049" y="777.5" />
-          <SelectedNodes>
-            <node>seng201.assignment.Pet</node>
-          </SelectedNodes>
+          <settings layout="Hierarchic Group" zoom="0.37884534344711335" x="1308.0" y="778.0" />
+          <SelectedNodes />
           <Categories>
             <Category>Fields</Category>
             <Category>Methods</Category>

@@ -10,6 +10,11 @@ public class Player {
      * Money a player starts with.
      */
     private static final int INITIAL_MONEY = 100;
+    
+    /**
+     * Money a player gets per day.
+     */
+    private static final int ALLOWANCE = 20;
 
     /**
      * An array of the pet the player owns.
@@ -20,6 +25,7 @@ public class Player {
      */
     private ArrayList<Item> items = new ArrayList<>();
     private int money = INITIAL_MONEY;
+    private int score;
     private String name;
 
     /**
@@ -105,5 +111,50 @@ public class Player {
      */
     public void addMoney(final int increasedMoney) {
         this.money += increasedMoney;
+    }
+
+    /**
+     * Processes day to day events.
+     */
+    public void dayPassed() {
+        calculateScore();
+        
+        addMoney(ALLOWANCE);
+        for (Pet pet : pets) {
+            pet.dayPassed();
+        }
+    }
+    
+    /**
+     * Gets the score of the player.
+     */
+    public int getScore() {
+        return score;
+    }
+    
+    /**
+     * Calculates changes to a players score.
+     */
+    private void calculateScore() {
+        int newScore = 0;
+        for (Pet pet : pets) {
+            if (pet.isDead()) {
+                newScore -= 100;
+            } else {
+                newScore += 10 - pet.getHunger();
+                newScore += 10 - pet.getToiletNeed();
+                newScore += 10 - pet.getTiredness();
+                newScore += pet.getHappiness();
+                newScore += pet.getHealth();
+                if (pet.isMisbehaving()) {
+                    newScore -= 10;
+                }
+                if (pet.isSick()) {
+                    newScore -= 10;
+                }
+            }
+        }
+        
+        score += newScore;
     }
 }

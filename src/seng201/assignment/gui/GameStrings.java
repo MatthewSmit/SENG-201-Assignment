@@ -85,7 +85,10 @@ final class GameStrings {
         if (game.getCurrentDay() + 1 > game.getMaxDays()) {
             return "GAMEEND"; //number of days passed is more than max days
         } else {
-            return String.format("%s - Day %d of %d", game.getCurrentPlayer().getName(), game.getCurrentDay() + 1, game.getMaxDays());
+            return String.format("%s - Day %d of %d - Score: %d",
+                    game.getCurrentPlayer().getName(),
+                    game.getCurrentDay() + 1, game.getMaxDays(),
+                    game.getCurrentPlayer().getScore());
         }
     }
 

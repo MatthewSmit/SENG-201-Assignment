@@ -21,10 +21,10 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
 
-public class PetInfoDialogue extends JDialog {
+final class PetInfoDialogue extends JDialog {
     private static final long serialVersionUID = -6846642495293896897L;
 
-    public PetInfoDialogue(Frame frame, PetType type) {
+    PetInfoDialogue(final Frame frame, final PetType type) {
         super(frame, true);
         setResizable(false);
 
@@ -46,7 +46,7 @@ public class PetInfoDialogue extends JDialog {
         JButton okButton = new JButton("OK");
         okButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 dialogue.dispose();
             }
         });
@@ -55,6 +55,7 @@ public class PetInfoDialogue extends JDialog {
         infoText.setFont(new Font("Tahoma", Font.PLAIN, 14));
         infoText.setEditable(false);
         infoText.setText(GameStrings.getSpeciesStats(type));
+        infoText.setHighlighter(null);
 
         JLabel lblSpecies = new JLabel();
         lblSpecies.setFont(new Font("Tahoma", Font.BOLD, 15));

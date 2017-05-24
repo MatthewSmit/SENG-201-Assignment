@@ -1,19 +1,14 @@
 package seng201.assignment.gui;
 
 import javax.swing.JPanel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import seng201.assignment.PetType;
 
 @SuppressWarnings("serial")
-public class AvaliablePetsPanel extends JPanel {
-
+class AvaliablePetsPanel extends JPanel {
     /**
      * Create the panel.
      */
-    public AvaliablePetsPanel(PlayerChoosingWindow frame) {
-
+    AvaliablePetsPanel(final PlayerChoosingWindow frame) {
         JPanel pet1 = new AvaliablePetPanel(frame, PetType.Dog);
         pet1.setBounds(10, 11, 128, 170);
         JPanel pet2 = new AvaliablePetPanel(frame, PetType.Cat);
@@ -33,7 +28,5 @@ public class AvaliablePetsPanel extends JPanel {
         add(pet2);
         add(pet4);
         add(pet6);
-
     }
-
 }

@@ -7,7 +7,12 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import seng201.assignment.*;
+import seng201.assignment.Food;
+import seng201.assignment.Game;
+import seng201.assignment.Pet;
+import seng201.assignment.PetType;
+import seng201.assignment.Player;
+import seng201.assignment.Toy;
 
 import java.awt.BorderLayout;
 

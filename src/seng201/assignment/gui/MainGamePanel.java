@@ -1,7 +1,6 @@
 package seng201.assignment.gui;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
@@ -9,24 +8,17 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 import javax.swing.AbstractListModel;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -86,13 +78,13 @@ final class MainGamePanel extends JPanel {
     private JLabel pet3NameLabel;
     private Image pet3Img;
     private JButton pet3Button;
-    
+
     private JTextPane statsText;
     private JScrollPane scrollStatsPane;
-    
+
     private JScrollPane scrollMessagePane;
     private JTextPane messageLogText;
-    
+
     private JButton toiletButton;
     private JButton sleepButton;
     private JButton useButton;
@@ -106,7 +98,7 @@ final class MainGamePanel extends JPanel {
 
         playerLabel = new JLabel();
         playerLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-        playerLabel.setBounds(10, 15, 250, 23);
+        playerLabel.setBounds(10, 15, 480, 23);
         add(playerLabel);
 
         petNameLabel = new JLabel();
@@ -161,7 +153,7 @@ final class MainGamePanel extends JPanel {
         statsText.setFont(new Font("Tahoma", Font.PLAIN, 11));
         statsText.setEditable(false);
         statsText.setHighlighter(null);
-        
+
         scrollStatsPane = new JScrollPane(statsText);
         scrollStatsPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollStatsPane.setBounds(10, 286, 213, 140);
@@ -228,7 +220,7 @@ final class MainGamePanel extends JPanel {
                     } else if (item == Food.REVIVALMEDICINE) {
                         if (game.getCurrentPet().getDeathState() == DeathState.PERMANENTLY_DEAD) {
                             JOptionPane.showMessageDialog(window, "Can only revive a pet once!");
-                        } else if (game.getCurrentPet().isDead() && game.getCurrentPet().getDeathState() == DeathState.DEAD_ONCE){
+                        } else if (game.getCurrentPet().isDead() && game.getCurrentPet().getDeathState() == DeathState.DEAD_ONCE) {
                             game.revive();
                             addMessage(String.format("%s is revived.", game.getCurrentPet().getName()));
                             game.getCurrentPlayer().getItems().remove(item);
@@ -238,7 +230,7 @@ final class MainGamePanel extends JPanel {
                         addMessage(String.format("%s eats %s.", game.getCurrentPet().getName(), item.toString()));
                         game.getCurrentPlayer().getItems().remove(item);
                     }
-                    
+
                 } else {
                     assert false;
                 }
@@ -275,7 +267,7 @@ final class MainGamePanel extends JPanel {
                             break;
                     }
                 }
-                
+
                 if (!game.isRunning()) {
                     JOptionPane.showMessageDialog(window, "Game has finished!");
                     window.dispose();
@@ -306,7 +298,7 @@ final class MainGamePanel extends JPanel {
         add(scrollInventoryPane);
 
         setLayout(null);
-        
+
         punishButton = new JButton("Punish");
         punishButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
         punishButton.setBounds(604, 406, 72, 19);
@@ -314,14 +306,14 @@ final class MainGamePanel extends JPanel {
         punishButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-            	game.getCurrentPet().fixMisbehaving();
-            	addMessage(String.format("%s has been punished!", game.getCurrentPet().getName()));
-            	addMessage(String.format("%s becomes unhappy.", game.getCurrentPet().getName()));
-            	redraw();
+                game.getCurrentPet().fixMisbehaving();
+                addMessage(String.format("%s has been punished!", game.getCurrentPet().getName()));
+                addMessage(String.format("%s becomes unhappy.", game.getCurrentPet().getName()));
+                redraw();
             }
         });
         add(punishButton);
-        
+
 
         redraw();
     }
@@ -349,7 +341,7 @@ final class MainGamePanel extends JPanel {
         }
 
         petNameLabel.setText(String.format("%s - %s", pet.getName(), actionsLeftString));
-        petImage.setImage(loadImage(pet, 213, 204));
+        petImage.setImage(Utils.loadImage(pet, 213, 204));
 
         ((InventoryListModel)inventoryList.getModel()).redraw();
 
@@ -359,7 +351,7 @@ final class MainGamePanel extends JPanel {
             Pet currentPet = pets[petIndex[1]];
             pet2NameLabel.setVisible(true);
             pet2NameLabel.setText(String.format("%s - %d", currentPet.getName(), currentPet.getActionsLeft()));
-            pet2Img = loadImage(currentPet, 93, 92);
+            pet2Img = Utils.loadImage(currentPet, 93, 92);
             pet2Button.setIcon(new ImageIcon(pet2Img));
 
 
@@ -372,7 +364,7 @@ final class MainGamePanel extends JPanel {
             Pet currentPet = pets[petIndex[2]];
             pet3NameLabel.setVisible(true);
             pet3NameLabel.setText(String.format("%s - %d", currentPet.getName(), currentPet.getActionsLeft()));
-            pet3Img = loadImage(currentPet, 93, 92);
+            pet3Img = Utils.loadImage(currentPet, 93, 92);
             pet3Button.setIcon(new ImageIcon(pet3Img));
 
         } else {
@@ -380,13 +372,13 @@ final class MainGamePanel extends JPanel {
             pet3Button.setVisible(false);
         }
 
-        
-        if (pet.isMisbehaving()){
-        	punishButton.setEnabled(true);
-        } else if (!pet.isMisbehaving()){
-        	punishButton.setEnabled(false);
+
+        if (pet.isMisbehaving()) {
+            punishButton.setEnabled(true);
+        } else if (!pet.isMisbehaving()) {
+            punishButton.setEnabled(false);
         }
-        
+
         Item item = getSelectedItem();
         if (item == null) {
             useButton.setText("Use");
@@ -394,18 +386,19 @@ final class MainGamePanel extends JPanel {
         } else if (item instanceof Toy) {
             useButton.setText("Play");
             useButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
-        } else if (item.toString() == "revival medicine" && !pet.isDead()){
-        	useButton.setEnabled(false);
-        } else if (item.toString() == "revival medicine" && pet.isDead()){
-        	useButton.setText("Feed");
-        	useButton.setEnabled(true);
-        } else if (item.toString() == "medicine" && !pet.isSick()){
-        	useButton.setEnabled(false);
-        } else if (item.toString() == "medicine" && pet.isSick()){
-        	useButton.setText("Feed");
-        	useButton.setEnabled(true);
-        } 
-        else if (item instanceof Food){
+        } else if (item.toString() == "revival medicine" && !pet.isDead()) {
+            useButton.setText("Feed");
+            useButton.setEnabled(false);
+        } else if (item.toString() == "revival medicine" && pet.isDead()) {
+            useButton.setText("Feed");
+            useButton.setEnabled(true);
+        } else if (item.toString() == "medicine" && !pet.isSick()) {
+            useButton.setText("Feed");
+            useButton.setEnabled(false);
+        } else if (item.toString() == "medicine" && pet.isSick()) {
+            useButton.setText("Feed");
+            useButton.setEnabled(true);
+        } else if (item instanceof Food) {
             useButton.setText("Feed");
             useButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
         }
@@ -414,7 +407,7 @@ final class MainGamePanel extends JPanel {
         sleepButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
 
         statsText.setText(GameStrings.getPetInfo(game.getCurrentPet()));
-        scrollStatsPane.getVerticalScrollBar().setValue(0);
+        statsText.setCaretPosition(0);
     }
 
     private Item getSelectedItem() {
@@ -439,38 +432,5 @@ final class MainGamePanel extends JPanel {
         } else {
             messageLogText.setText(messageLogText.getText() + "\n" + message);
         }
-    }
-
-    private Image loadImage(final Pet pet, final int width, final int height) {
-        String imageFile = pet.getType().getImageFile();
-        
-        Image image;
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream(imageFile));
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new Error();
-        }
-
-        image = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        
-        if (pet.isDead()) {
-            Image deadImage;
-            try {
-                deadImage = ImageIO.read(getClass().getResourceAsStream("dead.png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-                throw new Error();
-            }
-
-            deadImage = deadImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-            Image combined = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-            Graphics graphics = combined.getGraphics();
-            graphics.drawImage(image, 0, 0, null);
-            graphics.drawImage(deadImage, 0, 0, null);
-            image = combined;
-        }
-        
-        return image;
     }
 }

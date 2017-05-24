@@ -23,8 +23,8 @@ class ShopListViewRenderer<T> extends JPanel implements ListCellRenderer<ShopLis
         add(rhsLabel, BorderLayout.EAST);
     }
 
-    public Component getListCellRendererComponent(JList<? extends ShopListView<T>> list, ShopListView<T> value,
-            int index, boolean isSelected, boolean cellHasFocus) {
+    public Component getListCellRendererComponent(final JList<? extends ShopListView<T>> list, final ShopListView<T> value,
+            final int index, final boolean isSelected, final boolean cellHasFocus) {
         lhsLabel.setText(value.getLhs().toString());
         rhsLabel.setText(value.getRhs());
 

@@ -4,8 +4,6 @@ package seng201.assignment;
  * Created by Matthew on 12/04/2017.
  */
 public class Game {
-    private static final int ALLOWANCE = 20;
-    
     private static final Event[] EVENTS = new Event[] {
             new MisbehaveEvent(),
             new SicknessEvent(),
@@ -43,10 +41,7 @@ public class Game {
             day++;
 
             for (Player player : players) {
-                player.addMoney(ALLOWANCE);
-                for (Pet pet : player.getPets()) {
-                    pet.dayPassed();
-                }
+                player.dayPassed();
             }
 
             for (Event event : EVENTS) {

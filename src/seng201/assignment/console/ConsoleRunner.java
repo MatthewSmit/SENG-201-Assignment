@@ -1,9 +1,16 @@
 package seng201.assignment.console;
 
-import seng201.assignment.*;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+
+import seng201.assignment.Food;
+import seng201.assignment.Game;
+import seng201.assignment.Pet;
+import seng201.assignment.PetType;
+import seng201.assignment.Player;
+import seng201.assignment.Toy;
 
 /**
  * Created by Matthew on 20/04/17.
@@ -96,7 +103,7 @@ public final class ConsoleRunner {
         System.out.println("Game has ended.");
     }
 
-    private static void displayStore(Player player) {
+    private static void displayStore(final Player player) {
 
         System.out.println();
         System.out.println(String.format("Welcome to the store, you have $%d", player.getMoney()));
@@ -171,7 +178,7 @@ public final class ConsoleRunner {
         }
     }
 
-    private static void processFeed(Game game) {
+    private static void processFeed(final Game game) {
 
         System.out.println();
         ArrayList<Food> food = game.getCurrentPlayer().getFood();

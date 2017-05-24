@@ -86,27 +86,27 @@ public abstract class Pet {
      * How much the toilet rate increases daily.
      */
     private static final int TOILET_RATE = 4;
-    
+
     /**
      * How much hunger the pet starts with.
      */
     private static final int INITIAL_HUNGER = 0;
-    
+
     /**
      * How much tiredness the pet starts with.
      */
     private static final int INITIAL_TIREDNESS = 0;
-    
+
     /**
      * How much toilet-need the pet starts with.
      */
     private static final int INITIAL_TOILET_NEED = 0;
-    
+
     /**
      * How much happiness the pet starts with.
      */
     private static final int INITIAL_HAPPINESS = 5;
-    
+
     /**
      * How much health the pet starts with.
      */
@@ -327,7 +327,7 @@ public abstract class Pet {
             toiletNeed = 0;
         }
     }
-    
+
     /**
      * Cures the sickness the pet has.
      */
@@ -336,19 +336,19 @@ public abstract class Pet {
         sick = false;
         happiness += 2;
     }
-    
-    
+
+
     /**
      * Pet is punished for misbehaving.
      */
-    public void fixMisbehaving(){
-    	if (!misbehaving){
-    		throw new IllegalStateException();
-    	} else {
-    		eventState = EventState.NoEvent;
-    		misbehaving = false;
-    		happiness -= 2;
-    	}
+    public void fixMisbehaving() {
+        if (!misbehaving) {
+            throw new IllegalStateException();
+        } else {
+            eventState = EventState.NoEvent;
+            misbehaving = false;
+            happiness -= 2;
+        }
     }
 
     /**
@@ -362,7 +362,7 @@ public abstract class Pet {
         eventState = EventState.Misbehaving;
         misbehaving = true;
     }
-    
+
     /**
      * Pet becomes sick.
      */
@@ -559,7 +559,7 @@ public abstract class Pet {
         int[] playfulnessRange = getSpeciesPlayfulnessRange();
         return rn.nextInt(playfulnessRange[1] - playfulnessRange[0] + 1) + playfulnessRange[0];
     }
-    
+
     /**
      * Gets how rough a pet of a certain species is.
      */
@@ -576,7 +576,7 @@ public abstract class Pet {
         return rn.nextInt(hungerRateRange[1] - hungerRateRange[0] + 1) + hungerRateRange[0];
     }
 
-    
+
     /**
      * Gets the rate tiredness increases for a pet of a certain species.
      */

@@ -19,11 +19,11 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 @SuppressWarnings("serial")
-public class AvaliablePetPanel extends JPanel {
+class AvaliablePetPanel extends JPanel {
     /**
      * Create the panel.
      */
-    public AvaliablePetPanel(final PlayerChoosingWindow frame, final PetType type) {
+    AvaliablePetPanel(final PlayerChoosingWindow frame, final PetType type) {
         Image bufferedImage = null;
         try {
             bufferedImage = ImageIO.read(getClass().getResourceAsStream(type.getImageFile()));
@@ -36,7 +36,7 @@ public class AvaliablePetPanel extends JPanel {
         JButton addPetButton = new JButton("+");
         addPetButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (frame.getCurrentPets().size() == 3) {
                     JOptionPane.showMessageDialog(frame, "Can only create up to 3 pets.");
                 } else {
@@ -51,7 +51,7 @@ public class AvaliablePetPanel extends JPanel {
         JButton viewPetButton = new JButton("?");
         viewPetButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 PetInfoDialogue dialogue = new PetInfoDialogue(frame, type);
                 dialogue.pack();
                 dialogue.setLocationRelativeTo(frame);

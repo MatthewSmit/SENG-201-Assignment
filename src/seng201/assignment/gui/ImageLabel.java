@@ -18,6 +18,10 @@ final class ImageLabel extends JPanel {
         image = imageIcon.getImage();
     }
 
+    ImageLabel(final Image image) {
+        this.image = image;
+    }
+
     @Override
     public void paintComponent(final Graphics g) {
         super.paintComponent(g);
