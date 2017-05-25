@@ -1,15 +1,10 @@
 package seng201.assignment.gui;
 
-import javax.swing.*;
-
 import seng201.assignment.Pet;
 import seng201.assignment.Player;
 
 import javax.swing.JPanel;
-
-import seng201.assignment.Pet;
-import seng201.assignment.Player;
-
+import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
