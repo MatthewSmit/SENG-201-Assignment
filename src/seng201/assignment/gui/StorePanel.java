@@ -9,14 +9,8 @@ import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import seng201.assignment.Food;
 import seng201.assignment.Game;
@@ -30,14 +24,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
 import javax.swing.border.EtchedBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
 final class StorePanel extends JPanel {
