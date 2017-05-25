@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cb30fa6-4fee-429d-ada7-989c2a6c2d79" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/GameStrings.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/GameStrings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Bird.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Bird.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Cat.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Cat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/DeadEvent.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/DeadEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Dog.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Dog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Event.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Event.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Food.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Food.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Game.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Goldfish.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Goldfish.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/GuineaPig.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/GuineaPig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Item.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Lists.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Lists.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/MisbehaveEvent.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/MisbehaveEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Pet.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Pet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/PetType.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/PetType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/Rabbit.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/Rabbit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/console/ConsoleRunner.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/console/ConsoleRunner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/EndGamePanel.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/EndGamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/EndGameWindow.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/EndGameWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/MainGamePanel.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/MainGamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/NamePetDialogue.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/NamePetDialogue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/PetInfoDialogue.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/PetInfoDialogue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/StorePanel.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/StorePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/gui/Utils.java" afterPath="$PROJECT_DIR$/src/seng201/assignment/gui/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/seng201/assignment/todo.txt" afterPath="$PROJECT_DIR$/src/seng201/assignment/todo.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes.uml" afterPath="$PROJECT_DIR$/Classes.uml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report.docx" afterPath="$PROJECT_DIR$/report.docx" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,20 +16,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ToyTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/seng201/assignment/ToyTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Toy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/seng201/assignment/Toy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
+            <state relative-caret-position="1215">
               <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
               <folding />
             </state>
@@ -75,22 +41,11 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/seng201/assignment/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1710">
+            <state relative-caret-position="1815">
               <caret line="143" column="7" lean-forward="false" selection-start-line="143" selection-start-column="7" selection-end-line="143" selection-end-column="7" />
               <folding>
                 <marker date="1495599616809" expanded="true" signature="29:36" ph="/**...*/" />
                 <marker date="1495599616809" expanded="true" signature="3205:3269" ph="/**...*/" />
-                <marker date="1495599616809" expanded="false" signature="3305:3316" ph=" { " />
-                <marker date="1495599616809" expanded="false" signature="3334:3340" ph=" }" />
-                <marker date="1495599616809" expanded="true" signature="3346:3496" ph="/**...*/" />
-                <marker date="1495599616809" expanded="false" signature="3556:3567" ph=" { " />
-                <marker date="1495599616809" expanded="false" signature="3594:3600" ph=" }" />
-                <marker date="1495599616809" expanded="true" signature="3606:3647" ph="/**...*/" />
-                <marker date="1495599616809" expanded="false" signature="3670:3681" ph=" { " />
-                <marker date="1495599616809" expanded="false" signature="3704:3710" ph=" }" />
-                <marker date="1495599616809" expanded="true" signature="3720:3763" ph="/**...*/" />
-                <marker date="1495599616809" expanded="false" signature="3788:3799" ph=" { " />
-                <marker date="1495599616809" expanded="false" signature="3824:3830" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -111,9 +66,11 @@
       <file leaf-file-name="MainGamePanel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/MainGamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="245" column="95" lean-forward="false" selection-start-line="245" selection-start-column="88" selection-end-line="245" selection-end-column="95" />
-              <folding />
+            <state relative-caret-position="376">
+              <caret line="246" column="25" lean-forward="true" selection-start-line="246" selection-start-column="25" selection-end-line="246" selection-end-column="25" />
+              <folding>
+                <element signature="e#862#889#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,7 +78,7 @@
       <file leaf-file-name="GameStartWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/GameStartWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-60">
+            <state relative-caret-position="675">
               <caret line="62" column="28" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="62" selection-end-column="28" />
               <folding />
             </state>
@@ -131,7 +88,7 @@
       <file leaf-file-name="GameStrings.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/seng201/assignment/GameStrings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="1170">
               <caret line="80" column="5" lean-forward="false" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
               <folding />
             </state>
@@ -141,7 +98,7 @@
       <file leaf-file-name="EndGamePanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/EndGamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="812">
+            <state relative-caret-position="780">
               <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -153,7 +110,7 @@
       <file leaf-file-name="Food.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/seng201/assignment/Food.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="45">
               <caret line="3" column="66" lean-forward="false" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
               <folding>
                 <marker date="1495599623113" expanded="true" signature="29:36" ph="/**...*/" />
@@ -274,6 +231,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -305,38 +264,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SENG201Assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SENG201Assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
@@ -624,6 +559,7 @@
       <workItem from="1495408244582" duration="69000" />
       <workItem from="1495408374035" duration="1038000" />
       <workItem from="1495589891817" duration="4505000" />
+      <workItem from="1495674196634" duration="498000" />
     </task>
     <servers />
   </component>
@@ -648,7 +584,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20429000" />
+    <option name="totallyTimeSpent" value="20927000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1053" extended-state="6" />
@@ -656,42 +592,34 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39895287" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899627" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -775,37 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes>
-            <node x="" y="">seng201.assignment.Goldfish</node>
-            <node x="" y="">seng201.assignment.Cat</node>
-            <node x="" y="">seng201.assignment.Game</node>
-            <node x="" y="">seng201.assignment.Player</node>
-            <node x="" y="">seng201.assignment.GuineaPig</node>
-            <node x="" y="">seng201.assignment.Food</node>
-            <node x="" y="">seng201.assignment.Toy</node>
-            <node x="" y="">seng201.assignment.Rabbit</node>
-            <node x="" y="">seng201.assignment.Bird</node>
-            <node x="" y="">seng201.assignment.Dog</node>
-            <node x="" y="">seng201.assignment.Pet</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.37884534344711335" x="1308.0" y="778.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Methods</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/JTextFieldLimit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -817,7 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="407">
           <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -839,7 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
           <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -883,9 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="168" column="30" lean-forward="false" selection-start-line="168" selection-start-column="30" selection-end-line="168" selection-end-column="30" />
-          <folding>
-            <marker date="1495592242910" expanded="true" signature="6563:6569" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -901,7 +793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="36" column="39" lean-forward="false" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -909,7 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="55" column="62" lean-forward="false" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -925,7 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -933,7 +822,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -941,7 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -949,7 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="11" lean-forward="false" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -957,7 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -965,17 +850,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding>
-            <marker date="1495599628829" expanded="true" signature="29:36" ph="/**...*/" />
-            <marker date="1495599628829" expanded="false" signature="708:719" ph=" { " />
-            <marker date="1495599628829" expanded="false" signature="737:743" ph=" }" />
-            <marker date="1495599628829" expanded="false" signature="805:816" ph=" { " />
-            <marker date="1495599628829" expanded="false" signature="835:841" ph=" }" />
-            <marker date="1495599628829" expanded="false" signature="902:913" ph=" { " />
-            <marker date="1495599628829" expanded="false" signature="937:943" ph=" }" />
-            <marker date="1495599628829" expanded="false" signature="1002:1013" ph=" { " />
-            <marker date="1495599628829" expanded="false" signature="1035:1041" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -989,7 +863,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/Toy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
+        <state relative-caret-position="1215">
           <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
           <folding />
         </state>
@@ -997,22 +871,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
+        <state relative-caret-position="1815">
           <caret line="143" column="7" lean-forward="false" selection-start-line="143" selection-start-column="7" selection-end-line="143" selection-end-column="7" />
           <folding>
             <marker date="1495599616809" expanded="true" signature="29:36" ph="/**...*/" />
             <marker date="1495599616809" expanded="true" signature="3205:3269" ph="/**...*/" />
-            <marker date="1495599616809" expanded="false" signature="3305:3316" ph=" { " />
-            <marker date="1495599616809" expanded="false" signature="3334:3340" ph=" }" />
-            <marker date="1495599616809" expanded="true" signature="3346:3496" ph="/**...*/" />
-            <marker date="1495599616809" expanded="false" signature="3556:3567" ph=" { " />
-            <marker date="1495599616809" expanded="false" signature="3594:3600" ph=" }" />
-            <marker date="1495599616809" expanded="true" signature="3606:3647" ph="/**...*/" />
-            <marker date="1495599616809" expanded="false" signature="3670:3681" ph=" { " />
-            <marker date="1495599616809" expanded="false" signature="3704:3710" ph=" }" />
-            <marker date="1495599616809" expanded="true" signature="3720:3763" ph="/**...*/" />
-            <marker date="1495599616809" expanded="false" signature="3788:3799" ph=" { " />
-            <marker date="1495599616809" expanded="false" signature="3824:3830" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1029,7 +892,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/Food.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="45">
           <caret line="3" column="66" lean-forward="false" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
           <folding>
             <marker date="1495599623113" expanded="true" signature="29:36" ph="/**...*/" />
@@ -1039,7 +902,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/GameStartWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
+        <state relative-caret-position="675">
           <caret line="62" column="28" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="62" selection-end-column="28" />
           <folding />
         </state>
@@ -1047,7 +910,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/GameStrings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="1170">
           <caret line="80" column="5" lean-forward="false" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
           <folding />
         </state>
@@ -1055,7 +918,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/EndGamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
+        <state relative-caret-position="780">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1073,11 +936,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Classes.uml">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="" y="">seng201.assignment.Goldfish</node>
+            <node x="" y="">seng201.assignment.Game</node>
+            <node x="" y="">seng201.assignment.Player</node>
+            <node x="" y="">seng201.assignment.GameStrings</node>
+            <node x="" y="">seng201.assignment.DeadEvent</node>
+            <node x="" y="">seng201.assignment.Toy</node>
+            <node x="" y="">seng201.assignment.Lists</node>
+            <node x="" y="">seng201.assignment.Event</node>
+            <node x="" y="">seng201.assignment.Dog</node>
+            <node x="" y="">seng201.assignment.SicknessEvent</node>
+            <node x="" y="">seng201.assignment.Pet</node>
+            <node x="" y="">seng201.assignment.PetType</node>
+            <node x="" y="">seng201.assignment.Cat</node>
+            <node x="" y="">seng201.assignment.GuineaPig</node>
+            <node x="" y="">seng201.assignment.Food</node>
+            <node x="" y="">seng201.assignment.MisbehaveEvent</node>
+            <node x="" y="">seng201.assignment.Rabbit</node>
+            <node x="" y="">seng201.assignment.Bird</node>
+            <node x="" y="">seng201.assignment.Item</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.37884534344711335" x="1308.511679644049" y="2057.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/seng201/assignment/gui/MainGamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="245" column="95" lean-forward="false" selection-start-line="245" selection-start-column="88" selection-end-line="245" selection-end-column="95" />
-          <folding />
+        <state relative-caret-position="376">
+          <caret line="246" column="25" lean-forward="true" selection-start-line="246" selection-start-column="25" selection-end-line="246" selection-end-column="25" />
+          <folding>
+            <element signature="e#862#889#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
