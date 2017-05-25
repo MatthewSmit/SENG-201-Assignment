@@ -9,27 +9,33 @@ public enum PetType {
     /**
      * A dog.
      */
-    Dog("Dog", "dog.png", Dog.class, new Toy[] {Toy.LARGEBALL, Toy.SQUEAKYTOY, Toy.SMALLBALL}, new Food[] {Food.STEAK, Food.TUNA}),
+    Dog("Dog", "dog.png", Dog.class, new Toy[] {Toy.LARGEBALL, Toy.SQUEAKYTOY, Toy.SMALLBALL}, 
+    		new Food[] {Food.STEAK, Food.TUNA}),
     /**
      * A cat.
      */
-    Cat("Cat", "cat.png", Cat.class, new Toy[] {Toy.CARDBOARDBOX, Toy.SMALLBALL}, new Food[] {Food.TUNA, Food.STEAK}),
+    Cat("Cat", "cat.png", Cat.class, new Toy[] {Toy.CARDBOARDBOX, Toy.SMALLBALL}, 
+    		new Food[] {Food.TUNA, Food.STEAK}),
     /**
      * A Bird.
      */
-    Bird("Bird", "bird.png", Bird.class, new Toy[] {Toy.JUNGLEGYM, Toy.GUINEAPIGWHEEL}, new Food[] {Food.SEEDS, Food.BLOODWORM, Food.PEAS}),
+    Bird("Bird", "bird.png", Bird.class, new Toy[] {Toy.JUNGLEGYM, Toy.GUINEAPIGWHEEL}, 
+    		new Food[] {Food.SEEDS, Food.BLOODWORM, Food.PEAS}),
     /**
      * A Goldfish.
      */
-    Goldfish("Goldfish", "goldfish.png", Goldfish.class, new Toy[] {Toy.SMALLBALL}, new Food[] {Food.BLOODWORM, Food.LETTUCE, Food.PEAS}),
+    Goldfish("Goldfish", "goldfish.png", Goldfish.class, new Toy[] {Toy.SMALLBALL}, 
+    		new Food[] {Food.BLOODWORM, Food.LETTUCE, Food.PEAS}),
     /**
      * A Rabbit.
      */
-    Rabbit("Rabbit", "rabbit.png", Rabbit.class, new Toy[] {Toy.CARDBOARDBOX, Toy.GUINEAPIGWHEEL, Toy.SMALLBALL}, new Food[] {Food.CARROT, Food.LETTUCE, Food.PEAS}),
+    Rabbit("Rabbit", "rabbit.png", Rabbit.class, new Toy[] {Toy.CARDBOARDBOX, Toy.GUINEAPIGWHEEL, Toy.SMALLBALL}, 
+    		new Food[] {Food.CARROT, Food.LETTUCE, Food.PEAS}),
     /**
      * A Guinea Pig.
      */
-    GuineaPig("Guinea Pig", "guineapig.png", GuineaPig.class, new Toy[] {Toy.SMALLBALL, Toy.GUINEAPIGWHEEL}, new Food[] {Food.PEAS, Food.LETTUCE, Food.CARROT, Food.SEEDS});
+    GuineaPig("Guinea Pig", "guineapig.png", GuineaPig.class, new Toy[] {Toy.SMALLBALL, Toy.GUINEAPIGWHEEL}, 
+    		new Food[] {Food.PEAS, Food.LETTUCE, Food.CARROT, Food.SEEDS});
 
     private final String name;
     private final String imageFile;
