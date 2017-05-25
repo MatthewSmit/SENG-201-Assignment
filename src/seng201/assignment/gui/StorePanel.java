@@ -32,6 +32,12 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
 final class StorePanel extends JPanel {
@@ -103,8 +109,8 @@ final class StorePanel extends JPanel {
 
         storeList = new JList<>();
         storeList.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        storeList.setBorder(new LineBorder(new Color(0, 0, 0)));
-        storeList.setBounds(10, 49, 397, 263);
+        storeList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+        storeList.setBounds(10, 49, 397, 245);
         storeList.setModel(list);
         storeList.setCellRenderer(new ShopListViewRenderer<>());
         storeList.addListSelectionListener(e -> redraw());
@@ -162,8 +168,9 @@ final class StorePanel extends JPanel {
         
         statsText = new JTextPane();
         statsText.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        statsText.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
         statsText.setEditable(false);   
-        statsText.setBounds(12, 323, 395, 100);
+        statsText.setBounds(10, 323, 397, 100);
         statsText.setHighlighter(null);
         add(statsText);
 
