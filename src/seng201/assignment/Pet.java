@@ -158,7 +158,7 @@ public abstract class Pet {
      */
     private int tiredRate;
     /**
-     * TODO: ???
+     * How playful the pet is.
      */
     private final int playfulness;
     /**
