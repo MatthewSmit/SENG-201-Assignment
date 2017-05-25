@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import seng201.assignment.*;
 
 /**
- * Class used to contain methods to
- * Generates the strings used throughout the GUI.
- *
+ * Class used to contain the methods which generate the strings used
+ * throughout the GUI.
  */
 public final class GameStrings {
 
@@ -22,7 +21,7 @@ public final class GameStrings {
         String speciesInfo = "";
         speciesInfo += "Favourite toy(s): " + stringOfToys(type.getFavouriteToys()) + "\r\n";
         speciesInfo += "Favourite foods: " + stringOfFoods(type.getFavouriteFoods()) + "\r\n";
-        speciesInfo += "Weight range: " + stringOfRange(pet.getSpeciesWeightRange()) + "\r\n";
+        speciesInfo += "Weight range: " + stringOfWeightRange(pet.getSpeciesWeightRange()) + "\r\n";
         speciesInfo += "Playfulness range: " + stringOfRange(pet.getSpeciesPlayfulnessRange()) + "\r\n";
         speciesInfo += "Roughness range: " + stringOfRange(pet.getSpeciesRoughnessRange()) + "\r\n";
         speciesInfo += "Hunger rate range: " + stringOfRange(pet.getSpeciesHungerRateRange()) + "\r\n";
@@ -31,19 +30,29 @@ public final class GameStrings {
     }
     
     /**
-     * 
-     * @param type
-     * @return
+     * Gets the species as a string give a petType.
+     * @param type - the type of a pet.
+     * @return name - the name of the species corresponding to the type.
      */
     public static String getTypeSpecies(final PetType type) {
         return type.getName();
     }
 
+    /**
+     * Gets the name of a pet.
+     * @param pet - a pet.
+     * @return name - the name of a pet.
+     */
     public static String getPetName(final Pet pet) {
         return pet.getName();
     }
 
 
+    /**
+     * Generates a message string if the pet is dead.
+     * @param pet - a pet.
+     * @return deadString - empty string if the pet is alive, "\r\n(pet name) is dead!" if the pet is dead.
+     */
     public static String getPetDeadString(final Pet pet) {
         String deadString = "";
         if (pet.isDead()) {
@@ -52,6 +61,11 @@ public final class GameStrings {
         return deadString;
     }
 
+    /**
+     * Generates a message string if the pet is sick.
+     * @param pet - a pet.
+     * @return sicknessString - empty string if pet isn't sick, "\r\n(pet name) is sick!" if the pet is sick.
+     */
     public static String getPetSickString(final Pet pet) {
         String sicknessString = "";
         if (pet.isSick()) {
@@ -60,6 +74,11 @@ public final class GameStrings {
         return sicknessString;
     }
 
+    /**
+     * Generates a message string if the pet is misbehaving.
+     * @param pet - a pet.
+     * @return misbehavingString - empty string if pet isn't misbehaving, "\r\n(pet name) is misbehaving!" if the pet is misbehaving.
+     */
     public static String getPetMisbehavingString(final Pet pet) {
         String misbehavingString = "";
         if (pet.isMisbehaving()) {
@@ -68,6 +87,11 @@ public final class GameStrings {
         return misbehavingString;
     }
 
+    /**
+     * Generates a string listing out toys given a list of toys.
+     * @param toys - a list of toys.
+     * @return toysString - the toys listed out in a string, of the form "(toy1), (toy2), (toy3)".
+     */
     public static String stringOfToys(final Toy[] toys) {
         String toysString = toys[0].toString();
 
@@ -77,6 +101,11 @@ public final class GameStrings {
         return toysString;
     }
 
+    /**
+     * Generates a string listing out foods given a list of foods.
+     * @param foods - a list of foods.
+     * @return foodsString - the foods listed out in a string, of the form "(food1), (food2), (food3)".
+     */
     public static String stringOfFoods(final Food[] foods) {
         String foodsString = foods[0].toString();
 
@@ -87,14 +116,31 @@ public final class GameStrings {
     }
 
 
-    public static String stringOfRange(final float[] floats) {
+    /**
+     * Generates a string representation of a weight range given two floats in a float[] list.
+     * @param floats - list of two floats, representing the lower and upper bounds of the weight range respectively.
+     * @return floatRange - String representation of the float range, of the form "(float1)kg - (float2)kg".
+     */
+    public static String stringOfWeightRange(final float[] floats) {
         return String.format("%.2fkg - %.2fkg", floats[0], floats[1]);
     }
 
+    /**
+     * Generates a string representation of a range given two ints in an int[] list.
+     * @param ints - list of two ints, representing the lower and upper bounds respectively.
+     * @return intsRange - String representation of the int range, of the form "(int1) - (int2)".
+     */
     public static String stringOfRange(final int[] ints) {
         return String.format("%d%% - %d%%", ints[0] * 10, ints[1] * 10);
     }
 
+
+    /**
+     * Generates a string for a game giving the player name, current day, max days and current score of that player.
+     * @param game - the current game being played.
+     * @return currentPlayerAndDayString - a string containing the name, current day, max days and current score for a player.
+     * Of the form "(player name) - Day (current day) of (max days) - Score: (current score)".
+     */
     public static String getCurrentPlayerAndDay(final Game game) {
         if (game.getCurrentDay() + 1 > game.getMaxDays()) {
             return "GAMEEND"; //number of days passed is more than max days
@@ -105,19 +151,12 @@ public final class GameStrings {
                     game.getCurrentPlayer().getScore());
         }
     }
-
-    /*public static String getMostLikedByAnimals(Food food){
-    	String mostLikedBy = "Most liked by: - ";
-    	for (PetType type : PetType.values()) {
-    		if (type.getFavouriteFood()[0] == food){
-        		mostLikedBy="Most liked by: " + type.getName() + "\r\n";
-        		break;
-        	}
-    	}
-    	return mostLikedBy;
-    	
-    }*/
     
+    /**
+     * Generates a string for a given food listing out the animals which like it the most.
+     * @param food - a given food.
+     * @return mostLikedBy - a string containing the animals which most like that food of "Most liked by: (species1), (species2), etc."
+     */
     public static String getMostLikedByAnimals(Food food){
     	
     	ArrayList<String> mostLikedByList = new ArrayList<String>();
@@ -208,7 +247,6 @@ public final class GameStrings {
                 j += 1;
             }
         }
-        //new array - for ith value in names list pair it up with ith value in number list
         ArrayList<ArrayList<String>> finalList = new ArrayList<ArrayList<String>>();
         for (int i = 0; i < namesList.size(); i++) {
             ArrayList<String> temporaryArray = new ArrayList<String>();
@@ -268,12 +306,12 @@ public final class GameStrings {
 	public static String getItemInfo(Food food){
 		String itemInfo = "";
 		itemInfo += "Food: " + food.toString() + "\r\n";
-		if (food.toString() == "medicine"){
+		if (food.toString() == "Medicine"){
 			itemInfo+= "Used to cure a pet if they become sick." + "\r\n" + 
 						"Doesn't use up any actions.";
 			return itemInfo;
 		}
-		else if (food.toString() == "revival medicine"){
+		else if (food.toString() == "Revival Medicine"){
 			itemInfo+="Used to revive a pet if they die." + "\r\n" +
 					  "Can only be used to revive a pet once!";
 			return itemInfo;
@@ -296,7 +334,4 @@ public final class GameStrings {
 		return itemInfo;
 	}
 	
-	/*public static String getItemInfo(Toy toy){
-		
-	}*/
 }

@@ -78,6 +78,7 @@ public final class Food extends Item {
 
     /**
      * Create another copy of a food item.
+     * @return this - a clone of the current item.
      */
     @Override
     public Item clone() {
@@ -86,6 +87,7 @@ public final class Food extends Item {
     
     /**
      * Gets the price of the food.
+     * @return price - the price of the current food.
      */
     @Override
     public int getPrice() {
@@ -94,6 +96,7 @@ public final class Food extends Item {
 
     /**
      * Gets how nutritious the food is.
+     * @return nutrition - value indicating how nutritious the food is. From 0 - low, to 10 - high.
      */
     public int getNutrition() {
         return nutrition;
@@ -101,6 +104,7 @@ public final class Food extends Item {
 
     /**
      * Gets how large the food is.
+     * @return mealSize - value indicating how large the food is. From 0 - small, to 10 - large.
      */
     public int getMealSize() {
         return mealSize;
@@ -108,6 +112,7 @@ public final class Food extends Item {
 
     /**
      * Gets how tasty the food is.
+     * @return tastiness - value indicating how tasty the food is. From 0 - low, to 10 - high.
      */
     public int getTastiness() {
         return tastiness;
@@ -115,6 +120,7 @@ public final class Food extends Item {
     
     /**
      * Gets the name of the food.
+     * @return foodName - the name of the food.
      */
     @Override
     public String toString() {
@@ -123,6 +129,7 @@ public final class Food extends Item {
 
     /**
      * Gets an array containing all the possible Food values.
+     * @return VALUES - an array containing all the possible Food values.
      */
     public static Food[] values() {
         return VALUES;

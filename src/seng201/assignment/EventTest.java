@@ -3,9 +3,7 @@ package seng201.assignment;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- * Created by Matthew on 2017-05-23.
- */
+
 public final class EventTest {
     @Test
     public void testSickness() {

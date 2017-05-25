@@ -5,14 +5,14 @@ import java.util.Random;
 /**
  * Base event class, used for events that affect pets. 
  * Each event can only affect one pet per day, 
- * and each pet can only be effected by one event per day.
+ * and each pet can only be affected by one event per day.
  */
 public abstract class Event {
     private static Random random = new Random();
 
     /**
      * Loops through each players pets, testing if the event gets applied to them.
-     * @param player This players pets get tested for the event.
+     * @param player - This players pets get tested for the event.
      */
     public void processPlayer(final Player player) {
         for (Pet pet : player.getPets()) {
@@ -26,8 +26,8 @@ public abstract class Event {
 
     /**
      * Tests if the pet can have the event applied to them.
-     * @param pet The pet to test
-     * @return True if the event was applied to them, false otherwise
+     * @param pet - The pet to test
+     * @return true - if the event was applied to them, false - otherwise
      */
     protected abstract boolean processPet(Pet pet);
 

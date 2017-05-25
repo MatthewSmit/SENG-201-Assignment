@@ -63,7 +63,7 @@ public class Game {
 
     /**
      * Plays with the current pet and the desired toy.
-     * @param toy The desired toy
+     * @param toy - the desired toy.
      */
     public void play(final Toy toy) {
         getCurrentPet().play(toy);
@@ -133,7 +133,7 @@ public class Game {
 
     /**
      * Sets the index in the players pet array for the current pet.
-     * @param newCurrentPet The index in the current players pet array
+     * @param newCurrentPet - The index in the current players pet array corresponding to the new pet.
      */
     public void setCurrentPetIndex(final int newCurrentPet) {
         currentPet = newCurrentPet;

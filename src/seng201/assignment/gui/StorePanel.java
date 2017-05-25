@@ -187,7 +187,7 @@ final class StorePanel extends JPanel {
 
         playerLabel = new JLabel();
         playerLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-        playerLabel.setBounds(10, 15, 200, 23);
+        playerLabel.setBounds(10, 15, 397, 23);
         add(playerLabel);
         
         statsText = new JTextPane();

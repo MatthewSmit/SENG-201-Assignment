@@ -7,9 +7,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Rule;
 
-/**
- * Created by Matthew on 2017-04-27.
- */
 public final class PetTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
