@@ -1,9 +1,4 @@
-assignment todo - 
-
-fix names now disappearing in playerchoosingwindow withing CurrentPetsPanel
-
-
-generate daily score and overall score for a player.
+assignment todo
 
 happiness decreases by 50% each day (after 2 days down to lowest possible happiness), should probably change that to something more reasonable. 
 Should experiment around with other values to make them more balanced.

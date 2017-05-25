@@ -152,4 +152,11 @@ public class Game {
     public void revive() {
         getCurrentPet().revive();
     }
+
+    /**
+     * Returns an array of the players.
+     */
+    public Player[] getPlayers() {
+        return players;
+    }
 }

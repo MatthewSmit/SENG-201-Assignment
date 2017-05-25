@@ -48,17 +48,14 @@ final class NamePetDialogue extends JDialog {
         final JDialog dialogue = this;
 
         JButton okButton = new JButton("OK");
-        okButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                String name = nameText.getText();
+        okButton.addActionListener(e -> {
+            String name = nameText.getText();
 
-                if (name.length() > 0 && frame.isUniqueName(name)) {
-                    frame.addNewPet(type, name);
-                    dialogue.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Pet name must be unique.");
-                }
+            if (name.length() > 0 && frame.isUniqueName(name)) {
+                frame.addNewPet(type, name);
+                dialogue.dispose();
+            } else {
+                JOptionPane.showMessageDialog(frame, "Pet name must be unique.");
             }
         });
 

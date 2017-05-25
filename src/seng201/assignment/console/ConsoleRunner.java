@@ -13,7 +13,7 @@ import seng201.assignment.Player;
 import seng201.assignment.Toy;
 
 /**
- * Created by Matthew on 20/04/17.
+ * Runs the game using a console interface.
  */
 public final class ConsoleRunner {
     private static InputStreamReader reader = new InputStreamReader(System.in);
@@ -252,7 +252,7 @@ public final class ConsoleRunner {
             String name;
             while (true) {
                 name = readLine(String.format("Player %d's name: ", i + 1));
-                if (!ensureUniqueNames(players, null, name)) {
+                if (detectNameConflicts(players, null, name)) {
                     System.out.println("Name is already in use, try again");
                 } else {
                     break;
@@ -268,7 +268,7 @@ public final class ConsoleRunner {
                 String petName;
                 while (true) {
                     petName = readLine(String.format("Player %d's pet %d's name: ", i + 1, j + 1));
-                    if (!ensureUniqueNames(players, pets, petName)) {
+                    if (detectNameConflicts(players, pets, petName)) {
                         System.out.println("Name is already in use, try again");
                     } else {
                         break;
@@ -282,9 +282,9 @@ public final class ConsoleRunner {
         return new Game(days, players);
     }
 
-    private static boolean ensureUniqueNames(final Player[] players, final Pet[] pets, final String name) {
+    private static boolean detectNameConflicts(final Player[] players, final Pet[] pets, final String name) {
         if (players == null) {
-            return true;
+            return false;
         }
 
         // Check if players or their pets have the same name
@@ -292,14 +292,14 @@ public final class ConsoleRunner {
             if (player != null) {
                 String playerName = player.getName();
                 if (playerName != null && playerName.equalsIgnoreCase(name)) {
-                    return false;
+                    return true;
                 }
 
                 for (Pet pet : player.getPets()) {
                     if (pet != null) {
                         String petName = pet.getName();
                         if (petName != null && petName.equalsIgnoreCase(name)) {
-                            return false;
+                            return true;
                         }
                     }
                 }
@@ -312,13 +312,13 @@ public final class ConsoleRunner {
                 if (pet != null) {
                     String petName = pet.getName();
                     if (petName != null && petName.equalsIgnoreCase(name)) {
-                        return false;
+                        return true;
                     }
                 }
             }
         }
 
-        return true;
+        return false;
     }
 
     private static PetType choosePet() {
@@ -339,9 +339,9 @@ public final class ConsoleRunner {
 
         while (true) {
             String value = readLine();
-            for (int i = 0; i < petTypes.length; i++) {
-                if (petTypes[i].getName().equalsIgnoreCase(value)) {
-                    return petTypes[i];
+            for (PetType type : petTypes) {
+                if (type.getName().equalsIgnoreCase(value)) {
+                    return type;
                 }
             }
 

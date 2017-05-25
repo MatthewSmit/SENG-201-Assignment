@@ -166,8 +166,8 @@ public final class PetTest {
         Pet[] pets = createPets();
 
         // Make sure each pet has a species with a valid string
-        for (int i = 0; i < pets.length; i++) {
-            String species = pets[i].getSpecies();
+        for (Pet pet : pets) {
+            String species = pet.getSpecies();
             assertNotNull(species);
             assertNotEquals(0, species.length());
         }

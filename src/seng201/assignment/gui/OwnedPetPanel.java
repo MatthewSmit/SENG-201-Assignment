@@ -29,12 +29,7 @@ final class OwnedPetPanel extends JPanel {
         image = new ImageLabel();
 
         JButton removeButton = new JButton("-");
-        removeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                frame.removePet(pet);
-            }
-        });
+        removeButton.addActionListener(e -> frame.removePet(pet));
 
         nameLabel = new JLabel();
 
