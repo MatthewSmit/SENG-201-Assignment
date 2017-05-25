@@ -5,7 +5,7 @@ package seng201.assignment;
  * A greater chance of death the more unhealthy a pet is.
  */
 public final class DeadEvent extends Event {
-	
+    
 	/**
 	 * Processes a pet at the end of the turn to check if it dies.
 	 * @param pet - the pet to be processed.
