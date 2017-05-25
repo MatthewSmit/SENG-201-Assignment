@@ -14,13 +14,9 @@ import javax.swing.AbstractListModel;
 
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import seng201.assignment.Food;
 import seng201.assignment.Game;
@@ -129,7 +125,7 @@ final class MainGamePanel extends JPanel {
 
         pet3NameLabel = new JLabel();
         pet3NameLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        pet3NameLabel.setBounds(390, 48, 100, 14);
+        pet3NameLabel.setBounds(392, 48, 98, 14);
         add(pet3NameLabel);
 
         pet3Button = new JButton();
