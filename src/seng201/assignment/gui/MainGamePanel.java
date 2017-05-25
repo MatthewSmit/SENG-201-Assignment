@@ -104,7 +104,7 @@ final class MainGamePanel extends JPanel {
 
         petNameLabel = new JLabel();
         petNameLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-        petNameLabel.setBounds(10, 43, 200, 19);
+        petNameLabel.setBounds(10, 43, 339, 19);
         add(petNameLabel);
 
         petImage = new ImageLabel();

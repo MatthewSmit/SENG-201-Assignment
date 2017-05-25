@@ -3,9 +3,9 @@ package seng201.assignment;
 import java.util.Random;
 
 /**
- * Implements a pet to be further extended by species subclasses,
- * contains the basic private attributes of a pet such as weight and gender,
- * methods for initializing these attributes, and abstract method declarations
+ * Implements a pet to be further extended by species subclasses.
+ * Contains the basic private attributes of a pet such as weight and gender,
+ * methods for initialising these attributes, and abstract method declarations
  * used in the species subclasses.
  */
 public abstract class Pet {
@@ -198,8 +198,8 @@ public abstract class Pet {
 
     /**
      * Create a new pet.
-     * @param petName - the name of the new pet
-     * @param petType - the type of the new pet
+     * @param petName - the name of the new pet.
+     * @param petType - the type of the new pet.
      */
     protected Pet(final String petName, final PetType petType) {
         name = petName;
@@ -219,7 +219,7 @@ public abstract class Pet {
     }
 
     /**
-     * Processes changes of attributes when a day finishes.
+     * Processes changes to attributes when a day finishes.
      */
     final void dayPassed() {
         actionsLeft = 2;
@@ -271,7 +271,7 @@ public abstract class Pet {
     /**
      * Plays with the pet, using a toy. Increases the pets happiness, 
      * more so if it is their favourite toy or one of their favourites.
-     * @param toy the toy used to play with the pet
+     * @param toy - the toy used to play with the pet.
      */
     public void play(final Toy toy) {
         assert !isDead();
@@ -330,7 +330,7 @@ public abstract class Pet {
     }
 
     /**
-     * Cures the sickness the pet has, increasing their happiness.
+     * Cures the sickness the pet has, increasing their happiness. Does not count as an action.
      */
     public void cure() {
         assert sick;
@@ -340,7 +340,7 @@ public abstract class Pet {
 
 
     /**
-     * Pet is punished for misbehaving, decreasing their happiness.
+     * Pet is punished for misbehaving, decreasing their happiness. Does not count as an action.
      */
     public void fixMisbehaving() {
         if (!misbehaving) {
@@ -378,8 +378,8 @@ public abstract class Pet {
     }
 
     /**
-     * Kills the pet, either setting it to once-dead if it is the first time the pet has died
-     * or permanently-dead if it is the second.
+     * Kills the pet, either setting it to once-dead if 
+     * it is the first time the pet has died or permanently-dead if it is the second.
      */
     public void die() {
         assert deathState == DeathState.ALIVE || deathState == DeathState.ALIVE_WAS_DEAD;
@@ -629,7 +629,7 @@ public abstract class Pet {
     }
 
     /**
-     * Gets the gender of a pet.
+     * Gets the initial gender of a pet.
      * @return "male" - if the pet is male, "female" - if the pet is female.
      */
     private static String getInitialGender() {
@@ -640,7 +640,7 @@ public abstract class Pet {
     }
 
     /**
-     * Returns true if the pet is currently dead, false if not.
+     * Gets whether or not the pet is currently dead.
      * @return true - if the pet is currently dead, false - if the pet is currently alive.
      */
     public boolean isDead() {

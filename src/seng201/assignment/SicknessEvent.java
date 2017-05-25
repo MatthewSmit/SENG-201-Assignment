@@ -1,17 +1,22 @@
 package seng201.assignment;
 
 /**
- * The sickness event, sets the pet to be sick. A greater chance the more hungry, tired and toilet-needy the pet is.
+ * The sickness event, which makes the pet sick. 
+ * A greater chance of death the more hungry, tired and toilet-needy a pet is.
  */
 public final class SicknessEvent extends Event {
+	
+	/**
+	 * Processes a pet at the end of the turn to check if it becomes sick.
+	 * @param pet - the pet to be processed.
+	 * @return true - if pet becomes sick in the turn, false - if pet is already sick or does not become sick.
+	 **/
     @Override
     protected boolean processPet(final Pet pet) {
         if (pet.isSick() || pet.isDead()) {
             return false;
         }
 
-        // Pet has a higher chance the more it needs to eat, sleep and toilet
-        // Ranges from 0% at 5 hunger, 5 tiredness, 5 toilet to 60% at 15 hunger, 15 tiredness, 15 toilet
         float chance = lerp(0, 0.2f, (pet.getHunger() - 10) / 10.0f)
                 + lerp(0, 0.2f, (pet.getTiredness() - 10) / 10.0f)
                 + lerp(0, 0.2f, (pet.getToiletNeed() - 10) / 10.0f);

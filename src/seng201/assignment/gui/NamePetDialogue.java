@@ -43,7 +43,7 @@ final class NamePetDialogue extends JDialog {
 
         nameText = new JTextField();
         nameText.setColumns(10);
-        nameText.setDocument(new JTextFieldLimit(15));
+        nameText.setDocument(new JTextFieldLimit(10));
 
         final JDialog dialogue = this;
 
