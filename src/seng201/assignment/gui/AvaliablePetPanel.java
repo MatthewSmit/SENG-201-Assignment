@@ -24,14 +24,7 @@ class AvaliablePetPanel extends JPanel {
      * Create the panel.
      */
     AvaliablePetPanel(final PlayerChoosingWindow frame, final PetType type) {
-        Image bufferedImage = null;
-        try {
-            bufferedImage = ImageIO.read(getClass().getResourceAsStream(type.getImageFile()));
-            bufferedImage = bufferedImage.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
+        Image petImage = Utils.loadImage(type, 128, 128);
 
         JButton addPetButton = new JButton("+");
         addPetButton.addActionListener(e -> {
@@ -53,7 +46,7 @@ class AvaliablePetPanel extends JPanel {
             dialogue.setVisible(true);
         });
 
-        JPanel image = new ImageLabel(new ImageIcon(bufferedImage));
+        JPanel image = new ImageLabel(petImage);
         GroupLayout groupLayout = new GroupLayout(this);
         groupLayout.setHorizontalGroup(
                 groupLayout.createParallelGroup(Alignment.LEADING)

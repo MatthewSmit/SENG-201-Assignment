@@ -8,14 +8,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import seng201.assignment.Pet;
+import seng201.assignment.PetType;
 
 final class Utils {
     private Utils() {
     }
 
-    public static Image loadImage(final Pet pet, final int width, final int height) {
-        String imageFile = pet.getType().getImageFile();
-
+    public static Image loadImage(final String imageFile, final int width, final int height) {
         Image image;
         try {
             image = ImageIO.read(Utils.class.getResourceAsStream(imageFile));
@@ -24,18 +23,19 @@ final class Utils {
             throw new Error();
         }
 
-        image = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+    }
+
+    public static Image loadImage(final PetType petType, final int width, final int height) {
+        return loadImage(petType.getImageFile(), width, height);
+    }
+
+    public static Image loadImage(final Pet pet, final int width, final int height) {
+        Image image = loadImage(pet.getType(), width, height);
 
         if (pet.isDead()) {
-            Image deadImage;
-            try {
-                deadImage = ImageIO.read(Utils.class.getResourceAsStream("dead.png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-                throw new Error();
-            }
+            Image deadImage = loadImage("dead.png", width, height);
 
-            deadImage = deadImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
             Image combined = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             Graphics graphics = combined.getGraphics();
             graphics.drawImage(image, 0, 0, null);

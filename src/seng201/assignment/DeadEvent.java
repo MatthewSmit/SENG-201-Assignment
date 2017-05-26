@@ -16,7 +16,7 @@ public final class DeadEvent extends Event {
             return false;
         }
 
-        float chance = lerp(0, 0.4f, (10 - pet.getHealth()) / 10.0f);
+        final float chance = lerp(0, 0.4f, (10 - pet.getHealth()) / 10.0f);
 
         if (getRandom() <= chance) {
             pet.die();

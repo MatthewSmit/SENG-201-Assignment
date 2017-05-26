@@ -5,11 +5,11 @@ package seng201.assignment;
  * roughness, hunger rate and tiredness rate attributes.
  */
 final class Dog extends Pet {
-    private static float[] weightRange = new float[] {20, 40};
-    private static int[] playfulnessRange = new int[] {3, 10};
-    private static int[] roughnessRange = new int[] {5, 10};
-    private static int[] hungerRateRange = new int[] {3, 4};
-    private static int[] tiredRateRange = new int[] {2, 4};
+    private static final float[] weightRange = {20, 40};
+    private static final int[] playfulnessRange = {3, 10};
+    private static final int[] roughnessRange = {5, 10};
+    private static final int[] hungerRateRange = {3, 4};
+    private static final int[] tiredRateRange = {2, 4};
 
     /**
      * Creates a pet dog.

@@ -1,5 +1,7 @@
 package seng201.assignment;
 
+import seng201.assignment.Pet.EventState;
+
 import java.util.Random;
 
 /**
@@ -8,15 +10,15 @@ import java.util.Random;
  * and each pet can only be affected by one event per day.
  */
 public abstract class Event {
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
     /**
      * Loops through each players pets, testing if the event gets applied to them.
      * @param player - This players pets get tested for the event.
      */
-    public void processPlayer(final Player player) {
-        for (Pet pet : player.getPets()) {
-            if (pet.getEventState() == Pet.EventState.NO_EVENT) {
+    public final void processPlayer(final Player player) {
+        for (final Pet pet : player.getPets()) {
+            if (pet.getEventState() == EventState.NO_EVENT) {
                 if (processPet(pet)) {
                     break;
                 }

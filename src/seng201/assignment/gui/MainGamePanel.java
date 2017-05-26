@@ -1,36 +1,11 @@
 package seng201.assignment.gui;
 
-import javax.swing.JPanel;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JTextPane;
-import javax.swing.JButton;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-
-import java.util.ArrayList;
-
-import javax.swing.AbstractListModel;
-
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import seng201.assignment.Food;
-import seng201.assignment.Game;
-import seng201.assignment.GameStrings;
-import seng201.assignment.Item;
-import seng201.assignment.Pet;
+import seng201.assignment.*;
 import seng201.assignment.Pet.DeathState;
-import seng201.assignment.Player;
-import seng201.assignment.Toy;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
 
 @SuppressWarnings("serial")
 final class MainGamePanel extends JPanel {
@@ -64,7 +39,8 @@ final class MainGamePanel extends JPanel {
         }
     }
 
-    private Game game;
+    private final MainGameWindow window;
+    private final Game game;
 
     private int[] petIndex = new int[] {
             0, 1, 2
@@ -95,6 +71,7 @@ final class MainGamePanel extends JPanel {
      * Create the panel.
      */
     MainGamePanel(final MainGameWindow window, final Game game) {
+        this.window = window;
         this.game = game;
 
         playerLabel = new JLabel();
@@ -188,81 +165,12 @@ final class MainGamePanel extends JPanel {
         useButton.setBounds(516, 406, 72, 19);
         useButton.setEnabled(false);
         useButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        useButton.addActionListener(e -> {
-            Item item = getSelectedItem();
-            if (item instanceof Toy) {
-                Toy toy = (Toy)item;
-                game.play(toy);
-                addMessage(String.format("%s plays with %s.", game.getCurrentPet().getName(), toy.toString()));
-
-                if (toy.isBroken()) {
-                    addMessage(String.format("%s was too rough! %s breaks.", game.getCurrentPet().getName(), toy.toString()));
-                    game.getCurrentPlayer().getItems().remove(item);
-                }
-            } else if (item instanceof Food) {
-                if (item == Food.MEDICINE) {
-                    game.cure();
-                    addMessage(String.format("%s is cured.", game.getCurrentPet().getName()));
-                    game.getCurrentPlayer().getItems().remove(item);
-                } else if (item == Food.REVIVALMEDICINE) {
-                    if (game.getCurrentPet().getDeathState() == DeathState.PERMANENTLY_DEAD) {
-                        JOptionPane.showMessageDialog(window, "Can only revive a pet once!");
-                    } else if (game.getCurrentPet().isDead() && game.getCurrentPet().getDeathState() == DeathState.DEAD_ONCE) {
-                        game.revive();
-                        addMessage(String.format("%s is revived.", game.getCurrentPet().getName()));
-                        game.getCurrentPlayer().getItems().remove(item);
-                    }
-                } else {
-                    game.feed((Food)item);
-                    addMessage(String.format("%s eats %s.", game.getCurrentPet().getName(), item.toString()));
-                    game.getCurrentPlayer().getItems().remove(item);
-                }
-
-            } else {
-                assert false;
-            }
-            redraw();
-        });
+        useButton.addActionListener(e -> handleUse());
         add(useButton);
 
         JButton nextButton = new JButton("------->");
         nextButton.setBounds(583, 26, 93, 23);
-        nextButton.addActionListener(e -> {
-            game.endTurn();
-
-            for (Pet pet : game.getCurrentPlayer().getPets()) {
-                switch (pet.getEventState()) {
-                    case NO_EVENT:
-                        break;
-                    case MISBEHAVING:
-                        addMessage(String.format("%s has started misbehaving!", pet.getName()));
-                        break;
-                    case SICK:
-                        addMessage(String.format("%s has gotten sick!", pet.getName()));
-                        break;
-                    case DEAD:
-                        addMessage(String.format("%s has died!", pet.getName()));
-                        if (pet.getDeathState() == DeathState.PERMANENTLY_DEAD) {
-                            addMessage(String.format("%s is now permenantly dead!", pet.getName()));
-                        }
-                        break;
-                    default:
-                        assert false;
-                        break;
-                }
-            }
-
-            if (!game.isRunning()) {
-                new EndGameWindow(game.getPlayers());
-                window.dispose();
-            }
-
-            petIndex[0] = 0;
-            petIndex[1] = 1;
-            petIndex[2] = 2;
-
-            redraw();
-        });
+        nextButton.addActionListener(e -> handleNext());
         add(nextButton);
 
         inventoryList = new JList<>();
@@ -271,7 +179,7 @@ final class MainGamePanel extends JPanel {
         inventoryList.setCellRenderer(new ShopListViewRenderer<>());
         inventoryList.addListSelectionListener(e -> redraw());
 
-        JScrollPane scrollInventoryPane = new JScrollPane(inventoryList);
+        final JScrollPane scrollInventoryPane = new JScrollPane(inventoryList);
         scrollInventoryPane.setBounds(516, 73, 160, 322);
         add(scrollInventoryPane);
 
@@ -292,9 +200,82 @@ final class MainGamePanel extends JPanel {
         redraw();
     }
 
-    public void redraw() {
-        Player player = game.getCurrentPlayer();
-        Pet pet = game.getCurrentPet();
+    private void handleUse() {
+        final Item item = getSelectedItem();
+        if (item instanceof Toy) {
+            final Toy toy = (Toy)item;
+            game.play(toy);
+            addMessage(String.format("%s plays with %s.", game.getCurrentPet().getName(), toy.toString()));
+
+            if (toy.isBroken()) {
+                addMessage(String.format("%s was too rough! %s breaks.", game.getCurrentPet().getName(), toy.toString()));
+                game.getCurrentPlayer().getItems().remove(item);
+            }
+        } else if (item instanceof Food) {
+            if (item.equals(Food.MEDICINE)) {
+                game.cure();
+                addMessage(String.format("%s is cured.", game.getCurrentPet().getName()));
+                game.getCurrentPlayer().getItems().remove(item);
+            } else if (item.equals(Food.REVIVALMEDICINE)) {
+                if (game.getCurrentPet().getDeathState() == DeathState.PERMANENTLY_DEAD) {
+                    JOptionPane.showMessageDialog(window, "Can only revive a pet once!");
+                } else if (game.getCurrentPet().isDead() && (game.getCurrentPet().getDeathState() == DeathState.DEAD_ONCE)) {
+                    game.revive();
+                    addMessage(String.format("%s is revived.", game.getCurrentPet().getName()));
+                    game.getCurrentPlayer().getItems().remove(item);
+                }
+            } else {
+                game.feed((Food)item);
+                addMessage(String.format("%s eats %s.", game.getCurrentPet().getName(), item.toString()));
+                game.getCurrentPlayer().getItems().remove(item);
+            }
+
+        } else {
+            assert false;
+        }
+        redraw();
+    }
+
+    private void handleNext() {
+        game.endTurn();
+
+        for (final Pet pet : game.getCurrentPlayer().getPets()) {
+            switch (pet.getEventState()) {
+                case NO_EVENT:
+                    break;
+                case MISBEHAVING:
+                    addMessage(String.format("%s has started misbehaving!", pet.getName()));
+                    break;
+                case SICK:
+                    addMessage(String.format("%s has gotten sick!", pet.getName()));
+                    break;
+                case DEAD:
+                    addMessage(String.format("%s has died!", pet.getName()));
+                    if (pet.getDeathState() == DeathState.PERMANENTLY_DEAD) {
+                        addMessage(String.format("%s is now permenantly dead!", pet.getName()));
+                    }
+                    break;
+                default:
+                    assert false;
+                    break;
+            }
+        }
+
+        if (!game.isRunning()) {
+            new EndGameWindow(game.getPlayers());
+            window.dispose();
+        }
+
+        petIndex[0] = 0;
+        petIndex[1] = 1;
+        petIndex[2] = 2;
+
+        redraw();
+    }
+
+    void redraw() {
+        final Player player = game.getCurrentPlayer();
+        final Pet pet = game.getCurrentPet();
 
         ((InventoryListModel)inventoryList.getModel()).redraw();
         if (inventoryList.getSelectedIndex() >= inventoryList.getModel().getSize()) {
@@ -305,7 +286,7 @@ final class MainGamePanel extends JPanel {
 
         playerLabel.setText(GameStrings.getCurrentPlayerAndDay(game));
 
-        String actionsLeftString;
+        final String actionsLeftString;
         if (pet.getActionsLeft() == 0) {
             actionsLeftString = "No actions left";
         } else if (pet.getActionsLeft() == 1) {
@@ -319,10 +300,10 @@ final class MainGamePanel extends JPanel {
 
         ((InventoryListModel)inventoryList.getModel()).redraw();
 
-        Pet[] pets = player.getPets();
+        final Pet[] pets = player.getPets();
         if (pets.length > 1) {
 
-            Pet currentPet = pets[petIndex[1]];
+            final Pet currentPet = pets[petIndex[1]];
             pet2NameLabel.setVisible(true);
             pet2NameLabel.setText(String.format("%s - %d", currentPet.getName(), currentPet.getActionsLeft()));
             pet2Img = Utils.loadImage(currentPet, 93, 92);
@@ -335,7 +316,7 @@ final class MainGamePanel extends JPanel {
         }
 
         if (pets.length > 2) {
-            Pet currentPet = pets[petIndex[2]];
+            final Pet currentPet = pets[petIndex[2]];
             pet3NameLabel.setVisible(true);
             pet3NameLabel.setText(String.format("%s - %d", currentPet.getName(), currentPet.getActionsLeft()));
             pet3Img = Utils.loadImage(currentPet, 93, 92);
@@ -353,17 +334,17 @@ final class MainGamePanel extends JPanel {
             punishButton.setEnabled(false);
         }
 
-        Item item = getSelectedItem();
+        final Item item = getSelectedItem();
         if (item == null) {
             useButton.setText("Use");
             useButton.setEnabled(false);
         } else if (item instanceof Toy) {
             useButton.setText("Play");
             useButton.setEnabled(pet.getActionsLeft() > 0 && !pet.isDead());
-        } else if (item == Food.REVIVALMEDICINE) {
+        } else if (item.equals(Food.REVIVALMEDICINE)) {
             useButton.setText("Feed");
             useButton.setEnabled(pet.isDead());
-        } else if (item == Food.MEDICINE) {
+        } else if (item.equals(Food.MEDICINE)) {
             useButton.setText("Feed");
             useButton.setEnabled(pet.isSick());
         } else if (item instanceof Food) {
@@ -379,13 +360,13 @@ final class MainGamePanel extends JPanel {
     }
 
     private Item getSelectedItem() {
-        ShopListView<String> value = inventoryList.getSelectedValue();
+        final ShopListView<String> value = inventoryList.getSelectedValue();
         if (value == null) {
             return null;
         }
 
-        String itemName = value.getLhs();
-        for (Item item : game.getCurrentPlayer().getItems()) {
+        final String itemName = value.getLhs();
+        for (final Item item : game.getCurrentPlayer().getItems()) {
             if (item.toString().equals(itemName)) {
                 return item;
             }
@@ -395,7 +376,7 @@ final class MainGamePanel extends JPanel {
     }
 
     private void addMessage(final String message) {
-        if (messageLogText.getText().length() == 0) {
+        if (messageLogText.getText().isEmpty()) {
             messageLogText.setText(message);
         } else {
             messageLogText.setText(messageLogText.getText() + "\n" + message);

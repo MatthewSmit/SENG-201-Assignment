@@ -181,7 +181,7 @@ public final class ConsoleRunner {
     private static void processFeed(final Game game) {
 
         System.out.println();
-        ArrayList<Food> food = game.getCurrentPlayer().getFood();
+        final ArrayList<Food> food = game.getCurrentPlayer().getFood();
         if (game.getCurrentPet().getActionsLeft() == 0) {
             System.out.println("You have no actions left, end your turn!");
         } else if (food.size() == 0) {
