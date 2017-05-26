@@ -5,12 +5,12 @@ package seng201.assignment;
  * A greater chance of death the more hungry, tired and toilet-needy a pet is.
  */
 public final class SicknessEvent extends Event {
-	
-	/**
-	 * Processes a pet at the end of the turn to check if it becomes sick.
-	 * @param pet - the pet to be processed.
-	 * @return true - if pet becomes sick in the turn, false - if pet is already sick or does not become sick.
-	 **/
+
+    /**
+     * Processes a pet at the end of the turn to check if it becomes sick.
+     * @param pet - the pet to be processed.
+     * @return true - if pet becomes sick in the turn, false - if pet is already sick or does not become sick.
+     **/
     @Override
     protected boolean processPet(final Pet pet) {
         if (pet.isSick() || pet.isDead()) {

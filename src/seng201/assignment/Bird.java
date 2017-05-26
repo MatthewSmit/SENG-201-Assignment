@@ -5,11 +5,11 @@ package seng201.assignment;
  * roughness, hunger rate and tiredness rate attributes.
  */
 final class Bird extends Pet {
-    private static final float[] weightRange = {0.15f, 0.6f};
-    private static final int[] playfulnessRange = {2, 6};
-    private static final int[] roughnessRange = {1, 4};
-    private static final int[] hungerRateRange = {1, 2};
-    private static final int[] tiredRateRange = {2, 3};
+    private static final float[] WEIGHT_RANGE = {0.15f, 0.6f};
+    private static final int[] PLAYFULNESS_RANGE = {2, 6};
+    private static final int[] ROUGHNESS_RANGE = {1, 4};
+    private static final int[] HUNGER_RATE_RANGE = {1, 2};
+    private static final int[] TIRED_RATE_RANGE = {2, 3};
 
     
     /**
@@ -23,26 +23,26 @@ final class Bird extends Pet {
 
     @Override
     public float[] getSpeciesWeightRange() {
-        return weightRange;
+        return WEIGHT_RANGE;
     }
 
     @Override
     public int[] getSpeciesPlayfulnessRange() {
-        return playfulnessRange;
+        return PLAYFULNESS_RANGE;
     }
 
     @Override
     public int[] getSpeciesRoughnessRange() {
-        return roughnessRange;
+        return ROUGHNESS_RANGE;
     }
 
     @Override
     public int[] getSpeciesHungerRateRange() {
-        return hungerRateRange;
+        return HUNGER_RATE_RANGE;
     }
 
     @Override
     public int[] getSpeciesTiredRateRange() {
-        return tiredRateRange;
+        return TIRED_RATE_RANGE;
     }
 }

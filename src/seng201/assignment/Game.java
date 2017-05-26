@@ -6,8 +6,8 @@ package seng201.assignment;
  * in the form of turns and days.
  */
 public class Game {
-    
-	private static final Event[] EVENTS = new Event[] {
+
+    private static final Event[] EVENTS = new Event[] {
             new MisbehaveEvent(),
             new SicknessEvent(),
             new DeadEvent()
@@ -35,7 +35,7 @@ public class Game {
      */
     public void endTurn() {
         assert isRunning();
-        
+
         currentPet = 0;
         playerTurn++;
         if (playerTurn == players.length) {
@@ -146,7 +146,7 @@ public class Game {
     public void cure() {
         getCurrentPet().cure();
     }
-    
+
     /**
      * Revives the current pet.
      */

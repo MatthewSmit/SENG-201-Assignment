@@ -2,8 +2,6 @@ package seng201.assignment.gui;
 
 import java.awt.Frame;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;

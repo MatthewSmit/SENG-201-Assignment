@@ -24,15 +24,17 @@ public class GameStartWindow extends JFrame {
         private static final String REMOVE_REGEX = "\\D"; 
 
         @Override
-        public void insertString(final FilterBypass fb, final int offset, String text, final AttributeSet attr) throws BadLocationException {
-            text = text.replaceAll(REMOVE_REGEX, "");
-            super.insertString(fb, offset, text, attr);
+        public void insertString(final FilterBypass fb, final int offset, final String text, final AttributeSet attr)
+                throws BadLocationException {
+            String newText = text.replaceAll(REMOVE_REGEX, "");
+            super.insertString(fb, offset, newText, attr);
         }
 
         @Override
-        public void replace(final FilterBypass fb, final int offset, final int length, String text, final AttributeSet attrs) throws BadLocationException {
-            text = text.replaceAll(REMOVE_REGEX, "");
-            super.replace(fb, offset, length, text, attrs);
+        public void replace(final FilterBypass fb, final int offset, final int length, final String text, final AttributeSet attrs)
+                throws BadLocationException {
+            String newText = text.replaceAll(REMOVE_REGEX, "");
+            super.replace(fb, offset, length, newText, attrs);
         }
     }
 

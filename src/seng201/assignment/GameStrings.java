@@ -7,7 +7,8 @@ import java.util.ArrayList;
  * throughout the GUI.
  */
 public final class GameStrings {
-
+    private GameStrings() {
+    }
 
     /**
      * Generates a string containing the information about a given species, such as the weight range, favourite toy,
@@ -28,7 +29,7 @@ public final class GameStrings {
         speciesInfo += "Tiredness rate range: " + stringOfRange(pet.getSpeciesTiredRateRange());
         return speciesInfo;
     }
-    
+
     /**
      * Gets the species as a string given a petType.
      * @param type - the type of a pet.
@@ -146,7 +147,7 @@ public final class GameStrings {
                 game.getCurrentDay() + 1, game.getMaxDays(),
                 game.getCurrentPlayer().getScore());
     }
-    
+
     /**
      * Generates a string for a given food listing out the animals which like it the most out of the given foods.
      * @param food - a given food.
@@ -258,13 +259,13 @@ public final class GameStrings {
      * of an item and a string for the non-zero number of that item which the player owns.
      */
     public static ArrayList<ArrayList<String>> generateInventoryListofLists(final ArrayList<Item> items) {
-        
-    	ArrayList<String> namesList = new ArrayList<>();
+
+        ArrayList<String> namesList = new ArrayList<>();
         ArrayList<Integer> numberOfList = new ArrayList<>();
         ArrayList<ArrayList<String>> nameAndNumberArrayList = new ArrayList<ArrayList<String>>();
-        
+
         int j = 0;
-        
+
         for (int i = 0; i < items.size(); i++) {
             if (namesList.contains(items.get(i).toString())) {
                 int k = namesList.indexOf(items.get(i).toString());
@@ -275,7 +276,7 @@ public final class GameStrings {
                 j += 1;
             }
         }
-        
+
         for (int i = 0; i < namesList.size(); i++) {
             ArrayList<String> temporaryArray = new ArrayList<>();
             temporaryArray.add(namesList.get(i));
@@ -298,7 +299,7 @@ public final class GameStrings {
         int percentage = integer * 10;
         percentage *= 10;
         if (percentage > 100) {
-        	percentage = 100;
+            percentage = 100;
         }
         return String.format("%d%%", percentage);
     }
@@ -332,62 +333,60 @@ public final class GameStrings {
         }
         return petInfo;
     }
-	
+
     /**
      * Generates a string containing the information for a given item.
      * @param item - an item.
      * @return itemInfo - a string containing information on a given item, such as nutrition,
      * tastiness and meal size for a food, or durability for a toy.
      */
-	public static String getItemInfo(final Item item) {
-		if (item instanceof Food) {
-			return getItemInfo((Food)item);
-		}
-		else {
-			return getItemInfo((Toy)item);
-		}
-	}
-	
-	/**
-	 * Generates a string containing the information for a given food.
-	 * @param food - a food.
-	 * @return itemInfo - a string containing the information for a food, such as nutrition,
-	 * tastiness and meal size.
-	 */
-	public static String getItemInfo(final Food food) {
-		String itemInfo = "";
-		itemInfo += "Food: " + food.toString() + "\r\n";
-		if (food.toString() == "Medicine") {
-			itemInfo += "Used to cure a pet if they become sick." + "\r\n" + 
-						"Doesn't use up any actions.";
-			return itemInfo;
-		}
-		else if (food.toString() == "Revival Medicine") {
-			itemInfo += "Used to revive a pet if they die." + "\r\n" +
-					  "Can only be used to revive a pet once!";
-			return itemInfo;
-		}
-		itemInfo += "Nutrition: " + toPercent(food.getNutrition()) + "\r\n";
-		itemInfo += "Meal size: " + toPercent(food.getMealSize()) + "\r\n";
-		itemInfo += "Tastiness: " + toPercent(food.getTastiness()) + "\r\n";
-		itemInfo += getMostLikedByAnimals(food) + "\r\n";
-		itemInfo += getLikedByAnimals(food);
-		return itemInfo;
-	}
-	
-	/**
-	 * Generates a string containing the information for a given toy.
-	 * @param toy - a toy.
-	 * @return itemInfo - a string containing the information for a toy, such as the name,
-	 * durability and the animals which like it the most.
-	 */
-	public static String getItemInfo(final Toy toy) {
-		String itemInfo = "";
-		itemInfo += "Toy: " + toy.toString() + "\r\n";
-		itemInfo += "Durability: " + toPercent(toy.getMaxDurability()) + "\r\n";
-		itemInfo += getMostLikedByAnimals(toy) + "\r\n";
-		itemInfo += getLikedByAnimals(toy);
-		return itemInfo;
-	}
-	
+    public static String getItemInfo(final Item item) {
+        if (item instanceof Food) {
+            return getItemInfo((Food)item);
+        } else {
+            return getItemInfo((Toy)item);
+        }
+    }
+
+    /**
+     * Generates a string containing the information for a given food.
+     * @param food - a food.
+     * @return itemInfo - a string containing the information for a food, such as nutrition,
+     * tastiness and meal size.
+     */
+    public static String getItemInfo(final Food food) {
+        String itemInfo = "";
+        itemInfo += "Food: " + food.toString() + "\r\n";
+        if (food.toString() == "Medicine") {
+            itemInfo += "Used to cure a pet if they become sick." + "\r\n"
+                    + "Doesn't use up any actions.";
+            return itemInfo;
+        } else if (food.toString() == "Revival Medicine") {
+            itemInfo += "Used to revive a pet if they die." + "\r\n" 
+                    + "Can only be used to revive a pet once!";
+            return itemInfo;
+        }
+        itemInfo += "Nutrition: " + toPercent(food.getNutrition()) + "\r\n";
+        itemInfo += "Meal size: " + toPercent(food.getMealSize()) + "\r\n";
+        itemInfo += "Tastiness: " + toPercent(food.getTastiness()) + "\r\n";
+        itemInfo += getMostLikedByAnimals(food) + "\r\n";
+        itemInfo += getLikedByAnimals(food);
+        return itemInfo;
+    }
+
+    /**
+     * Generates a string containing the information for a given toy.
+     * @param toy - a toy.
+     * @return itemInfo - a string containing the information for a toy, such as the name,
+     * durability and the animals which like it the most.
+     */
+    public static String getItemInfo(final Toy toy) {
+        String itemInfo = "";
+        itemInfo += "Toy: " + toy.toString() + "\r\n";
+        itemInfo += "Durability: " + toPercent(toy.getMaxDurability()) + "\r\n";
+        itemInfo += getMostLikedByAnimals(toy) + "\r\n";
+        itemInfo += getLikedByAnimals(toy);
+        return itemInfo;
+    }
+
 }

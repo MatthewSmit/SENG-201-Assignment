@@ -10,7 +10,7 @@ import java.util.Random;
  * and each pet can only be affected by one event per day.
  */
 public abstract class Event {
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     /**
      * Loops through each players pets, testing if the event gets applied to them.
@@ -54,7 +54,7 @@ public abstract class Event {
      * @return random number between [0, 1)
      */
     protected static float getRandom() {
-        return random.nextFloat();
+        return RANDOM.nextFloat();
     }
 
     /**
@@ -62,6 +62,6 @@ public abstract class Event {
      * @param seed - sets random to a predetermined seed to ensure repeatable results
      */
     static void setRandomSeed(final long seed) {
-        random.setSeed(seed);
+        RANDOM.setSeed(seed);
     }
 }

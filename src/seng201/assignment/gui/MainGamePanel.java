@@ -1,18 +1,22 @@
 package seng201.assignment.gui;
 
-import seng201.assignment.*;
 import seng201.assignment.Pet.DeathState;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 import javax.swing.AbstractListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 
 import seng201.assignment.Food;
@@ -20,7 +24,6 @@ import seng201.assignment.Game;
 import seng201.assignment.GameStrings;
 import seng201.assignment.Item;
 import seng201.assignment.Pet;
-import seng201.assignment.Pet.DeathState;
 import seng201.assignment.Player;
 import seng201.assignment.Toy;
 

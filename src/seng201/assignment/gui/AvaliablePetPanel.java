@@ -4,13 +4,9 @@ import javax.swing.JPanel;
 
 import seng201.assignment.PetType;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import java.awt.Image;
-import java.io.IOException;
-
 import javax.swing.JOptionPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

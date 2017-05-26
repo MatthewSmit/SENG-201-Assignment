@@ -559,25 +559,25 @@ public abstract class Pet {
     public abstract float[] getSpeciesWeightRange();
 
     /**
-   	 * Gets the range of playfulness for a species.
+     * Gets the range of playfulness for a species.
      * @return playfulnessRange - the playfulness range of the species.
      */
     public abstract int[] getSpeciesPlayfulnessRange();
 
     /**
-   	 * Gets the range of roughness for a species.
+     * Gets the range of roughness for a species.
      * @return roughnessRange - the roughness range of the species.
      */
     public abstract int[] getSpeciesRoughnessRange();
 
     /**
-   	 * Gets the range of rates at which hunger increases per day for a species.
+     * Gets the range of rates at which hunger increases per day for a species.
      * @return hungerRateRange - the range of rates at which hunger increases per day for a species.
      */
     public abstract int[] getSpeciesHungerRateRange();
 
     /**
-   	 * Gets the range of rates at which tiredness increases per day for a species.
+     * Gets the range of rates at which tiredness increases per day for a species.
      * @return tiredRateRange - the range of rates at which tiredness increases per day for a species.
      */
     public abstract int[] getSpeciesTiredRateRange();
