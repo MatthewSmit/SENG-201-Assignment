@@ -1,12 +1,15 @@
 package seng201.assignment.gui;
 
 import java.awt.Image;
-import java.io.IOException;
 
-import javax.swing.*;
+import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.*;
+
+import seng201.assignment.Pet;
 
 @SuppressWarnings("serial")
 final class OwnedPetPanel extends JPanel {
