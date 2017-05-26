@@ -3,7 +3,10 @@ package seng201.assignment;
 import java.util.ArrayList;
 
 /**
- * A player, owns pets, toys and food, and has money.
+ * Implements a player class, with the player
+ * owning pets, toys, foods and money. Methods implemented to
+ * allow for the player to interact with pets and items, and be
+ * allocated a daily (and final) score.
  */
 public class Player {
     /**
@@ -30,8 +33,8 @@ public class Player {
 
     /**
      * Creates a new player.
-     * @param name The name of the player
-     * @param pets An array of the pets the player has
+     * @param name - The name of the player.
+     * @param pets - An array of the pets the player has.
      */
     public Player(final String name, final Pet[] pets) {
         this.name = name;
@@ -40,7 +43,7 @@ public class Player {
 
     /**
      * Purchases an item, throws an exception if the player doesn't have enough money.
-     * @param item The desired item
+     * @param item - the item to be purchased.
      */
     public void purchase(final Item item) {
         if (money < item.getPrice()) {
@@ -53,40 +56,45 @@ public class Player {
 
     /**
      * Gets the name of the player.
+     * @return name - the name of the player.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Gets the pets a player has.
+     * Gets the pets the player has.
+     * @return pets - a Pet[] list of the pets the player owns.
      */
     public Pet[] getPets() {
         return pets;
     }
 
     /**
-     * Gets the items a player has.
+     * Gets the items the player has.
+     * @return items - an ArrayList of the items the player owns.
      */
     public ArrayList<Item> getItems() {
         return items;
     }
 
     /**
-     * Gets the food a player has.
+     * Gets the foods the player has.
+     * @return foods - an ArrayList of the foods the player owns.
      */
     public ArrayList<Food> getFood() {
-        ArrayList<Food> food = new ArrayList<>();
+        ArrayList<Food> foods = new ArrayList<>();
         for (Item item : items) {
             if (item instanceof Food) {
-                food.add((Food)item);
+                foods.add((Food)item);
             }
         }
-        return food;
+        return foods;
     }
 
     /**
-     * Gets the toys a player has.
+     * Gets the toys the player has.
+     * @return toys - an ArrayList of the toys the player owns.
      */
     public ArrayList<Toy> getToys() {
         ArrayList<Toy> toys = new ArrayList<>();
@@ -99,15 +107,16 @@ public class Player {
     }
 
     /**
-     * Gets the money a player has.
+     * Gets the money the player has.
+     * @return money - the amount of money the player has.
      */
     public int getMoney() {
         return money;
     }
 
     /**
-     * Adds the money to a player's balance.
-     * @param increasedMoney The money to add
+     * Adds money to the players wallet. Added through the daily allowance or by selling items.
+     * @param increasedMoney - the money to be added to the player's wallet.
      */
     public void addMoney(final int increasedMoney) {
         this.money += increasedMoney;
@@ -127,6 +136,7 @@ public class Player {
     
     /**
      * Gets the score of the player.
+     * @return score - the current score of the player.
      */
     public int getScore() {
         return score;

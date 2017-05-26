@@ -62,11 +62,11 @@ public final class Food extends Item {
 
     /**
      * Creates a food.
-     * @param name name of the food.
-     * @param price the price of the food.
-     * @param nutrition the nutrition value (1 to 10) of the food.
-     * @param mealSize the size (1 to 10) of the food.
-     * @param tastiness the tastiness (1 to 10) of the food.
+     * @param name - name of the food.
+     * @param price - the price of the food.
+     * @param nutrition - the nutrition value (1 to 10) of the food.
+     * @param mealSize - the size (1 to 10) of the food.
+     * @param tastiness - the tastiness (1 to 10) of the food.
      */
     private Food(final String name, final int price, final int nutrition, final int mealSize, final int tastiness) {
         this.foodName = name;
@@ -77,8 +77,8 @@ public final class Food extends Item {
     }
 
     /**
-     * Create another copy of a food item.
-     * @return this - a clone of the current item.
+     * Create a copy of a food item.
+     * @return this - a clone of the current food.
      */
     @Override
     public Item clone() {
@@ -128,8 +128,8 @@ public final class Food extends Item {
     }
 
     /**
-     * Gets an array containing all the possible Food values.
-     * @return VALUES - an array containing all the possible Food values.
+     * Gets an array containing all the possible foods.
+     * @return VALUES - an array containing all the possible foods.
      */
     public static Food[] values() {
         return VALUES;

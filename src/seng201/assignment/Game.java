@@ -6,14 +6,14 @@ package seng201.assignment;
  * in the form of turns and days.
  */
 public class Game {
-    private static final Event[] EVENTS = new Event[] {
+    
+	private static final Event[] EVENTS = new Event[] {
             new MisbehaveEvent(),
             new SicknessEvent(),
             new DeadEvent()
     };
 
     private final int maxDays;
-
     private Player[] players;
     private int playerTurn;
     private int day;
@@ -21,8 +21,8 @@ public class Game {
 
     /**
      * Creates a game.
-     * @param numberDays The number of days a game will play for.
-     * @param players An array containing the players that are playing.
+     * @param numberDays - The number of days a game will play for.
+     * @param players - An array containing the players that are playing.
      */
     public Game(final int numberDays, final Player[] players) {
         maxDays = numberDays;
@@ -30,7 +30,8 @@ public class Game {
     }
 
     /**
-     * Ends a turn. It will switch to the next player, and when that finishes, switch to a new day.
+     * Ends a turn. It will switch to the next player, 
+     * and when that finishes, to the next day.
      */
     public void endTurn() {
         assert isRunning();
@@ -55,15 +56,15 @@ public class Game {
 
     /**
      * Feeds the current pet the desired food.
-     * @param food The desired food
+     * @param food - the food being fed to the pet.
      */
     public void feed(final Food food) {
         getCurrentPet().feed(food);
     }
 
     /**
-     * Plays with the current pet and the desired toy.
-     * @param toy - the desired toy.
+     * Plays with the current pet using a toy.
+     * @param toy - the toy being used to play with the pet.
      */
     public void play(final Toy toy) {
         getCurrentPet().play(toy);
@@ -93,15 +94,15 @@ public class Game {
 
     /**
      * Gets the player whose turn it currently is.
-     * @return player - player whose turn it currently is
+     * @return player - player whose turn it currently is.
      */
     public Player getCurrentPlayer() {
         return players[playerTurn];
     }
 
     /**
-     * Gets the current day in the range [0, maxDays)
-     * @return day - current day in the range [0, maxDays)
+     * Gets the current day the game is in.
+     * @return day - current day the game is in.
      */
     public int getCurrentDay() {
         return day;
@@ -155,6 +156,7 @@ public class Game {
 
     /**
      * Returns an array of the players.
+     * @return players - the array of all the players.
      */
     public Player[] getPlayers() {
         return players;

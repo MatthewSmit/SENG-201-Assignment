@@ -1,12 +1,13 @@
 package seng201.assignment;
 
 /**
- * The death event, which kills pets. A greater chance the more hungry, tired, toilet-needy and unhealthy a pet is.
+ * The death event, which kills the pet. 
+ * A greater chance of death the more unhealthy a pet is.
  */
 public final class DeadEvent extends Event {
-	
+    
 	/**
-	 * Processes a pet (at the end of a turn), to check if it dies.
+	 * Processes a pet at the end of the turn to check if it dies.
 	 * @param pet - the pet to be processed.
 	 * @return true - if pet dies in the turn, false - if pet is already dead or does not die.
 	 **/

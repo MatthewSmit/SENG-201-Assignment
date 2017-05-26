@@ -1,7 +1,7 @@
 package seng201.assignment;
 
 /**
- * Toy Item.
+ * Implements the toys useable by pets.
  */
 public final class Toy extends Item {
     /**
@@ -44,6 +44,12 @@ public final class Toy extends Item {
 
     private int durability;
 
+    /**
+     * Creates a toy.
+     * @param name - name of the toy.
+     * @param price - the price of the toy.
+     * @param maxDurability - the maximum durability of the toy.
+     */
     private Toy(final String name, final int price, final int maxDurability) {
         this.name = name;
         this.price = price;
@@ -53,7 +59,7 @@ public final class Toy extends Item {
 
     /**
      * Damages the toy, random damage value between [0, pet.roughness).
-     * @param pet The pet the damages the toy
+     * @param pet - The pet that damages the toy.
      */
     public void degrade(final Pet pet) {
         if (this.durability <= 0) {
@@ -67,25 +73,18 @@ public final class Toy extends Item {
         }
     }
     
-    @Override
-    public boolean equals(final Object other) {
-        return other instanceof Toy && (this == other || ((Toy)other).name.equals(name));
-    }
     
-    @Override
-    public int hashCode() {
-        return name.hashCode();
-    }
-
     /**
-     * If the toy has broken.
+     * Checks whether or not the toy is broken.
+     * @return true - if the toy is broken, false - if the toy is not broken.
      */
     public boolean isBroken() {
         return durability <= 0;
     }
 
     /**
-     * Create another instance of a toy.
+     * Returns a copy of the toy.
+     * @return toy - copy of the toy being cloned.
      */
     @Override
     public Toy clone() {
@@ -94,6 +93,7 @@ public final class Toy extends Item {
 
     /**
      * Get the price of the toy.
+     * @return price - price of the toy.
      */
     @Override
     public int getPrice() {
@@ -102,6 +102,7 @@ public final class Toy extends Item {
 
     /**
      * Remaining durability of the toy.
+     * @return durability - the remaining durability of the toy.
      */
     public int getDurability() {
         return durability;
@@ -109,18 +110,24 @@ public final class Toy extends Item {
 
     /**
      * Maximum durability of the toy.
+     * @return maxDurability - the maximum durability of the toy.
      */
     public int getMaxDurability() {
         return maxDurability;
     }
 
+    /**
+     * Gets the name of the toy.
+     * @return name - the name of the toy.
+     */
     @Override
     public String toString() {
         return name;
     }
 
     /**
-     * An array of all the possible toy types.
+     * Gets an array containing all the possible toys.
+     * @return VALUES - an array containing all the possible toys.
      */
     public static Toy[] values() {
         return VALUES;

@@ -4,9 +4,15 @@ import seng201.assignment.Pet;
 import seng201.assignment.PetType;
 import seng201.assignment.Player;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import java.awt.*;
 
 @SuppressWarnings("serial")
 final class EndGameWindow extends JFrame {

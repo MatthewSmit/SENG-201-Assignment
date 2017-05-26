@@ -7,6 +7,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+import javax.swing.AbstractListModel;
+
+import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
+import seng201.assignment.Food;
+import seng201.assignment.Game;
+import seng201.assignment.GameStrings;
+import seng201.assignment.Item;
+import seng201.assignment.Pet;
+import seng201.assignment.Pet.DeathState;
+import seng201.assignment.Player;
+import seng201.assignment.Toy;
+
+
 @SuppressWarnings("serial")
 final class MainGamePanel extends JPanel {
     private class InventoryListModel extends AbstractListModel<ShopListView<String>> {
@@ -81,7 +99,7 @@ final class MainGamePanel extends JPanel {
 
         petNameLabel = new JLabel();
         petNameLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-        petNameLabel.setBounds(10, 43, 200, 19);
+        petNameLabel.setBounds(10, 43, 339, 19);
         add(petNameLabel);
 
         petImage = new ImageLabel();
@@ -106,7 +124,7 @@ final class MainGamePanel extends JPanel {
 
         pet3NameLabel = new JLabel();
         pet3NameLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        pet3NameLabel.setBounds(390, 48, 100, 14);
+        pet3NameLabel.setBounds(392, 48, 98, 14);
         add(pet3NameLabel);
 
         pet3Button = new JButton();

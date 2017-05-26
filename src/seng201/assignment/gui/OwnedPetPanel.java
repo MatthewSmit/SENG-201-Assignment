@@ -1,6 +1,7 @@
 package seng201.assignment.gui;
 
-import seng201.assignment.Pet;
+import java.awt.Image;
+import java.io.IOException;
 
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;

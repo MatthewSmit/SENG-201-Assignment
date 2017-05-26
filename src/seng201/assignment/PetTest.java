@@ -233,13 +233,7 @@ public final class PetTest {
         assertFalse(pet.isSick());
     }
 
-    /*@Test
-    public void getFavouriteToy() throws Exception {
-        for (int i = 0; i < pets.length; i++) {
-            Toy[] toys = pets[i].getFavouriteToy();
-            throw new UnsupportedOperationException();
-        }
-    }*/
+
     private static Pet[] createPets() {
         return new Pet[]{
                 PetType.Bird.create("bird"),

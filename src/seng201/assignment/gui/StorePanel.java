@@ -9,14 +9,8 @@ import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import seng201.assignment.Food;
 import seng201.assignment.Game;
@@ -30,8 +24,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
+import javax.swing.border.EtchedBorder;
 
 @SuppressWarnings("serial")
 final class StorePanel extends JPanel {
@@ -103,8 +97,8 @@ final class StorePanel extends JPanel {
 
         storeList = new JList<>();
         storeList.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        storeList.setBorder(new LineBorder(new Color(0, 0, 0)));
-        storeList.setBounds(10, 49, 397, 263);
+        storeList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+        storeList.setBounds(10, 49, 397, 245);
         storeList.setModel(list);
         storeList.setCellRenderer(new ShopListViewRenderer<>());
         storeList.addListSelectionListener(e -> redraw());
@@ -162,8 +156,9 @@ final class StorePanel extends JPanel {
         
         statsText = new JTextPane();
         statsText.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        statsText.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
         statsText.setEditable(false);   
-        statsText.setBounds(12, 323, 395, 100);
+        statsText.setBounds(10, 323, 397, 100);
         statsText.setHighlighter(null);
         add(statsText);
 

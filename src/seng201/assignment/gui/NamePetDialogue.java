@@ -1,8 +1,6 @@
 package seng201.assignment.gui;
 
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -43,7 +41,7 @@ final class NamePetDialogue extends JDialog {
 
         nameText = new JTextField();
         nameText.setColumns(10);
-        nameText.setDocument(new JTextFieldLimit(15));
+        nameText.setDocument(new JTextFieldLimit(10));
 
         final JDialog dialogue = this;
 

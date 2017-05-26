@@ -70,9 +70,6 @@ public final class PlayerTest {
         assertArrayEquals(petList, testPlayer.getPets());
     }
 
-    //no testGetFood and testGetToys as effectively tested in
-    //testPurchaseToy and testPurchaseFood - would be similar or the same
-
     @Test
     public void testGetMoney() {
         assertEquals(testPlayer.getMoney(), 100);
