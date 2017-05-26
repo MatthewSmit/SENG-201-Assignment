@@ -297,7 +297,6 @@ public final class GameStrings {
      */
     public static String toPercent(final int integer) {
         int percentage = integer * 10;
-        percentage *= 10;
         if (percentage > 100) {
             percentage = 100;
         }

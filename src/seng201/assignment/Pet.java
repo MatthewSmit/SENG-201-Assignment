@@ -223,8 +223,16 @@ public abstract class Pet {
      */
     final void dayPassed() {
         actionsLeft = 2;
+        
         hunger += hungerRate;
+        if (hunger > 10) {
+            hunger = 10;
+        }
+        
         tiredness += tiredRate;
+        if (tiredness > 10) {
+            tiredness = 10;
+        }
 
         happiness -= HAPPY_DECREASE_RATE;
         if (happiness < 0) {
